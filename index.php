@@ -1,4 +1,9 @@
 <?php
+
+// 2 lignes ci-dessous permettent d'afficher les erreurs PHP
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 /**
  *Front controller
  *
@@ -12,39 +17,39 @@ session_start();
 
 // Inclusion des contrôleurs
 require_once 'init_smarty.php';
-require_once 'controllers/ProduitsControllers.php';
+require_once 'controllers/ProduitControllers.php';
 require_once 'controllers/UtilisateursControllers.php';
 
-// Récupération des paramètres de l'action via l'URL (ex : index.php?action=produits)
-$action = isset($_GET['action']) ? $_GET['action'] : 'produits';
+// Récupération des paramètres de l'action via l'URL (ex : index.php?action=produit)
+$action = isset($_GET['action']) ? $_GET['action'] : 'produit';
 
-// Même chose avec l'id
-$id_produits = isset($_GET['id_produits']) ? intval($_GET['id_produits']) : 0;
+// Récupération de l'id du produit
+$Id_produit = isset($_GET['Id_produit']) ? intval($_GET['Id_produit']) : 0;
 
 
 switch ($action) {
-    case 'produits':
+    case 'produit':
         // Appel de la méthode pour afficher les produits
-        $controller = new ProduitsController();
+        $controller = new ProduitController();
         $controller->liste();
         break;
 
     case 'add':
         // Appel de la méthode pour ajouter un produit
-        $controller = new ProduitsController();
+        $controller = new ProduitController();
         $controller->add();
         break;
 
-    case 'delete_produits':
+    case 'delete_produit':
         // Appel de la méthode pour supprimer les produits
-        $controller = new ProduitsController();
+        $controller = new ProduitController();
         $controller->delete();
         break;
 
     case 'update' :
         // Appel de la méthode pour modifier les détails du produit
-        $controller = new ProduitsController();
-        $controller->modifier($id_produits);
+        $controller = new ProduitController();
+        $controller->modifier($Id_produit);
         break;
 
     default:

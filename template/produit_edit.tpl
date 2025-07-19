@@ -9,16 +9,16 @@
     </head>
     <body>
         <h1>Modifier un produit</h1>
-        <form action="../../cafthe_dashboard/index.php?action=update&id_produits={$produit.id_produits}" method="post">
+        <form action="../../cafthe_dashboard/index.php?action=update&Id_produit={$produit.Id_produit}" method="post">
 
             <label for="name">Nom :</label>
-            <input type="text" id="name" name="nom" required value="{$produit.nom}">
+            <input type="text" id="name" name="nom" required value="{$produit.Nom_produit}">
 
             <label for="prix">Prix :</label>
-            <input type="number" id="prix" name="prix" required value="{$produit.prix}">
+            <input type="number" id="prix" name="prix" required value="{$produit.Prix_TTC}">
 
             <label for="stock">Stock :</label>
-            <input type="number" id="stock" name="stock" required value="{$produit.stock}">
+            <input type="number" id="stock" name="stock" required value="{$produit.Stock}">
 
             <button type="submit">Valider</button>
         </form>

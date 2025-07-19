@@ -20,7 +20,7 @@ class Database
 
         // Configuration de la base de données
         $host = "localhost";
-        $dbname = "brief_crud";
+        $dbname = "cafthe_backup";
         $user = "root";
         $pass = "";
 

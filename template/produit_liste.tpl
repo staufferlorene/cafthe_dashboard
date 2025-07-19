@@ -21,14 +21,14 @@
                 </tr>
             </thead>
             <tbody>
-                {foreach from=$produits item=produit}
+                {foreach from=$produit item=produit}
                 <tr>
-                    <td>{$produit.id_produits|escape}</td>
-                    <td>{$produit.nom|escape}</td>
-                    <td>{$produit.prix|escape}</td>
-                    <td>{$produit.stock|escape}</td>
-                    <td><button><a href="index.php?action=update&id_produits={$produit.id_produits}">Modifier</a></button></td>
-                    <td><button><a href="index.php?action=delete_produits&id_produits={$produit.id_produits}">Supprimer</a></button></td>
+                    <td>{$produit.Id_produit|escape}</td>
+                    <td>{$produit.Nom_produit|escape}</td>
+                    <td>{$produit.Prix_TTC|escape}</td>
+                    <td>{$produit.Stock|escape}</td>
+                    <td><button><a href="index.php?action=update&Id_produit={$produit.Id_produit}">Modifier</a></button></td>
+                    <td><button><a href="index.php?action=delete_produit&Id_produit={$produit.Id_produit}">Supprimer</a></button></td>
                 </tr>
                 {/foreach}
             </tbody>
