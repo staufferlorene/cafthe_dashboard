@@ -46,7 +46,7 @@ switch ($action) {
         $controller->delete();
         break;
 
-    case 'update' :
+    case 'update_produit' :
         // Appel de la méthode pour modifier les détails du produit
         $controller = new ProduitController();
         $controller->modifier($Id_produit);

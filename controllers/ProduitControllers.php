@@ -23,17 +23,30 @@ class ProduitController
     }
 
     // Ajouter un produit
+
     public function add() {
-        if (isset($_POST['Nom_produit'], $_POST['Prix_TTC'], $_POST['Stock'])) {
-            $this->produitModel->ajouter($_POST['Nom_produit'], $_POST['Prix_TTC'], $_POST['Stock']);
-            // Redirection vers la liste après ajout
-            header("Location: index.php?action=produit");
-            exit;
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Vérifie que les champs sont bien envoyés
+            if (isset($_POST['nom'], $_POST['prix'], $_POST['stock'])) {
+                // Tente l'ajout
+                $erreur = $this->produitModel->ajouter($_POST['nom'], $_POST['prix'], $_POST['stock']);
+
+                if ($erreur === null) {
+                    // Succès : Redirection vers la liste après ajout
+                    header("Location: index.php?action=produit");
+                    exit;
+                } else {
+                    // Échec : Affiche le formulaire avec message d'erreur
+                    $this->smarty->assign('erreur', $erreur);
+                    $this->smarty->display('produit_add.tpl');
+                }
+            }
         } else {
-            // Affiche le formulaire s'il n'a pas encore été soumis
+            // Affiche le formulaire vide
             $this->smarty->display('produit_add.tpl');
         }
     }
+
 
     // Supprimer un produit
     public function delete() {

@@ -79,14 +79,21 @@ class Produit {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    // Ajout d'un produit dans la BDD
-    public static function ajouter ($Nom_produit, $Prix_TTC, $Stock) {
+    public static function ajouter($Nom_produit, $Prix_TTC, $Stock) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
-        // Ajout
-        $stmt = $db->prepare("INSERT INTO produit (Nom_produit, Prix_TTC, Stock) VALUES (?, ?, ?)");
-        $stmt->execute([$Nom_produit, $Prix_TTC, $Stock]);
+        try {
+            // Préparation de la requête
+            $stmt = $db->prepare("INSERT INTO produit (Nom_produit, Prix_TTC, Stock) VALUES (?, ?, ?)");
+
+            // Exécution
+            $stmt->execute([$Nom_produit, $Prix_TTC, $Stock]);
+            return null; // Pas d'erreur
+        } catch (PDOException $e) {
+            return $e->getMessage(); // Retourne le message d'erreur
+        }
     }
+
 
     // Modification d'un produit dans la BDD
     public static function modifier ($Nom_produit, $Prix_TTC, $Stock, $Id_produit) {

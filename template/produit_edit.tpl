@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Modifier un produit</h1>
-        <form action="../../cafthe_dashboard/index.php?action=update&Id_produit={$produit.Id_produit}" method="post">
+        <form action="../../cafthe_dashboard/index.php?action=update_produit&Id_produit={$produit.Id_produit}" method="post">
 
             <label for="name">Nom :</label>
             <input type="text" id="name" name="nom" required value="{$produit.Nom_produit}">

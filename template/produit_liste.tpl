@@ -27,7 +27,7 @@
                     <td>{$produit.Nom_produit|escape}</td>
                     <td>{$produit.Prix_TTC|escape}</td>
                     <td>{$produit.Stock|escape}</td>
-                    <td><button><a href="index.php?action=update&Id_produit={$produit.Id_produit}">Modifier</a></button></td>
+                    <td><button><a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}">Modifier</a></button></td>
                     <td><button><a href="index.php?action=delete_produit&Id_produit={$produit.Id_produit}">Supprimer</a></button></td>
                 </tr>
                 {/foreach}
