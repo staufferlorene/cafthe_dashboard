@@ -17,7 +17,7 @@ session_start();
 
 // Inclusion des contrôleurs
 require_once 'init_smarty.php';
-require_once 'controllers/ProduitControllers.php';
+require_once 'mvc_produit/ProduitController.php';
 require_once 'controllers/UtilisateursControllers.php';
 
 // Récupération des paramètres de l'action via l'URL (ex : index.php?action=produit)
