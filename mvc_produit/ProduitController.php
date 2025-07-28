@@ -26,7 +26,6 @@ class ProduitController
     }
 
     // Ajouter un produit
-
     public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -41,15 +40,15 @@ class ProduitController
                 } else {
                     // Si échec : Affiche le formulaire avec message d'erreur
                     $this->smarty->assign('erreur', $erreur);
-                    $this->smarty->display('mvc_produit\produit_add_view.tpl');
+                    $this->smarty->display('mvc_produit\produit_form_view.tpl');
                 }
             }
         } else {
             // Affiche le formulaire vide
-            $this->smarty->display('mvc_produit\produit_add_view.tpl');
+            $this->smarty->assign('action', 'add');
+            $this->smarty->display('mvc_produit\produit_form_view.tpl');
         }
     }
-
 
     // Supprimer un produit
     public function delete() {
@@ -59,28 +58,40 @@ class ProduitController
     }
 
     // Modifier un produit
-    public function modifier($Id_produit) {
+    public function modifier($Id_produit)
+    {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['Nom_produit'], $_POST['Prix_TTC'], $_POST['Stock'])) {
-                $this->produitModel->modifier($_POST['Nom_produit'], $_POST['Prix_TTC'], $_POST['Stock'], $Id_produit);
-                // Redirection après modification
-                header("Location: index.php?action=produits");
-                exit;
-            }
-        } else {
-            // Affichage du formulaire avec les données existantes
-            $produit = ProduitModel::loadById($Id_produit);
-            if ($produit) {
-                // Passage des données à Smarty
-                $this->smarty->assign('produit', [
-                    'Id_produit' => $produit->getId(),
-                    'Nom_produit' => $produit->getNom_produit(),
-                    'Prix_TTC' => $produit->getPrix_TTC(),
-                    'Stock' => $produit->getStock()
-                ]);
-                $this->smarty->display('mvc_produit\produit_edit_view.tpl');
+            if (isset($_POST['nom'], $_POST['prix'], $_POST['stock'])) {
+                // Tente la modification
+                $erreur = $this->produitModel->modifier($_POST['nom'], $_POST['prix'], $_POST['stock'], $Id_produit);
+
+                if ($erreur === null) {
+                    // Si succès : Redirection vers la liste après ajout
+                    header("Location: index.php?action=produit");
+                    exit;
+                } else {
+                    // Si échec : Affiche le formulaire avec message d'erreur
+                    $this->smarty->assign('erreur', $erreur);
+                }
             }
         }
+
+        // Affichage du formulaire avec les données existantes
+        $produit = ProduitModel::loadById($Id_produit);
+        if ($produit) {
+            // Passage des données à Smarty
+            $this->smarty->assign('action', 'update_produit');
+            $this->smarty->assign('produit', [
+                'Id_produit' => $produit->getId(),
+                'Nom_produit' => $produit->getNom_produit(),
+                'Prix_TTC' => $produit->getPrix_TTC(),
+                'Stock' => $produit->getStock()
+            ]);
+        } else {
+            $this->smarty->assign('erreur', 'Produit introuvable.');
+        }
+
+        $this->smarty->display('mvc_produit/produit_form_view.tpl');
     }
 }
