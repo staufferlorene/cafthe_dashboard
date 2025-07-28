@@ -34,7 +34,7 @@ switch ($action) {
         $controller->liste();
         break;
 
-    case 'add':
+    case 'add_produit':
         // Appel de la méthode pour ajouter un produit
         $controller = new ProduitController();
         $controller->add();

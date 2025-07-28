@@ -46,7 +46,7 @@
                     <h4 class="m-0 font-weight-bold text-primary">Liste des produits</h4>
                 </div>
                 <div class="mt-3 pl-3">
-                    <a href="index.php?action=add" class="btn btn-secondary btn-icon-split">
+                    <a href="index.php?action=add_produit" class="btn btn-secondary btn-icon-split">
                                         <span class="icon text-white-50">
                                             <i class="fa-solid fa-plus"></i>
                                         </span>
@@ -61,7 +61,7 @@
                             <tr>
                                 <th>ID produits</th>
                                 <th>Nom</th>
-                                <th>Prix</th>
+                                <th>Prix TTC</th>
                                 <th>Stock</th>
                                 <th>Actions</th>
                             </tr>
@@ -70,7 +70,7 @@
                             <tr>
                                 <th>ID produits</th>
                                 <th>Nom</th>
-                                <th>Prix</th>
+                                <th>Prix TTC</th>
                                 <th>Stock</th>
                                 <th>Actions</th>
                             </tr>
@@ -80,10 +80,11 @@
                                 <tr>
                                     <td>{$produit.Id_produit|escape}</td>
                                     <td>{$produit.Nom_produit|escape}</td>
-                                    <td>{$produit.Prix_TTC|escape}</td>
+                                    <td>{$produit.Prix_TTC|escape} €</td>
                                     <td>{$produit.Stock|escape}</td>
                                     <td>
-                                        <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-pen-to-square text-warning"></i></a>
+                                        <a href="#">voir détail <i class="mr-4"></i></a>
+                                        <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-pen-to-square text-warning mr-4"></i></a>
                                         <a href="index.php?action=delete_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-trash text-danger"></i></a>
                                     </td>
                                 </tr>

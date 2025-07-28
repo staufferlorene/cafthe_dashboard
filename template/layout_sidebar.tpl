@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -14,7 +14,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -36,21 +36,21 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php?action=add">
+        <a class="nav-link" href="index.php?action=add_produit">
             <i class="fa-solid fa-plus"></i>
             <span>Ajouter un produit</span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php?action=add">
+        <a class="nav-link" href="index.php?action=add_produit">
             <i class="fa-solid fa-users"></i>
             <span>Clients</span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php?action=add">
+        <a class="nav-link" href="index.php?action=add_produit">
             <i class="fa-solid fa-user-plus"></i>
             <span>Ajouter un client</span>
         </a>
