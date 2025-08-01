@@ -7,8 +7,7 @@ use PDOException;
 
 require_once 'models/Database.php';
 
-class ProduitModel
-{
+class ProduitModel {
 
     // propriétés privées (encapsulation)
     private $pdo;
@@ -16,62 +15,62 @@ class ProduitModel
     private $Nom_produit;
     private $Prix_TTC;
     private $Stock;
+    private $Description;
 
 
     // Constructeur : initialisation du produit
     // public function => pour que la fonction soit accessible partout
-    public function __construct()
-    {
+    public function __construct() {
         $this->pdo = Database::getInstance()->getConnection();
     }
 
     // Getter pour l'id
-    public function getId()
-    {
+    public function getId() {
         return $this->Id_produit;
     }
 
     // Getter pour le Nom_produit
-    public function getNom_produit()
-    {
+    public function getNom_produit() {
         return $this->Nom_produit;
     }
 
     // Getter pour le Prix_TTC
-    public function getPrix_TTC()
-    {
+    public function getPrix_TTC() {
         return $this->Prix_TTC;
     }
 
     // Getter pour le Stock
-    public function getStock()
-    {
+    public function getStock() {
         return $this->Stock;
     }
 
+    // Getter pour la Description
+    public function getDescription() {
+        return $this->Description;
+    }
+
     // Get des détails du produit
-    public function getDetails()
-    {
+    public function getDetails() {
         return "ProduitModel : " . $this->Id_produit . $this->Nom_produit . " " . $this->Prix_TTC . " " . $this->Stock;
     }
 
-    public function setNom_produit($Nom_produit)
-    {
+    public function setNom_produit($Nom_produit) {
         $this->Nom_produit = $Nom_produit;
     }
 
-    public function setPrix_TTC($Prix_TTC)
-    {
+    public function setPrix_TTC($Prix_TTC) {
         $this->Prix_TTC = $Prix_TTC;
     }
 
-    public function setStock($Stock)
-    {
+    public function setStock($Stock) {
         $this->Stock = $Stock;
     }
 
-    public function showDetails()
-    {
+    public function setDescription($Description) {
+        $this->Description = $Description;
+    }
+
+    public function showDetails() {
         echo "ProduitModel : " . $this->Id_produit . $this->Nom_produit . " " . $this->Prix_TTC . " " . $this->Stock;
     }
 
@@ -84,8 +83,7 @@ class ProduitModel
      * @return array|null retourne l'objet produit (ou rien si non trouvé)
      */
 
-    public static function lister()
-    {
+    public static function lister() {
         /* public static function lister(int $Id_produit) {*/
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -97,8 +95,7 @@ class ProduitModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function ajouter($Nom_produit, $Prix_TTC, $Stock)
-    {
+    public static function ajouter($Nom_produit, $Prix_TTC, $Stock) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         try {
@@ -115,8 +112,7 @@ class ProduitModel
 
 
     // Modification d'un produit dans la BDD
-    public static function modifier($Nom_produit, $Prix_TTC, $Stock, $Id_produit)
-    {
+    public static function modifier($Nom_produit, $Prix_TTC, $Stock, $Id_produit) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         // Màj
@@ -124,15 +120,13 @@ class ProduitModel
         $stmt->execute([$Nom_produit, $Prix_TTC, $Stock, $Id_produit]);
     }
 
-    public static function delete($Id_produit)
-    {
+    public static function delete($Id_produit) {
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("DELETE FROM produit WHERE Id_produit = ?");
         return $stmt->execute([$Id_produit]);
     }
 
-    public function save()
-    {
+    public function save() {
         $db = Database::getInstance()->getConnection();
 
         if ($this->Id_produit === null) {
@@ -149,8 +143,7 @@ class ProduitModel
         }
     }
 
-    public static function loadById(int $Id_produit)
-    {
+    public static function loadById(int $Id_produit) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 
@@ -166,11 +159,11 @@ class ProduitModel
             $produit->setNom_produit($data['Nom_produit']);
             $produit->setPrix_TTC($data['Prix_TTC']);
             $produit->setStock($data['Stock']);
+            $produit->setDescription($data['Description']);
             return $produit;
         }
 
         // sinon on retourne null
         return null;
     }
-
 }

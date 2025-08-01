@@ -52,6 +52,12 @@ switch ($action) {
         $controller->modifier($Id_produit);
         break;
 
+    case 'detail_produit' :
+        // Appel de la méthode pour afficher les détails du produit
+        $controller = new ProduitController();
+        $controller->voirDetail($Id_produit);
+        break;
+
     default:
         echo "Cette page n'existe pas";
         break;

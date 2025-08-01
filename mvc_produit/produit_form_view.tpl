@@ -44,12 +44,12 @@
         <div style="color:red;">Erreur : {$erreur}</div>
     {/if}
 
-    <h4 class="m-0 font-weight-bold text-primary">{if $action == 'add'}Ajouter un Produit{else}Modifier un Produit{/if}</h4>
+    <h4 class="m-0 mb-3 font-weight-bold text-primary">{if $action == 'add'}Ajouter un Produit{else}Modifier un Produit{/if}</h4>
 
     {if $action == 'add'}
-        <form action="../../cafthe_dashboard/index.php?action=add_produit" method="post">
+        <form action="index.php?action=add_produit" method="post">
     {else}
-        <form action="../../cafthe_dashboard/index.php?action=update_produit&Id_produit={$produit.Id_produit}" method="post">
+        <form action="index.php?action=update_produit&Id_produit={$produit.Id_produit}" method="post">
     {/if}
             <div class="form-group">
                 <label for="name">Nom :</label>
@@ -66,7 +66,8 @@
                 <input class="form-control" type="number" id="stock" name="stock" required value="{if $action == 'update_produit'}{$produit.Stock|escape}{/if}">
             </div>
 
-            <button type="submit" class="btn btn-primary">Valider</button>
+            <a href="index.php" class="btn btn-danger mr-2 mt-3">Retour</a>
+            <button type="submit" class="btn btn-success mt-3">Valider</button>
         </form>
                 </div>
             </div>

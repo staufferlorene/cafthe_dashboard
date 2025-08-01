@@ -55,7 +55,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                       <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
 
                             <thead>
                             <tr>
@@ -83,8 +83,8 @@
                                     <td>{$produit.Prix_TTC|escape} €</td>
                                     <td>{$produit.Stock|escape}</td>
                                     <td>
-                                        <a href="#">voir détail <i class="mr-4"></i></a>
-                                        <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-pen-to-square text-warning mr-4"></i></a>
+                                        <a href="index.php?action=detail_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-eye"></i></i></a>
+                                        <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-pen-to-square text-warning mr-4 ml-4"></i></a>
                                         <a href="index.php?action=delete_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-trash text-danger"></i></a>
                                     </td>
                                 </tr>
