@@ -60,6 +60,7 @@
                             <thead>
                             <tr>
                                 <th>ID produits</th>
+                                <th>Catégorie</th>
                                 <th>Nom</th>
                                 <th>Prix TTC</th>
                                 <th>Stock</th>
@@ -69,6 +70,7 @@
                             <tfoot>
                             <tr>
                                 <th>ID produits</th>
+                                <th>Catégorie</th>
                                 <th>Nom</th>
                                 <th>Prix TTC</th>
                                 <th>Stock</th>
@@ -79,6 +81,7 @@
                             {foreach from=$produit item=produit}
                                 <tr>
                                     <td>{$produit.Id_produit|escape}</td>
+                                    <td>{$produit.Nom_categorie|escape}</td>
                                     <td>{$produit.Nom_produit|escape}</td>
                                     <td>{$produit.Prix_TTC|escape} €</td>
                                     <td>{$produit.Stock|escape}</td>

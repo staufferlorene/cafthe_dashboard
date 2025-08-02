@@ -16,6 +16,10 @@ class ProduitModel {
     private $Prix_TTC;
     private $Stock;
     private $Description;
+    private $Prix_HT;
+    private $Tva_categorie;
+    private $Nom_categorie;
+    private $Type_conditionnement;
 
 
     // Constructeur : initialisation du produit
@@ -49,9 +53,24 @@ class ProduitModel {
         return $this->Description;
     }
 
-    // Get des détails du produit
-    public function getDetails() {
-        return "ProduitModel : " . $this->Id_produit . $this->Nom_produit . " " . $this->Prix_TTC . " " . $this->Stock;
+    // Getter pour le Prix_HT
+    public function getPrix_HT() {
+        return $this->Prix_HT;
+    }
+
+    // Getter pour la TVA
+    public function getTva_categorie() {
+        return $this->Tva_categorie;
+    }
+
+    // Getter pour la Catégorie
+    public function getNom_categorie() {
+        return $this->Nom_categorie;
+    }
+
+    // Getter pour le Type de conditionnement
+    public function getType_conditionnement() {
+        return $this->Type_conditionnement;
     }
 
     public function setNom_produit($Nom_produit) {
@@ -70,8 +89,20 @@ class ProduitModel {
         $this->Description = $Description;
     }
 
-    public function showDetails() {
-        echo "ProduitModel : " . $this->Id_produit . $this->Nom_produit . " " . $this->Prix_TTC . " " . $this->Stock;
+    public function setPrix_HT($Prix_HT) {
+        return $this->Prix_HT = $Prix_HT;
+    }
+
+    public function setTva_categorie($Tva_categorie) {
+        return $this->Tva_categorie = $Tva_categorie;
+    }
+
+    public function setNom_categorie($Nom_categorie) {
+        return $this->Nom_categorie = $Nom_categorie;
+    }
+
+    public function setType_conditionnement($Type_conditionnement) {
+        return $this->Type_conditionnement = $Type_conditionnement;
     }
 
     //Méthode pour charger les produits provenant de la BDD
@@ -89,35 +120,34 @@ class ProduitModel {
         $db = Database::getInstance()->getConnection();
 
         // Récupération des infos dans la BDD
-        $stmt = $db->prepare("SELECT * FROM produit");
+        $stmt = $db->prepare("SELECT * FROM produit JOIN categorie ON categorie.Id_categorie = produit.Id_categorie");
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function ajouter($Nom_produit, $Prix_TTC, $Stock) {
+    public static function ajouter($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         try {
             // Préparation de la requête
-            $stmt = $db->prepare("INSERT INTO produit (Nom_produit, Prix_TTC, Stock) VALUES (?, ?, ?)");
+            $stmt = $db->prepare("INSERT INTO produit (Nom_produit, Description, Prix_TTC, Prix_HT, Stock, Type_conditionnement) VALUES (?, ?, ?, ?, ?, ?)");
 
             // Exécution
-            $stmt->execute([$Nom_produit, $Prix_TTC, $Stock]);
+            $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement]);
             return null; // Pas d'erreur
         } catch (PDOException $e) {
             return $e->getMessage(); // Retourne le message d'erreur
         }
     }
 
-
     // Modification d'un produit dans la BDD
-    public static function modifier($Nom_produit, $Prix_TTC, $Stock, $Id_produit) {
+    public static function modifier($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $Id_produit) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         // Màj
-        $stmt = $db->prepare("UPDATE produit SET Nom_produit=?, Prix_TTC=?, Stock=? WHERE Id_produit=?");
-        $stmt->execute([$Nom_produit, $Prix_TTC, $Stock, $Id_produit]);
+        $stmt = $db->prepare("UPDATE produit SET Nom_produit=?, Description=?, Prix_TTC=?, Prix_HT=?, Stock=?, Type_conditionnement=? WHERE Id_produit=?");
+        $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $Id_produit]);
     }
 
     public static function delete($Id_produit) {
@@ -126,7 +156,7 @@ class ProduitModel {
         return $stmt->execute([$Id_produit]);
     }
 
-    public function save() {
+/*    public function save() {
         $db = Database::getInstance()->getConnection();
 
         if ($this->Id_produit === null) {
@@ -141,14 +171,14 @@ class ProduitModel {
             $stmt = $db->prepare("UPDATE produit SET Nom_produit =?, Prix_TTC =?, Stock=? WHERE Id_produit = ?");
             $stmt->execute([$this->Nom_produit, $this->Prix_TTC, $this->Stock, $this->Id_produit]);
         }
-    }
+    }*/
 
     public static function loadById(int $Id_produit) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 
         // Récupération des infos dans la BDD
-        $stmt = $db->prepare("SELECT * FROM produit WHERE Id_produit = ?");
+        $stmt = $db->prepare("SELECT * FROM produit JOIN categorie ON categorie.Id_categorie = produit.Id_categorie WHERE Id_produit = ?");
         $stmt->execute([$Id_produit]);
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -157,9 +187,13 @@ class ProduitModel {
             $produit = new ProduitModel();
             $produit->Id_produit = $data['Id_produit'];
             $produit->setNom_produit($data['Nom_produit']);
-            $produit->setPrix_TTC($data['Prix_TTC']);
-            $produit->setStock($data['Stock']);
             $produit->setDescription($data['Description']);
+            $produit->setPrix_TTC($data['Prix_TTC']);
+            $produit->setPrix_HT($data['Prix_HT']);
+            $produit->setTva_categorie($data['Tva_categorie']);
+            $produit->setStock($data['Stock']);
+            $produit->setNom_categorie($data['Nom_categorie']);
+            $produit->setType_conditionnement($data['Type_conditionnement']);
             return $produit;
         }
 

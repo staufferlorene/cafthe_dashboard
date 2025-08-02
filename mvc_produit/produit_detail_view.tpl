@@ -54,8 +54,23 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="prix">Prix :</label>
-                            <input class="form-control" type="number" id="prix" name="prix" disabled value="{$produit.Prix_TTC|escape}">
+                            <label for="stock">Description :</label>
+                            <input class="form-control" type="text" id="description" name="description" disabled value="{$produit.Description|escape}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prix">Prix TTC :</label>
+                            <input class="form-control" type="number" id="prix_ttc" name="prix_ttc" disabled value="{$produit.Prix_TTC|escape}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prix">Prix HT :</label>
+                            <input class="form-control" type="number" id="prix_ht" name="prix_ht" disabled value="{$produit.Prix_HT|escape}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="prix">TVA :</label>
+                            <input class="form-control" type="number" id="tva" name="tva" disabled value="{$produit.Tva_categorie|escape}">
                         </div>
 
                         <div class="form-group">
@@ -64,11 +79,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="stock">Description :</label>
-                            <input class="form-control" type="text" id="description" name="description" disabled value="{$produit.Description|escape}">
+                            <label for="name">Catégorie :</label>
+                            <input class="form-control" type="text" id="categorie" name="categorie" disabled value="{$produit.Nom_categorie|escape}">
                         </div>
 
-                        <a href="index.php" class="btn btn-danger mt-3">Retour</a>
+                        <div class="form-group">
+                            <label for="name">Type de conditionnement :</label>
+                            <input class="form-control" type="text" id="conditionnement" name="conditionnement" disabled value="{$produit.Type_conditionnement|escape}">
+                        </div>
+
+                        <a href="index.php" class="btn btn-secondary mt-3 mb-5">Retour</a>
                     </form>
             </div>
         </div>

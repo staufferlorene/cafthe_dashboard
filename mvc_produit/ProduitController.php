@@ -24,9 +24,9 @@ class ProduitController {
     public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['prix'], $_POST['stock'])) {
+            if (isset($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'])) {
                 // Tente l'ajout
-                $erreur = $this->produitModel->ajouter($_POST['nom'], $_POST['prix'], $_POST['stock']);
+                $erreur = $this->produitModel->ajouter($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement']);
 
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après ajout
@@ -53,10 +53,9 @@ class ProduitController {
     public function modifier($Id_produit) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['prix'], $_POST['stock'])) {
+            if (isset($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'])) {
                 // Tente la modification
-                $erreur = $this->produitModel->modifier($_POST['nom'], $_POST['prix'], $_POST['stock'], $Id_produit);
-
+                $erreur = $this->produitModel->modifier($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'], $Id_produit);
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après modification
                     $this->produitView->redirigerVersListe();

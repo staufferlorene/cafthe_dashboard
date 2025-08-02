@@ -55,8 +55,11 @@ class ProduitView {
         $donneesProduit = [
             'Id_produit' => $produit->getId(),
             'Nom_produit' => $produit->getNom_produit(),
+            'Description' => $produit->getDescription(),
             'Prix_TTC' => $produit->getPrix_TTC(),
-            'Stock' => $produit->getStock()
+            'Prix_HT' => $produit->getPrix_HT(),
+            'Stock' => $produit->getStock(),
+            'Type_conditionnement' => $produit->getType_conditionnement()
         ];
 
         $this->afficherFormulaireModification($donneesProduit, $erreur);
@@ -93,9 +96,13 @@ class ProduitView {
         $donneesProduit = [
             'Id_produit' => $produit->getId(),
             'Nom_produit' => $produit->getNom_produit(),
-            'Prix_TTC' => $produit->getPrix_TTC(),
-            'Stock' => $produit->getStock(),
             'Description' => $produit->getDescription(),
+            'Prix_TTC' => $produit->getPrix_TTC(),
+            'Prix_HT' =>$produit->getPrix_HT(),
+            'Tva_categorie'=>$produit->getTva_categorie(),
+            'Stock' => $produit->getStock(),
+            'Nom_categorie' => $produit->getNom_categorie(),
+            'Type_conditionnement' => $produit->getType_conditionnement()
         ];
 
         $this->afficherFormulaireDetail($donneesProduit, $erreur);

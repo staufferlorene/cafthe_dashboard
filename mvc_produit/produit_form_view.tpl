@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{if $action == 'add'}Ajouter un Produit{else}Modifier un Produit{/if}</title>
+    <title>{if $action == 'add'}Ajouter un produit{else}Modifier un produit{/if}</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -44,7 +44,7 @@
         <div style="color:red;">Erreur : {$erreur}</div>
     {/if}
 
-    <h4 class="m-0 mb-3 font-weight-bold text-primary">{if $action == 'add'}Ajouter un Produit{else}Modifier un Produit{/if}</h4>
+    <h4 class="m-0 mb-3 font-weight-bold text-primary">{if $action == 'add'}Ajouter un produit{else}Modifier un produit{/if}</h4>
 
     {if $action == 'add'}
         <form action="index.php?action=add_produit" method="post">
@@ -53,12 +53,22 @@
     {/if}
             <div class="form-group">
                 <label for="name">Nom :</label>
-                <input class="form-control" type="text" id="name" name="nom" required  value="{if $action == 'update_produit'}{$produit.Nom_produit|escape}{/if}">
+                <input class="form-control" type="text" id="nom" name="nom" required  value="{if $action == 'update_produit'}{$produit.Nom_produit|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="prix">Prix :</label>
-                <input class="form-control" type="number" id="prix" name="prix" required value="{if $action == 'update_produit'}{$produit.Prix_TTC|escape}{/if}">
+                <label for="name">Description :</label>
+                <input class="form-control" type="text" id="description" name="description" required  value="{if $action == 'update_produit'}{$produit.Description|escape}{/if}">
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Prix TTC :</label>
+                <input class="form-control" type="number" id="prix_ttc" name="prix_ttc" required value="{if $action == 'update_produit'}{$produit.Prix_TTC|escape}{/if}">
+            </div>
+
+            <div class="form-group">
+                <label for="prix">Prix HT :</label>
+                <input class="form-control" type="number" id="prix_ht" name="prix_ht" required value="{if $action == 'update_produit'}{$produit.Prix_HT|escape}{/if}">
             </div>
 
             <div class="form-group">
@@ -66,8 +76,13 @@
                 <input class="form-control" type="number" id="stock" name="stock" required value="{if $action == 'update_produit'}{$produit.Stock|escape}{/if}">
             </div>
 
-            <a href="index.php" class="btn btn-danger mr-2 mt-3">Retour</a>
-            <button type="submit" class="btn btn-success mt-3">Valider</button>
+            <div class="form-group">
+                <label for="name">Conditionnement :</label>
+                <input class="form-control" type="text" id="conditionnement" name="conditionnement" required  value="{if $action == 'update_produit'}{$produit.Type_conditionnement|escape}{/if}">
+            </div>
+
+            <a href="index.php" class="btn btn-secondary mr-2 mt-3 mb-5">Retour</a>
+            <button type="submit" class="btn btn-success mt-3 mb-5">Valider</button>
         </form>
                 </div>
             </div>
