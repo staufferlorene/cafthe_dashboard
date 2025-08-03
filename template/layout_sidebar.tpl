@@ -42,14 +42,14 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php?action=add_produit">
+        <a class="nav-link" href="index.php?action=client">
             <i class="fa-solid fa-users"></i>
             <span>Clients</span>
         </a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php?action=add_produit">
+        <a class="nav-link" href="index.php?action=add_client">
             <i class="fa-solid fa-user-plus"></i>
             <span>Ajouter un client</span>
         </a>
