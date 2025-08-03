@@ -126,15 +126,15 @@ class ProduitModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function ajouter($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement) {
+    public static function ajouter($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         try {
             // Préparation de la requête
-            $stmt = $db->prepare("INSERT INTO produit (Nom_produit, Description, Prix_TTC, Prix_HT, Stock, Type_conditionnement) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt = $db->prepare("INSERT INTO produit (Nom_produit, Description, Prix_TTC, Prix_HT, Stock, Type_conditionnement, Id_categorie) VALUES (?, ?, ?, ?, ?, ?, ?)");
 
             // Exécution
-            $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement]);
+            $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories]);
             return null; // Pas d'erreur
         } catch (PDOException $e) {
             return $e->getMessage(); // Retourne le message d'erreur
@@ -142,15 +142,16 @@ class ProduitModel {
     }
 
     // Modification d'un produit dans la BDD
-    public static function modifier($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $Id_produit) {
+    public static function modifier($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories , $Id_produit) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         // Màj
-        $stmt = $db->prepare("UPDATE produit SET Nom_produit=?, Description=?, Prix_TTC=?, Prix_HT=?, Stock=?, Type_conditionnement=? WHERE Id_produit=?");
-        $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $Id_produit]);
+        $stmt = $db->prepare("UPDATE produit SET Nom_produit=?, Description=?, Prix_TTC=?, Prix_HT=?, Stock=?, Type_conditionnement=?, Id_categorie=? WHERE Id_produit=?");
+        $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories, $Id_produit]);
     }
 
     public static function delete($Id_produit) {
+        // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("DELETE FROM produit WHERE Id_produit = ?");
         return $stmt->execute([$Id_produit]);
@@ -199,5 +200,16 @@ class ProduitModel {
 
         // sinon on retourne null
         return null;
+    }
+
+    public static function categories() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        // Récupération des infos dans la BDD
+        $stmt = $db->prepare("SELECT * FROM categorie");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

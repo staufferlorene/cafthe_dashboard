@@ -24,21 +24,23 @@ class ProduitController {
     public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'])) {
+            if (isset($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'], $_POST['categorie'])) {
                 // Tente l'ajout
-                $erreur = $this->produitModel->ajouter($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement']);
+                $erreur = $this->produitModel->ajouter($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'], $_POST['categorie']);
 
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après ajout
                     $this->produitView->redirigerVersListe();
                 } else {
                     // Si échec : Affiche le formulaire avec message d'erreur
-                    $this->produitView->afficherFormulaireAjout($erreur);
+                    $categories = ProduitModel::categories();
+                    $this->produitView->afficherFormulaireAjout($erreur, $categories);
                 }
             }
         } else {
             // Affiche le formulaire vide
-            $this->produitView->afficherFormulaireAjout();
+            $categories = ProduitModel::categories();
+            $this->produitView->afficherFormulaireAjout(null, $categories);
         }
     }
 
@@ -53,9 +55,9 @@ class ProduitController {
     public function modifier($Id_produit) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'])) {
+            if (isset($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'], $_POST['categorie'])) {
                 // Tente la modification
-                $erreur = $this->produitModel->modifier($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'], $Id_produit);
+                $erreur = $this->produitModel->modifier($_POST['nom'], $_POST['description'], $_POST['prix_ttc'], $_POST['prix_ht'], $_POST['stock'], $_POST['conditionnement'], $_POST['categorie'], $Id_produit);
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après modification
                     $this->produitView->redirigerVersListe();

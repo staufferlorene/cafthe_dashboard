@@ -24,8 +24,9 @@ class ProduitView {
      * Affiche le formulaire d'ajout de produit
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireAjout($erreur = null) {
+    public function afficherFormulaireAjout($erreur = null, $categories = []) {
         $this->smarty->assign('action', 'add');
+        $this->smarty->assign('categories', $categories);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -37,9 +38,10 @@ class ProduitView {
      * @param array $produit Données du produit à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModification($produit, $erreur = null) {
+    public function afficherFormulaireModification($produit, $erreur = null, $categories = []) {
         $this->smarty->assign('action', 'update_produit');
         $this->smarty->assign('produit', $produit);
+        $this->smarty->assign('categories', $categories);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -59,7 +61,8 @@ class ProduitView {
             'Prix_TTC' => $produit->getPrix_TTC(),
             'Prix_HT' => $produit->getPrix_HT(),
             'Stock' => $produit->getStock(),
-            'Type_conditionnement' => $produit->getType_conditionnement()
+            'Type_conditionnement' => $produit->getType_conditionnement(),
+            'Nom_categorie' => $produit->getNom_categorie()
         ];
 
         $this->afficherFormulaireModification($donneesProduit, $erreur);

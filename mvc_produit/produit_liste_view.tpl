@@ -40,6 +40,10 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
+            {if isset($erreur)}
+                <div class="mb-4" style="color:red;">Erreur : {$erreur}</div>
+            {/if}
+
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">

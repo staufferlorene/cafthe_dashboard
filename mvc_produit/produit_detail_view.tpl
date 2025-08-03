@@ -41,7 +41,7 @@
 
 
                 {if isset($erreur)}
-                    <div style="color:red;">Erreur : {$erreur}</div>
+                    <div class="mb-4" style="color:red;">Erreur : {$erreur}</div>
                 {/if}
 
                 <h4 class="m-0 mb-3 font-weight-bold text-primary">Détail du produit</h4>
