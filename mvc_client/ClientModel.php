@@ -12,10 +12,10 @@ class ClientModel {
     // propriétés privées (encapsulation)
     private $pdo;
     private $Id_client; // id unique de la BDD
-    private $Nom;
-    private $Prenom;
-    private $Telephone;
-    private $Adresse;
+    private $Nom_client;
+    private $Prenom_client;
+    private $Telephone_client;
+    private $Adresse_client;
 
 
     // Constructeur : initialisation du produit
@@ -30,35 +30,35 @@ class ClientModel {
     }
 
     // Getter et setter pour le nom du client
-    public function getNom() {
-        return $this->Nom;
+    public function getNom_client() {
+        return $this->Nom_client;
     }
-    public function setNom($Nom) {
-        $this->Nom = $Nom;
+    public function setNom_client($Nom_client) {
+        $this->Nom_client = $Nom_client;
     }
 
     // Getter et setter pour le prénom du client
-    public function getPrenom() {
-        return $this->Prenom;
+    public function getPrenom_client() {
+        return $this->Prenom_client;
     }
-    public function setPrenom($Prenom) {
-        $this->Prenom = $Prenom;
+    public function setPrenom_client($Prenom_client) {
+        $this->Prenom_client = $Prenom_client;
     }
 
     // Getter et setter pour le n° de téléphone du client
-    public function getTelephone() {
-        return $this->Telephone;
+    public function getTelephone_client() {
+        return $this->Telephone_client;
     }
-    public function setTelephone($Telephone) {
-        $this->Telephone = $Telephone;
+    public function setTelephone_client($Telephone_client) {
+        $this->Telephone_client = $Telephone_client;
     }
 
     // Getter et setter pour l'adresse du client
-    public function getAdresse() {
-        return $this->Adresse;
+    public function getAdresse_client() {
+        return $this->Adresse_client;
     }
-    public function setAdresse($Adresse) {
-        $this->Adresse = $Adresse;
+    public function setAdresse_client($Adresse_client) {
+        $this->Adresse_client = $Adresse_client;
     }
 
     //Méthode pour charger les produits provenant de la BDD
@@ -81,7 +81,7 @@ class ClientModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function ajouter($Nom, $Prenom, $Telephone, $Adresse) {
+    public static function ajouter($Nom_client, $Prenom_client, $Telephone_client, $Adresse_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         try {
@@ -89,7 +89,7 @@ class ClientModel {
             $stmt = $db->prepare("INSERT INTO client (Nom_client, Prenom_client, Telephone_client, Adresse_client) VALUES (?, ?, ?, ?)");
 
             // Exécution
-            $stmt->execute([$Nom, $Prenom, $Telephone, $Adresse]);
+            $stmt->execute([$Nom_client, $Prenom_client, $Telephone_client, $Adresse_client]);
             return null; // Pas d'erreur
         } catch (PDOException $e) {
             return $e->getMessage(); // Retourne le message d'erreur
@@ -97,12 +97,12 @@ class ClientModel {
     }
 
     // Modification d'un produit dans la BDD
-    public static function modifier($Nom, $Prenom, $Telephone, $Adresse, $Id_client) {
+    public static function modifier($Nom_client, $Prenom_client, $Telephone_client, $Adresse_client, $Id_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         // Màj
         $stmt = $db->prepare("UPDATE client SET Nom_client=?, Prenom_client=?, Telephone_client=?, Adresse_client=? WHERE Id_client=?");
-        $stmt->execute([$Nom, $Prenom, $Telephone, $Adresse, $Id_client]);
+        $stmt->execute([$Nom_client, $Prenom_client, $Telephone_client, $Adresse_client, $Id_client]);
     }
 
     public static function delete($Id_client) {
@@ -142,10 +142,10 @@ class ClientModel {
         if ($data) {
             $client = new ClientModel();
             $client->Id_client = $data['Id_client'];
-            $client->setNom($data['Nom_client']);
-            $client->setPrenom($data['Prenom_client']);
-            $client->setTelephone($data['Telephone_client']);
-            $client->setAdresse($data['Adresse_client']);
+            $client->setNom_client($data['Nom_client']);
+            $client->setPrenom_client($data['Prenom_client']);
+            $client->setTelephone_client($data['Telephone_client']);
+            $client->setAdresse_client($data['Adresse_client']);
             return $client;
         }
 

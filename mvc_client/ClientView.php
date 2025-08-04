@@ -39,7 +39,7 @@ class ClientView {
      */
     public function afficherFormulaireModification($client, $erreur = null) {
         $this->smarty->assign('action', 'update_client');
-        $this->smarty->assign('produit', $client);
+        $this->smarty->assign('client', $client);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -53,11 +53,11 @@ class ClientView {
      */
     public function afficherFormulaireModificationAvecDonnees($client, $erreur = null) {
         $donneesClient = [
-            'Id_produit' => $client->getId(),
-            'Nom' => $client->getNom(),
-            'Prenom' => $client->getPrenom(),
-            'Telephone' => $client->getTelephone(),
-            'Adresse' => $client->getAdresse(),
+            'Id_client' => $client->getId(),
+            'Nom_client' => $client->getNom_client(),
+            'Prenom_client' => $client->getPrenom_client(),
+            'Telephone_client' => $client->getTelephone_client(),
+            'Adresse_client' => $client->getAdresse_client(),
         ];
 
         $this->afficherFormulaireModification($donneesClient, $erreur);
