@@ -24,9 +24,9 @@ class ClientController {
     public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['prenom'], $_POST['tel'], $_POST['adresse'])) {
+            if (isset($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['tel'], $_POST['mail'])) {
                 // Tente l'ajout
-                $erreur = $this->clientModel->ajouter($_POST['nom'], $_POST['prenom'], $_POST['tel'], $_POST['adresse']);
+                $erreur = $this->clientModel->ajouter($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['tel'], $_POST['mail']);
 
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après ajout
@@ -53,9 +53,9 @@ class ClientController {
     public function modifier($Id_client) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['prenom'], $_POST['tel'], $_POST['adresse'])) {
+            if (isset($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['tel'], $_POST['mail'])) {
                 // Tente la modification
-                $erreur = $this->clientModel->modifier($_POST['nom'], $_POST['prenom'], $_POST['tel'], $_POST['adresse'], $Id_client);
+                $erreur = $this->clientModel->modifier($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['tel'], $_POST['mail'], $Id_client);
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après modification
                     $this->clientView->redirigerVersListe();

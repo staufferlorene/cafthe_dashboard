@@ -63,13 +63,18 @@
             </div>
 
             <div class="form-group">
-                <label for="prix">Téléphone :</label>
-                <input class="form-control" type="number" id="tel" name="tel" required value="{if $action == 'update_client'}{$client.Telephone_client|escape}{/if}">
+                <label for="prix">Adresse :</label>
+                <input class="form-control" type="text" id="adresse" name="adresse" required value="{if $action == 'update_client'}{$client.Adresse_client|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="prix">Adresse :</label>
-                <input class="form-control" type="text" id="adresse" name="adresse" required value="{if $action == 'update_client'}{$client.Adresse_client|escape}{/if}">
+                <label for="prix">Téléphone :</label>
+                <input class="form-control" type="tel" id="tel" name="tel" value="{if $action == 'update_client'}{$client.Telephone_client|escape}{/if}">
+            </div>
+
+            <div class="form-group">
+                <label for="mail">E-mail :</label>
+                <input class="form-control" type="email" id="mail" name="mail" value="{if $action == 'update_client'}{$client.Mail_client|escape}{/if}">
             </div>
 
             <a href="index.php?action=client" class="btn btn-secondary mr-2 mt-3 mb-5">Retour</a>

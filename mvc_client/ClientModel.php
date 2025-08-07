@@ -90,15 +90,15 @@ class ClientModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public static function ajouter($Nom_client, $Prenom_client, $Telephone_client, $Adresse_client) {
+    public static function ajouter($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         try {
             // Préparation de la requête
-            $stmt = $db->prepare("INSERT INTO client (Nom_client, Prenom_client, Telephone_client, Adresse_client) VALUES (?, ?, ?, ?)");
+            $stmt = $db->prepare("INSERT INTO client (Nom_client, Prenom_client, Adresse_client, Telephone_client, Mail_client) VALUES (?, ?, ?, ?, ?)");
 
             // Exécution
-            $stmt->execute([$Nom_client, $Prenom_client, $Telephone_client, $Adresse_client]);
+            $stmt->execute([$Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client]);
             return null; // Pas d'erreur
         } catch (PDOException $e) {
             return $e->getMessage(); // Retourne le message d'erreur
@@ -106,12 +106,12 @@ class ClientModel {
     }
 
     // Modification d'un produit dans la BDD
-    public static function modifier($Nom_client, $Prenom_client, $Telephone_client, $Adresse_client, $Id_client) {
+    public static function modifier($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         // Màj
-        $stmt = $db->prepare("UPDATE client SET Nom_client=?, Prenom_client=?, Telephone_client=?, Adresse_client=? WHERE Id_client=?");
-        $stmt->execute([$Nom_client, $Prenom_client, $Telephone_client, $Adresse_client, $Id_client]);
+        $stmt = $db->prepare("UPDATE client SET Nom_client=?, Prenom_client=?, Adresse_client=?, Telephone_client=?, Mail_client=? WHERE Id_client=?");
+        $stmt->execute([$Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client]);
     }
 
     public static function delete($Id_client) {

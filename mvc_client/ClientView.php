@@ -56,8 +56,9 @@ class ClientView {
             'Id_client' => $client->getId(),
             'Nom_client' => $client->getNom_client(),
             'Prenom_client' => $client->getPrenom_client(),
-            'Telephone_client' => $client->getTelephone_client(),
             'Adresse_client' => $client->getAdresse_client(),
+            'Telephone_client' => $client->getTelephone_client(),
+            'Mail_client' => $client->getMail_client(),
         ];
 
         $this->afficherFormulaireModification($donneesClient, $erreur);

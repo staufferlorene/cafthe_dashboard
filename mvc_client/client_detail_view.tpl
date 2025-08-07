@@ -65,12 +65,12 @@
 
                         <div class="form-group">
                             <label for="tel">N° téléphone :</label>
-                            <input class="form-control" type="number" id="tel" name="tel" disabled value="{$client.Telephone_client|escape}">
+                            <input class="form-control" type="tel" id="tel" name="tel" disabled value="{$client.Telephone_client|escape}">
                         </div>
 
                         <div class="form-group">
                             <label for="mail">E-mail :</label>
-                            <input class="form-control" type="text" id="mail" name="mail" disabled value="{$client.Mail_client|escape}">
+                            <input class="form-control" type="email" id="mail" name="mail" disabled value="{$client.Mail_client|escape}">
                         </div>
 
                         <a href="index.php?action=client" class="btn btn-secondary mt-3 mb-5">Retour</a>
