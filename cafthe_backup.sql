@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : Sam. 19 Juil. 2025 à 18:48
+-- Généré le : Jeu. 07 Août 2025 à 20:03
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.4.7
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categorie` (
   `Id_categorie` int NOT NULL,
-  `Nom_categorie` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Nom_categorie` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Tva_categorie` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -50,55 +50,54 @@ INSERT INTO `categorie` (`Id_categorie`, `Nom_categorie`, `Tva_categorie`) VALUE
 
 CREATE TABLE `client` (
   `Id_client` int NOT NULL,
-  `Nom_client` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Prenom_client` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Telephone_client` varchar(50) COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `Mail_client` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Mdp_client` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Date_inscription` date NOT NULL,
-  `Adresse_client` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `Nom_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Prenom_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Telephone_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Mail_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Mdp_client` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `Adresse_client` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `client`
 --
 
-INSERT INTO `client` (`Id_client`, `Nom_client`, `Prenom_client`, `Telephone_client`, `Mail_client`, `Mdp_client`, `Date_inscription`, `Adresse_client`) VALUES
-(1, 'Dupont', 'Jean', '0123456789', 'jean.dupont@example.com', 'mdp123', '2025-01-10', '123 Rue de Paris, 75001 Paris'),
-(2, 'Martin', 'Sophie', '0987654321', 'sophie@email.com', '$2b$10$ekv9aLJNIbPmtuaFLvpC9uSNZqFGDQTVfX.s.VKU90E6MXGnrT2ca', '2025-01-15', '456 Avenue de Lyon, 69001 Lyon'),
-(3, 'Durand', 'Pierre', '0123987654', 'pierre.durand@example.com', 'mdp789', '2025-01-20', '789 Boulevard de Marseille, 13001 Marseille'),
-(4, 'Lefevre', 'Marie', '0987123456', 'marie.lefevre@example.com', 'mdp101', '2025-01-25', '321 Rue de Lille, 59000 Lille'),
-(5, 'Moreau', 'Luc', '0123678945', 'luc.moreau@example.com', 'mdp202', '2025-01-30', '654 Rue de Nantes, 44000 Nantes'),
-(6, 'Petit', 'Emma', '0123456789', 'emma.petit@example.com', 'mdp303', '2025-01-05', '123 Rue de Bordeaux, 33000 Bordeaux'),
-(7, 'Roux', 'Louis', '0987654321', 'louis.roux@example.com', 'mdp404', '2025-01-08', '456 Avenue de Toulouse, 31000 Toulouse'),
-(8, 'Blanc', 'Chloe', '0123987654', 'chloe.blanc@example.com', 'mdp505', '2025-01-12', '789 Boulevard de Nice, 06000 Nice'),
-(9, 'Garnier', 'Hugo', '0000000000', 'test.maj@email.com', 'mdp606', '2025-01-18', 'rue du test 41200 Romo'),
-(10, 'Chevalier', 'Alice', '0000000000', 'test.maj@email.com', 'mdp707', '2025-01-22', 'rue du test 41200 Romo'),
-(11, 'Muller', 'Lucas', '0123456789', 'lucas.muller@example.com', 'mdp808', '2024-02-10', '123 Rue de Rennes, 35000 Rennes'),
-(12, 'Lemoine', 'Julie', '0987654321', 'julie.lemoine@example.com', 'mdp909', '2024-03-15', '456 Avenue de Reims, 51100 Reims'),
-(13, 'Dumas', 'Thomas', '0123987654', 'thomas.dumas@example.com', 'mdp010', '2024-04-20', '789 Boulevard de Dijon, 21000 Dijon'),
-(14, 'Fournier', 'Sarah', '0000000000', 'tescvxc@email.com', 'mdp111', '2024-05-25', 'cvxc'),
-(15, 'Girard', 'Maxime', '0000000000', 'test.maj@email.com', 'mdp222', '2024-06-30', 'rue du test 41200 Romo'),
-(16, 'Andre', 'Camille', '0123456789', 'camille.andre@example.com', 'mdp333', '2024-07-05', '123 Rue de Clermont, 63000 Clermont-Ferrand'),
-(17, 'Mercier', 'Nicolas', '0987654321', 'nicolas.mercier@example.com', 'mdp444', '2024-08-10', '456 Avenue de Tours, 37000 Tours'),
-(18, 'Dupuis', 'Laura', '0123987654', 'laura.dupuis@example.com', 'mdp555', '2024-09-15', '789 Boulevard de Metz, 57000 Metz'),
-(19, 'Leroux', 'Antoine', '0987123456', 'antoine.leroux@example.com', 'mdp666', '2024-10-20', '321 Rue de Perpignan, 66000 Perpignan'),
-(20, 'Renaud', 'Elise', '0123678945', 'elise.renaud@example.com', 'mdp777', '2024-11-25', '654 Rue de Pau, 64000 Pau'),
-(21, 'Doe', 'John', '0000000000', 'test.maj@email.com', '$2b$10$vLaxy8XK2PJt1PgjfRSDqe8wewes/ADPqlJlTtanEHoRifdIf6pui', '2025-02-03', 'rue de la maj 41200 Romo'),
-(22, 'Doe2', 'John2', '0612345678', 'john.doe@email.com', '$2b$10$YDCqa5SSJ5nlC9KTVzLDteFKmlRlkdlTO.5pm21yHwSckRhzw.czK', '2025-02-03', 'rue du test 75000 Paris'),
-(24, 'Doe3', 'John3', '0612345678', 'john.doe3@email.com', '$2b$10$ovWKwkvbrkGXM1k5m.tqhur6K2NRuDNdIW6xDcD8IHKgAWW7nXPWO', '2025-02-03', 'rue du test 75000 Paris'),
-(25, 'Doe', 'John', '0612345678', 'john.doe@email.com', '$2b$10$POr1V5sgyq8M8kKXQDwnuuIC8RCrU01IhXlXxY63BDn3K6jJkmgcu', '2025-02-03', 'rue du test 75000 Paris'),
-(26, 'Doe4', 'John4', '0612345678', 'john.doe4@email.com', '$2b$10$iHx5J0mj/NrjP2hyHErI2OzVpxY1auocymi8JsR9yagI662.SqJ3e', '2025-02-03', 'rue du test 75000 Paris'),
-(27, 'Doe4', 'John4', '0612345678', 'john.doe5@email.com', '$2b$10$v.WnOahjJzvHaa5qEbHquujjJP244j9h4wyNAKoT1dT6VkUj6xAxC', '2025-02-03', 'rue du test 75000 Paris'),
-(28, 'Doe5', 'John5', '0612345678', 'john.doe55@email.com', '$2b$10$dpvyxI/Yil31p758iR9WHurLgrNFPcH99nuadWr4JjBPW7Nj8fO/e', '2025-02-03', 'rue du test 75000 Paris'),
-(29, 'Doe5', 'John5', '0612345678', 'john.doe55@email.com', '$2b$10$JWWoGIp6hnLSA2lFwhTRx.NH0j99ctxNg05Kjapof9wy1wtk02kM.', '2025-02-03', 'rue du test 75000 Paris'),
-(30, 'Doe5', 'John5', '0612345678', 'john.doe55@email.com', '$2b$10$bdv/H3ZYnIWKzRYzi6RjKOQdpSYKMv5r38sigq6o/uEFHCVmrOOUO', '2025-02-03', 'rue du test 75000 Paris'),
-(31, 'Doe6', 'John6', '0611223344', 'john6.does@email.com', '$2b$10$UpFDVUEPDI5gt1JJ3QqituUM9yaKcmZtJlczcJpDdVPA3SFBKQxRK', '2025-10-01', 'rue du test 41000 Romo'),
-(32, 'Test', 'Lorene', '05 47 06 08 36', 'lorene@email.com', '$2b$10$gHOMeykF7rY1.lDdvBfho.IyNVPHZs8TaY9gKWDxN7ET9BnUgfTCW', '2025-12-10', 'modif adresse'),
-(44, 'test', 'test', '0600000000', 'm@m.fr', '$2b$10$kVaXzYo26kMalANnjbGWFOM9XLQdT.k.2O.aTHvUVdJjIJ4c/sFKa', '2025-03-03', '1'),
-(45, 't', 't', 't', 't@f.fr', '$2b$10$boHjH2r9r8hlclOVGJ58N.NM1qqS4eRruDwD2jw3WkHBhXIKnMjXa', '2025-03-03', 't'),
-(46, 'h', 'h', 'h', 'h@l.fr', '$2b$10$hXXUM22yAtUYXOQBTPnLYOC0FNP/uTTIQwAeulFidf.SWvfe8i1q2', '2025-03-04', 'h'),
-(47, 'bb', 'bb', '0600000000', 'bb@email.com', '$2b$10$oACIK4SyRM.5Tk6WVsLSbe5aNCK5PfDjzRECsdMXR5S6QYd9yfEgy', '2025-04-04', '1 rue test');
+INSERT INTO `client` (`Id_client`, `Nom_client`, `Prenom_client`, `Telephone_client`, `Mail_client`, `Mdp_client`, `Adresse_client`) VALUES
+(1, 'Dupont', 'Jean', '0123456789', 'jean.dupont@example.com', 'mdp123', '123 Rue de Paris, 75001 Paris'),
+(2, 'Martin', 'Sophie', '0987654321', 'sophie@email.com', '$2b$10$ekv9aLJNIbPmtuaFLvpC9uSNZqFGDQTVfX.s.VKU90E6MXGnrT2ca', '456 Avenue de Lyon, 69001 Lyon'),
+(3, 'Durand', 'Pierre', '0123987654', 'pierre.durand@example.com', 'mdp789', '789 Boulevard de Marseille, 13001 Marseille'),
+(4, 'Lefevre', 'Marie', '0987123456', 'marie.lefevre@example.com', 'mdp101', '321 Rue de Lille, 59000 Lille'),
+(5, 'Moreau', 'Luc', '0123678945', 'luc.moreau@example.com', 'mdp202', '654 Rue de Nantes, 44000 Nantes'),
+(6, 'Petit', 'Emma', '0123456789', 'emma.petit@example.com', 'mdp303', '123 Rue de Bordeaux, 33000 Bordeaux'),
+(7, 'Roux', 'Louis', '0987654321', 'louis.roux@example.com', 'mdp404', '456 Avenue de Toulouse, 31000 Toulouse'),
+(8, 'Blanc', 'Chloe', '0123987654', 'chloe.blanc@example.com', 'mdp505', '789 Boulevard de Nice, 06000 Nice'),
+(9, 'Garnier', 'Hugo', '0000000000', 'test.maj@email.com', 'mdp606', 'rue du test 41200 Romo'),
+(10, 'Chevalier', 'Alice', '0000000000', 'test.maj@email.com', 'mdp707', 'rue du test 41200 Romo'),
+(11, 'Muller', 'Lucas', '0123456789', 'lucas.muller@example.com', 'mdp808', '123 Rue de Rennes, 35000 Rennes'),
+(12, 'Lemoine', 'Julie', '0987654321', 'julie.lemoine@example.com', 'mdp909', '456 Avenue de Reims, 51100 Reims'),
+(13, 'Dumas', 'Thomas', '0123987654', 'thomas.dumas@example.com', 'mdp010', '789 Boulevard de Dijon, 21000 Dijon'),
+(14, 'Fournier', 'Sarah', '0000000000', 'tescvxc@email.com', 'mdp111', 'cvxc'),
+(15, 'Girard', 'Maxime', '0000000000', 'test.maj@email.com', 'mdp222', 'rue du test 41200 Romo'),
+(16, 'Andre', 'Camille', '0123456789', 'camille.andre@example.com', 'mdp333', '123 Rue de Clermont, 63000 Clermont-Ferrand'),
+(17, 'Mercier', 'Nicolas', '0987654321', 'nicolas.mercier@example.com', 'mdp444', '456 Avenue de Tours, 37000 Tours'),
+(18, 'Dupuis', 'Laura', '0123987654', 'laura.dupuis@example.com', 'mdp555', '789 Boulevard de Metz, 57000 Metz'),
+(19, 'Leroux', 'Antoine', '0987123456', 'antoine.leroux@example.com', 'mdp666', '321 Rue de Perpignan, 66000 Perpignan'),
+(20, 'Renaud', 'Elise', '0123678945', 'elise.renaud@example.com', 'mdp777', '654 Rue de Pau, 64000 Pau'),
+(21, 'Doe', 'John', '0000000000', 'test.maj@email.com', '$2b$10$vLaxy8XK2PJt1PgjfRSDqe8wewes/ADPqlJlTtanEHoRifdIf6pui', 'rue de la maj 41200 Romo'),
+(22, 'Doe2', 'John2', '0612345678', 'john.doe@email.com', '$2b$10$YDCqa5SSJ5nlC9KTVzLDteFKmlRlkdlTO.5pm21yHwSckRhzw.czK', 'rue du test 75000 Paris'),
+(24, 'Doe3', 'John3', '0612345678', 'john.doe3@email.com', '$2b$10$ovWKwkvbrkGXM1k5m.tqhur6K2NRuDNdIW6xDcD8IHKgAWW7nXPWO', 'rue du test 75000 Paris'),
+(25, 'Doe', 'John', '0612345678', 'john.doe@email.com', '$2b$10$POr1V5sgyq8M8kKXQDwnuuIC8RCrU01IhXlXxY63BDn3K6jJkmgcu', 'rue du test 75000 Paris'),
+(26, 'Doe4', 'John4', '0612345678', 'john.doe4@email.com', '$2b$10$iHx5J0mj/NrjP2hyHErI2OzVpxY1auocymi8JsR9yagI662.SqJ3e', 'rue du test 75000 Paris'),
+(27, 'Doe4', 'John4', '0612345678', 'john.doe5@email.com', '$2b$10$v.WnOahjJzvHaa5qEbHquujjJP244j9h4wyNAKoT1dT6VkUj6xAxC', 'rue du test 75000 Paris'),
+(28, 'Doe5', 'John5', '0612345678', 'john.doe55@email.com', '$2b$10$dpvyxI/Yil31p758iR9WHurLgrNFPcH99nuadWr4JjBPW7Nj8fO/e', 'rue du test 75000 Paris'),
+(29, 'Doe5', 'John5', '0612345678', 'john.doe55@email.com', '$2b$10$JWWoGIp6hnLSA2lFwhTRx.NH0j99ctxNg05Kjapof9wy1wtk02kM.', 'rue du test 75000 Paris'),
+(30, 'Doe5', 'John5', '0612345678', 'john.doe55@email.com', '$2b$10$bdv/H3ZYnIWKzRYzi6RjKOQdpSYKMv5r38sigq6o/uEFHCVmrOOUO', 'rue du test 75000 Paris'),
+(31, 'Doe6', 'John6', '0611223344', 'john6.does@email.com', '$2b$10$UpFDVUEPDI5gt1JJ3QqituUM9yaKcmZtJlczcJpDdVPA3SFBKQxRK', 'rue du test 41000 Romo'),
+(32, 'Test', 'Lorene', '05 47 06 08 36', 'lorene@email.com', '$2b$10$gHOMeykF7rY1.lDdvBfho.IyNVPHZs8TaY9gKWDxN7ET9BnUgfTCW', 'modif adresse'),
+(44, 'test', 'test', '0600000000', 'm@m.fr', '$2b$10$kVaXzYo26kMalANnjbGWFOM9XLQdT.k.2O.aTHvUVdJjIJ4c/sFKa', '1'),
+(45, 't', 't', 't', 't@f.fr', '$2b$10$boHjH2r9r8hlclOVGJ58N.NM1qqS4eRruDwD2jw3WkHBhXIKnMjXa', 't'),
+(46, 'h', 'h', 'h', 'h@l.fr', '$2b$10$hXXUM22yAtUYXOQBTPnLYOC0FNP/uTTIQwAeulFidf.SWvfe8i1q2', 'h'),
+(47, 'bb', 'bb', '0600000000', 'bb@email.com', '$2b$10$oACIK4SyRM.5Tk6WVsLSbe5aNCK5PfDjzRECsdMXR5S6QYd9yfEgy', '1 rue test');
 
 -- --------------------------------------------------------
 
@@ -109,8 +108,8 @@ INSERT INTO `client` (`Id_client`, `Nom_client`, `Prenom_client`, `Telephone_cli
 CREATE TABLE `commande` (
   `Id_commande` int NOT NULL,
   `Date_commande` date NOT NULL,
-  `Statut_commande` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Adresse_livraison` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Statut_commande` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Adresse_livraison` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Montant_commande_HT` decimal(10,2) NOT NULL,
   `Montant_TVA` decimal(10,2) NOT NULL,
   `Montant_commande_TTC` decimal(10,2) NOT NULL,
@@ -181,13 +180,13 @@ INSERT INTO `ligne_commande` (`Id_ligne_commande`, `Nombre_ligne_commande`, `Qua
 
 CREATE TABLE `produit` (
   `Id_produit` int NOT NULL,
-  `Nom_produit` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `Nom_produit` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Description` varchar(300) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Prix_HT` decimal(10,2) NOT NULL,
   `Prix_TTC` decimal(10,2) NOT NULL,
   `Stock` int NOT NULL,
-  `Type_conditionnement` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Chemin_img` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `Type_conditionnement` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Chemin_img` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   `Id_categorie` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -229,11 +228,11 @@ INSERT INTO `produit` (`Id_produit`, `Nom_produit`, `Description`, `Prix_HT`, `P
 
 CREATE TABLE `vendeur` (
   `Id_vendeur` int NOT NULL,
-  `Nom_vendeur` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Prenom_vendeur` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Role` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Mail_vendeur` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
-  `Mdp_vendeur` varchar(50) COLLATE utf8mb4_general_ci NOT NULL
+  `Nom_vendeur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Prenom_vendeur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Mail_vendeur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `Mdp_vendeur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -321,7 +320,7 @@ ALTER TABLE `categorie`
 -- AUTO_INCREMENT pour la table `client`
 --
 ALTER TABLE `client`
-  MODIFY `Id_client` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `Id_client` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT pour la table `commande`
@@ -339,7 +338,7 @@ ALTER TABLE `ligne_commande`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `Id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `Id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT pour la table `vendeur`
