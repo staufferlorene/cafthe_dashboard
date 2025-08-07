@@ -81,11 +81,11 @@ class ClientController {
     }
 
     // Voir le détail d'un client
-    public function voirDetail($Id_produit) {
+    public function voirDetail($Id_client) {
         // Affichage du formulaire avec les données existantes
-        $produit = ClientModel::loadById($Id_produit);
-        if ($produit) {
-            $this->clientView->afficherFormulaireDetailAvecDonnees($produit);
+        $client = ClientModel::loadById($Id_client);
+        if ($client) {
+            $this->clientView->afficherFormulaireDetailAvecDonnees($client);
         } else {
             $this->clientView->afficherErreurClientIntrouvable();
         }

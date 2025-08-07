@@ -49,27 +49,27 @@
                     <form action="index.php?action=detail_produit&Id_produit={$produit.Id_produit}" method="post">
 
                         <div class="form-group">
-                            <label for="name">Nom :</label>
-                            <input class="form-control" type="text" id="name" name="nom" disabled value="{$produit.Nom_produit|escape}">
+                            <label for="nom">Nom :</label>
+                            <input class="form-control" type="text" id="nom" name="nom" disabled value="{$produit.Nom_produit|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="stock">Description :</label>
+                            <label for="description">Description :</label>
                             <input class="form-control" type="text" id="description" name="description" disabled value="{$produit.Description|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="prix">Prix TTC :</label>
+                            <label for="prix_ttc">Prix TTC :</label>
                             <input class="form-control" type="number" id="prix_ttc" name="prix_ttc" disabled value="{$produit.Prix_TTC|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="prix">Prix HT :</label>
+                            <label for="prix_ht">Prix HT :</label>
                             <input class="form-control" type="number" id="prix_ht" name="prix_ht" disabled value="{$produit.Prix_HT|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="prix">TVA :</label>
+                            <label for="tva">TVA :</label>
                             <input class="form-control" type="number" id="tva" name="tva" disabled value="{$produit.Tva_categorie|escape}">
                         </div>
 
@@ -79,16 +79,17 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Catégorie :</label>
+                            <label for="categorie">Catégorie :</label>
                             <input class="form-control" type="text" id="categorie" name="categorie" disabled value="{$produit.Nom_categorie|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="name">Type de conditionnement :</label>
+                            <label for="conditionnement">Type de conditionnement :</label>
                             <input class="form-control" type="text" id="conditionnement" name="conditionnement" disabled value="{$produit.Type_conditionnement|escape}">
                         </div>
 
-                        <a href="index.php" class="btn btn-secondary mt-3 mb-5">Retour</a>
+                        <a href="index.php" class="btn btn-secondary mt-3 mb-5 mr-2">Retour</a>
+                        <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}" class="btn btn-outline-info mt-3 mb-5">Modifier</a>
                     </form>
             </div>
         </div>

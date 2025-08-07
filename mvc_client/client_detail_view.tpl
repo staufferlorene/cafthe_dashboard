@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Détail du produit</title>
+    <title>Détail du client</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -44,51 +44,37 @@
                     <div class="mb-4" style="color:red;">Erreur : {$erreur}</div>
                 {/if}
 
-                <h4 class="m-0 mb-3 font-weight-bold text-primary">Détail du produit</h4>
+                <h4 class="m-0 mb-3 font-weight-bold text-primary">Détail du client</h4>
 
-                    <form action="index.php?action=detail_produit&Id_produit={$produit.Id_produit}" method="post">
+                    <form action="index.php?action=detail_client&Id_client={$client.Id_client}" method="post">
 
                         <div class="form-group">
-                            <label for="name">Nom :</label>
-                            <input class="form-control" type="text" id="name" name="nom" disabled value="{$produit.Nom_produit|escape}">
+                            <label for="nom">Nom :</label>
+                            <input class="form-control" type="text" id="nom" name="nom" disabled value="{$client.Nom_client|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="stock">Description :</label>
-                            <input class="form-control" type="text" id="description" name="description" disabled value="{$produit.Description|escape}">
+                            <label for="prenom">Prénom :</label>
+                            <input class="form-control" type="text" id="prenom" name="prenom" disabled value="{$client.Prenom_client|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="prix">Prix TTC :</label>
-                            <input class="form-control" type="number" id="prix_ttc" name="prix_ttc" disabled value="{$produit.Prix_TTC|escape}">
+                            <label for="adresse">Adresse :</label>
+                            <input class="form-control" type="text" id="adresse" name="adresse" disabled value="{$client.Adresse_client|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="prix">Prix HT :</label>
-                            <input class="form-control" type="number" id="prix_ht" name="prix_ht" disabled value="{$produit.Prix_HT|escape}">
+                            <label for="tel">N° téléphone :</label>
+                            <input class="form-control" type="number" id="tel" name="tel" disabled value="{$client.Telephone_client|escape}">
                         </div>
 
                         <div class="form-group">
-                            <label for="prix">TVA :</label>
-                            <input class="form-control" type="number" id="tva" name="tva" disabled value="{$produit.Tva_categorie|escape}">
+                            <label for="mail">E-mail :</label>
+                            <input class="form-control" type="text" id="mail" name="mail" disabled value="{$client.Mail_client|escape}">
                         </div>
 
-                        <div class="form-group">
-                            <label for="stock">Stock :</label>
-                            <input class="form-control" type="number" id="stock" name="stock" disabled value="{$produit.Stock|escape}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="name">Catégorie :</label>
-                            <input class="form-control" type="text" id="categorie" name="categorie" disabled value="{$produit.Nom_categorie|escape}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="name">Type de conditionnement :</label>
-                            <input class="form-control" type="text" id="conditionnement" name="conditionnement" disabled value="{$produit.Type_conditionnement|escape}">
-                        </div>
-
-                        <a href="index.php" class="btn btn-secondary mt-3 mb-5">Retour</a>
+                        <a href="index.php?action=client" class="btn btn-secondary mt-3 mb-5">Retour</a>
+                        <a href="index.php?action=update_client&Id_client={$client.Id_client}" class="btn btn-outline-info mt-3 mb-5">Modifier</a>
                     </form>
             </div>
         </div>

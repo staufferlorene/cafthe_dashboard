@@ -65,22 +65,22 @@
             </div>
 
             <div class="form-group">
-                <label for="name">Nom :</label>
+                <label for="nom">Nom :</label>
                 <input class="form-control" type="text" id="nom" name="nom" required  value="{if $action == 'update_produit'}{$produit.Nom_produit|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="name">Description :</label>
+                <label for="description">Description :</label>
                 <input class="form-control" type="text" id="description" name="description" required  value="{if $action == 'update_produit'}{$produit.Description|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="prix">Prix TTC :</label>
+                <label for="prix_ttc">Prix TTC :</label>
                 <input class="form-control" type="number" id="prix_ttc" name="prix_ttc" required value="{if $action == 'update_produit'}{$produit.Prix_TTC|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="prix">Prix HT :</label>
+                <label for="prix_ht">Prix HT :</label>
                 <input class="form-control" type="number" id="prix_ht" name="prix_ht" required value="{if $action == 'update_produit'}{$produit.Prix_HT|escape}{/if}">
             </div>
 
@@ -90,7 +90,7 @@
             </div>
 
             <div class="form-group">
-               <label for="name">Conditionnement :</label>
+               <label for="conditionnement">Conditionnement :</label>
                 <select class="form-control" id="conditionnement" name="conditionnement" required>
 
                     {*En modification reprendre le conditionnement et afficher dans la liste déroulante uniquement l'autre option*}

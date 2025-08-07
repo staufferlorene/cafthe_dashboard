@@ -54,7 +54,7 @@ switch ($action) {
         break;
 
     case 'delete_produit':
-        // Appel de la méthode pour supprimer les produits
+        // Appel de la méthode pour supprimer le produit
         $controller = new ProduitController();
         $controller->delete();
         break;
@@ -92,7 +92,7 @@ switch ($action) {
         break;
 
     case 'delete_client':
-        // Appel de la méthode pour supprimer les clients
+        // Appel de la méthode pour supprimer un client
         $controller = new ClientController();
         $controller->delete();
         break;
@@ -103,7 +103,11 @@ switch ($action) {
         $controller->modifier($Id_client);
         break;
 
-
+    case 'detail_client' :
+        // Appel de la méthode pour afficher les détails du client
+        $controller = new ClientController();
+        $controller->voirDetail($Id_client);
+        break;
 
     default:
         echo "Cette page n'existe pas";

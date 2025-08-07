@@ -16,6 +16,7 @@ class ClientModel {
     private $Prenom_client;
     private $Telephone_client;
     private $Adresse_client;
+    private $Mail_client;
 
 
     // Constructeur : initialisation du produit
@@ -59,6 +60,14 @@ class ClientModel {
     }
     public function setAdresse_client($Adresse_client) {
         $this->Adresse_client = $Adresse_client;
+    }
+
+    // Getter et setter pour l'adresse mail du client
+    public function getMail_client() {
+        return $this->Mail_client;
+    }
+    public function setMail_client($Mail_client) {
+        $this->Mail_client = $Mail_client;
     }
 
     //Méthode pour charger les produits provenant de la BDD
@@ -146,6 +155,7 @@ class ClientModel {
             $client->setPrenom_client($data['Prenom_client']);
             $client->setTelephone_client($data['Telephone_client']);
             $client->setAdresse_client($data['Adresse_client']);
+            $client->setMail_client($data['Mail_client']);
             return $client;
         }
 

@@ -90,30 +90,27 @@ class ClientView {
         $this->smarty->display('mvc_client\erreur_view.tpl');
     }
 
-    public function afficherFormulaireDetailAvecDonnees($produit, $erreur = null) {
-        $donneesProduit = [
-            'Id_produit' => $produit->getId(),
-            'Nom_produit' => $produit->getNom_produit(),
-            'Description' => $produit->getDescription(),
-            'Prix_TTC' => $produit->getPrix_TTC(),
-            'Prix_HT' =>$produit->getPrix_HT(),
-            'Tva_categorie'=>$produit->getTva_categorie(),
-            'Stock' => $produit->getStock(),
-            'Nom_categorie' => $produit->getNom_categorie(),
-            'Type_conditionnement' => $produit->getType_conditionnement()
+    public function afficherFormulaireDetailAvecDonnees($client, $erreur = null) {
+        $donneesClient = [
+            'Id_client' => $client->getId(),
+            'Nom_client' => $client->getNom_client(),
+            'Prenom_client' => $client->getPrenom_client(),
+            'Telephone_client' => $client->getTelephone_client(),
+            'Adresse_client' =>$client->getAdresse_client(),
+            'Mail_client' =>$client->getMail_client(),
         ];
 
-        $this->afficherFormulaireDetail($donneesProduit, $erreur);
+        $this->afficherFormulaireDetail($donneesClient, $erreur);
     }
 
     /**
-     * Affiche le formulaire de modification de produit
+     * Affiche le formulaire de modification de client
      * @param array $produit Données du produit à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireDetail($produit, $erreur = null) {
-        $this->smarty->assign('action', 'detail_produit');
-        $this->smarty->assign('produit', $produit);
+    public function afficherFormulaireDetail($client, $erreur = null) {
+        $this->smarty->assign('action', 'detail_client');
+        $this->smarty->assign('client', $client);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
