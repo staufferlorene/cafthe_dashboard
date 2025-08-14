@@ -65,7 +65,7 @@
 
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="index.php?action=commande">
             <i class="fa-solid fa-folder"></i>
             <span>Historique</span>
         </a>

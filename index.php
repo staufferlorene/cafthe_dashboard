@@ -19,6 +19,7 @@ session_start();
 require_once 'init_smarty.php';
 require_once 'mvc_produit/ProduitController.php';
 require_once 'mvc_client/ClientController.php';
+require_once 'mvc_commande/CommandeController.php';
 
 // Récupération des paramètres de l'action via l'URL (ex : index.php?action=produit)
 $action = isset($_GET['action']) ? $_GET['action'] : 'produit';
@@ -28,6 +29,9 @@ $Id_produit = isset($_GET['Id_produit']) ? intval($_GET['Id_produit']) : 0;
 
 // Récupération de l'id du client
 $Id_client = isset($_GET['Id_client']) ? intval($_GET['Id_client']) : 0;
+
+// Récupération de l'id de la commande
+$Id_commande = isset($_GET['Id_commande']) ? intval($_GET['Id_commande']) : 0;
 
 
 
@@ -107,6 +111,32 @@ switch ($action) {
         // Appel de la méthode pour afficher les détails du client
         $controller = new ClientController();
         $controller->voirDetail($Id_client);
+        break;
+
+    /*********************
+     *********************
+     *
+     * Pour les commandes
+     *
+     *********************
+     ********************/
+
+    case 'commande':
+        // Appel de la méthode pour afficher les commandes
+        $controller = new CommandeController();
+        $controller->liste();
+        break;
+
+    case 'detail_commande' :
+        // Appel de la méthode pour afficher les détails de la commande
+        $controller = new CommandeController();
+        $controller->voirDetail($Id_commande);
+        break;
+
+    case 'update_commande' :
+        // Appel de la méthode pour modifier les détails de la commande
+        $controller = new CommandeController();
+        $controller->modifier($Id_commande);
         break;
 
     default:
