@@ -79,7 +79,7 @@
                 <input class="form-control" type="email" id="mail" name="mail" disabled value="{$commande.Montant_commande_TTC|escape}">
             </div>
 
-            <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Détail des produits</h5>
+            <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Détail des produits achetés</h5>
 
             <div class="card-body">
                 <div class="table-responsive">
