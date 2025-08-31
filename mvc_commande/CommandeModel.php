@@ -24,7 +24,7 @@ class CommandeModel {
     private $Montant_TVA;
 
 
-    // Constructeur : initialisation du produit
+    // Constructeur : initialisation de la commande
     // public function => pour que la fonction soit accessible partout
     public function __construct() {
         $this->pdo = Database::getInstance()->getConnection();
@@ -116,13 +116,19 @@ class CommandeModel {
     }
 
 
-    //Méthode pour charger les produits provenant de la BDD
+    /*********************
+     *********************
+     *
+     * METHODES
+     *
+     *********************
+     ********************/
+
 
     /**
-     * Charger un produit depuis la BDD via son ID
+     * Liste toutes les commandes et leur statut associé
      *
-     * @param int Id_produit id de du produit
-     * @return array|null retourne l'objet produit (ou rien si non trouvé)
+     * @return array Liste des commandes et de leurs statuts
      */
 
     public static function lister() {
@@ -137,13 +143,30 @@ class CommandeModel {
     }
 
     // Modification d'un produit dans la BDD
-    public static function modifier($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client) {
+
+    /**
+     * Met à jour le statut d'une commande existante dans la base de données
+     *
+     * @param string $Statut_commande Statut de la commande
+     * @param int $Id_commande Identifiant de la commande
+     *
+     * @return void
+     */
+
+    public static function modifier($Statut_commande, $Id_commande) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         // Màj
-        $stmt = $db->prepare("UPDATE client SET Nom_client=?, Prenom_client=?, Adresse_client=?, Telephone_client=?, Mail_client=? WHERE Id_client=?");
-        $stmt->execute([$Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client]);
+        $stmt = $db->prepare("UPDATE commande SET Statut_commande=? WHERE Id_commande=?");
+        $stmt->execute([$Statut_commande, $Id_commande]);
     }
+
+    /**
+     * Charge une commande par son identifiant
+     *
+     * @param int $Id_commande Identifiant de la commande
+     * @return CommandeModel|null Retourne un objet CommandeModel ou null si non trouvé
+     */
 
     public static function loadById(int $Id_commande) {
         // On récupère PDO via la Class Database
