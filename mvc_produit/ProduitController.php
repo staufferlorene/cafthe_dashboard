@@ -5,22 +5,52 @@ use mvc_produit\ProduitModel;
 require_once 'mvc_produit/ProduitModel.php';
 require_once 'mvc_produit/ProduitView.php';
 
+/**
+ * Contrôleur pour la gestion des produits
+ *
+ * Cette classe gère la logique métier entre le modèle {@see ProduitModel}
+ * et la vue {@see ProduitView}, dans le cadre du pattern MVC.
+ *
+ * Elle permet de :
+ * - lister les produits
+ * - ajouter un produit
+ * - modifier un produit
+ * - supprimer un produit
+ * - afficher le détail d’un produit
+ */
+
 class ProduitController {
     private $produitModel;
     private $produitView;
 
+    /**
+     * Constructeur : initialise le modèle et la vue associés aux produits
+     */
     public function __construct() {
         $this->produitModel = new ProduitModel();
         $this->produitView = new ProduitView();
     }
 
-    // Afficher les produits
+    /**
+     * Affiche la liste de tous les produits
+     *
+     * @return void
+     */
     public function liste() {
         $produits = $this->produitModel->lister();
         $this->produitView->afficherListe($produits);
     }
 
-    // Ajouter un produit
+    /**
+     * Ajoute un nouveau produit
+     *
+     * Si la requête est en POST et valide, tente l’ajout en base de données :
+     *   - redirige vers la liste si succès,
+     *   - affiche le formulaire avec un message d’erreur si échec.
+     * Sinon affiche le formulaire d’ajout vide
+     *
+     * @return void
+     */
     public function add() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -44,14 +74,31 @@ class ProduitController {
         }
     }
 
-    // Supprimer un produit
+    /**
+     * Supprime un produit à partir de son identifiant (passé en GET)
+     *
+     * @return void
+     */
     public function delete() {
         $this->produitModel->delete($_GET['Id_produit']);
         // Rappeler la fonction pour afficher
         $this->liste();
     }
 
-    // Modifier un produit
+    /**
+     * Modifie un produit existant
+     *
+     * Si la requête est en POST et valide, tente la modification :
+     *   - redirige vers la liste si succès,
+     *   - affiche le formulaire de modification avec erreurs si échec.
+     * Si la requête est en GET :
+     *  - affiche le formulaire prérempli si le produit existe,
+     *  - sinon affiche une erreur.
+     *
+     * @param int $Id_produit Identifiant du produit à modifier
+     *
+     * @return void
+     */
     public function modifier($Id_produit) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -82,7 +129,16 @@ class ProduitController {
         }
     }
 
-    // Voir le détail d'un produit
+    /**
+     * Affiche le détail d’un produit existant
+     *
+     * - Si le produit est trouvé, affiche le formulaire de détail,
+     * - Sinon affiche une erreur "introuvable"
+     *
+     * @param int $Id_produit Identifiant du produit
+     *
+     * @return void
+     */
     public function voirDetail($Id_produit) {
         // Affichage du formulaire avec les données existantes
         $produit = ProduitModel::loadById($Id_produit);

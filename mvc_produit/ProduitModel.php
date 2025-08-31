@@ -105,17 +105,22 @@ class ProduitModel {
         return $this->Type_conditionnement = $Type_conditionnement;
     }
 
-    //Méthode pour charger les produits provenant de la BDD
+
+    /*********************
+     *********************
+     *
+     * METHODES
+     *
+     *********************
+     ********************/
 
     /**
-     * Charger un produit depuis la BDD via son ID
+     * Liste tous les produits avec leur catégorie associée
      *
-     * @param int Id_produit id de du produit
-     * @return array|null retourne l'objet produit (ou rien si non trouvé)
+     * @return array Liste des produits et leurs catégories
      */
 
     public static function lister() {
-        /* public static function lister(int $Id_produit) {*/
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 
@@ -125,6 +130,20 @@ class ProduitModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Ajoute un produit dans la base de données
+     *
+     * @param string $Nom_produit Nom du produit
+     * @param string $Description Description du produit
+     * @param float  $Prix_TTC Prix TTC
+     * @param float  $Prix_HT Prix HT
+     * @param int    $Stock Quantité en stock
+     * @param string $Type_conditionnement Type de conditionnement
+     * @param int    $categories Nom de la catégorie
+     *
+     * @return string|null Retourne null si succès, ou un message d'erreur en cas d’échec
+     */
 
     public static function ajouter($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories) {
         // On récupère PDO via la Class Database
@@ -141,7 +160,21 @@ class ProduitModel {
         }
     }
 
-    // Modification d'un produit dans la BDD
+    /**
+     * Met à jour un produit existant dans la base de données
+     *
+     * @param string $Nom_produit Nom du produit
+     * @param string $Description Description du produit
+     * @param float  $Prix_TTC Prix TTC
+     * @param float  $Prix_HT Prix HT
+     * @param int    $Stock Quantité en stock
+     * @param string $Type_conditionnement Type de conditionnement
+     * @param int    $categories Nom de la catégorie
+     * @param int    $Id_produit Identifiant du produit à modifier
+     *
+     * @return void
+     */
+
     public static function modifier($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories , $Id_produit) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -149,6 +182,14 @@ class ProduitModel {
         $stmt = $db->prepare("UPDATE produit SET Nom_produit=?, Description=?, Prix_TTC=?, Prix_HT=?, Stock=?, Type_conditionnement=?, Id_categorie=? WHERE Id_produit=?");
         $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories, $Id_produit]);
     }
+
+    /**
+     * Supprime un produit de la base de données
+     *
+     * @param int $Id_produit Identifiant du produit à supprimer
+     *
+     * @return bool Retourne true si la fonction de suppression a réussi, false sinon
+     */
 
     public static function delete($Id_produit) {
         // On récupère PDO via la Class Database
@@ -173,6 +214,14 @@ class ProduitModel {
             $stmt->execute([$this->Nom_produit, $this->Prix_TTC, $this->Stock, $this->Id_produit]);
         }
     }*/
+
+    /**
+     * Charge un produit par son identifiant
+     *
+     * @param int $Id_produit Identifiant du produit
+     *
+     * @return ProduitModel|null Retourne un objet ProduitModel ou null si non trouvé
+     */
 
     public static function loadById(int $Id_produit) {
         // On récupère PDO via la Class Database
@@ -201,6 +250,12 @@ class ProduitModel {
         // sinon on retourne null
         return null;
     }
+
+    /**
+     * Récupère toutes les catégories de produits
+     *
+     * @return array Liste des catégories
+     */
 
     public static function categories() {
         // On récupère PDO via la Class Database

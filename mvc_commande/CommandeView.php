@@ -33,22 +33,22 @@ class CommandeView {
     }
 
     /**
-     * Affiche le formulaire de modification de produit
-     * @param array $produit Données du produit à modifier
+     * Affiche le formulaire de modification de commande
+     * @param array $commande Données de la commande à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModification($client, $erreur = null) {
+    public function afficherFormulaireModification($commande, $erreur = null) {
         $this->smarty->assign('action', 'update_client');
-        $this->smarty->assign('client', $client);
+        $this->smarty->assign('commande', $commande);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
-        $this->smarty->display('mvc_client/client_form_view.tpl');
+        $this->smarty->display('mvc_commande/commande_form_view.tpl');
     }
 
     /**
-     * Affiche le formulaire de modification avec les données d'un produit existant
-     * @param object $produit Objet produit avec les données existantes
+     * Affiche le formulaire de modification avec les données d'une commande existante
+     * @param object $commande Objet commande avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
      */
     public function afficherFormulaireModificationAvecDonnees($commande, $erreur = null) {
@@ -86,16 +86,10 @@ class CommandeView {
     }
 
     /**
-     * Affiche une page d'erreur personnalisée
-     * @param string $message Message d'erreur à afficher
-     * @param string $titre Titre de la page d'erreur
+     * Affiche le formulaire du détail d'une commande avec ses données
+     * @param object $commande Objet commande avec les données existantes
+     * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherErreur($message, $titre = 'Erreur') {
-        $this->smarty->assign('titre', $titre);
-        $this->smarty->assign('message', $message);
-        $this->smarty->display('mvc_client\erreur_view.tpl');
-    }
-
     public function afficherFormulaireDetailAvecDonnees($commande, $erreur = null) {
         $donneesCommande = [
             'Id_commande' => $commande->getId(),
@@ -115,8 +109,8 @@ class CommandeView {
     }
 
     /**
-     * Affiche le formulaire de modification de client
-     * @param array $produit Données du produit à modifier
+     * Affiche le formulaire de modification de commande
+     * @param array $commande Données de la commande à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
     public function afficherFormulaireDetail($commande, $erreur = null) {

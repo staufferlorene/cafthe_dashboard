@@ -5,10 +5,26 @@ use mvc_commande\CommandeModel;
 require_once 'mvc_commande/CommandeModel.php';
 require_once 'mvc_commande/CommandeView.php';
 
+/**
+ * Contrôleur pour la gestion des commandes
+ *
+ * Cette classe gère la logique métier entre le modèle {@see CommandeModel}
+ * et la vue {@see CommandeView}, dans le cadre du pattern MVC.
+ *
+ * Elle permet de :
+ * - lister les commandes
+ * - modifier une commande
+ * - afficher le détail d’une commande
+ */
+
 class CommandeController {
     private $commandeModel;
     private $commandeView;
 
+
+    /**
+     * Constructeur : initialise le modèle et la vue associés aux commandes
+     */
     public function __construct() {
         $this->commandeModel = new CommandeModel();
         $this->commandeView = new CommandeView();
@@ -20,36 +36,21 @@ class CommandeController {
         $this->commandeView->afficherListe($commandes);
     }
 
-    // Ajouter un client
-    public function add() {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['tel'], $_POST['mail'])) {
-                // Tente l'ajout
-                $erreur = $this->clientModel->ajouter($_POST['nom'], $_POST['prenom'], $_POST['adresse'], $_POST['tel'], $_POST['mail']);
+    /**
+     * Modifie une commande existante
+     * *
+     * * Si la requête est en POST et valide, tente la modification :
+     * *   - redirige vers la liste si succès,
+     * *   - affiche le formulaire de modification avec erreurs si échec.
+     * * Si la requête est en GET :
+     * *  - affiche le formulaire prérempli si la commande existe,
+     * *  - sinon affiche une erreur.
+ *
+     * @param int $Id_commande Identifiant de la commande à modifier
+     *
+     * @return void
+     */
 
-                if ($erreur === null) {
-                    // Si succès : Redirection vers la liste après ajout
-                    $this->clientView->redirigerVersListe();
-                } else {
-                    // Si échec : Affiche le formulaire avec message d'erreur
-                    $this->clientView->afficherFormulaireAjout($erreur);
-                }
-            }
-        } else {
-            // Affiche le formulaire vide
-            $this->clientView->afficherFormulaireAjout(null);
-        }
-    }
-
-    // Supprimer un client
-    public function delete() {
-        $this->clientModel->delete($_GET['Id_client']);
-        // Rappeler la fonction pour afficher
-        $this->liste();
-    }
-
-    // Modifier une commande
     public function modifier($Id_commande) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -80,7 +81,16 @@ class CommandeController {
         }
     }
 
-    // Voir le détail d'une commande
+    /**
+     *  Affiche le détail d’une commande existante
+     *
+     *  - Si la commande est trouvée, affiche le formulaire de détail,
+     *  - Sinon affiche une erreur "introuvable"
+     *
+     * @param int $Id_commande Identifiant de la commande
+     *
+     * @return void
+     */
     public function voirDetail($Id_commande) {
         // Affichage du formulaire avec les données existantes
         $commande = CommandeModel::loadById($Id_commande);

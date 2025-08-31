@@ -12,8 +12,8 @@ class ClientView {
     }
 
     /**
-     * Affiche la liste des produits
-     * @param array $produits Liste des produits à afficher
+     * Affiche la liste des clients
+     * @param array $clients Liste des clients à afficher
      */
     public function afficherListe($clients) {
         $this->smarty->assign('client', $clients);
@@ -21,7 +21,7 @@ class ClientView {
     }
 
     /**
-     * Affiche le formulaire d'ajout de produit
+     * Affiche le formulaire d'ajout de client
      * @param string|null $erreur Message d'erreur à afficher
      */
     public function afficherFormulaireAjout($erreur = null) {
@@ -33,8 +33,8 @@ class ClientView {
     }
 
     /**
-     * Affiche le formulaire de modification de produit
-     * @param array $produit Données du produit à modifier
+     * Affiche le formulaire de modification de client
+     * @param array $client Données du client à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
     public function afficherFormulaireModification($client, $erreur = null) {
@@ -47,8 +47,8 @@ class ClientView {
     }
 
     /**
-     * Affiche le formulaire de modification avec les données d'un produit existant
-     * @param object $produit Objet produit avec les données existantes
+     * Affiche le formulaire de modification avec les données d'un client existant
+     * @param object $client Objet client avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
      */
     public function afficherFormulaireModificationAvecDonnees($client, $erreur = null) {
@@ -65,7 +65,7 @@ class ClientView {
     }
 
     /**
-     * Affiche une erreur de produit introuvable
+     * Affiche une erreur de client introuvable
      */
     public function afficherErreurClientIntrouvable() {
         $this->smarty->assign('erreur', 'Client introuvable.');
@@ -73,24 +73,19 @@ class ClientView {
     }
 
     /**
-     * Redirige vers la liste des produits
+     * Redirige vers la liste des clients
      */
     public function redirigerVersListe() {
         header("Location: index.php?action=client");
         exit;
     }
 
-    /**
-     * Affiche une page d'erreur personnalisée
-     * @param string $message Message d'erreur à afficher
-     * @param string $titre Titre de la page d'erreur
-     */
-    public function afficherErreur($message, $titre = 'Erreur') {
-        $this->smarty->assign('titre', $titre);
-        $this->smarty->assign('message', $message);
-        $this->smarty->display('mvc_client\erreur_view.tpl');
-    }
 
+    /**
+     * Affiche le formulaire du détail d'un client avec ses données
+     * @param object $client Objet client avec les données existantes
+     * @param string|null $erreur Message d'erreur à afficher
+     */
     public function afficherFormulaireDetailAvecDonnees($client, $erreur = null) {
         $donneesClient = [
             'Id_client' => $client->getId(),
@@ -106,7 +101,7 @@ class ClientView {
 
     /**
      * Affiche le formulaire de modification de client
-     * @param array $produit Données du produit à modifier
+     * @param array $client Données du client à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
     public function afficherFormulaireDetail($client, $erreur = null) {

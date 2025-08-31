@@ -70,13 +70,20 @@ class ClientModel {
         $this->Mail_client = $Mail_client;
     }
 
-    //Méthode pour charger les produits provenant de la BDD
+
+    /*********************
+     *********************
+     *
+     * METHODES
+     *
+     *********************
+     ********************/
+
 
     /**
-     * Charger un produit depuis la BDD via son ID
+     * Liste tous les clients
      *
-     * @param int Id_produit id de du produit
-     * @return array|null retourne l'objet produit (ou rien si non trouvé)
+     * @return array Liste des clients
      */
 
     public static function lister() {
@@ -89,6 +96,17 @@ class ClientModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Ajoute un client dans la base de données
+     *
+     * @param string $Nom_client Nom du client
+     * @param string $Prenom_client Prénom du client
+     * @param string $Adresse_client Adresse postale du client
+     * @param numeric $Telephone_client Numéro de téléphone du client
+     * @param string $Mail_client Adresse e-mail du client
+     * @return string|null
+     */
 
     public static function ajouter($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client) {
         // On récupère PDO via la Class Database
@@ -105,7 +123,18 @@ class ClientModel {
         }
     }
 
-    // Modification d'un produit dans la BDD
+    /**
+     * Met à jour un client existant dans la base de données
+     *
+     * @param string $Nom_client Nom du client
+     * @param string $Prenom_client Prénom du client
+     * @param string $Adresse_client Adresse postale du client
+     * @param numeric $Telephone_client Numéro de téléphone du client
+     * @param string $Mail_client Adresse e-mail du client
+     * @param int $Id_client Identifiant du client à modifier
+     * @return void
+     */
+
     public static function modifier($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -113,6 +142,13 @@ class ClientModel {
         $stmt = $db->prepare("UPDATE client SET Nom_client=?, Prenom_client=?, Adresse_client=?, Telephone_client=?, Mail_client=? WHERE Id_client=?");
         $stmt->execute([$Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client]);
     }
+
+    /**
+     * Supprime un client de la base de données
+     *
+     * @param int $Id_client Identifiant du client à supprimer
+     * @return bool Retourne true si la fonction de suppression a réussi, false sinon
+     */
 
     public static function delete($Id_client) {
         // On récupère PDO via la Class Database
@@ -137,6 +173,13 @@ class ClientModel {
             $stmt->execute([$this->Nom_produit, $this->Prix_TTC, $this->Stock, $this->Id_produit]);
         }
     }*/
+
+    /**
+     * Charge un client par son identifiant
+     *
+     * @param int $Id_client Identifiant du client
+     * @return ClientModel|null Retourne un objet ClientModel ou null si non trouvé
+     */
 
     public static function loadById(int $Id_client) {
         // On récupère PDO via la Class Database

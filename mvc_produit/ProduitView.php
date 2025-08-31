@@ -23,6 +23,7 @@ class ProduitView {
     /**
      * Affiche le formulaire d'ajout de produit
      * @param string|null $erreur Message d'erreur à afficher
+     * @param array $categories Catégorie de produit provenant de la BDD
      */
     public function afficherFormulaireAjout($erreur = null, $categories = []) {
         $this->smarty->assign('action', 'add');
@@ -37,6 +38,7 @@ class ProduitView {
      * Affiche le formulaire de modification de produit
      * @param array $produit Données du produit à modifier
      * @param string|null $erreur Message d'erreur à afficher
+     * @param array $categories Catégorie de produit provenant de la BDD
      */
     public function afficherFormulaireModification($produit, $erreur = null, $categories = []) {
         $this->smarty->assign('action', 'update_produit');
@@ -85,15 +87,10 @@ class ProduitView {
     }
 
     /**
-     * Affiche une page d'erreur personnalisée
-     * @param string $message Message d'erreur à afficher
-     * @param string $titre Titre de la page d'erreur
+     * Affiche le formulaire du détail d'un produit avec ses données
+     * @param object $produit Objet produit avec les données existantes
+     * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherErreur($message, $titre = 'Erreur') {
-        $this->smarty->assign('titre', $titre);
-        $this->smarty->assign('message', $message);
-        $this->smarty->display('mvc_produit\erreur_view.tpl');
-    }
 
     public function afficherFormulaireDetailAvecDonnees($produit, $erreur = null) {
         $donneesProduit = [
@@ -112,8 +109,8 @@ class ProduitView {
     }
 
     /**
-     * Affiche le formulaire de modification de produit
-     * @param array $produit Données du produit à modifier
+     * Affiche le formulaire avec le détail du produit
+     * @param array $produit Données du produit
      * @param string|null $erreur Message d'erreur à afficher
      */
     public function afficherFormulaireDetail($produit, $erreur = null) {

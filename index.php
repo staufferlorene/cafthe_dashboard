@@ -5,7 +5,7 @@ error_reporting(E_ALL);
 ini_set("display_errors", 1);
 
 /**
- *Front controller
+ * Front controller
  *
  * Point d'entrée de l'application
  * Il lit les paramètres passés dans l'URL
