@@ -46,8 +46,9 @@
 
     <h4 class="m-0 mb-3 font-weight-bold text-primary">Modifier une commande</h4>
 
-        <form action="index.php?action=update_commande&Id_commande={$commande.Id_commande}" method="post">
+    <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Informations client</h5>
 
+        <form action="index.php?action=update_commande&Id_commande={$commande.Id_commande}" method="post">
 
             <div class="form-group">
                 <label for="nom">Nom :</label>

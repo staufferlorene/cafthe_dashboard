@@ -46,6 +46,8 @@
 
                 <h4 class="m-0 mb-3 font-weight-bold text-primary">Détail de la commande</h4>
 
+                <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Informations client</h5>
+
                     <form action="index.php?action=detail_commande&Id_commande={$commande.Id_commande}" method="post">
 
                         <div class="form-group">
@@ -78,7 +80,7 @@
                             <input class="form-control" type="email" id="mail" name="mail" disabled value="{$commande.Montant_commande_TTC|escape}">
                         </div>
 
-                        <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Détail des produits</h5>
+                        <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Détail des produits achetéss</h5>
 
                         <div class="card-body">
                             <div class="table-responsive">
