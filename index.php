@@ -20,6 +20,7 @@ require_once 'init_smarty.php';
 require_once 'mvc_produit/ProduitController.php';
 require_once 'mvc_client/ClientController.php';
 require_once 'mvc_commande/CommandeController.php';
+require_once 'mvc_vendeur/VendeurController.php';
 
 // Récupération des paramètres de l'action via l'URL (ex : index.php?action=produit)
 $action = isset($_GET['action']) ? $_GET['action'] : 'produit';
@@ -32,6 +33,9 @@ $Id_client = isset($_GET['Id_client']) ? intval($_GET['Id_client']) : 0;
 
 // Récupération de l'id de la commande
 $Id_commande = isset($_GET['Id_commande']) ? intval($_GET['Id_commande']) : 0;
+
+// Récupération de l'id du vendeur
+$Id_vendeur = isset($_GET['Id_vendeur']) ? intval($_GET['Id_vendeur']) : 0;
 
 
 
@@ -49,6 +53,12 @@ switch ($action) {
         // Appel de la méthode pour afficher les produits
         $controller = new ProduitController();
         $controller->liste();
+        break;
+
+    case 'detail_produit' :
+        // Appel de la méthode pour afficher les détails du produit
+        $controller = new ProduitController();
+        $controller->voirDetail($Id_produit);
         break;
 
     case 'add_produit':
@@ -69,12 +79,6 @@ switch ($action) {
         $controller->modifier($Id_produit);
         break;
 
-    case 'detail_produit' :
-        // Appel de la méthode pour afficher les détails du produit
-        $controller = new ProduitController();
-        $controller->voirDetail($Id_produit);
-        break;
-
     /*********************
      *********************
      *
@@ -87,6 +91,12 @@ switch ($action) {
         // Appel de la méthode pour afficher les clients
         $controller = new ClientController();
         $controller->liste();
+        break;
+
+    case 'detail_client' :
+        // Appel de la méthode pour afficher les détails du client
+        $controller = new ClientController();
+        $controller->voirDetail($Id_client);
         break;
 
     case 'add_client':
@@ -105,12 +115,6 @@ switch ($action) {
         // Appel de la méthode pour modifier les détails du client
         $controller = new ClientController();
         $controller->modifier($Id_client);
-        break;
-
-    case 'detail_client' :
-        // Appel de la méthode pour afficher les détails du client
-        $controller = new ClientController();
-        $controller->voirDetail($Id_client);
         break;
 
     /*********************
@@ -137,6 +141,44 @@ switch ($action) {
         // Appel de la méthode pour modifier les détails de la commande
         $controller = new CommandeController();
         $controller->modifier($Id_commande);
+        break;
+
+    /*********************
+     *********************
+     *
+     * Pour la gestion des vendeurs
+     *
+     *********************
+     ********************/
+
+    case 'vendeur':
+        // Appel de la méthode pour afficher les vendeurs
+        $controller = new VendeurController();
+        $controller->liste();
+        break;
+
+    case 'detail_vendeur' :
+        // Appel de la méthode pour afficher les détails du vendeur
+        $controller = new VendeurController();
+        $controller->voirDetail($Id_vendeur);
+        break;
+
+    case 'add_vendeur':
+        // Appel de la méthode pour ajouter un vendeur
+        $controller = new VendeurController();
+        $controller->add();
+        break;
+
+    case 'delete_vendeur':
+        // Appel de la méthode pour supprimer un vendeur
+        $controller = new VendeurController();
+        $controller->delete();
+        break;
+
+    case 'update_vendeur' :
+        // Appel de la méthode pour modifier les détails du vendeur
+        $controller = new VendeurController();
+        $controller->modifier($Id_vendeur);
         break;
 
     default:

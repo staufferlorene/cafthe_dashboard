@@ -77,7 +77,7 @@
 
             <div class="form-group">
                 <label for="total">Montant TTC :</label>
-                <input class="form-control" type="email" id="mail" name="mail" disabled value="{$commande.Montant_commande_TTC|escape}">
+                <input class="form-control" type="email" id="total" name="total" disabled value="{$commande.Montant_commande_TTC|escape}">
             </div>
 
             <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Détail des produits achetés</h5>

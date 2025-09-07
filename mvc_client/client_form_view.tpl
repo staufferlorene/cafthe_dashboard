@@ -53,22 +53,22 @@
     {/if}
 
             <div class="form-group">
-                <label for="name">Nom :</label>
-                <input class="form-control" type="text" id="nom" name="nom" required  value="{if $action == 'update_client'}{$client.Nom_client|escape}{/if}">
+                <label for="nom">Nom :</label>
+                <input class="form-control" type="text" id="nom" name="nom" required value="{if $action == 'update_client'}{$client.Nom_client|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="name">Prénom :</label>
-                <input class="form-control" type="text" id="prenom" name="prenom" required  value="{if $action == 'update_client'}{$client.Prenom_client|escape}{/if}">
+                <label for="prenom">Prénom :</label>
+                <input class="form-control" type="text" id="prenom" name="prenom" required value="{if $action == 'update_client'}{$client.Prenom_client|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="prix">Adresse :</label>
+                <label for="adresse">Adresse :</label>
                 <input class="form-control" type="text" id="adresse" name="adresse" required value="{if $action == 'update_client'}{$client.Adresse_client|escape}{/if}">
             </div>
 
             <div class="form-group">
-                <label for="prix">Téléphone :</label>
+                <label for="tel">Téléphone :</label>
                 <input class="form-control" type="tel" id="tel" name="tel" value="{if $action == 'update_client'}{$client.Telephone_client|escape}{/if}">
             </div>
 

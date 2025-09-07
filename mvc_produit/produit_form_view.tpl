@@ -66,12 +66,12 @@
 
             <div class="form-group">
                 <label for="nom">Nom :</label>
-                <input class="form-control" type="text" id="nom" name="nom" required  value="{if $action == 'update_produit'}{$produit.Nom_produit|escape}{/if}">
+                <input class="form-control" type="text" id="nom" name="nom" required value="{if $action == 'update_produit'}{$produit.Nom_produit|escape}{/if}">
             </div>
 
             <div class="form-group">
                 <label for="description">Description :</label>
-                <input class="form-control" type="text" id="description" name="description" required  value="{if $action == 'update_produit'}{$produit.Description|escape}{/if}">
+                <input class="form-control" type="text" id="description" name="description" required value="{if $action == 'update_produit'}{$produit.Description|escape}{/if}">
             </div>
 
             <div class="form-group">

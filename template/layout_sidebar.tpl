@@ -88,9 +88,16 @@
 
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="index.php?action=vendeur">
             <i class="fa-solid fa-gear"></i>
-            <span>Gestion vendeur RAF</span>
+            <span>Gestion vendeur</span>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="index.php?action=add_vendeur">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Ajouter un vendeur</span>
         </a>
     </li>
 </ul>
