@@ -33,72 +33,72 @@ class ProduitModel {
         return $this->Id_produit;
     }
 
-    // Getter pour le Nom_produit
+    // Getter et setter pour le Nom_produit
     public function getNom_produit() {
         return $this->Nom_produit;
-    }
-
-    // Getter pour le Prix_TTC
-    public function getPrix_TTC() {
-        return $this->Prix_TTC;
-    }
-
-    // Getter pour le Stock
-    public function getStock() {
-        return $this->Stock;
-    }
-
-    // Getter pour la Description
-    public function getDescription() {
-        return $this->Description;
-    }
-
-    // Getter pour le Prix_HT
-    public function getPrix_HT() {
-        return $this->Prix_HT;
-    }
-
-    // Getter pour la TVA
-    public function getTva_categorie() {
-        return $this->Tva_categorie;
-    }
-
-    // Getter pour la Catégorie
-    public function getNom_categorie() {
-        return $this->Nom_categorie;
-    }
-
-    // Getter pour le Type de conditionnement
-    public function getType_conditionnement() {
-        return $this->Type_conditionnement;
     }
 
     public function setNom_produit($Nom_produit) {
         $this->Nom_produit = $Nom_produit;
     }
 
+    // Getter et setter pour le Prix_TTC
+    public function getPrix_TTC() {
+        return $this->Prix_TTC;
+    }
+
     public function setPrix_TTC($Prix_TTC) {
         $this->Prix_TTC = $Prix_TTC;
+    }
+
+    // Getter et setter pour le Stock
+    public function getStock() {
+        return $this->Stock;
     }
 
     public function setStock($Stock) {
         $this->Stock = $Stock;
     }
 
+    // Getter et setter pour la Description
+    public function getDescription() {
+        return $this->Description;
+    }
+
     public function setDescription($Description) {
         $this->Description = $Description;
+    }
+
+    // Getter et setter pour le Prix_HT
+    public function getPrix_HT() {
+        return $this->Prix_HT;
     }
 
     public function setPrix_HT($Prix_HT) {
         return $this->Prix_HT = $Prix_HT;
     }
 
+    // Getter et setter pour la TVA
+    public function getTva_categorie() {
+        return $this->Tva_categorie;
+    }
+
     public function setTva_categorie($Tva_categorie) {
         return $this->Tva_categorie = $Tva_categorie;
     }
 
+    // Getter et setter pour la Catégorie
+    public function getNom_categorie() {
+        return $this->Nom_categorie;
+    }
+
     public function setNom_categorie($Nom_categorie) {
         return $this->Nom_categorie = $Nom_categorie;
+    }
+
+    // Getter et setter pour le Type de conditionnement
+    public function getType_conditionnement() {
+        return $this->Type_conditionnement;
     }
 
     public function setType_conditionnement($Type_conditionnement) {
