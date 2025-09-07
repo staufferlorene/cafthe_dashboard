@@ -72,6 +72,11 @@
                             <input class="form-control" type="email" id="mail" name="mail" required value="{if $action == 'update_vendeur'}{$vendeur.Mail_vendeur|escape}{/if}">
                         </div>
 
+                        <div class="form-group">
+                            <label for="mdp">Mot de passe :</label>
+                            <input class="form-control" type="password" id="mdp" name="mdp" required value="{if $action == 'update_vendeur'}{$vendeur.Mdp_vendeur|escape}{/if}">
+                        </div>
+
                         <a href="index.php?action=vendeur" class="btn btn-secondary mr-2 mt-3 mb-5">Retour</a>
                         <button type="submit" class="btn btn-success mt-3 mb-5">Valider</button>
                     </form>
