@@ -102,6 +102,21 @@ class VendeurModel {
     }
 
     /**
+     * Vérifie si l'adresse mail du vendeur existe déjà dans la base de donnée
+     *
+     * @param string $mail Mail du vendeur
+     *
+     * @return bool Retourne true si mail existe sinon false
+     */
+    public static function existeMail($mail) {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("SELECT COUNT(*) FROM vendeur WHERE Mail_vendeur = ?");
+        $stmt->execute([$mail]);
+        return $stmt->fetchColumn() > 0;
+    }
+
+    /**
      *  Ajoute un vendeur dans la base de données
      *
      * @param string $Nom_vendeur Nom du vendeur
@@ -116,11 +131,14 @@ class VendeurModel {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
         try {
+            // Hachage du mdp (bcrypt et 10 salage)
+            $hashedPassword = password_hash($Mdp_vendeur, PASSWORD_BCRYPT, ['cost' => 10]);
+
             // Préparation de la requête
             $stmt = $db->prepare("INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Role, Mail_vendeur, Mdp_vendeur) VALUES (?, ?, ?, ?, ?)");
 
             // Exécution
-            $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $Mdp_vendeur]);
+            $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $hashedPassword]);
             return null; // Pas d'erreur
         } catch (PDOException $e) {
             return $e->getMessage(); // Retourne le message d'erreur

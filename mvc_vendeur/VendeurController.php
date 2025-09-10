@@ -56,15 +56,34 @@ class VendeurController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
             if (isset($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $_POST['mdp'])) {
-                // Tente l'ajout
-                $erreur = $this->vendeurModel->ajouter($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $_POST['mdp']);
 
-                if ($erreur === null) {
-                    // Si succès : Redirection vers la liste après ajout
-                    $this->vendeurView->redirigerVersListe();
-                } else {
-                    // Si échec : Affiche le formulaire avec message d'erreur
-                    $this->vendeurView->afficherFormulaireAjout($erreur);
+                // Retrait des espaces en début et fin chaîne
+                $nom    = trim($_POST['nom']);
+                $prenom = trim($_POST['prenom']);
+                $role   = trim($_POST['role']);
+                $mail   = trim($_POST['mail']);
+                $mdp    = trim($_POST['mdp']);
+
+                // Vérifie que tous les champs sont non vides et que l'adresse mail est valide
+                if (!empty($nom) && !empty($prenom) && !empty($role) && !empty($mdp) && filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+
+                    // Vérifie si le mail existe déjà en BDD et si oui le code arrête de s'éxécuter
+                    if ($this->vendeurModel->existeMail($mail)) {
+                        $erreur = "Cette adresse email est déjà utilisée.";
+                        $this->vendeurView->afficherFormulaireAjout($erreur);
+                        return;
+                    }
+
+                    // Tente l'ajout
+                    $erreur = $this->vendeurModel->ajouter($nom, $prenom, $role, $mail, $mdp);
+
+                    if ($erreur === null) {
+                        // Si succès : Redirection vers la liste après ajout
+                        $this->vendeurView->redirigerVersListe();
+                    } else {
+                        // Si échec : Affiche le formulaire avec message d'erreur
+                        $this->vendeurView->afficherFormulaireAjout($erreur);
+                    }
                 }
             }
         } else {
