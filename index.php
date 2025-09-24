@@ -21,9 +21,23 @@ require_once 'mvc_produit/ProduitController.php';
 require_once 'mvc_client/ClientController.php';
 require_once 'mvc_commande/CommandeController.php';
 require_once 'mvc_vendeur/VendeurController.php';
+require_once 'mvc_login/LoginController.php';
 
 // Récupération des paramètres de l'action via l'URL (ex : index.php?action=produit)
-$action = isset($_GET['action']) ? $_GET['action'] : 'produit';
+if (!isset($_GET['action'])) {
+    // Par défaut : connexion si pas connecté, sinon produits
+    if (isset($_SESSION['utilisateur'])) {
+        $action = 'produit';
+    } else {
+        $action = 'login';
+    }
+} else {
+    $action = $_GET['action'];
+}
+
+
+// affichage par défaut de la page des produits (avant que j'ajoute la connexion et les vérifications de si utilisateur connecté ou non)
+// $action = isset($_GET['action']) ? $_GET['action'] : 'produit';
 
 // Récupération de l'id du produit
 $Id_produit = isset($_GET['Id_produit']) ? intval($_GET['Id_produit']) : 0;
@@ -40,6 +54,35 @@ $Id_vendeur = isset($_GET['Id_vendeur']) ? intval($_GET['Id_vendeur']) : 0;
 
 
 switch ($action) {
+
+    /*********************
+     *********************
+     *
+     * Pour la connexion
+     *
+     *********************
+     ********************/
+
+    case 'login':
+        // Appel de la méthode pour se connecter
+        $controller = new LoginController();
+        $controller->login();
+        break;
+
+
+    /*********************
+     *********************
+     *
+     * Pour la déconnexion
+     *
+     *********************
+     ********************/
+
+    case 'logout':
+        $controller = new LoginController();
+        $controller->logout();
+        break;
+
 
     /*********************
      *********************
