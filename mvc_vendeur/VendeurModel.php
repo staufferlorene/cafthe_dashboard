@@ -5,7 +5,7 @@ use Database;
 use PDO;
 use PDOException;
 
-require_once 'models/Database.php';
+require_once 'config/Database.php';
 
 class VendeurModel {
 
@@ -161,9 +161,13 @@ class VendeurModel {
     public static function modifier($Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $Mdp_vendeur, $Id_vendeur) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
+
+        // Hachage du mdp (bcrypt et 10 salage)
+        $hashedPassword = password_hash($Mdp_vendeur, PASSWORD_BCRYPT, ['cost' => 10]);
+
         // Màj
         $stmt = $db->prepare("UPDATE vendeur SET Nom_vendeur=?, Prenom_vendeur=?, Role=?, Mail_vendeur=?, Mdp_vendeur=? WHERE Id_vendeur=?");
-        $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $Mdp_vendeur, $Id_vendeur]);
+        $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $hashedPassword, $Id_vendeur]);
     }
 
     /**

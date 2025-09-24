@@ -5,7 +5,7 @@ use Database;
 use PDO;
 use PDOException;
 
-require_once 'models/Database.php';
+require_once 'config/Database.php';
 
 class ProduitModel {
 
