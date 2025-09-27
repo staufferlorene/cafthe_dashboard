@@ -23,21 +23,14 @@ require_once 'mvc_commande/CommandeController.php';
 require_once 'mvc_vendeur/VendeurController.php';
 require_once 'mvc_login/LoginController.php';
 
-// Récupération des paramètres de l'action via l'URL (ex : index.php?action=produit)
-if (!isset($_GET['action'])) {
-    // Par défaut : connexion si pas connecté, sinon produits
-    if (isset($_SESSION['utilisateur'])) {
-        $action = 'produit';
-    } else {
-        $action = 'login';
-    }
+// Vérification si l'utilisateur est connecté
+if (isset($_SESSION['utilisateur'])) {
+    // Récupération des paramètres de l'action via l'URL, si pas d'action affichage de la page d'accueil
+    $action = isset($_GET['action']) ? $_GET['action'] : 'produit';
+    // Si utilisateur non connecté affichage de la page de connexion
 } else {
-    $action = $_GET['action'];
+    $action = 'login';
 }
-
-
-// affichage par défaut de la page des produits (avant que j'ajoute la connexion et les vérifications de si utilisateur connecté ou non)
-// $action = isset($_GET['action']) ? $_GET['action'] : 'produit';
 
 // Récupération de l'id du produit
 $Id_produit = isset($_GET['Id_produit']) ? intval($_GET['Id_produit']) : 0;
@@ -50,7 +43,6 @@ $Id_commande = isset($_GET['Id_commande']) ? intval($_GET['Id_commande']) : 0;
 
 // Récupération de l'id du vendeur
 $Id_vendeur = isset($_GET['Id_vendeur']) ? intval($_GET['Id_vendeur']) : 0;
-
 
 
 switch ($action) {
@@ -69,7 +61,6 @@ switch ($action) {
         $controller->login();
         break;
 
-
     /*********************
      *********************
      *
@@ -82,7 +73,6 @@ switch ($action) {
         $controller = new LoginController();
         $controller->logout();
         break;
-
 
     /*********************
      *********************
