@@ -49,7 +49,7 @@ class LoginController
 
                     if ($utilisateur && $this->loginModel->verifierMotDePasse($mdp, $utilisateur['Mdp_vendeur'])) {
                         // Connexion réussie
-                        $_SESSION['utilisateur'] = $utilisateur;
+                        $_SESSION['utilisateur'] = $utilisateur; // Stockage de l'utilisateur en session
                         header("Location: index.php");
                         exit();
                     } else {
@@ -64,7 +64,7 @@ class LoginController
                 $this->loginView->afficherFormulaireConnexion();
             }
         } else {
-            // Si la requête est GET → afficher le formulaire
+            // Si la requête est GET -> afficher le formulaire
             $this->loginView->afficherFormulaireConnexion();
         }
     }

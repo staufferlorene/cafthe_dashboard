@@ -22,9 +22,12 @@ require_once 'mvc_client/ClientController.php';
 require_once 'mvc_commande/CommandeController.php';
 require_once 'mvc_vendeur/VendeurController.php';
 require_once 'mvc_login/LoginController.php';
+require_once 'mvc_profil/ProfilController.php';
 
 // Vérification si l'utilisateur est connecté
 if (isset($_SESSION['utilisateur'])) {
+    // Passage des infos de l'utilisateur à smarty
+    $smarty->assign('utilisateur', $_SESSION['utilisateur']);
     // Récupération des paramètres de l'action via l'URL, si pas d'action affichage de la page d'accueil
     $action = isset($_GET['action']) ? $_GET['action'] : 'produit';
     // Si utilisateur non connecté affichage de la page de connexion
@@ -70,6 +73,7 @@ switch ($action) {
      ********************/
 
     case 'logout':
+        // Appel de la méthode pour se déconnecter
         $controller = new LoginController();
         $controller->logout();
         break;
@@ -212,6 +216,32 @@ switch ($action) {
         // Appel de la méthode pour modifier les détails du vendeur
         $controller = new VendeurController();
         $controller->modifier($Id_vendeur);
+        break;
+
+    /*********************
+     *********************
+     *
+     * Pour le profil du vendeur connecté
+     *
+     *********************
+     ********************/
+
+    case 'profil':
+        // Appel de la méthode pour afficher les détails du profil
+        $controller = new ProfilController();
+        $controller->voirDetail($_SESSION['utilisateur']['Id_vendeur']);
+        break;
+
+    case 'update_profil' :
+        // Appel de la méthode pour modifier les détails du profil
+        $controller = new ProfilController();
+        $controller->modifierInfo($_SESSION['utilisateur']['Id_vendeur']);
+        break;
+
+    case 'update_password' :
+        // Appel de la méthode pour modifier le mot de passe du vendeur connecté
+        $controller = new ProfilController();
+        $controller->modifierMdp($_SESSION['utilisateur']['Id_vendeur']);
         break;
 
     default:

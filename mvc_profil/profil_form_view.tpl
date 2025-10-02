@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Détail du vendeur</title>
+    <title>Votre profil</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -39,38 +39,43 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
 
-
                 {if isset($erreur)}
                     <div class="mb-4" style="color:red;">Erreur : {$erreur}</div>
                 {/if}
 
-                <h4 class="m-0 mb-3 font-weight-bold text-primary">Détail du vendeur</h4>
+                <!-- Card principale -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h4 class="m-0 font-weight-bold text-primary">Votre profil</h4>
+                    </div>
+                    <div class="card-body">
 
-                    <form action="index.php?action=detail_vendeur&Id_vendeur={$vendeur.Id_vendeur}" method="post">
+                        <!-- Formulaire informations -->
+                        <div class="flex-fill" style="min-width: 300px; max-width: 48%;">
+                            <h5>Vos informations</h5>
+                            <form action="index.php?action=update_profil&Id_vendeur={$vendeur.Id_vendeur}" method="post">
 
-                        <div class="form-group">
-                            <label for="nom">Nom :</label>
-                            <input class="form-control" type="text" id="nom" name="nom" disabled value="{$vendeur.Nom_vendeur|escape}">
+                                <div class="form-group">
+                                    <label for="nom">Nom :</label>
+                                    <input class="form-control" type="text" id="nom" name="nom" value="{$vendeur.Nom_vendeur|escape}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="prenom">Prénom :</label>
+                                    <input class="form-control" type="text" id="prenom" name="prenom" value="{$vendeur.Prenom_vendeur|escape}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="mail">Mail :</label>
+                                    <input class="form-control" type="email" id="mail" name="mail" value="{$vendeur.Mail_vendeur|escape}">
+                                </div>
+
+                                <a href="index.php?action=profil" class="btn btn-secondary mr-2 mt-3 mb-5">Retour</a>
+                                <button type="submit" class="btn btn-success mt-3 mb-5">Valider</button>
+                            </form>
                         </div>
-
-                        <div class="form-group">
-                            <label for="prenom">Prénom :</label>
-                            <input class="form-control" type="text" id="prenom" name="prenom" disabled value="{$vendeur.Prenom_vendeur|escape}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="role">Rôle :</label>
-                            <input class="form-control" type="text" id="role" name="role" disabled value="{$vendeur.Role|escape}">
-                        </div>
-
-                        <div class="form-group">
-                            <label for="mail">Mail :</label>
-                            <input class="form-control" type="email" id="mail" name="mail" disabled value="{$vendeur.Mail_vendeur|escape}">
-                        </div>
-
-                        <a href="index.php?action=vendeur" class="btn btn-secondary mt-3 mb-5 mr-2">Retour</a>
-                        <a href="index.php?action=update_vendeur&Id_vendeur={$vendeur.Id_vendeur}" class="btn btn-outline-info mt-3 mb-5">Modifier</a>
-                    </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
