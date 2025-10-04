@@ -86,7 +86,36 @@ class ProfilView {
      */
     public function afficherErreurVendeurIntrouvable() {
         $this->smarty->assign('erreur', 'Vendeur introuvable.');
-        $this->smarty->display('mvc_profil\profil_form_view.tpl');
+        $this->smarty->display('mvc_profil\profil_detail_view.tpl');
     }
 
+    /**
+     * Affiche le formulaire du détail d'un vendeur avec ses données
+     * @param object $vendeur Objet vendeur avec les données existantes
+     * @param string|null $erreur Message d'erreur à afficher
+     */
+    public function afficherFormulaireDetailAvecDonneesMdp($vendeur, $erreur = null) {
+        $donneesVendeur = [
+            'Id_vendeur' => $vendeur->getId(),
+            'Nom_vendeur' => $vendeur->getNom_vendeur(),
+            'Prenom_vendeur' => $vendeur->getPrenom_vendeur(),
+            'Mail_vendeur' => $vendeur->getMail_vendeur(),
+        ];
+
+        $this->afficherProfilMdp($donneesVendeur, $erreur);
+    }
+
+    /**
+     * Affiche le formulaire de modification de vendeur
+     * @param array $vendeur Données du vendeur à modifier
+     * @param string|null $erreur Message d'erreur à afficher
+     */
+    public function afficherProfilMdp($vendeur, $erreur = null) {
+        $this->smarty->assign('action', 'update_profil');
+        $this->smarty->assign('vendeur', $vendeur);
+        if ($erreur) {
+            $this->smarty->assign('erreur', $erreur);
+        }
+        $this->smarty->display('mvc_profil\profil_detail_view.tpl');
+    }
 }

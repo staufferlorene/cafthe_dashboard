@@ -113,4 +113,21 @@ class ProfilModel {
         $stmt = $db->prepare("UPDATE vendeur SET Nom_vendeur=?, Prenom_vendeur=?, Mail_vendeur=? WHERE Id_vendeur=?");
         $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Mail_vendeur, $Id_vendeur]);
     }
+
+    public static function verifierMotDePasse($mdp, $hash) {
+        // Vérifie si le mot de passe correspond au mdp haché en BDD
+        return password_verify($mdp, $hash);
+    }
+
+    public static function modifierMdp($Mdp_vendeur, $Id_vendeur) {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        // Hachage du mdp (bcrypt et 10 salage)
+        $hashedPassword = password_hash($Mdp_vendeur, PASSWORD_BCRYPT, ['cost' => 10]);
+
+        // Màj
+        $stmt = $db->prepare("UPDATE vendeur SET Mdp_vendeur=? WHERE Id_vendeur=?");
+        return $stmt->execute([$hashedPassword, $Id_vendeur]);
+    }
 }

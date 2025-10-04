@@ -80,18 +80,18 @@
                             <!-- Formulaire mot de passe -->
                             <div class="flex-fill" style="min-width: 300px; max-width: 48%;">
                                 <h5>Modifier votre mot de passe</h5>
-                                <form>
+                                <form action="index.php?action=update_password" method="post">
                                     <div class="form-group mb-3">
-                                        <label>Mot de passe actuel :</label>
-                                        <input class="form-control" type="password" placeholder="Saisissez votre mot de passe actuel">
+                                        <label for="mdp">Mot de passe actuel :</label>
+                                        <input class="form-control" type="password" id="mdp" name="mdp" placeholder="Saisissez votre mot de passe actuel">
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label>Nouveau mot de passe :</label>
-                                        <input class="form-control" type="password" placeholder="Saisissez votre nouveau mot de passe">
+                                        <label for="new_mdp">Nouveau mot de passe :</label>
+                                        <input class="form-control" type="password" id="new_mdp" name="new_mdp" placeholder="Saisissez votre nouveau mot de passe">
                                     </div>
                                     <div class="form-group mb-3">
-                                        <label>Confirmation du nouveau mot de passe :</label>
-                                        <input class="form-control" type="password" placeholder="Confirmer votre nouveau mot de passe">
+                                        <label for="confirm_mdp">Confirmation du nouveau mot de passe :</label>
+                                        <input class="form-control" type="password" id="confirm_mdp" name="confirm_mdp" placeholder="Confirmer votre nouveau mot de passe">
                                     </div>
                                     <button type="submit" class="btn btn-outline-info mt-3 mb-5">Modifier le mot de passe</button>
                                 </form>
