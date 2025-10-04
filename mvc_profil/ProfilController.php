@@ -29,18 +29,6 @@ class ProfilController {
         $this->profilView = new ProfilView();
     }
 
-
-
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-
-    // A FAIRE CE QUI SUIT !! DETAIL + MODIF
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-
-
     /**
      * Modifie un vendeur existant
      *
@@ -51,7 +39,7 @@ class ProfilController {
      *  - affiche le formulaire prérempli si le vendeur existe,
      *  - sinon affiche une erreur.
      *
-     * @param int $Id_vendeur Identifiant du vendeur à modifier
+     * @param int $Id_vendeur Identifiant unique du vendeur dont les informations personnelles doivent être modifiées.
      *
      * @return void
      */
@@ -104,22 +92,19 @@ class ProfilController {
         }
     }
 
-
-
-
-
-
     /**
-     * Modifie un vendeur existant
+     * Modifie le mot de passe du vendeur connecté.
      *
-     * Si la requête est en POST et valide, tente la modification :
-     *   - redirige vers la liste si succès,
-     *   - affiche le formulaire de modification avec erreurs si échec.
-     * Si la requête est en GET :
-     *  - affiche le formulaire prérempli si le vendeur existe,
-     *  - sinon affiche une erreur.
+     * Cette méthode gère la logique de changement de mot de passe :
+     *  - Vérifie que le formulaire a bien été soumis en POST.
+     *  - Contrôle la présence et la validité des champs envoyés.
+     *  - Vérifie que le mot de passe actuel saisi correspond à celui du vendeur connecté.
+     *  - Vérifie que le nouveau mot de passe et sa confirmation sont identiques.
+     *  - Hache le nouveau mot de passe et met à jour la base de données.
+     *  - Redirige vers la page de profil en cas de succès.
+     *  - Affiche le formulaire avec un message d’erreur en cas d’échec.
      *
-     * @param int $Id_vendeur Identifiant du vendeur à modifier
+     * @param int $Id_vendeur Identifiant unique du vendeur dont le mot de passe doit être modifié.
      *
      * @return void
      */
