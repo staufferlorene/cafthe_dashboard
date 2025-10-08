@@ -72,9 +72,9 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="index.php">
+        <a class="nav-link" href="index.php?action=panier">
             <i class="fa-solid fa-cart-shopping"></i>
-            <span>Panier RAF</span>
+            <span>Panier</span>
         </a>
     </li>
 

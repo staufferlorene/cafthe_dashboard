@@ -23,6 +23,7 @@ require_once 'mvc_commande/CommandeController.php';
 require_once 'mvc_vendeur/VendeurController.php';
 require_once 'mvc_login/LoginController.php';
 require_once 'mvc_profil/ProfilController.php';
+require_once 'mvc_panier/PanierController.php';
 
 // Vérification si l'utilisateur est connecté
 if (isset($_SESSION['utilisateur'])) {
@@ -243,6 +244,23 @@ switch ($action) {
         $controller = new ProfilController();
         $controller->modifierMdp($_SESSION['utilisateur']['Id_vendeur']);
         break;
+
+    case 'panier':
+        // Appel de la méthode pour afficher tous les produits
+        $controller = new PanierController();
+        $controller->liste();
+        break;
+
+    /// ///////
+    /// //////
+    /// //////
+    /// site pouvant m'aider pour stocker le panier en session :
+
+    /// https://cours.davidannebicque.fr/m2202/seance-4
+    /// https://laconsole.dev/formations/php/sessions
+
+
+
 
     default:
         echo "Cette page n'existe pas";
