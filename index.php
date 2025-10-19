@@ -251,16 +251,23 @@ switch ($action) {
         $controller->liste();
         break;
 
-    /// ///////
-    /// //////
-    /// //////
-    /// site pouvant m'aider pour stocker le panier en session :
+    case 'add_panier' :
+        // Appel de la méthode pour ajouter au panier
+        $controller = new PanierController();
+        $controller->ajoutPanier();
+        break;
 
-    /// https://cours.davidannebicque.fr/m2202/seance-4
-    /// https://laconsole.dev/formations/php/sessions
+    case 'view_panier' :
+        // Appel de la méthode pour afficher le panier
+        $controller = new PanierController();
+        $controller->voirPanier();
+        break;
 
-
-
+    case 'delete_panier':
+        // Appel de la méthode pour supprimer un produit du panier
+        $controller = new PanierController();
+        $controller->delete();
+        break;
 
     default:
         echo "Cette page n'existe pas";

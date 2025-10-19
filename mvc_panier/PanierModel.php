@@ -81,4 +81,9 @@ class PanierModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public static function delete($id) {
+        // Supprime le produit du panier
+        unset($_SESSION['panier'][$id]);
+    }
 }

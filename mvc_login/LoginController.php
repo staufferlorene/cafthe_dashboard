@@ -32,8 +32,7 @@ class LoginController
 
     // COMMENTER LA FONCTION
 
-    public function login()
-    {
+    public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
             if (isset($_POST['mail'], $_POST['mdp'])) {
@@ -69,8 +68,7 @@ class LoginController
         }
     }
 
-    public function logout()
-    {
+    public function logout() {
         // Détruit toutes les variables de session
         session_destroy();
 

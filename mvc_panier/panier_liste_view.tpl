@@ -47,8 +47,9 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3" style="text-align: center">
-                    <span style="font-weight: bold; font-size: 18px; margin-right: 20px">Total TTC : <span id="montant-total-ttc">0.00 €</span></span>
-                    <a href="index.php" class="btn btn-success btn-icon-split">
+                    <span style="font-weight: bold; font-size: 18px; margin-right: 20px">Total panier TTC : <span id="montant-total-ttc">0.00 €</span></span>
+                    <span>{($panier.prix * $panier.quantite)|number_format:2:'.':''} € test</span>
+                    <a href="index.php?action=view_panier" class="btn btn-success btn-icon-split">
                         <span class="text" style="font-weight: bold">Accéder au panier</span>
                         <span class="icon text-white-50">
                             <i class="fa-solid fa-arrow-right"></i>
@@ -65,9 +66,10 @@
                                 <th>Catégorie</th>
                                 <th>Nom</th>
                                 <th>Stock</th>
-                                <th>Prix unitaire / 50g</th>
-                                <th>Quantité</th>
+                                <th>Prix HT</th>
                                 <th>Prix TTC</th>
+                                <th>Quantité</th>
+                                <th>Total TTC</th>
                                 <th>Ajouter au panier</th>
                             </tr>
                             </thead>
@@ -77,33 +79,43 @@
                                 <th>Catégorie</th>
                                 <th>Nom</th>
                                 <th>Stock</th>
-                                <th>Prix unitaire / 50g</th>
-                                <th>Quantité</th>
+                                <th>Prix HT</th>
                                 <th>Prix TTC</th>
+                                <th>Quantité</th>
+                                <th>Total TTC</th>
                                 <th>Ajouter au panier</th>
                             </tr>
                             </tfoot>
                             <tbody>
                             {foreach from=$produit item=produit}
+                            <form method="post" action="index.php?action=ajouterPanier">
                                 <tr>
                                     <td>{$produit.Id_produit|escape}</td>
                                     <td>{$produit.Nom_categorie|escape}</td>
                                     <td>{$produit.Nom_produit|escape}</td>
                                     <td>{$produit.Stock|escape}</td>
+                                    <td>{$produit.Prix_HT|escape}</td>
                                     <td>{$produit.Prix_TTC|escape}</td>
                                     <td>
                                         <input
                                             type="number"
+                                            name="quantite"
                                             min="0"
                                             placeholder="0"
                                             {*pour récupérer la quantité saisie par l'utilisateur lors des calculs en js*}
                                             class="quantite"
                                             {*pour stocker prix unitaire pour l'exploiter lors des calculs en js*}
-                                            data-prix="{$produit.Prix_TTC}"
+                                            data-prixttc="{$produit.Prix_TTC}"
                                         >
                                     </td>
                                     <td class="prix-total">0.00 €</td>
                                     <td>
+                                        <!-- Champs cachés pour transmettre les infos du produit -->
+                                        <input type="hidden" name="id" value="{$produit.Id_produit}">
+                                        <input type="hidden" name="nom" value="{$produit.Nom_produit}">
+                                        <input type="hidden" name="prixht" value="{$produit.Prix_HT}">
+                                        <input type="hidden" name="prixttc" value="{$produit.Prix_TTC}">
+
                                         <button type="button"
                                                 {*pour cibler le bouton pour faire les calculs en js*}
                                                 class="add-panier">
@@ -111,6 +123,7 @@
                                         </button>
                                     </td>
                                 </tr>
+                            </form>
                             {/foreach}
                             </tbody>
                         </table>
