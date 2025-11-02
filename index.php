@@ -1,6 +1,7 @@
 <?php
 
 // 2 lignes ci-dessous permettent d'afficher les erreurs PHP
+global $smarty;
 error_reporting(E_ALL);
 ini_set("display_errors", 1);
 

@@ -15,7 +15,11 @@ class PanierView {
      * Affiche la liste des produits
      * @param array $produits Liste des produits à afficher
      */
-    public function afficherListe($produits) {
+    public function afficherListe($produits, $panier, $totalTTC) {
+        // On récupère les données depuis la session
+        $panier = $_SESSION['panier'];
+        $this->smarty->assign('panier', $panier);
+        $this->smarty->assign('totalTTC', $totalTTC);
         $this->smarty->assign('produit', $produits);
         $this->smarty->display('mvc_panier\panier_liste_view.tpl');
     }
@@ -27,7 +31,6 @@ class PanierView {
         $this->smarty->assign('totalHT', $totalHT);
         $this->smarty->assign('totalTVA', $totalTVA);
         $this->smarty->assign('totalTTC', $totalTTC);
-
         $this->smarty->display('mvc_panier\panier_detail_view.tpl');
     }
 }

@@ -47,16 +47,6 @@ const ajoutPanier = document.querySelectorAll('.add-panier');
 ajoutPanier.forEach(bouton => {
     bouton.addEventListener('click', function (event) {
 
-        let totalPanierTtc = 0;
-
-        // Récupération des prix total de chaque produit et addition
-        document.querySelectorAll('.prix-total').forEach(e => {
-            totalPanierTtc += parseFloat(e.textContent);
-        });
-
-        // Ciblage du champ portant l'id "montant-total-ttc" et insertion du prix TTC du panier dedans
-        document.getElementById('montant-total-ttc').textContent = totalPanierTtc.toFixed(2) + ' €';
-
         //    ///////////////////
         // ENVOI EN VARIABLE DE SESSION :
         //    ///////////////////
@@ -70,6 +60,11 @@ ajoutPanier.forEach(bouton => {
         const prixht = champ.querySelector('input[name="prixht"]').value;
         const prixttc = champ.querySelector('input[name="prixttc"]').value;
         const quantite = champ.querySelector('input[name="quantite"]').value;
+
+        // Si quantité est vide affiche une alerte
+        if (quantite === "") {
+            alert('Veuillez renseigner une quantité');
+        }
 
         // Construction du FormData avec ses données
         const formData = new FormData();
@@ -92,6 +87,9 @@ ajoutPanier.forEach(bouton => {
                 console.error('Erreur lors de l\'ajout :', error);
             })
 
+        // rafraîchis la page pour mettre à jour le montant TTC avec le montant calculé côté back
+        location.reload();
+
         //    ///////////////////
         // REMISE A ZERO CHAMPS QUANTITE ET PRIX TTC :
         //    ///////////////////
@@ -100,3 +98,32 @@ ajoutPanier.forEach(bouton => {
         champ.querySelector('.prix-total').textContent = '0.00 €';
     });
 });
+
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+
+    // AFFICHAGE ALERTE SI PANIER EST VIDE
+    // ET QU'ON VEUT Y ACCEDER
+
+    //////////////////////////////////////////
+    //////////////////////////////////////////
+
+    // Ciblage bouton "Accéder au panier"
+    const btnViewPanier = document.getElementById('btn-access-panier');
+
+    if (btnViewPanier) {
+        btnViewPanier.addEventListener('click', function (event) {
+
+            // Récupère une string avec le texte du total affiché (nombre + "€")
+            const totalText = document.getElementById('montant-total-ttc').textContent;
+
+            // Convertit en nombre et remplace "€"
+            const totalValue = parseFloat(totalText.replace('€', ''));
+
+            // Vérifie si le panier est vide
+            if (totalValue === 0) {
+                event.preventDefault();
+                alert('Votre panier est vide');
+            }
+        });
+    }

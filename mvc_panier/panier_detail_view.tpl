@@ -69,11 +69,11 @@
                             {foreach from=$panier item=panier}
                                 <tr>
                                     <td>{$panier.nom|escape}</td>
-                                    <td>{$panier.prixht|escape} €</td>
-                                    <td>{$panier.prixttc|escape} €</td>
+                                    <td>{$panier.prixht|escape|number_format:2:'.':''} €</td>
+                                    <td>{$panier.prixttc|escape|number_format:2:'.':''} €</td>
                                     <td>{$panier.quantite|escape}</td>
-                                    <td>{($panier.prixht * $panier.quantite)|number_format:2:'.':''} €</td>
-                                    <td>{($panier.prixttc * $panier.quantite)|number_format:2:'.':''} €</td>
+                                    <td>{(($panier.prixht+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
+                                    <td>{(($panier.prixttc+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
                                     <td>
                                         <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-pen-to-square text-warning mr-4 ml-4"></i></a>
                                         <a href="index.php?action=delete_panier&id={$panier.id}"><i class="fa-solid fa-trash text-danger"></i></a>

@@ -47,13 +47,16 @@
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3" style="text-align: center">
-                    <span style="font-weight: bold; font-size: 18px; margin-right: 20px">Total panier TTC : <span id="montant-total-ttc">0.00 €</span></span>
-                    <span>{($panier.prix * $panier.quantite)|number_format:2:'.':''} € test</span>
-                    <a href="index.php?action=view_panier" class="btn btn-success btn-icon-split">
-                        <span class="text" style="font-weight: bold">Accéder au panier</span>
-                        <span class="icon text-white-50">
-                            <i class="fa-solid fa-arrow-right"></i>
-                        </span>
+                    <span style="font-weight: bold; font-size: 18px; margin-right: 20px">
+                        Total panier TTC : <span id="montant-total-ttc">{$totalTTC|number_format:2:'.':''} €</span>
+                    </span>
+                    <a href="index.php?action=view_panier"
+                       class="btn btn-success btn-icon-split"
+                       id="btn-access-panier">
+                       <span class="text" style="font-weight: bold">Accéder au panier</span>
+                       <span class="icon text-white-50">
+                           <i class="fa-solid fa-arrow-right"></i>
+                       </span>
                     </a>
                 </div>
                 <div class="card-body">
@@ -152,7 +155,7 @@
         <!-- Page level custom scripts -->
         <script src="js/demo/datatables-demo.js"></script>
 
-        <!-- Calculs -->
+        <!-- Calculs, mise en session et fenêtre alert -->
         <script src="mvc_panier/js/panier-liste.js"></script>
 
 </body>

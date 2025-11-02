@@ -37,8 +37,15 @@ class PanierController {
      * @return void
      */
     public function liste() {
+        $panier = $_SESSION['panier'] ?? [];
+        $totaux = $this->panierModel->calculTotaux($panier);
+
         $produits = $this->panierModel->lister();
-        $this->panierView->afficherListe($produits);
+        $this->panierView->afficherListe(
+            $produits,
+            $panier,
+            $totaux['totalTTC']
+        );
     }
 
     public function ajoutPanier() {
@@ -63,9 +70,9 @@ class PanierController {
                 $_SESSION['panier'][$id] = [
                     'id' => $id,
                     'nom' => $nom,
-                    'prixht' => $prixht,
-                    'prixttc' => $prixttc,
-                    'quantite' => $quantite
+                    'prixht' => (float)$prixht,
+                    'prixttc' => (float)$prixttc,
+                    'quantite' => (int)$quantite
                 ];
             } else {
                 // Si le produit existe déjà on màj la quantité
@@ -75,22 +82,14 @@ class PanierController {
     }
 
     public function voirPanier() {
-
-        $panier = $_SESSION['panier'];
-
-        $totalHT = 0;
-        $totalTTC = 0;
-
-        // Calcul des totaux HT et TTC sur tous les produits du panier
-        foreach ($panier as $produit) {
-            $totalHT += $produit['prixht'] * $produit['quantite'];
-            $totalTTC += $produit['prixttc'] * $produit['quantite'];
-        }
-
-        // Calcul de la TVA
-        $totalTVA = $totalTTC - $totalHT;
-
-        $this->panierView->afficherDetailPanier($panier, $totalHT, $totalTVA, $totalTTC);
+        $panier = $_SESSION['panier'] ?? [];
+        $totaux = $this->panierModel->calculTotaux($panier);
+        $this->panierView->afficherDetailPanier(
+            $panier,
+            $totaux['totalHT'],
+            $totaux['totalTVA'],
+            $totaux['totalTTC']
+        );
     }
 
     public function delete() {

@@ -82,8 +82,27 @@ class PanierModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function calculTotaux($panier) {
+        $totalHT = 0;
+        $totalTTC = 0;
+
+        // Calcul des totaux HT et TTC sur tous les produits du panier
+        foreach ($panier as $produit) {
+            $totalHT += (float)$produit['prixht'] * (int)$produit['quantite'];
+            $totalTTC += (float)$produit['prixttc'] * (int)$produit['quantite'];
+        }
+
+        // Calcul de la TVA
+        $totalTVA = $totalTTC - $totalHT;
+
+        return [
+            'totalHT' => $totalHT,
+            'totalTTC' => $totalTTC,
+            'totalTVA' => $totalTVA
+        ];
+    }
+
     public static function delete($id) {
-        // Supprime le produit du panier
         unset($_SESSION['panier'][$id]);
     }
 }
