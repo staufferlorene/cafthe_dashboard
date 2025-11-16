@@ -62,7 +62,7 @@
                                 <th>Quantité</th>
                                 <th>Total HT</th>
                                 <th>Total TTC</th>
-                                <th>Actions</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -71,11 +71,23 @@
                                     <td>{$panier.nom|escape}</td>
                                     <td>{$panier.prixht|escape|number_format:2:'.':''} €</td>
                                     <td>{$panier.prixttc|escape|number_format:2:'.':''} €</td>
-                                    <td>{$panier.quantite|escape}</td>
-                                    <td>{(($panier.prixht+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
-                                    <td>{(($panier.prixttc+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
                                     <td>
-                                        <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-pen-to-square text-warning mr-4 ml-4"></i></a>
+                                        <input
+                                            type="number"
+                                            name="quantite"
+                                            min="0"
+                                            value="{$panier.quantite|escape}"
+                                            {*pour récupérer la quantité saisie par l'utilisateur lors des calculs en js*}
+                                            class="quantite"
+                                            {*pour stocker prix unitaire pour l'exploiter lors des calculs en js*}
+                                            data-prixttc="{$panier.prixttc}"
+                                            data-prixht="{$panier.prixht}"
+                                            data-id="{$panier.id}"
+                                        >
+                                    </td>
+                                    <td class="prix-total-ht-produit">{(($panier.prixht+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
+                                    <td class="prix-total-ttc-produit">{(($panier.prixttc+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
+                                    <td>
                                         <a href="index.php?action=delete_panier&id={$panier.id}"><i class="fa-solid fa-trash text-danger"></i></a>
                                     </td>
                                 </tr>
@@ -92,7 +104,7 @@
                         </div>
                         <div class="col-md-6 text-right">
                             <a href="index.php?action=panier" class="btn btn-secondary mr-2">Retour</a>
-                            <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}" class="btn btn-success">Valider le panier</a>
+                            <a href="index.php?action=client_panier" class="btn btn-success" id="valider-panier">Valider le panier</a>
                         </div>
                     </div>
                 </div>
@@ -100,6 +112,9 @@
         </div>
     </div>
 </div>
+
+<!-- Calculs, mise en session et fenêtre alert -->
+<script src="mvc_panier/js/panier-detail.js"></script>
 
 </body>
 

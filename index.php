@@ -62,8 +62,8 @@ switch ($action) {
 
     case 'login':
         // Appel de la méthode pour se connecter
-        $controller = new LoginController();
-        $controller->login();
+        $controllerLogin = new LoginController();
+        $controllerLogin->login();
         break;
 
     /*********************
@@ -76,8 +76,8 @@ switch ($action) {
 
     case 'logout':
         // Appel de la méthode pour se déconnecter
-        $controller = new LoginController();
-        $controller->logout();
+        $controllerLogout = new LoginController();
+        $controllerLogout->logout();
         break;
 
     /*********************
@@ -90,32 +90,32 @@ switch ($action) {
 
     case 'produit':
         // Appel de la méthode pour afficher les produits
-        $controller = new ProduitController();
-        $controller->liste();
+        $controllerProduit = new ProduitController();
+        $controllerProduit->liste();
         break;
 
     case 'detail_produit' :
         // Appel de la méthode pour afficher les détails du produit
-        $controller = new ProduitController();
-        $controller->voirDetail($Id_produit);
+        $controllerProduit = new ProduitController();
+        $controllerProduit->voirDetail($Id_produit);
         break;
 
     case 'add_produit':
         // Appel de la méthode pour ajouter un produit
-        $controller = new ProduitController();
-        $controller->add();
+        $controllerProduit = new ProduitController();
+        $controllerProduit->add();
         break;
 
     case 'delete_produit':
         // Appel de la méthode pour supprimer le produit
-        $controller = new ProduitController();
-        $controller->delete();
+        $controllerProduit = new ProduitController();
+        $controllerProduit->delete();
         break;
 
     case 'update_produit' :
         // Appel de la méthode pour modifier les détails du produit
-        $controller = new ProduitController();
-        $controller->modifier($Id_produit);
+        $controllerProduit = new ProduitController();
+        $controllerProduit->modifier($Id_produit);
         break;
 
     /*********************
@@ -128,32 +128,32 @@ switch ($action) {
 
     case 'client':
         // Appel de la méthode pour afficher les clients
-        $controller = new ClientController();
-        $controller->liste();
+        $controllerClient = new ClientController();
+        $controllerClient->liste();
         break;
 
     case 'detail_client' :
         // Appel de la méthode pour afficher les détails du client
-        $controller = new ClientController();
-        $controller->voirDetail($Id_client);
+        $controllerClient = new ClientController();
+        $controllerClient->voirDetail($Id_client);
         break;
 
     case 'add_client':
         // Appel de la méthode pour ajouter un client
-        $controller = new ClientController();
-        $controller->add();
+        $controllerClient = new ClientController();
+        $controllerClient->add();
         break;
 
     case 'delete_client':
         // Appel de la méthode pour supprimer un client
-        $controller = new ClientController();
-        $controller->delete();
+        $controllerClient = new ClientController();
+        $controllerClient->delete();
         break;
 
     case 'update_client' :
         // Appel de la méthode pour modifier les détails du client
-        $controller = new ClientController();
-        $controller->modifier($Id_client);
+        $controllerClient = new ClientController();
+        $controllerClient->modifier($Id_client);
         break;
 
     /*********************
@@ -166,20 +166,20 @@ switch ($action) {
 
     case 'commande':
         // Appel de la méthode pour afficher les commandes
-        $controller = new CommandeController();
-        $controller->liste();
+        $controllerCommande = new CommandeController();
+        $controllerCommande->liste();
         break;
 
     case 'detail_commande' :
         // Appel de la méthode pour afficher les détails de la commande
-        $controller = new CommandeController();
-        $controller->voirDetail($Id_commande);
+        $controllerCommande = new CommandeController();
+        $controllerCommande->voirDetail($Id_commande);
         break;
 
     case 'update_commande' :
         // Appel de la méthode pour modifier les détails de la commande
-        $controller = new CommandeController();
-        $controller->modifier($Id_commande);
+        $controllerCommande = new CommandeController();
+        $controllerCommande->modifier($Id_commande);
         break;
 
     /*********************
@@ -192,32 +192,32 @@ switch ($action) {
 
     case 'vendeur':
         // Appel de la méthode pour afficher les vendeurs
-        $controller = new VendeurController();
-        $controller->liste();
+        $controllerVendeur = new VendeurController();
+        $controllerVendeur->liste();
         break;
 
     case 'detail_vendeur' :
         // Appel de la méthode pour afficher les détails du vendeur
-        $controller = new VendeurController();
-        $controller->voirDetail($Id_vendeur);
+        $controllerVendeur = new VendeurController();
+        $controllerVendeur->voirDetail($Id_vendeur);
         break;
 
     case 'add_vendeur':
         // Appel de la méthode pour ajouter un vendeur
-        $controller = new VendeurController();
-        $controller->add();
+        $controllerVendeur = new VendeurController();
+        $controllerVendeur->add();
         break;
 
     case 'delete_vendeur':
         // Appel de la méthode pour supprimer un vendeur
-        $controller = new VendeurController();
-        $controller->delete();
+        $controllerVendeur = new VendeurController();
+        $controllerVendeur->delete();
         break;
 
     case 'update_vendeur' :
         // Appel de la méthode pour modifier les détails du vendeur
-        $controller = new VendeurController();
-        $controller->modifier($Id_vendeur);
+        $controllerVendeur = new VendeurController();
+        $controllerVendeur->modifier($Id_vendeur);
         break;
 
     /*********************
@@ -230,44 +230,56 @@ switch ($action) {
 
     case 'profil':
         // Appel de la méthode pour afficher les détails du profil
-        $controller = new ProfilController();
-        $controller->voirDetail($_SESSION['utilisateur']['Id_vendeur']);
+        $controllerProfil = new ProfilController();
+        $controllerProfil->voirDetail($_SESSION['utilisateur']['Id_vendeur']);
         break;
 
     case 'update_profil' :
         // Appel de la méthode pour modifier les détails du profil
-        $controller = new ProfilController();
-        $controller->modifierInfo($_SESSION['utilisateur']['Id_vendeur']);
+        $controllerProfil = new ProfilController();
+        $controllerProfil->modifierInfo($_SESSION['utilisateur']['Id_vendeur']);
         break;
 
     case 'update_password' :
         // Appel de la méthode pour modifier le mot de passe du vendeur connecté
-        $controller = new ProfilController();
-        $controller->modifierMdp($_SESSION['utilisateur']['Id_vendeur']);
+        $controllerProfil = new ProfilController();
+        $controllerProfil->modifierMdp($_SESSION['utilisateur']['Id_vendeur']);
         break;
 
     case 'panier':
         // Appel de la méthode pour afficher tous les produits
-        $controller = new PanierController();
-        $controller->liste();
+        $controllerProfil = new PanierController();
+        $controllerProfil->liste();
         break;
 
     case 'add_panier' :
         // Appel de la méthode pour ajouter au panier
-        $controller = new PanierController();
-        $controller->ajoutPanier();
+        $controllerProfil = new PanierController();
+        $controllerProfil->ajoutPanier();
         break;
 
     case 'view_panier' :
         // Appel de la méthode pour afficher le panier
-        $controller = new PanierController();
-        $controller->voirPanier();
+        $controllerProfil = new PanierController();
+        $controllerProfil->voirPanier();
         break;
 
     case 'delete_panier':
         // Appel de la méthode pour supprimer un produit du panier
-        $controller = new PanierController();
-        $controller->delete();
+        $controllerProfil = new PanierController();
+        $controllerProfil->delete();
+        break;
+
+    case 'update_panier' :
+        // Appel de la méthode pour modifier le panier
+        $controllerProfil = new PanierController();
+        $controllerProfil->modifierPanier();
+        break;
+
+    case 'client_panier':
+        // Appel de la méthode pour rattacher un client au panier
+        $controllerProfil = new PanierController();
+        $controllerProfil->ajoutClient();
         break;
 
     default:

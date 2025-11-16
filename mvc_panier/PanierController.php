@@ -97,4 +97,32 @@ class PanierController {
         // Rappeler la fonction pour afficher le panier
         $this->voirPanier();
     }
+
+    public function modifierPanier() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Vérifie que les champs sont bien envoyés
+            if (isset($_POST['id'], $_POST['quantite'])) {
+                // Assignation des variables
+                $id = $_POST['id'];
+                $quantite = $_POST['quantite'];
+
+                // Mise à jour du panier
+                $_SESSION['panier'][$id]['quantite'] = $quantite;
+            }
+        }
+
+        $panier = $_SESSION['panier'];
+        $totaux = $this->panierModel->calculTotaux($panier);
+        $this->panierView->afficherDetailPanier(
+            $panier,
+            $totaux['totalHT'],
+            $totaux['totalTVA'],
+            $totaux['totalTTC']
+        );
+    }
+
+    public function ajoutClient() {
+        $clients = $this->panierModel->listerClient();
+        $this->panierView->afficherClient($clients);
+    }
 }

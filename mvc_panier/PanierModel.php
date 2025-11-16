@@ -105,4 +105,15 @@ class PanierModel {
     public static function delete($id) {
         unset($_SESSION['panier'][$id]);
     }
+
+    public static function listerClient() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        // Récupération des infos dans la BDD
+        $stmt = $db->prepare("SELECT * FROM client");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

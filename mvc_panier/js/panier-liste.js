@@ -8,11 +8,11 @@
 
 
 // Ciblage des inputs portant la classe "quantite"
-const saisie = document.querySelectorAll(".quantite");
+const saisies = document.querySelectorAll(".quantite");
 
 // Pour chaque input écoute de l’événement, puis exécution du code de la fonction
-saisie.forEach(e => {
-    e.addEventListener("input", function () {
+saisies.forEach(saisie => {
+    saisie.addEventListener("input", function () {
         // Récupération de la quantité saisie
         const quantite = parseFloat(this.value);
 
