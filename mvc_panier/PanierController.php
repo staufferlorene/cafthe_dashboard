@@ -121,8 +121,48 @@ class PanierController {
         );
     }
 
-    public function ajoutClient() {
+    public function listeChoixClient() {
         $clients = $this->panierModel->listerClient();
         $this->panierView->afficherClient($clients);
+    }
+
+    public function checkPanier() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            // Vérifie que les champs sont bien envoyés
+            if (isset($_POST['id'], $_POST['nom'], $_POST['prenom'], $_POST['adresse'])) {
+                // Assignation des variables
+                $id = $_POST['id'];
+                $nom = $_POST['nom'];
+                $prenom = $_POST['prenom'];
+                $adresse = $_POST['adresse'];
+            }
+
+            // Si le client n'existe pas on le crée et initialise avec un tableau vide
+            if (!isset($_SESSION['clientSession'])) {
+                $_SESSION['clientSession'] = [];
+            }
+
+            // Si le client n'existe pas dans en session on le crée
+            if (!isset($_SESSION['clientSession'][$id])) {
+                $_SESSION['clientSession'][$id] = [
+                    'id' => $id,
+                    'nom' => $nom,
+                    'prenom' => $prenom,
+                    'adresse' => $adresse
+                ];
+            }
+
+            $panier = $_SESSION['panier'];
+            $totaux = $this->panierModel->calculTotaux($panier);
+            $this->panierView->afficherRecapitulatifPanier(
+                $totaux['totalHT'],
+                $totaux['totalTVA'],
+                $totaux['totalTTC']
+            );
+        }
+    }
+
+    public function paiementPanier() {
+        $this->panierView->panierPaye();
     }
 }

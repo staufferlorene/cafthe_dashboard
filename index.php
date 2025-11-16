@@ -279,7 +279,19 @@ switch ($action) {
     case 'client_panier':
         // Appel de la méthode pour rattacher un client au panier
         $controllerProfil = new PanierController();
-        $controllerProfil->ajoutClient();
+        $controllerProfil->listeChoixClient();
+        break;
+
+    case 'recap_panier':
+        // Appel de la méthode pour récapituler le panier avant encaissement
+        $controllerProfil = new PanierController();
+        $controllerProfil->checkPanier();
+        break;
+
+    case 'paiement_panier':
+        // Appel de la méthode pour payer le panier
+        $controllerProfil = new PanierController();
+        $controllerProfil->paiementPanier();
         break;
 
     default:

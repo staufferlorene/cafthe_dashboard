@@ -38,4 +38,24 @@ class PanierView {
         $this->smarty->assign('client', $clients);
         $this->smarty->display('mvc_panier\panier_client_view.tpl');
     }
+
+    public function afficherRecapitulatifPanier($totalHT, $totalTVA, $totalTTC) {
+        // On récupère les données depuis la session
+        $panier = $_SESSION['panier'];
+        $clientSession = end($_SESSION['clientSession']);
+        $this->smarty->assign('panier', $panier);
+        $this->smarty->assign('clientSession', $clientSession);
+
+        // ICI
+        $this->smarty->assign('totalHT', $totalHT);
+        $this->smarty->assign('totalTVA', $totalTVA);
+        $this->smarty->assign('totalTTC', $totalTTC);
+
+
+        $this->smarty->display('mvc_panier\panier_recapitulatif_view.tpl');
+    }
+
+    public function panierPaye() {
+        $this->smarty->display('mvc_panier\panier_paye_view.tpl');
+    }
 }
