@@ -78,15 +78,24 @@ if (btnValidePanier) {
         // Récupération de la quantité dans les inputs
         const quantite = document.querySelectorAll('.quantite');
 
+        // Blocage si panier vide
+        if(quantite.length === 0) {
+            // empêche la redirection
+            event.preventDefault();
+            alert('Le panier est vide');
+            return
+        }
+
         for (const input of quantite) {
             // Récupération de la quantité saisie
             const valeur = parseFloat(input.value);
 
-            // Si quantité = 0
+            // Blocage si quantité = 0
             if(valeur === 0) {
                 // empêche la redirection
                 event.preventDefault();
-                alert('Indiquer une quantité valide')
+                alert('Indiquer une quantité valide');
+                return;
             }
         }
     });
