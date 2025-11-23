@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : Jeu. 07 Août 2025 à 20:03
+-- Généré le : dim. 23 Nov. 2025 à 11:21
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.4.7
 
@@ -96,8 +96,7 @@ INSERT INTO `client` (`Id_client`, `Nom_client`, `Prenom_client`, `Telephone_cli
 (32, 'Test', 'Lorene', '05 47 06 08 36', 'lorene@email.com', '$2b$10$gHOMeykF7rY1.lDdvBfho.IyNVPHZs8TaY9gKWDxN7ET9BnUgfTCW', 'modif adresse'),
 (44, 'test', 'test', '0600000000', 'm@m.fr', '$2b$10$kVaXzYo26kMalANnjbGWFOM9XLQdT.k.2O.aTHvUVdJjIJ4c/sFKa', '1'),
 (45, 't', 't', 't', 't@f.fr', '$2b$10$boHjH2r9r8hlclOVGJ58N.NM1qqS4eRruDwD2jw3WkHBhXIKnMjXa', 't'),
-(46, 'h', 'h', 'h', 'h@l.fr', '$2b$10$hXXUM22yAtUYXOQBTPnLYOC0FNP/uTTIQwAeulFidf.SWvfe8i1q2', 'h'),
-(47, 'bb', 'bb', '0600000000', 'bb@email.com', '$2b$10$oACIK4SyRM.5Tk6WVsLSbe5aNCK5PfDjzRECsdMXR5S6QYd9yfEgy', '1 rue test');
+(46, 'h', 'h', 'h', 'h@l.fr', '$2b$10$hXXUM22yAtUYXOQBTPnLYOC0FNP/uTTIQwAeulFidf.SWvfe8i1q2', 'h');
 
 -- --------------------------------------------------------
 
@@ -130,8 +129,7 @@ INSERT INTO `commande` (`Id_commande`, `Date_commande`, `Statut_commande`, `Adre
 (7, '2025-03-05', 'en préparation', '456 Avenue de Toulouse, 31000 Toulouse', 35.00, 7.00, 42.00, 2, 7),
 (8, '2025-03-10', 'expédiée', '789 Boulevard de Nice, 06000 Nice', 45.00, 9.00, 54.00, 1, 8),
 (9, '2025-03-15', 'livrée', '321 Rue de Strasbourg, 67000 Strasbourg', 55.00, 11.00, 66.00, 2, 9),
-(10, '2025-04-01', 'en préparation', '654 Rue de Montpellier, 34000 Montpellier', 60.00, 12.00, 72.00, 1, 10),
-(77, '2025-04-04', 'en préparation', 'store', 5.00, 1.00, 6.00, 1, 47);
+(10, '2025-04-01', 'test', '654 Rue de Montpellier, 34000 Montpellier', 60.00, 12.00, 72.00, 1, 10);
 
 -- --------------------------------------------------------
 
@@ -169,8 +167,7 @@ INSERT INTO `ligne_commande` (`Id_ligne_commande`, `Nombre_ligne_commande`, `Qua
 (38, 1, 2, 10.00, 1, 1),
 (39, 2, 3, 15.00, 1, 2),
 (45, 1, 2, 10.00, 1, 1),
-(46, 1, 2, 10.00, 1, 1),
-(71, 1, 1, 6.00, 77, 3);
+(46, 1, 2, 10.00, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -196,24 +193,24 @@ CREATE TABLE `produit` (
 
 INSERT INTO `produit` (`Id_produit`, `Nom_produit`, `Description`, `Prix_HT`, `Prix_TTC`, `Stock`, `Type_conditionnement`, `Chemin_img`, `Id_categorie`) VALUES
 (1, 'Thé Vert', 'Délicat et rafraîchissant, le thé vert offre des notes végétales et légèrement astringentes. Riche en antioxydants, il se déguste nature ou parfumé.', 10.00, 10.55, 100, 'unitaire', 'the_vert.webp', 1),
-(2, 'Café Arabica', 'Un café doux et raffiné, aux arômes délicats de fleurs et de fruits. Cultivé en altitude, il offre une saveur équilibrée, légèrement acide avec des notes subtiles de chocolat. Parfait pour une expérience gustative douce et harmonieuse à tout moment de la journée.', 15.00, 1.10, 50, 'vrac', 'cafe_arabica.jpeg', 2),
+(2, 'Café Arabica', 'Un café doux et raffiné, aux arômes délicats de fleurs et de fruits. Cultivé en altitude, il offre une saveur équilibrée, légèrement acide avec des notes subtiles de chocolat. Parfait pour une expérience gustative douce et harmonieuse à tout moment de la journée. Vendu en boîte de 250g.', 15.00, 15.83, 50, 'vrac', 'cafe_arabica.jpeg', 2),
 (3, 'Tasse à Thé', 'Élégante et souvent en porcelaine, elle permet de savourer pleinement les arômes du thé.', 5.00, 6.00, 200, 'unitaire', 'tasse_the.webp', 3),
 (4, 'Thé Noir', 'Puissant et corsé, notre thé noir de Ceylan dévoile des arômes maltés et épicés. Idéal pour un réveil tonique.\r\n\r\n\r\n', 12.00, 12.66, 80, 'unitaire', 'the_ceylan.webp', 1),
 (5, 'Café Robusta', 'Corsé et intense, il se distingue par son amertume prononcée et sa teneur élevée en caféine.', 13.00, 13.72, 60, 'unitaire', 'cafe_robusta.jpeg', 2),
 (6, 'Infuseur à Thé', 'Accessoire pratique pour infuser le thé en vrac, évitant les résidus dans la tasse.', 7.00, 8.40, 150, 'unitaire', 'infuseur_the.webp', 3),
 (7, 'Thé Blanc', 'Subtil et raffiné, notre thé blanc de Chine peu oxydé révèle des notes florales et douces. Apprécié pour sa légèreté et sa richesse en antioxydants.\r\n\r\n', 20.00, 21.10, 40, 'unitaire', 'the_blanc_chine.webp', 1),
-(8, 'Café Décaféiné', 'Tout le plaisir du café sans caféine, idéal pour une dégustation en douceur à tout moment.', 14.00, 1.20, 70, 'vrac', 'cafe_deca.jpeg', 2),
+(8, 'Café Décaféiné', 'Tout le plaisir du café sans caféine, idéal pour une dégustation en douceur à tout moment. Vendu en boîte de 250g.', 14.00, 14.77, 70, 'vrac', 'cafe_deca.jpeg', 2),
 (9, 'Bouilloire', 'Permet de chauffer l’eau rapidement, idéale pour préparer thé et café à la température parfaite.', 25.00, 30.00, 30, 'unitaire', 'bouilloire.webp', 3),
-(10, 'Thé Oolong', 'À mi-chemin entre thé vert et noir, il offre des arômes boisés et floraux, avec une légère douceur.', 18.00, 1.10, 50, 'vrac', 'the_oolong.jpeg', 1),
+(10, 'Thé Oolong', 'À mi-chemin entre thé vert et noir, il offre des arômes boisés et floraux, avec une légère douceur. Vendu en boîte de 250g.', 18.00, 18.99, 50, 'vrac', 'the_oolong.jpeg', 1),
 (11, 'Café Espresso', 'Court et intense, il révèle une crema onctueuse et des arômes riches et concentrés.', 16.00, 16.88, 90, 'unitaire', 'cafe_expresso.jpeg', 2),
 (12, 'Filtre à Café', 'Indispensable pour une infusion propre, il retient le marc tout en laissant passer les arômes.', 8.00, 9.60, 120, 'unitaire', 'filtre_cafe.webp', 3),
-(13, 'Thé Rooibos', 'Sans théine, il dévoile des notes rondes et vanillées, parfait pour une infusion douce et relaxante.', 15.00, 1.20, 60, 'vrac', 'the_rooibos.webp', 1),
+(13, 'Thé Rooibos', 'Sans théine, il dévoile des notes rondes et vanillées, parfait pour une infusion douce et relaxante. Vendu en boîte de 250g.', 15.00, 15.83, 60, 'vrac', 'the_rooibos.webp', 1),
 (14, 'Café Moka', 'Issu d’Éthiopie ou préparé en cafetière italienne, il offre des notes fruitées et chocolatées.', 17.00, 17.94, 55, 'unitaire', 'cafe_moka.jpeg', 2),
 (15, 'Théière', 'Traditionnelle et élégante, elle conserve parfaitement la chaleur pour une infusion optimale. Son matériau robuste améliore les arômes du thé au fil du temps.', 30.00, 36.00, 25, 'unitaire', 'theiere.webp', 3),
-(16, 'Thé Matcha', 'Thé vert en poudre intense, au goût umami et végétal, riche en antioxydants.\r\n\r\n', 22.00, 1.30, 35, 'vrac', 'the_matcha.webp', 1),
-(17, 'Café Lungo', 'Café allongé et doux, plus léger qu’un espresso mais conservant une belle intensité.', 18.00, 1.30, 65, 'vrac', 'cafe_lungo.jpeg', 2),
+(16, 'Thé Matcha', 'Thé vert en poudre intense, au goût umami et végétal, riche en antioxydants. Vendu en boîte de 250g.', 22.00, 23.21, 35, 'vrac', 'the_matcha.webp', 1),
+(17, 'Café Lungo', 'Café allongé et doux, plus léger qu’un espresso mais conservant une belle intensité. Vendu en boîte de 250g.', 18.00, 18.99, 65, 'vrac', 'cafe_lungo.jpeg', 2),
 (18, 'Mug', 'Solide et isolant, il maintient la chaleur de votre boisson tout en offrant un design varié et une prise en main agréable.', 10.00, 12.00, 110, 'unitaire', 'mug.webp', 3),
-(19, 'Thé Jasmin', 'Thé vert délicatement parfumé aux fleurs de jasmin, offrant une infusion florale et apaisante.', 14.00, 1.20, 75, 'vrac', 'the_jasmin.webp', 1),
+(19, 'Thé Jasmin', 'Thé vert délicatement parfumé aux fleurs de jasmin, offrant une infusion florale et apaisante. Vendu en boîte de 250g.', 14.00, 14.77, 75, 'vrac', 'the_jasmin.webp', 1),
 (20, 'Café Blue Mountain', 'Grand cru de Jamaïque, il séduit par sa douceur, son équilibre et ses notes subtiles.', 25.00, 26.38, 45, 'unitaire', 'cafe_blue.jpeg', 2),
 (21, 'Coffret Découverte Thés', 'Un assortiment de thés verts, noirs et blancs soigneusement sélectionnés. Parfait pour explorer de nouvelles saveurs et profiter de moments de détente.', 31.19, 32.90, 50, 'unitaire', 'coffret_the_decouverte.jpeg', 1),
 (22, 'Coffret Thés Bio', 'Un coffret premium avec une sélection de thés biologiques aux arômes subtils. Une invitation à la dégustation pour les amateurs de thé naturel et raffiné.', 35.00, 38.50, 40, 'unitaire', 'coffret_the_bio.jpeg', 1),
@@ -232,7 +229,7 @@ CREATE TABLE `vendeur` (
   `Prenom_vendeur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Role` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `Mail_vendeur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
-  `Mdp_vendeur` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+  `Mdp_vendeur` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -259,7 +256,9 @@ INSERT INTO `vendeur` (`Id_vendeur`, `Nom_vendeur`, `Prenom_vendeur`, `Role`, `M
 (17, 'Mercier', 'Nicolas', 'vendeur', 'nicolas.mercier@example.com', 'vendeur678'),
 (18, 'Dupuis', 'Laura', 'vendeur', 'laura.dupuis@example.com', 'vendeur789'),
 (19, 'Leroux', 'Antoine', 'admin', 'antoine.leroux@example.com', 'admin890'),
-(20, 'Renaud', 'Elise', 'vendeur', 'elise.renaud@example.com', 'vendeur901');
+(20, 'Renaud', 'Elise', 'vendeur', 'elise.renaud@example.com', 'vendeur901'),
+(22, 'Doe', 'John', 'admin', 'test@email.com', '$2y$10$0HliWZdRC4dP2RdQMqU05Oz3bQfWizb9txN5NYhu6nvTVB9PproWK'),
+(24, 'bcrypt', 'lorene', 'admin', 'test2@email.com', '$2y$10$UWQqP7Ev5tWkh7IvUjhWnuRO7wlBF9gLjG1/rtfqgG.HdtTtPjzqq');
 
 --
 -- Index pour les tables déchargées
@@ -338,13 +337,13 @@ ALTER TABLE `ligne_commande`
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `Id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `Id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT pour la table `vendeur`
 --
 ALTER TABLE `vendeur`
-  MODIFY `Id_vendeur` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `Id_vendeur` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- Contraintes pour les tables déchargées
