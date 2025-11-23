@@ -62,7 +62,6 @@
                                 <th>Quantité</th>
                                 <th>Total HT</th>
                                 <th>Total TTC</th>
-                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -74,9 +73,6 @@
                                     <td>{$panier.quantite|escape}</td>
                                     <td>{(($panier.prixht+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
                                     <td>{(($panier.prixttc+0) * ($panier.quantite+0))|number_format:2:'.':''} €</td>
-                                    <td>
-                                        <a href="index.php?action=delete_panier&id={$panier.id}"><i class="fa-solid fa-trash text-danger"></i></a>
-                                    </td>
                                 </tr>
                             {/foreach}
                             </tbody>
@@ -85,9 +81,9 @@
                 </div>
                     <div class="row pl-4 pr-4 justify-content-end text-right">
                         <div class="col-md-6">
-                            <p>Montant total HT : {$totalHT|number_format:2:'.':''} €</p>
-                            <p>Montant total TVA : {$totalTVA|number_format:2:'.':''} €</p>
-                            <p class="font-weight-bold">Montant total TTC : {$totalTTC|number_format:2:'.':''} €</p>
+                            <p>Montant total HT : {$montants.totalHT|number_format:2:'.':''} €</p>
+                            <p>Montant total TVA : {$montants.totalTVA|number_format:2:'.':''} €</p>
+                            <p class="font-weight-bold">Montant total TTC : {$montants.totalTTC|number_format:2:'.':''} €</p>
                         </div>
                     </div>
                 <div class="row pl-4 pr-4">

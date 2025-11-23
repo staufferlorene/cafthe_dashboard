@@ -137,32 +137,45 @@ class PanierController {
                 $adresse = $_POST['adresse'];
             }
 
-            // Si le client n'existe pas on le crée et initialise avec un tableau vide
-            if (!isset($_SESSION['clientSession'])) {
-                $_SESSION['clientSession'] = [];
-            }
-
-            // Si le client n'existe pas dans en session on le crée
-            if (!isset($_SESSION['clientSession'][$id])) {
-                $_SESSION['clientSession'][$id] = [
-                    'id' => $id,
-                    'nom' => $nom,
-                    'prenom' => $prenom,
-                    'adresse' => $adresse
-                ];
-            }
+            // Création variable pour stocker le client à chaque fois comme ça toujours à jour
+            $_SESSION['clientSession'] = [
+                'id' => $id,
+                'nom' => $nom,
+                'prenom' => $prenom,
+                'adresse' => $adresse
+            ];
 
             $panier = $_SESSION['panier'];
             $totaux = $this->panierModel->calculTotaux($panier);
-            $this->panierView->afficherRecapitulatifPanier(
-                $totaux['totalHT'],
-                $totaux['totalTVA'],
-                $totaux['totalTTC']
-            );
+
+            // Création variable pour stocker les montants totaux à chaque fois comme ça toujours à jour
+            $_SESSION['montants'] = [
+                'totalHT' => $totaux['totalHT'],
+                'totalTVA' => $totaux['totalTVA'],
+                'totalTTC' => $totaux['totalTTC'],
+            ];
+
+            $this->panierView->afficherRecapitulatifPanier();
         }
     }
 
     public function paiementPanier() {
-        $this->panierView->panierPaye();
+
+    // Tente l'ajout de la commande en DB
+    $erreur = $this->panierModel->addDB();
+        if ($erreur === null) {
+            // Si succès :
+            // Vide les variables de session : panier, client et montants
+            $_SESSION['panier'] = [];
+            $_SESSION['clientSession'] = [];
+            $_SESSION['montants'] = [];
+
+            // Redirection vers la liste après ajout
+            $this->panierView->panierPaye();
+        } else {
+            // Si échec : Affiche la page avec message d'erreur
+            $erreur = "Une erreur est survenue lors de l'enregistrement de la commande.";
+            $this->panierView->panierPaye($erreur);
+        }
     }
 }

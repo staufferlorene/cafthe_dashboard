@@ -116,4 +116,52 @@ class PanierModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function addDB() {
+        try {
+            // On récupère PDO via la Class Database
+            $db = Database::getInstance()->getConnection();
+
+            // Récupération du panier
+            $totalHT = $_SESSION['montants']['totalHT'];
+            $totalTVA = $_SESSION['montants']['totalTVA'];
+            $totalTTC = $_SESSION['montants']['totalTTC'];
+
+            // Récupération de l'id du client
+            $idClient = $_SESSION['clientSession']['id'];
+
+            // Récupération de l'id du vendeur
+            $idVendeur = $_SESSION['utilisateur']['Id_vendeur'];
+
+            $statutCommande = 'Livrée';
+            $adresseLivraison = 'Vente réalisée en magasin';
+
+            // Insertion de la commande
+            $stmt = $db->prepare(
+                "INSERT INTO commande (Date_commande, Statut_commande, Adresse_livraison, Montant_commande_HT, Montant_TVA, Montant_commande_TTC, Id_vendeur, Id_client) 
+                VALUES (NOW(), ?, ?, ?, ?, ?, ?, ?)"
+            );
+            $stmt->execute([$statutCommande, $adresseLivraison, $totalHT, $totalTVA, $totalTTC, $idVendeur, $idClient]);
+
+            // Récupérer l'id de la commande auto incrémenté
+            $idCommande = $db->lastInsertId();
+
+            // Insertion des lignes de commandes
+            // Boucle pour enregistrer TOUTES les lignes de la commande
+
+            $panier = $_SESSION['panier'];
+            $i = 1;
+
+            foreach ($panier as $produit) {
+
+                $stmt = $db->prepare("INSERT INTO ligne_commande (Nombre_ligne_commande, Quantite_produit_ligne_commande, Prix_unitaire_ligne_commande, Id_commande, Id_produit) VALUES (?, ?, ?, ?, ?)");
+                $stmt->execute([$i, $produit['quantite'], $produit['prixht'], $idCommande, $produit['id']]);
+
+                $i++;
+            }
+            return null;
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
+    }
 }

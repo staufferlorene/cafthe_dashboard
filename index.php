@@ -246,52 +246,60 @@ switch ($action) {
         $controllerProfil->modifierMdp($_SESSION['utilisateur']['Id_vendeur']);
         break;
 
+    /*********************
+     *********************
+     *
+     * Pour la gestion du panier
+     *
+     *********************
+     ********************/
+
     case 'panier':
         // Appel de la méthode pour afficher tous les produits
-        $controllerProfil = new PanierController();
-        $controllerProfil->liste();
+        $controllerPanier = new PanierController();
+        $controllerPanier->liste();
         break;
 
     case 'add_panier' :
         // Appel de la méthode pour ajouter au panier
-        $controllerProfil = new PanierController();
-        $controllerProfil->ajoutPanier();
+        $controllerPanier = new PanierController();
+        $controllerPanier->ajoutPanier();
         break;
 
     case 'view_panier' :
         // Appel de la méthode pour afficher le panier
-        $controllerProfil = new PanierController();
-        $controllerProfil->voirPanier();
+        $controllerPanier = new PanierController();
+        $controllerPanier->voirPanier();
         break;
 
     case 'delete_panier':
         // Appel de la méthode pour supprimer un produit du panier
-        $controllerProfil = new PanierController();
-        $controllerProfil->delete();
+        $controllerPanier = new PanierController();
+        $controllerPanier->delete();
         break;
 
     case 'update_panier' :
         // Appel de la méthode pour modifier le panier
-        $controllerProfil = new PanierController();
-        $controllerProfil->modifierPanier();
+        $controllerPanier = new PanierController();
+        $controllerPanier->modifierPanier();
         break;
 
     case 'client_panier':
         // Appel de la méthode pour rattacher un client au panier
-        $controllerProfil = new PanierController();
-        $controllerProfil->listeChoixClient();
+        $controllerPanier = new PanierController();
+        $controllerPanier->listeChoixClient();
         break;
 
     case 'recap_panier':
         // Appel de la méthode pour récapituler le panier avant encaissement
-        $controllerProfil = new PanierController();
-        $controllerProfil->checkPanier();
+        $controllerPanier = new PanierController();
+        $controllerPanier->checkPanier();
         break;
 
     case 'paiement_panier':
         // Appel de la méthode pour payer le panier
-        $controllerProfil = new PanierController();
-        $controllerProfil->paiementPanier();
+        $controllerPanier = new PanierController();
+        $controllerPanier->paiementPanier();
         break;
 
     default:
