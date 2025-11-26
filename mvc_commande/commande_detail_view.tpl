@@ -77,10 +77,10 @@
 
                         <div class="form-group">
                             <label for="total">Montant TTC :</label>
-                            <input class="form-control" type="email" id="mail" name="mail" disabled value="{$commande.Montant_commande_TTC|escape}">
+                            <input class="form-control" type="email" id="mail" name="mail" disabled value="{$commande.Montant_commande_TTC|escape} €">
                         </div>
 
-                        <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Détail des produits achetéss</h5>
+                        <h5 class="m-0 mb-3 mt-3 font-weight-bold text-primary">Détail des produits achetés</h5>
 
                         <div class="card-body">
                             <div class="table-responsive">
@@ -96,13 +96,15 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    {foreach from=$produit item=produit}
                                         <tr>
-                                            <td>{$commande.Nom_produit|escape}</td>
-                                            <td>{$commande.Quantite_produit_ligne_commande|escape}</td>
-                                            <td>{$commande.Montant_commande_HT|escape}</td>
-                                            <td>{$commande.Montant_TVA|escape}</td>
-                                            <td>{$commande.Montant_commande_TTC|escape}</td>
+                                            <td>{$produit.Nom_produit|escape}</td>
+                                            <td>{$produit.Quantite_produit_ligne_commande|escape}</td>
+                                            <td>{($produit.Prix_unitaire_ligne_commande * $produit.Quantite_produit_ligne_commande)|escape} €</td>
+                                            <td>{(($produit.Prix_TTC - $produit.Prix_unitaire_ligne_commande) * $produit.Quantite_produit_ligne_commande)|escape} €</td>
+                                            <td>{($produit.Prix_TTC * $produit.Quantite_produit_ligne_commande)|escape} €</td>
                                         </tr>
+                                    {/foreach}
                                     </tbody>
                                 </table>
                             </div>

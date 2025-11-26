@@ -168,7 +168,7 @@ class CommandeModel {
      * @return CommandeModel|null Retourne un objet CommandeModel ou null si non trouvé
      */
 
-    public static function loadById(int $Id_commande) {
+    public static function loadByIdClient(int $Id_commande) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 
@@ -187,15 +187,22 @@ class CommandeModel {
             $commande->setDate_commande($data['Date_commande']);
             $commande->setStatut_commande($data['Statut_commande']);
             $commande->setMontant_commande_TTC($data['Montant_commande_TTC']);
-            $commande->setNom_produit($data['Nom_produit']);
-            $commande->setQuantite_produit_ligne_commande($data['Quantite_produit_ligne_commande']);
-            $commande->setMontant_commande_HT($data['Montant_commande_HT']);
-            $commande->setMontant_TVA($data['Montant_TVA']);
 
             return $commande;
         }
 
         // sinon on retourne null
         return null;
+    }
+
+    public static function loadByIdCommande(int $Id_commande) {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        // Récupération des infos dans la BDD
+        $stmt = $db->prepare("SELECT * FROM produit as p JOIN ligne_commande as l ON p.Id_produit = l.Id_produit JOIN commande as c ON l.Id_commande = c.Id_commande JOIN client as cl ON c.Id_client = cl.Id_client WHERE l.Id_commande = ?");
+        $stmt->execute([$Id_commande]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }

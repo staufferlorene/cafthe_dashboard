@@ -62,9 +62,10 @@ class CommandeController {
                     $this->commandeView->redirigerVersListe();
                 } else {
                     // Si échec : Affiche le formulaire avec message d'erreur
-                    $commande = CommandeModel::loadById($Id_commande);
-                    if ($commande) {
-                        $this->commandeView->afficherFormulaireModificationAvecDonnees($commande, $erreur);
+                    $commande = CommandeModel::loadByIdClient($Id_commande);
+                    $produit = CommandeModel::loadByIdCommande($Id_commande);
+                    if ($commande && $produit) {
+                        $this->commandeView->afficherFormulaireModificationAvecDonnees($commande, $produit, $erreur);
                     } else {
                         $this->commandeView->afficherErreurCommandeIntrouvable();
                     }
@@ -72,9 +73,10 @@ class CommandeController {
             }
         } else {
             // Affichage du formulaire avec les données existantes
-            $commande = CommandeModel::loadById($Id_commande);
-            if ($commande) {
-                $this->commandeView->afficherFormulaireModificationAvecDonnees($commande);
+            $commande = CommandeModel::loadByIdClient($Id_commande);
+            $produit = CommandeModel::loadByIdCommande($Id_commande);
+            if ($commande && $produit) {
+                $this->commandeView->afficherFormulaireModificationAvecDonnees($commande, $produit);
             } else {
                 $this->commandeView->afficherErreurCommandeIntrouvable();
             }
@@ -93,9 +95,10 @@ class CommandeController {
      */
     public function voirDetail($Id_commande) {
         // Affichage du formulaire avec les données existantes
-        $commande = CommandeModel::loadById($Id_commande);
-        if ($commande) {
-            $this->commandeView->afficherFormulaireDetailAvecDonnees($commande);
+        $commande = CommandeModel::loadByIdClient($Id_commande);
+        $produit = CommandeModel::loadByIdCommande($Id_commande);
+        if ($commande && $produit) {
+            $this->commandeView->afficherFormulaireDetailAvecDonnees($commande, $produit);
         } else {
             $this->commandeView->afficherErreurCommandeIntrouvable();
         }

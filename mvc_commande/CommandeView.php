@@ -37,9 +37,10 @@ class CommandeView {
      * @param array $commande Données de la commande à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModification($commande, $erreur = null) {
+    public function afficherFormulaireModification($commande, $produit, $erreur = null) {
         $this->smarty->assign('action', 'update_client');
         $this->smarty->assign('commande', $commande);
+        $this->smarty->assign('produit', $produit);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -51,7 +52,7 @@ class CommandeView {
      * @param object $commande Objet commande avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModificationAvecDonnees($commande, $erreur = null) {
+    public function afficherFormulaireModificationAvecDonnees($commande, $produit, $erreur = null) {
         $donneesCommande = [
             'Id_commande' => $commande->getId(),
             'Nom_client' => $commande->getNom_client(),
@@ -66,7 +67,7 @@ class CommandeView {
             'Montant_TVA' => $commande->getMontant_TVA(),
         ];
 
-        $this->afficherFormulaireModification($donneesCommande, $erreur);
+        $this->afficherFormulaireModification($donneesCommande, $produit, $erreur);
     }
 
     /**
@@ -90,7 +91,7 @@ class CommandeView {
      * @param object $commande Objet commande avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireDetailAvecDonnees($commande, $erreur = null) {
+    public function afficherFormulaireDetailAvecDonnees($commande, $produit, $erreur = null) {
         $donneesCommande = [
             'Id_commande' => $commande->getId(),
             'Nom_client' => $commande->getNom_client(),
@@ -105,7 +106,7 @@ class CommandeView {
             'Montant_TVA' => $commande->getMontant_TVA(),
         ];
 
-        $this->afficherFormulaireDetail($donneesCommande, $erreur);
+        $this->afficherFormulaireDetail($donneesCommande, $produit, $erreur);
     }
 
     /**
@@ -113,9 +114,10 @@ class CommandeView {
      * @param array $commande Données de la commande à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireDetail($commande, $erreur = null) {
+    public function afficherFormulaireDetail($commande, $produit, $erreur = null) {
         $this->smarty->assign('action', 'detail_commande');
         $this->smarty->assign('commande', $commande);
+        $this->smarty->assign('produit', $produit);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }

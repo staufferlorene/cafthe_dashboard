@@ -81,10 +81,10 @@
                                     <td>{$commande.Prenom_client|escape}</td>
                                     <td>{$commande.Date_commande|escape}</td>
                                     <td>{$commande.Statut_commande|escape}</td>
-                                    <td>{$commande.Montant_commande_TTC|escape}</td>
+                                    <td>{$commande.Montant_commande_TTC|escape} €</td>
                                     <td>
-                                        <a href="index.php?action=detail_commande&Id_commande={$commande.Id_client}"><i class="fa-solid fa-eye"></i></i></a>
-                                        <a href="index.php?action=update_commande&Id_commande={$commande.Id_client}"><i class="fa-solid fa-pen-to-square text-warning mr-4 ml-4"></i></a>
+                                        <a href="index.php?action=detail_commande&Id_commande={$commande.Id_commande}"><i class="fa-solid fa-eye"></i></i></a>
+                                        <a href="index.php?action=update_commande&Id_commande={$commande.Id_commande}"><i class="fa-solid fa-pen-to-square text-warning mr-4 ml-4"></i></a>
                                     </td>
                                 </tr>
                             {/foreach}
