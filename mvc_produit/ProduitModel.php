@@ -267,4 +267,20 @@ class ProduitModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    /**
+     * Vérifie si le produit a au moins une ligne de commande qui lui est rattaché
+     *
+     * @param $Id_produit
+     * @return bool
+     */
+
+    public static function haveOrder($Id_produit) {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        $stmt = $db->prepare("SELECT COUNT(*) FROM ligne_commande WHERE Id_produit = ?");
+        $stmt->execute([$Id_produit]);
+        return $stmt->fetchColumn() > 0;
+    }
 }

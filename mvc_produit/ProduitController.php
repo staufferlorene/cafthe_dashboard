@@ -38,6 +38,12 @@ class ProduitController {
      */
     public function liste() {
         $produits = $this->produitModel->lister();
+
+        // Vérifie si au moins une ligne de commande est rattachée au produit
+        foreach ($produits as &$produit) {
+            $produit['haveOrder'] = ProduitModel::haveOrder($produit['Id_produit']);
+        }
+
         $this->produitView->afficherListe($produits);
     }
 

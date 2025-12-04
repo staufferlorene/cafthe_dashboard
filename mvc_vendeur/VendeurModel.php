@@ -234,4 +234,19 @@ class VendeurModel {
         // sinon on retourne null
         return null;
     }
+
+    /**
+     * Vérifie si le vendeur a au moins une commande qui lui est rattachée
+     *
+     * @param $Id_vendeur
+     * @return bool
+     */
+    public static function haveOrder($Id_vendeur) {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        $stmt = $db->prepare("SELECT COUNT(*) FROM commande WHERE Id_vendeur = ?");
+        $stmt->execute([$Id_vendeur]);
+        return $stmt->fetchColumn() > 0;
+    }
 }

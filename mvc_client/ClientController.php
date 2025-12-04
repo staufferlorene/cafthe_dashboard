@@ -39,6 +39,12 @@ class ClientController {
      */
     public function liste() {
         $clients = $this->clientModel->lister();
+
+        // Vérifie si au moins une commande est rattachée au client
+        foreach ($clients as &$client) {
+            $client['haveOrder'] = ClientModel::haveOrder($client['Id_client']);
+        }
+
         $this->clientView->afficherListe($clients);
     }
 

@@ -39,6 +39,12 @@ class VendeurController {
      */
     public function liste() {
         $vendeurs = $this->vendeurModel->lister();
+
+        // Vérifie si au moins une commande est rattachée au vendeur
+        foreach ($vendeurs as &$vendeur) {
+            $vendeur['haveOrder'] = VendeurModel::haveOrder($vendeur['Id_vendeur']);
+        }
+
         $this->vendeurView->afficherListe($vendeurs);
     }
 

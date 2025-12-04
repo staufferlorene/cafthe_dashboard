@@ -205,4 +205,20 @@ class ClientModel {
         // sinon on retourne null
         return null;
     }
+
+    /**
+     * Vérifie si le client a au moins une commande qui lui est rattachée
+     *
+     * @param $Id_client
+     * @return bool
+     */
+
+    public static function haveOrder($Id_client) {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        $stmt = $db->prepare("SELECT COUNT(*) FROM commande WHERE Id_client = ?");
+        $stmt->execute([$Id_client]);
+        return $stmt->fetchColumn() > 0;
+    }
 }

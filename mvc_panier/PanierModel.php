@@ -159,7 +159,7 @@ class PanierModel {
 
                 $i++;
             }
-            return null;
+            return null; // Retourne null si succès pour gestion des erreurs dans le controlleur
         } catch (PDOException $e) {
             return $e->getMessage();
         }

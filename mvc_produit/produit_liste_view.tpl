@@ -92,7 +92,12 @@
                                     <td>
                                         <a href="index.php?action=detail_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-eye"></i></i></a>
                                         <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-pen-to-square text-warning mr-4 ml-4"></i></a>
-                                        <a href="index.php?action=delete_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-trash text-danger"></i></a>
+
+                                        {if $produit.haveOrder}
+                                            <i class="fa-solid fa-ban text-danger"></i>
+                                        {else}
+                                            <a href="index.php?action=delete_produit&Id_produit={$produit.Id_produit}"><i class="fa-solid fa-trash text-danger"></i></a>
+                                        {/if}
                                     </td>
                                 </tr>
                             {/foreach}
