@@ -78,26 +78,29 @@
         </a>
     </li>
 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- Visible uniquement par les admins -->
+    {if $utilisateur.Role == 'admin'}
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Admin
-    </div>
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            Admin
+        </div>
 
 
-    <li class="nav-item">
-        <a class="nav-link" href="index.php?action=vendeur">
-            <i class="fa-solid fa-gear"></i>
-            <span>Gestion vendeur</span>
-        </a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.php?action=vendeur">
+                <i class="fa-solid fa-gear"></i>
+                <span>Gestion vendeur</span>
+            </a>
+        </li>
 
-    <li class="nav-item">
-        <a class="nav-link" href="index.php?action=add_vendeur">
-            <i class="fa-solid fa-user-plus"></i>
-            <span>Ajouter un vendeur</span>
-        </a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="index.php?action=add_vendeur">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Ajouter un vendeur</span>
+            </a>
+        </li>
+    {/if}
 </ul>
