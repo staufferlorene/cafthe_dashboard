@@ -92,7 +92,7 @@
                                         <a href="index.php?action=update_client&Id_client={$client.Id_client}"><i class="fa-solid fa-pen-to-square text-warning mr-4 ml-4"></i></a>
 
                                         {if $client.haveOrder}
-                                            <i class="fa-solid fa-ban text-danger"></i>
+                                            <i class="fa-solid fa-trash" style="cursor: not-allowed"></i>
                                         {else}
                                             <a href="index.php?action=delete_client&Id_client={$client.Id_client}"><i class="fa-solid fa-trash text-danger"></i></a>
                                         {/if}
