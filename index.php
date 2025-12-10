@@ -25,13 +25,14 @@ require_once 'mvc_vendeur/VendeurController.php';
 require_once 'mvc_login/LoginController.php';
 require_once 'mvc_profil/ProfilController.php';
 require_once 'mvc_panier/PanierController.php';
+require_once 'mvc_home/HomeController.php';
 
 // Vérification si l'utilisateur est connecté
 if (isset($_SESSION['utilisateur'])) {
     // Passage des infos de l'utilisateur à smarty
     $smarty->assign('utilisateur', $_SESSION['utilisateur']);
     // Récupération des paramètres de l'action via l'URL, si pas d'action affichage de la page d'accueil
-    $action = isset($_GET['action']) ? $_GET['action'] : 'produit';
+    $action = isset($_GET['action']) ? $_GET['action'] : 'home';
     // Si utilisateur non connecté affichage de la page de connexion
 } else {
     $action = 'login';
@@ -300,6 +301,20 @@ switch ($action) {
         // Appel de la méthode pour payer le panier
         $controllerPanier = new PanierController();
         $controllerPanier->paiementPanier();
+        break;
+
+    /*********************
+     *********************
+     *
+     * Pour les stats
+     *
+     *********************
+     ********************/
+
+    case 'home':
+        // Appel de la méthode pour afficher toutes les stats
+        $controllerHome = new HomeController();
+        $controllerHome->ventesParProduits();
         break;
 
     default:
