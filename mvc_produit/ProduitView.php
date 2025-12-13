@@ -25,9 +25,10 @@ class ProduitView {
      * @param string|null $erreur Message d'erreur à afficher
      * @param array $categories Catégorie de produit provenant de la BDD
      */
-    public function afficherFormulaireAjout($erreur = null, $categories = []) {
+    public function afficherFormulaireAjout($erreur = null, $categories = [], $conditionnements = []) {
         $this->smarty->assign('action', 'add');
         $this->smarty->assign('categories', $categories);
+        $this->smarty->assign('conditionnements', $conditionnements);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -40,10 +41,11 @@ class ProduitView {
      * @param string|null $erreur Message d'erreur à afficher
      * @param array $categories Catégorie de produit provenant de la BDD
      */
-    public function afficherFormulaireModification($produit, $erreur = null, $categories = []) {
+    public function afficherFormulaireModification($produit, $erreur = null, $categories = [], $conditionnements = []) {
         $this->smarty->assign('action', 'update_produit');
         $this->smarty->assign('produit', $produit);
         $this->smarty->assign('categories', $categories);
+        $this->smarty->assign('conditionnements', $conditionnements);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -55,7 +57,7 @@ class ProduitView {
      * @param object $produit Objet produit avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModificationAvecDonnees($produit, $erreur = null) {
+    public function afficherFormulaireModificationAvecDonnees($produit, $categorie, $conditionnements, $erreur = null) {
         $donneesProduit = [
             'Id_produit' => $produit->getId(),
             'Nom_produit' => $produit->getNom_produit(),
@@ -64,10 +66,12 @@ class ProduitView {
             'Prix_HT' => $produit->getPrix_HT(),
             'Stock' => $produit->getStock(),
             'Type_conditionnement' => $produit->getType_conditionnement(),
-            'Nom_categorie' => $produit->getNom_categorie()
+            'Nom_categorie' => $produit->getNom_categorie(),
+            'Id_categorie' => $produit->getId_categorie(),
+            'Tva_categorie' => $produit->getTva_categorie()
         ];
 
-        $this->afficherFormulaireModification($donneesProduit, $erreur);
+        $this->afficherFormulaireModification($donneesProduit, $erreur, $categorie, $conditionnements);
     }
 
     /**

@@ -54,11 +54,15 @@
     {/if}
             <div class="form-group">
                 <label for="categorie">Catégorie :</label>
-                <select class="form-control" id="categorie" name="categorie" required>
-                {if $action == 'add'}<option value="">-- Choisissez une catégorie --</option>{/if}
+                <select class="form-control" id="categorie" name="categorie" required onchange="change(this)">
+                    {if $action == 'add'}<option value="" selected disabled>-- Choisissez une catégorie --</option>{/if}
                     {foreach from=$categories item=categorie}
-                        <option value="{$categorie.Id_categorie}"
-                                {if $action == 'update_produit' && $produit.Id_categorie == $categorie.Id_categorie}selected{/if}>
+                        <option
+                            value="{$categorie.Id_categorie}"
+                            {*pour stocker tva et l'exploiter en js pour l'afficher dans champ tva*}
+                            data-tauxtva="{$categorie.Tva_categorie}"
+                            {if $action == 'update_produit' && $produit.Id_categorie == $categorie.Id_categorie}selected{/if}
+                        >
                             {$categorie.Nom_categorie|escape}
                         </option>
                     {/foreach}
@@ -76,38 +80,42 @@
             </div>
 
             <div class="form-group">
-                <label for="prix_ttc">Prix TTC :</label>
-                <input class="form-control" type="number" id="prix_ttc" name="prix_ttc" required value="{if $action == 'update_produit'}{$produit.Prix_TTC|escape}{/if}">
+                <label for="prix_ht">Prix HT :</label>
+                <input class="form-control" type="number" step="0.01" id="prix_ht" name="prix_ht" required value="{if $action == 'update_produit'}{$produit.Prix_HT|escape}{/if}" min="0">
             </div>
 
             <div class="form-group">
-                <label for="prix_ht">Prix HT :</label>
-                <input class="form-control" type="number" id="prix_ht" name="prix_ht" required value="{if $action == 'update_produit'}{$produit.Prix_HT|escape}{/if}">
+                <label for="tva">TVA en % :</label>
+                <input
+                    class="form-control" id="tva" name="tva" disabled
+                    value="{if $action == 'update_produit'}{$produit.Tva_categorie|escape}{/if}"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="prix_ttc">Prix TTC :</label>
+                <input class="form-control" type="number" id="prix_ttc" name="prix_ttc" readonly value="{if $action == 'update_produit'}{$produit.Prix_TTC|escape}{/if}">
             </div>
 
             <div class="form-group">
                 <label for="stock">Stock :</label>
-                <input class="form-control" type="number" id="stock" name="stock" required value="{if $action == 'update_produit'}{$produit.Stock|escape}{/if}">
+                <input class="form-control" type="number" id="stock" name="stock" required value="{if $action == 'update_produit'}{$produit.Stock|escape}{/if}" min="0">
             </div>
 
             <div class="form-group">
                <label for="conditionnement">Conditionnement :</label>
                 <select class="form-control" id="conditionnement" name="conditionnement" required>
-
-                    {*En modification reprendre le conditionnement et afficher dans la liste déroulante uniquement l'autre option*}
-                    {if $action == 'update_produit'}
-                        <option value="">{$produit.Type_conditionnement|escape}</option>
-                            <option>{if $produit.Type_conditionnement == 'vrac'}unitaire{else}vrac{/if}</option>
-                    {else}
-                        {*Pour l'ajout*}
-                        <option value="">-- Choisissez un conditionnement --</option>
-                            <option>unitaire</option>
-                            <option>vrac</option>
-                    {/if}
+                    {if $action == 'add'}<option value="" selected disabled>-- Choisissez un conditionnement --</option>{/if}
+                    {foreach from=$conditionnements item=conditionnement}
+                        <option value="{$conditionnement.Type_conditionnement|escape}"
+                            {if $action == 'update_produit' && $produit.Type_conditionnement == $conditionnement.Type_conditionnement}selected{/if}
+                        >
+                            {$conditionnement.Type_conditionnement|escape}
+                        </option>
+                    {/foreach}
                 </select>
             </div>
-
-            <a href="index.php" class="btn btn-secondary mr-2 mt-3 mb-5">Retour</a>
+            <a href="index.php?action=produit" class="btn btn-secondary mr-2 mt-3 mb-5">Retour</a>
             <button type="submit" class="btn btn-success mt-3 mb-5">Valider</button>
         </form>
                 </div>
@@ -131,6 +139,9 @@
 
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
+
+    <!-- Calculs, mise en session et fenêtre alert -->
+    <script src="mvc_produit/js/produit-form.js"></script>
 
 </body>
 </html>

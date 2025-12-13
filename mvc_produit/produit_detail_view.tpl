@@ -89,7 +89,7 @@
                             <input class="form-control" type="text" id="conditionnement" name="conditionnement" disabled value="{$produit.Type_conditionnement|escape}">
                         </div>
 
-                        <a href="index.php" class="btn btn-secondary mt-3 mb-5 mr-2">Retour</a>
+                        <a href="index.php?action=produit" class="btn btn-secondary mt-3 mb-5 mr-2">Retour</a>
                         <a href="index.php?action=update_produit&Id_produit={$produit.Id_produit}" class="btn btn-outline-info mt-3 mb-5">Modifier</a>
                     </form>
             </div>

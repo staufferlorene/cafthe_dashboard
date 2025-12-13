@@ -70,13 +70,15 @@ class ProduitController {
                 } else {
                     // Si échec : Affiche le formulaire avec message d'erreur
                     $categories = ProduitModel::categories();
-                    $this->produitView->afficherFormulaireAjout($erreur, $categories);
+                    $conditionnements = ProduitModel::conditionnements();
+                    $this->produitView->afficherFormulaireAjout($erreur, $categories, $conditionnements);
                 }
             }
         } else {
             // Affiche le formulaire vide
             $categories = ProduitModel::categories();
-            $this->produitView->afficherFormulaireAjout(null, $categories);
+            $conditionnements = ProduitModel::conditionnements();
+            $this->produitView->afficherFormulaireAjout(null, $categories, $conditionnements);
         }
     }
 
@@ -117,8 +119,10 @@ class ProduitController {
                 } else {
                     // Si échec : Affiche le formulaire avec message d'erreur
                     $produit = ProduitModel::loadById($Id_produit);
+                    $categorie = ProduitModel::categories();
+                    $conditionnements = ProduitModel::conditionnements();
                     if ($produit) {
-                        $this->produitView->afficherFormulaireModificationAvecDonnees($produit, $erreur);
+                        $this->produitView->afficherFormulaireModificationAvecDonnees($produit, $categorie, $conditionnements, $erreur);
                     } else {
                         $this->produitView->afficherErreurProduitIntrouvable();
                     }
@@ -127,8 +131,10 @@ class ProduitController {
         } else {
             // Affichage du formulaire avec les données existantes
             $produit = ProduitModel::loadById($Id_produit);
+            $categorie = ProduitModel::categories();
+            $conditionnements = ProduitModel::conditionnements();
             if ($produit) {
-                $this->produitView->afficherFormulaireModificationAvecDonnees($produit);
+                $this->produitView->afficherFormulaireModificationAvecDonnees($produit, $categorie, $conditionnements);
             } else {
                 $this->produitView->afficherErreurProduitIntrouvable();
             }

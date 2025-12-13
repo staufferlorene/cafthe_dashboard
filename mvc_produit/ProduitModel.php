@@ -20,6 +20,7 @@ class ProduitModel {
     private $Tva_categorie;
     private $Nom_categorie;
     private $Type_conditionnement;
+    private $Id_categorie;
 
 
     // Constructeur : initialisation du produit
@@ -103,6 +104,15 @@ class ProduitModel {
 
     public function setType_conditionnement($Type_conditionnement) {
         return $this->Type_conditionnement = $Type_conditionnement;
+    }
+
+    // Getter et setter pour l'Id catégorie'
+    public function getId_categorie() {
+        return $this->Id_categorie;
+    }
+
+    public function setId_categorie($Id_categorie) {
+        $this->Id_categorie = $Id_categorie;
     }
 
 
@@ -198,23 +208,6 @@ class ProduitModel {
         return $stmt->execute([$Id_produit]);
     }
 
-/*    public function save() {
-        $db = Database::getInstance()->getConnection();
-
-        if ($this->Id_produit === null) {
-            //insertion
-            $stmt = $db->prepare("INSERT INTO produit(Nom_produit, Prix_TTC, Stock) VALUE(?,?,?)");
-            $stmt->execute([$this->Nom_produit, $this->Prix_TTC, $this->Stock]);
-
-            //Recuperation de l'id généré par MySQL
-            $this->Id_produit = $db->lastInsertId();
-        } else {
-            //Mise à jour si la voiture existe déjà
-            $stmt = $db->prepare("UPDATE produit SET Nom_produit =?, Prix_TTC =?, Stock=? WHERE Id_produit = ?");
-            $stmt->execute([$this->Nom_produit, $this->Prix_TTC, $this->Stock, $this->Id_produit]);
-        }
-    }*/
-
     /**
      * Charge un produit par son identifiant
      *
@@ -244,6 +237,7 @@ class ProduitModel {
             $produit->setStock($data['Stock']);
             $produit->setNom_categorie($data['Nom_categorie']);
             $produit->setType_conditionnement($data['Type_conditionnement']);
+            $produit->setId_categorie($data['Id_categorie']);
             return $produit;
         }
 
@@ -282,5 +276,15 @@ class ProduitModel {
         $stmt = $db->prepare("SELECT COUNT(*) FROM ligne_commande WHERE Id_produit = ?");
         $stmt->execute([$Id_produit]);
         return $stmt->fetchColumn() > 0;
+    }
+
+    // Récupère tous les conditionnements
+    public static function conditionnements() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        $stmt = $db->prepare("SELECT DISTINCT Type_conditionnement FROM produit");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
