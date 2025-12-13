@@ -126,14 +126,64 @@ class HomeModel {
         $db = Database::getInstance()->getConnection();
 
         // Récupération des infos dans la BDD
-        $stmt = $db->prepare(
-            "SELECT p.Nom_produit, SUM(l.Quantite_produit_ligne_commande) AS qte_totale_vendu
+        $stmt = $db->prepare("
+            SELECT p.Nom_produit, SUM(l.Quantite_produit_ligne_commande) AS qte_totale_vendu
             FROM ligne_commande AS l
             JOIN produit AS p ON p.Id_produit = l.Id_produit
             GROUP BY l.Id_produit
             ORDER BY qte_totale_vendu DESC
-            LIMIT 10"
-        );
+            LIMIT 6
+        ");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function listerVentesParCategories() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        // Récupération des infos dans la BDD
+        $stmt = $db->prepare("
+            SELECT c.Nom_categorie, SUM(l.Quantite_produit_ligne_commande * l.Prix_unitaire_ligne_commande) AS montant_total
+            FROM ligne_commande AS l
+            JOIN produit AS p ON p.Id_produit = l.Id_produit
+            JOIN categorie AS c ON c.Id_categorie = p.Id_categorie
+            GROUP BY c.Id_categorie
+        ");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function listerVentesParMois() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        // Récupération des infos dans la BDD
+        $stmt = $db->prepare("
+            SELECT DATE_FORMAT(Date_commande, \"%Y-%m\") AS mois, SUM(Montant_commande_TTC) AS total_mois
+            FROM commande
+            GROUP BY mois
+            ORDER BY mois
+        ");
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function listerCAParVendeur() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        // Récupération des infos dans la BDD
+        $stmt = $db->prepare("
+            SELECT v.Nom_vendeur, v.Prenom_vendeur, SUM(c.Montant_commande_TTC) AS ca_total
+            FROM commande AS c
+            JOIN vendeur AS v ON v.Id_vendeur = c.Id_vendeur
+            GROUP BY v.Id_vendeur
+            ORDER BY ca_total DESC
+        ");
         $stmt->execute();
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../img/icon.png" />
 
-    <title>CafThé - Gestion produits</title>
+    <title>CafThé - Dashboard</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../css/chart.css">
@@ -56,24 +56,24 @@
                     </div>
                 </div>
 
-                <!-- xxx -->
+                <!-- Catégorie la plus vendue -->
                 <div class="col-md-6 mb-4">
                     <div class="chart-container p-3 bg-white shadow rounded">
-                        <canvas id=""></canvas>
+                        <canvas id="graphVentesParCategories"></canvas>
                     </div>
                 </div>
 
-                <!-- xxx -->
+                <!-- Vente par mois -->
                 <div class="col-md-6 mb-4">
                     <div class="chart-container p-3 bg-white shadow rounded">
-                        <canvas id=""></canvas>
+                        <canvas id="graphVentesParMois"></canvas>
                     </div>
                 </div>
 
-                <!-- xxx -->
+                <!-- CA par vendeur -->
                 <div class="col-md-6 mb-4">
                     <div class="chart-container p-3 bg-white shadow rounded">
-                        <canvas id=""></canvas>
+                        <canvas id="graphCAParVendeur"></canvas>
                     </div>
                 </div>
 
@@ -91,11 +91,17 @@
         <script>
             window.statsData = {
                 ventesParProduits: {$ventesParProduits|json_encode},
+                ventesParCategories: {$ventesParCategories|json_encode},
+                ventesParMois: {$ventesParMois|json_encode},
+                caParVendeur: {$caParVendeur|json_encode}
             }
         </script>
 
         <!-- Fichiers js pour afficher les graphiques -->
         <script src="mvc_home/js/vente-par-produit.js"></script>
+        <script src="mvc_home/js/vente-par-categorie.js"></script>
+        <script src="mvc_home/js/vente-par-mois.js"></script>
+        <script src="mvc_home/js/ca-par-vendeur.js"></script>
 
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>

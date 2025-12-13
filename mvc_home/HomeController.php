@@ -34,10 +34,12 @@ class HomeController {
      *
      * @return void
      */
-    public function ventesParProduits() {
+    public function afficherStat() {
         $ventesParProduits = $this->homeModel->listerProduitsVendus();
+        $ventesParCategories = $this->homeModel->listerVentesParCategories();
+        $ventesParMois = $this->homeModel->listerVentesParMois();
+        $caParVendeur = $this->homeModel->listerCAParVendeur();
 
-        $this->homeView->afficherListe($ventesParProduits);
+        $this->homeView->afficherListe($ventesParProduits, $ventesParCategories, $ventesParMois, $caParVendeur);
     }
-
 }

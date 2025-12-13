@@ -18,4 +18,14 @@ new Chart(graph, {
             borderWidth: 1
         }]
     },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            title: {
+                display: true,
+                text: 'Produits les plus vendus'
+            }
+        }
+    },
 });

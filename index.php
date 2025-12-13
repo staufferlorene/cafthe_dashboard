@@ -314,7 +314,7 @@ switch ($action) {
     case 'home':
         // Appel de la méthode pour afficher toutes les stats
         $controllerHome = new HomeController();
-        $controllerHome->ventesParProduits();
+        $controllerHome->afficherStat();
         break;
 
     default:
