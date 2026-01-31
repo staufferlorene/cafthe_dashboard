@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:3306
--- Généré le : dim. 23 Nov. 2025 à 11:21
+-- Généré le : Sam. 31 Jan. 2026 à 10:24
 -- Version du serveur : 8.0.30
 -- Version de PHP : 8.4.7
 
@@ -72,7 +72,7 @@ INSERT INTO `client` (`Id_client`, `Nom_client`, `Prenom_client`, `Telephone_cli
 (7, 'Roux', 'Louis', '0987654321', 'louis.roux@example.com', 'mdp404', '456 Avenue de Toulouse, 31000 Toulouse'),
 (8, 'Blanc', 'Chloe', '0123987654', 'chloe.blanc@example.com', 'mdp505', '789 Boulevard de Nice, 06000 Nice'),
 (9, 'Garnier', 'Hugo', '0000000000', 'test.maj@email.com', 'mdp606', 'rue du test 41200 Romo'),
-(10, 'Chevalier', 'Alice', '0000000000', 'test.maj@email.com', 'mdp707', 'rue du test 41200 Romo'),
+(10, 'Chevalier', 'Alice', '0000000000', 'test.maj@email.com', 'mdp707', '789 Boulevard de Nice, 06000 Nice'),
 (11, 'Muller', 'Lucas', '0123456789', 'lucas.muller@example.com', 'mdp808', '123 Rue de Rennes, 35000 Rennes'),
 (12, 'Lemoine', 'Julie', '0987654321', 'julie.lemoine@example.com', 'mdp909', '456 Avenue de Reims, 51100 Reims'),
 (13, 'Dumas', 'Thomas', '0123987654', 'thomas.dumas@example.com', 'mdp010', '789 Boulevard de Dijon, 21000 Dijon'),
@@ -95,7 +95,6 @@ INSERT INTO `client` (`Id_client`, `Nom_client`, `Prenom_client`, `Telephone_cli
 (31, 'Doe6', 'John6', '0611223344', 'john6.does@email.com', '$2b$10$UpFDVUEPDI5gt1JJ3QqituUM9yaKcmZtJlczcJpDdVPA3SFBKQxRK', 'rue du test 41000 Romo'),
 (32, 'Test', 'Lorene', '05 47 06 08 36', 'lorene@email.com', '$2b$10$gHOMeykF7rY1.lDdvBfho.IyNVPHZs8TaY9gKWDxN7ET9BnUgfTCW', 'modif adresse'),
 (44, 'test', 'test', '0600000000', 'm@m.fr', '$2b$10$kVaXzYo26kMalANnjbGWFOM9XLQdT.k.2O.aTHvUVdJjIJ4c/sFKa', '1'),
-(45, 't', 't', 't', 't@f.fr', '$2b$10$boHjH2r9r8hlclOVGJ58N.NM1qqS4eRruDwD2jw3WkHBhXIKnMjXa', 't'),
 (46, 'h', 'h', 'h', 'h@l.fr', '$2b$10$hXXUM22yAtUYXOQBTPnLYOC0FNP/uTTIQwAeulFidf.SWvfe8i1q2', 'h');
 
 -- --------------------------------------------------------
@@ -121,15 +120,22 @@ CREATE TABLE `commande` (
 --
 
 INSERT INTO `commande` (`Id_commande`, `Date_commande`, `Statut_commande`, `Adresse_livraison`, `Montant_commande_HT`, `Montant_TVA`, `Montant_commande_TTC`, `Id_vendeur`, `Id_client`) VALUES
-(1, '2025-01-12', 'en préparation', '123 Rue de Paris, 75001 Paris', 25.00, 5.00, 30.00, 2, 1),
-(2, '2025-01-18', 'expédiée', '456 Avenue de Lyon, 69001 Lyon', 15.00, 3.00, 18.00, 2, 2),
-(4, '2025-02-10', 'livrée', '321 Rue de Lille, 59000 Lille', 30.00, 6.00, 36.00, 1, 2),
-(5, '2025-02-15', 'expédiée', '654 Rue de Nantes, 44000 Nantes', 40.00, 8.00, 48.00, 2, 5),
-(6, '2025-02-20', 'livrée', '123 Rue de Bordeaux, 33000 Bordeaux', 50.00, 10.00, 60.00, 1, 6),
-(7, '2025-03-05', 'en préparation', '456 Avenue de Toulouse, 31000 Toulouse', 35.00, 7.00, 42.00, 2, 7),
-(8, '2025-03-10', 'expédiée', '789 Boulevard de Nice, 06000 Nice', 45.00, 9.00, 54.00, 1, 8),
-(9, '2025-03-15', 'livrée', '321 Rue de Strasbourg, 67000 Strasbourg', 55.00, 11.00, 66.00, 2, 9),
-(10, '2025-04-01', 'test', '654 Rue de Montpellier, 34000 Montpellier', 60.00, 12.00, 72.00, 1, 10);
+(1, '2025-01-12', 'En préparation', '123 Rue de Paris, 75001 Paris', 25.00, 5.00, 30.00, 2, 1),
+(2, '2025-01-18', 'Expédiée', '456 Avenue de Lyon, 69001 Lyon', 15.00, 3.00, 18.00, 2, 2),
+(4, '2025-02-10', 'Livrée', '321 Rue de Lille, 59000 Lille', 30.00, 6.00, 36.00, 1, 2),
+(5, '2025-02-15', 'Expédiée', '654 Rue de Nantes, 44000 Nantes', 40.00, 8.00, 48.00, 2, 5),
+(6, '2025-02-20', 'Livrée', '123 Rue de Bordeaux, 33000 Bordeaux', 50.00, 10.00, 60.00, 1, 6),
+(7, '2025-03-05', 'En préparation', '456 Avenue de Toulouse, 31000 Toulouse', 35.00, 7.00, 42.00, 2, 7),
+(8, '2025-03-10', 'Expédiée', '789 Boulevard de Nice, 06000 Nice', 45.00, 9.00, 54.00, 1, 8),
+(9, '2025-03-15', 'Livrée', '321 Rue de Strasbourg, 67000 Strasbourg', 55.00, 11.00, 66.00, 2, 9),
+(10, '2025-04-01', 'Livrée', '654 Rue de Montpellier, 34000 Montpellier', 60.00, 12.00, 72.00, 1, 10),
+(86, '2025-11-23', 'Livrée', 'Vente réalisée en magasin', 68.00, 10.99, 78.99, 22, 10),
+(87, '2025-11-23', 'Livrée', 'Vente réalisée en magasin', 108.00, 5.94, 113.94, 22, 7),
+(88, '2025-11-23', 'Livrée', 'Vente réalisée en magasin', 5.00, 1.00, 6.00, 22, 20),
+(89, '2025-11-26', 'Livrée', 'Vente réalisée en magasin', 100.00, 6.25, 106.25, 22, 4),
+(90, '2025-11-26', 'Livrée', 'Vente réalisée en magasin', 110.00, 13.30, 123.30, 22, 1),
+(91, '2025-12-04', 'Livrée', 'Vente réalisée en magasin', 10.00, 0.55, 10.55, 22, 16),
+(92, '2026-01-26', 'Livrée', 'Vente réalisée en magasin', 55.00, 5.21, 60.21, 22, 1);
 
 -- --------------------------------------------------------
 
@@ -167,7 +173,34 @@ INSERT INTO `ligne_commande` (`Id_ligne_commande`, `Nombre_ligne_commande`, `Qua
 (38, 1, 2, 10.00, 1, 1),
 (39, 2, 3, 15.00, 1, 2),
 (45, 1, 2, 10.00, 1, 1),
-(46, 1, 2, 10.00, 1, 1);
+(46, 1, 2, 10.00, 1, 1),
+(75, 2, 2, 30.00, 86, 9),
+(76, 1, 1, 18.99, 86, 10),
+(77, 1, 3, 20.00, 87, 7),
+(78, 2, 4, 12.00, 87, 4),
+(79, 1, 1, 5.00, 88, 3),
+(80, 1, 2, 10.00, 89, 1),
+(81, 2, 5, 15.00, 89, 2),
+(82, 3, 1, 5.00, 89, 3),
+(83, 1, 1, 18.00, 90, 10),
+(84, 2, 2, 25.00, 90, 9),
+(85, 3, 3, 14.00, 90, 8),
+(86, 1, 1, 10.00, 91, 1),
+(87, 1, 1, 10.00, 92, 1),
+(88, 2, 2, 15.00, 92, 2),
+(89, 3, 3, 5.00, 92, 3);
+
+--
+-- Déclencheurs `ligne_commande`
+--
+DELIMITER $$
+CREATE TRIGGER `updateStockProduit` AFTER INSERT ON `ligne_commande` FOR EACH ROW BEGIN
+	UPDATE produit
+    SET Stock = Stock - NEW.Quantite_produit_ligne_commande
+    WHERE Id_produit = NEW.Id_produit;
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -192,9 +225,9 @@ CREATE TABLE `produit` (
 --
 
 INSERT INTO `produit` (`Id_produit`, `Nom_produit`, `Description`, `Prix_HT`, `Prix_TTC`, `Stock`, `Type_conditionnement`, `Chemin_img`, `Id_categorie`) VALUES
-(1, 'Thé Vert', 'Délicat et rafraîchissant, le thé vert offre des notes végétales et légèrement astringentes. Riche en antioxydants, il se déguste nature ou parfumé.', 10.00, 10.55, 100, 'unitaire', 'the_vert.webp', 1),
-(2, 'Café Arabica', 'Un café doux et raffiné, aux arômes délicats de fleurs et de fruits. Cultivé en altitude, il offre une saveur équilibrée, légèrement acide avec des notes subtiles de chocolat. Parfait pour une expérience gustative douce et harmonieuse à tout moment de la journée. Vendu en boîte de 250g.', 15.00, 15.83, 50, 'vrac', 'cafe_arabica.jpeg', 2),
-(3, 'Tasse à Thé', 'Élégante et souvent en porcelaine, elle permet de savourer pleinement les arômes du thé.', 5.00, 6.00, 200, 'unitaire', 'tasse_the.webp', 3),
+(1, 'Thé Vert', 'Délicat et rafraîchissant, le thé vert offre des notes végétales et légèrement astringentes. Riche en antioxydants, il se déguste nature ou parfumé.', 10.00, 10.55, 99, 'unitaire', 'the_vert.webp', 1),
+(2, 'Café Arabica', 'Un café doux et raffiné, aux arômes délicats de fleurs et de fruits. Cultivé en altitude, il offre une saveur équilibrée, légèrement acide avec des notes subtiles de chocolat. Parfait pour une expérience gustative douce et harmonieuse à tout moment de la journée. Vendu en boîte de 250g.', 15.00, 15.83, 48, 'vrac', 'cafe_arabica.jpeg', 2),
+(3, 'Tasse à Thé', 'Élégante et souvent en porcelaine, elle permet de savourer pleinement les arômes du thé.', 5.00, 6.00, 197, 'unitaire', 'tasse_the.webp', 3),
 (4, 'Thé Noir', 'Puissant et corsé, notre thé noir de Ceylan dévoile des arômes maltés et épicés. Idéal pour un réveil tonique.\r\n\r\n\r\n', 12.00, 12.66, 80, 'unitaire', 'the_ceylan.webp', 1),
 (5, 'Café Robusta', 'Corsé et intense, il se distingue par son amertume prononcée et sa teneur élevée en caféine.', 13.00, 13.72, 60, 'unitaire', 'cafe_robusta.jpeg', 2),
 (6, 'Infuseur à Thé', 'Accessoire pratique pour infuser le thé en vrac, évitant les résidus dans la tasse.', 7.00, 8.40, 150, 'unitaire', 'infuseur_the.webp', 3),
@@ -215,7 +248,9 @@ INSERT INTO `produit` (`Id_produit`, `Nom_produit`, `Description`, `Prix_HT`, `P
 (21, 'Coffret Découverte Thés', 'Un assortiment de thés verts, noirs et blancs soigneusement sélectionnés. Parfait pour explorer de nouvelles saveurs et profiter de moments de détente.', 31.19, 32.90, 50, 'unitaire', 'coffret_the_decouverte.jpeg', 1),
 (22, 'Coffret Thés Bio', 'Un coffret premium avec une sélection de thés biologiques aux arômes subtils. Une invitation à la dégustation pour les amateurs de thé naturel et raffiné.', 35.00, 38.50, 40, 'unitaire', 'coffret_the_bio.jpeg', 1),
 (23, 'Coffret Café du Monde', 'Un voyage sensoriel avec des cafés d’Éthiopie, Colombie et Brésil. Découvrez des arômes riches et variés dans un coffret idéal pour les amateurs de café d’exception.', 40.00, 44.00, 30, 'unitaire', 'coffret_cafe_monde.jpeg', 2),
-(24, 'Coffret Grands Crus Café', 'Sélection de cafés rares et prestigieux, offrant une palette de saveurs uniques. Torréfaction artisanale pour une expérience gustative intense et équilibrée.', 45.00, 49.50, 25, 'unitaire', 'coffret_cafe_grand_cru.jpeg', 2);
+(24, 'Coffret Grands Crus Café', 'Sélection de cafés rares et prestigieux, offrant une palette de saveurs uniques. Torréfaction artisanale pour une expérience gustative intense et équilibrée.', 45.00, 49.50, 25, 'unitaire', 'coffret_cafe_grand_cru.jpeg', 2),
+(27, 'test ajout', 'le test d\'ajout', 3.00, 3.17, 1, 'unitaire', NULL, 1),
+(29, 'bibi', 'le test d\'ajout', 10.00, 10.55, 2, 'unitaire', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -325,19 +360,19 @@ ALTER TABLE `client`
 -- AUTO_INCREMENT pour la table `commande`
 --
 ALTER TABLE `commande`
-  MODIFY `Id_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `Id_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT pour la table `ligne_commande`
 --
 ALTER TABLE `ligne_commande`
-  MODIFY `Id_ligne_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `Id_ligne_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT pour la table `produit`
 --
 ALTER TABLE `produit`
-  MODIFY `Id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id_produit` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT pour la table `vendeur`
