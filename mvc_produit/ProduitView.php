@@ -2,9 +2,19 @@
 
 require_once 'init_smarty.php';
 
+/**
+ * Vue pour l'affichage des produits
+ *
+ * Cette classe gère l'affichage des différentes vues liées aux produits
+ * via le moteur de template Smarty.
+ */
+
 class ProduitView {
     private $smarty;
 
+    /**
+     * Constructeur : initialise Smarty et définit le répertoire des templates
+     */
     public function __construct() {
         global $smarty;
         $this->smarty = $smarty;
@@ -17,13 +27,17 @@ class ProduitView {
      */
     public function afficherListe($produits) {
         $this->smarty->assign('produit', $produits);
-        $this->smarty->display('mvc_produit\produit_liste_view.tpl');
+        $this->smarty->display('mvc_produit/produit_liste_view.tpl');
     }
 
     /**
      * Affiche le formulaire d'ajout de produit
+     *
      * @param string|null $erreur Message d'erreur à afficher
      * @param array $categories Catégorie de produit provenant de la BDD
+     * @param array $conditionnements Types de conditionnement disponibles
+     *
+     * @return void
      */
     public function afficherFormulaireAjout($erreur = null, $categories = [], $conditionnements = []) {
         $this->smarty->assign('action', 'add');
@@ -32,14 +46,18 @@ class ProduitView {
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
-        $this->smarty->display('mvc_produit\produit_form_view.tpl');
+        $this->smarty->display('mvc_produit/produit_form_view.tpl');
     }
 
     /**
      * Affiche le formulaire de modification de produit
+     *
      * @param array $produit Données du produit à modifier
      * @param string|null $erreur Message d'erreur à afficher
-     * @param array $categories Catégorie de produit provenant de la BDD
+     * @param array $categories Catégories de produit provenant de la BDD
+     * @param array $conditionnements Types de conditionnement disponibles
+     *
+     * @return void
      */
     public function afficherFormulaireModification($produit, $erreur = null, $categories = [], $conditionnements = []) {
         $this->smarty->assign('action', 'update_produit');
@@ -54,8 +72,13 @@ class ProduitView {
 
     /**
      * Affiche le formulaire de modification avec les données d'un produit existant
-     * @param object $produit Objet produit avec les données existantes
+     *
+     * @param Objet $produit Objet produit avec les données existantes
+     * @param array $categorie Catégories de produit provenant de la BDD
+     * @param array $conditionnements Types de conditionnement disponibles
      * @param string|null $erreur Message d'erreur à afficher
+     *
+     * @return void
      */
     public function afficherFormulaireModificationAvecDonnees($produit, $categorie, $conditionnements, $erreur = null) {
         $donneesProduit = [
@@ -75,15 +98,19 @@ class ProduitView {
     }
 
     /**
-     * Affiche une erreur de produit introuvable
+     * Affiche une erreur lorsque le produit n'est pas trouvé
+     *
+     * @return void
      */
     public function afficherErreurProduitIntrouvable() {
         $this->smarty->assign('erreur', 'Produit introuvable.');
-        $this->smarty->display('mvc_produit\produit_form_view.tpl');
+        $this->smarty->display('mvc_produit/produit_form_view.tpl');
     }
 
     /**
-     * Redirige vers la liste des produits
+     * Redirige l'utilisateur vers la liste des produits
+     *
+     * @return void
      */
     public function redirigerVersListe() {
         header("Location: index.php?action=produit");
@@ -92,10 +119,12 @@ class ProduitView {
 
     /**
      * Affiche le formulaire du détail d'un produit avec ses données
+     *
      * @param object $produit Objet produit avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
+     *
+     * @return void
      */
-
     public function afficherFormulaireDetailAvecDonnees($produit, $erreur = null) {
         $donneesProduit = [
             'Id_produit' => $produit->getId(),
@@ -114,8 +143,11 @@ class ProduitView {
 
     /**
      * Affiche le formulaire avec le détail du produit
+     *
      * @param array $produit Données du produit
      * @param string|null $erreur Message d'erreur à afficher
+     *
+     * @return void
      */
     public function afficherFormulaireDetail($produit, $erreur = null) {
         $this->smarty->assign('action', 'detail_produit');
@@ -124,5 +156,19 @@ class ProduitView {
             $this->smarty->assign('erreur', $erreur);
         }
         $this->smarty->display('mvc_produit/produit_detail_view.tpl');
+    }
+
+    /**
+     * Affiche les alertes de stock faible dans la barre supérieure
+     *
+     * @param array $alertesStock Liste des produits en alerte de stock
+     *
+     * @return void
+     */
+    public function afficherAlerteStockBas($alertesStock) {
+        $this->smarty->assign('alertesStock', $alertesStock);
+        $this->smarty->assign('nbAlertesStock', count($alertesStock));
+
+        $this->smarty->display('template/layout_topbar.tpl');
     }
 }

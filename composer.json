@@ -1,0 +1,15 @@
+{
+    "name": "cafthe/dashboard",
+    "description": "CafThé Dashboard Application",
+    "type": "project",
+    "autoload": {
+        "classmap": [
+            "mvc_produit/",
+            "mvc_client/"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.5",
+        "phpdocumentor/phpdocumentor": "^3.9"
+    }
+}

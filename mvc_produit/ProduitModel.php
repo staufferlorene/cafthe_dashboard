@@ -182,15 +182,20 @@ class ProduitModel {
      * @param int    $categories Nom de la catégorie
      * @param int    $Id_produit Identifiant du produit à modifier
      *
-     * @return void
+     * @return string|null Retourne null si succès, ou un message d'erreur en cas d'échec
      */
 
     public static function modifier($Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories , $Id_produit) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
-        // Màj
-        $stmt = $db->prepare("UPDATE produit SET Nom_produit=?, Description=?, Prix_TTC=?, Prix_HT=?, Stock=?, Type_conditionnement=?, Id_categorie=? WHERE Id_produit=?");
-        $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories, $Id_produit]);
+        try {
+            // Màj
+            $stmt = $db->prepare("UPDATE produit SET Nom_produit=?, Description=?, Prix_TTC=?, Prix_HT=?, Stock=?, Type_conditionnement=?, Id_categorie=? WHERE Id_produit=?");
+            $stmt->execute([$Nom_produit, $Description, $Prix_TTC, $Prix_HT, $Stock, $Type_conditionnement, $categories, $Id_produit]);
+            return null; // Pas d'erreur
+        } catch (PDOException $e) {
+            return $e->getMessage(); // Retourne le message d'erreur
+        }
     }
 
     /**
@@ -265,8 +270,9 @@ class ProduitModel {
     /**
      * Vérifie si le produit a au moins une ligne de commande qui lui est rattaché
      *
-     * @param $Id_produit
-     * @return bool
+     * @param int $Id_produit Identifiant du produit
+     *
+     * @return bool Retourne true si le produit a des commandes, false sinon
      */
 
     public static function haveOrder($Id_produit) {
@@ -278,12 +284,30 @@ class ProduitModel {
         return $stmt->fetchColumn() > 0;
     }
 
-    // Récupère tous les conditionnements
+    /**
+     * Récupère tous les types de conditionnement distincts
+     *
+     * @return array Liste des conditionnements
+     */
     public static function conditionnements() {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 
         $stmt = $db->prepare("SELECT DISTINCT Type_conditionnement FROM produit");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    /**
+     * Récupère les produits dont le stock est inférieur ou égal à 5
+     *
+     * @return array Liste des produits en alerte de stock (nom et quantité)
+     */
+    public static function getStockAlert() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        $stmt = $db->prepare("SELECT Nom_produit, Stock FROM produit WHERE Stock <= 5 ORDER BY Stock ASC");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

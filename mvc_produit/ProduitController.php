@@ -85,6 +85,8 @@ class ProduitController {
     /**
      * Supprime un produit à partir de son identifiant (passé en GET)
      *
+     * @param int $Id_produit Identifiant du produit (via $_GET['Id_produit'])
+     *
      * @return void
      */
     public function delete() {
@@ -94,14 +96,14 @@ class ProduitController {
     }
 
     /**
-     * Modifie un produit existant
+     *  Modifie un produit existant
      *
-     * Si la requête est en POST et valide, tente la modification :
-     *   - redirige vers la liste si succès,
-     *   - affiche le formulaire de modification avec erreurs si échec.
-     * Si la requête est en GET :
-     *  - affiche le formulaire prérempli si le produit existe,
-     *  - sinon affiche une erreur.
+     *  Si la requête est en POST et valide, tente la modification :
+     *    - redirige vers la liste si succès,
+     *    - affiche le formulaire de modification avec erreurs si échec.
+     *  Si la requête est en GET :
+     *   - affiche le formulaire prérempli si le produit existe,
+     *   - sinon affiche une erreur.
      *
      * @param int $Id_produit Identifiant du produit à modifier
      *
@@ -158,6 +160,18 @@ class ProduitController {
             $this->produitView->afficherFormulaireDetailAvecDonnees($produit);
         } else {
             $this->produitView->afficherErreurProduitIntrouvable();
+        }
+    }
+
+    /**
+     * Charge les données pour la TopBar (alertes de stock)
+     *
+     * @return void
+     */
+    public function loadTopBarData() {
+        $alertesStock = ProduitModel::getStockAlert();
+        if ($alertesStock) {
+            $this->produitView->afficherAlerteStockBas($alertesStock);
         }
     }
 }
