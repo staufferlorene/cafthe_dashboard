@@ -54,9 +54,9 @@ class CommandeController {
     public function modifier($Id_commande) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['statut'])) {
+            if (isset($_POST['statutCommande'])) {
                 // Tente la modification
-                $erreur = $this->commandeModel->modifier($_POST['statut'], $Id_commande);
+                $erreur = $this->commandeModel->modifier($_POST['statutCommande'], $Id_commande);
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après modification
                     $this->commandeView->redirigerVersListe();
@@ -64,8 +64,9 @@ class CommandeController {
                     // Si échec : Affiche le formulaire avec message d'erreur
                     $commande = CommandeModel::loadByIdClient($Id_commande);
                     $produit = CommandeModel::loadByIdCommande($Id_commande);
+                    $statutsCommandes = CommandeModel::getStatutsCommande();
                     if ($commande && $produit) {
-                        $this->commandeView->afficherFormulaireModificationAvecDonnees($commande, $produit, $erreur);
+                        $this->commandeView->afficherFormulaireModificationAvecDonnees($commande, $produit, $statutsCommandes, $erreur);
                     } else {
                         $this->commandeView->afficherErreurCommandeIntrouvable();
                     }
@@ -75,8 +76,9 @@ class CommandeController {
             // Affichage du formulaire avec les données existantes
             $commande = CommandeModel::loadByIdClient($Id_commande);
             $produit = CommandeModel::loadByIdCommande($Id_commande);
+            $statutsCommandes = CommandeModel::getStatutsCommande();
             if ($commande && $produit) {
-                $this->commandeView->afficherFormulaireModificationAvecDonnees($commande, $produit);
+                $this->commandeView->afficherFormulaireModificationAvecDonnees($commande, $produit, $statutsCommandes);
             } else {
                 $this->commandeView->afficherErreurCommandeIntrouvable();
             }

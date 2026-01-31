@@ -88,13 +88,15 @@ class VendeurController {
                         $this->vendeurView->redirigerVersListe();
                     } else {
                         // Si échec : Affiche le formulaire avec message d'erreur
-                        $this->vendeurView->afficherFormulaireAjout($erreur);
+                        $role = VendeurModel::getAllRole();
+                        $this->vendeurView->afficherFormulaireAjout($erreur, $role);
                     }
                 }
             }
         } else {
             // Affiche le formulaire vide
-            $this->vendeurView->afficherFormulaireAjout(null);
+            $role = VendeurModel::getAllRole();
+            $this->vendeurView->afficherFormulaireAjout(null, $role);
         }
     }
 
@@ -135,8 +137,9 @@ class VendeurController {
                 } else {
                     // Si échec : Affiche le formulaire avec message d'erreur
                     $vendeur = VendeurModel::loadById($Id_vendeur);
+                    $role = VendeurModel::getAllRole();
                     if ($vendeur) {
-                        $this->vendeurView->afficherFormulaireModificationAvecDonnees($vendeur, $erreur);
+                        $this->vendeurView->afficherFormulaireModificationAvecDonnees($vendeur, $role, $erreur);
                     } else {
                         $this->vendeurView->afficherErreurVendeurIntrouvable();
                     }
@@ -145,8 +148,9 @@ class VendeurController {
         } else {
             // Affichage du formulaire avec les données existantes
             $vendeur = VendeurModel::loadById($Id_vendeur);
+            $role = VendeurModel::getAllRole();
             if ($vendeur) {
-                $this->vendeurView->afficherFormulaireModificationAvecDonnees($vendeur);
+                $this->vendeurView->afficherFormulaireModificationAvecDonnees($vendeur, $role);
             } else {
                 $this->vendeurView->afficherErreurClientIntrouvable();
             }

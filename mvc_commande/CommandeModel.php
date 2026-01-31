@@ -205,4 +205,14 @@ class CommandeModel {
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    // Récupère tous les statuts de commande
+    public static function getStatutsCommande() {
+        // On récupère PDO via la Class Database
+        $db = Database::getInstance()->getConnection();
+
+        $stmt = $db->prepare("SELECT DISTINCT Statut_commande FROM commande");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }

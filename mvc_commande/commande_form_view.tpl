@@ -72,8 +72,14 @@
             </div>
 
             <div class="form-group">
-                <label for="statut">Statut :</label>
-                <input class="form-control" type="text" id="statut" name="statut" value="{$commande.Statut_commande|escape}">
+                <label for="statutCommande">Statut :</label>
+                <select class="form-control" id="statutCommande" name="statutCommande" required>
+                    {foreach from=$statutsCommandes item=statut}
+                        <option value="{$statut.Statut_commande|escape}">
+                            {$statut.Statut_commande|escape}
+                        </option>
+                    {/foreach}
+                </select>
             </div>
 
             <div class="form-group">

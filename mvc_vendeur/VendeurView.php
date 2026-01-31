@@ -24,8 +24,9 @@ class VendeurView {
      * Affiche le formulaire d'ajout de vendeur
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireAjout($erreur = null) {
+    public function afficherFormulaireAjout($erreur = null, $role = []) {
         $this->smarty->assign('action', 'add');
+        $this->smarty->assign('role', $role);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -37,9 +38,10 @@ class VendeurView {
      * @param array $vendeur Données du vendeur à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModification($vendeur, $erreur = null) {
+    public function afficherFormulaireModification($vendeur, $role = [], $erreur = null) {
         $this->smarty->assign('action', 'update_vendeur');
         $this->smarty->assign('vendeur', $vendeur);
+        $this->smarty->assign('role', $role);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -51,7 +53,7 @@ class VendeurView {
      * @param object $vendeur Objet vendeur avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModificationAvecDonnees($vendeur, $erreur = null) {
+    public function afficherFormulaireModificationAvecDonnees($vendeur, $role, $erreur = null) {
         $donneesVendeur = [
             'Id_vendeur' => $vendeur->getId(),
             'Nom_vendeur' => $vendeur->getNom_vendeur(),
@@ -61,7 +63,7 @@ class VendeurView {
             'Mdp_vendeur' => $vendeur->getMdp_vendeur(),
         ];
 
-        $this->afficherFormulaireModification($donneesVendeur, $erreur);
+        $this->afficherFormulaireModification($donneesVendeur, $role, $erreur);
     }
 
     /**

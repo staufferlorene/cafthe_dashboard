@@ -37,10 +37,11 @@ class CommandeView {
      * @param array $commande Données de la commande à modifier
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModification($commande, $produit, $erreur = null) {
+    public function afficherFormulaireModification($commande, $produit, $statutsCommandes = [], $erreur = null) {
         $this->smarty->assign('action', 'update_client');
         $this->smarty->assign('commande', $commande);
         $this->smarty->assign('produit', $produit);
+        $this->smarty->assign('statutsCommandes', $statutsCommandes);
         if ($erreur) {
             $this->smarty->assign('erreur', $erreur);
         }
@@ -52,7 +53,7 @@ class CommandeView {
      * @param object $commande Objet commande avec les données existantes
      * @param string|null $erreur Message d'erreur à afficher
      */
-    public function afficherFormulaireModificationAvecDonnees($commande, $produit, $erreur = null) {
+    public function afficherFormulaireModificationAvecDonnees($commande, $produit, $statutsCommandes, $erreur = null) {
         $donneesCommande = [
             'Id_commande' => $commande->getId(),
             'Nom_client' => $commande->getNom_client(),
@@ -67,7 +68,7 @@ class CommandeView {
             'Montant_TVA' => $commande->getMontant_TVA(),
         ];
 
-        $this->afficherFormulaireModification($donneesCommande, $produit, $erreur);
+        $this->afficherFormulaireModification($donneesCommande, $produit, $statutsCommandes, $erreur);
     }
 
     /**
