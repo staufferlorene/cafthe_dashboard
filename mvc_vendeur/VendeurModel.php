@@ -161,13 +161,17 @@ class VendeurModel {
     public static function modifier($Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $Mdp_vendeur, $Id_vendeur) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
+        try {
+            // Hachage du mdp (bcrypt et 10 salage)
+            $hashedPassword = password_hash($Mdp_vendeur, PASSWORD_BCRYPT, ['cost' => 10]);
 
-        // Hachage du mdp (bcrypt et 10 salage)
-        $hashedPassword = password_hash($Mdp_vendeur, PASSWORD_BCRYPT, ['cost' => 10]);
-
-        // Màj
-        $stmt = $db->prepare("UPDATE vendeur SET Nom_vendeur=?, Prenom_vendeur=?, Role=?, Mail_vendeur=?, Mdp_vendeur=? WHERE Id_vendeur=?");
-        $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $hashedPassword, $Id_vendeur]);
+            // Màj
+            $stmt = $db->prepare("UPDATE vendeur SET Nom_vendeur=?, Prenom_vendeur=?, Role=?, Mail_vendeur=?, Mdp_vendeur=? WHERE Id_vendeur=?");
+            $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Role, $Mail_vendeur, $hashedPassword, $Id_vendeur]);
+            return null; // Pas d'erreur
+        } catch (PDOException $e) {
+            return $e->getMessage(); // Retourne le message d'erreur
+        }
     }
 
     /**

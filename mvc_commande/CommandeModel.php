@@ -156,9 +156,14 @@ class CommandeModel {
     public static function modifier($Statut_commande, $Id_commande) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
-        // Màj
-        $stmt = $db->prepare("UPDATE commande SET Statut_commande=? WHERE Id_commande=?");
-        $stmt->execute([$Statut_commande, $Id_commande]);
+        try {
+            // Màj
+            $stmt = $db->prepare("UPDATE commande SET Statut_commande=? WHERE Id_commande=?");
+            $stmt->execute([$Statut_commande, $Id_commande]);
+            return null; // Pas d'erreur
+        } catch (PDOException $e) {
+            return $e->getMessage(); // Retourne le message d'erreur
+        }
     }
 
     /**

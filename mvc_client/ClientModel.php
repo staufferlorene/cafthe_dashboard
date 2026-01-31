@@ -138,9 +138,14 @@ class ClientModel {
     public static function modifier($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
-        // Màj
-        $stmt = $db->prepare("UPDATE client SET Nom_client=?, Prenom_client=?, Adresse_client=?, Telephone_client=?, Mail_client=? WHERE Id_client=?");
-        $stmt->execute([$Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client]);
+        try {
+            // Màj
+            $stmt = $db->prepare("UPDATE client SET Nom_client=?, Prenom_client=?, Adresse_client=?, Telephone_client=?, Mail_client=? WHERE Id_client=?");
+            $stmt->execute([$Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client]);
+            return null; // Pas d'erreur
+        } catch (PDOException $e) {
+            return $e->getMessage(); // Retourne le message d'erreur
+        }
     }
 
     /**

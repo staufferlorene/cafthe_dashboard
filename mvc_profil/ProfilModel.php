@@ -108,10 +108,14 @@ class ProfilModel {
     public static function modifier($Nom_vendeur, $Prenom_vendeur, $Mail_vendeur, $Id_vendeur) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
-
-        // Màj
-        $stmt = $db->prepare("UPDATE vendeur SET Nom_vendeur=?, Prenom_vendeur=?, Mail_vendeur=? WHERE Id_vendeur=?");
-        $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Mail_vendeur, $Id_vendeur]);
+        try {
+            // Màj
+            $stmt = $db->prepare("UPDATE vendeur SET Nom_vendeur=?, Prenom_vendeur=?, Mail_vendeur=? WHERE Id_vendeur=?");
+            $stmt->execute([$Nom_vendeur, $Prenom_vendeur, $Mail_vendeur, $Id_vendeur]);
+            return null; // Pas d'erreur
+        } catch (PDOException $e) {
+            return $e->getMessage(); // Retourne le message d'erreur
+        }
     }
 
     public static function verifierMotDePasse($mdp, $hash) {
