@@ -234,23 +234,6 @@ class ClientModel {
         return $stmt->execute([$Id_client]);
     }
 
-/*    public function save() {
-        $db = Database::getInstance()->getConnection();
-
-        if ($this->Id_produit === null) {
-            //insertion
-            $stmt = $db->prepare("INSERT INTO produit(Nom_produit, Prix_TTC, Stock) VALUE(?,?,?)");
-            $stmt->execute([$this->Nom_produit, $this->Prix_TTC, $this->Stock]);
-
-            //Recuperation de l'id généré par MySQL
-            $this->Id_produit = $db->lastInsertId();
-        } else {
-            //Mise à jour si la voiture existe déjà
-            $stmt = $db->prepare("UPDATE produit SET Nom_produit =?, Prix_TTC =?, Stock=? WHERE Id_produit = ?");
-            $stmt->execute([$this->Nom_produit, $this->Prix_TTC, $this->Stock, $this->Id_produit]);
-        }
-    }*/
-
     /**
      * Charge un client par son identifiant
      *

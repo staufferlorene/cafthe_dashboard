@@ -34,18 +34,6 @@ class CommandeView {
     }
 
     /**
-     * Affiche le formulaire d'ajout de produit
-     * @param string|null $erreur Message d'erreur à afficher
-     */
-    public function afficherFormulaireAjout($erreur = null) {
-        $this->smarty->assign('action', 'add');
-        if ($erreur) {
-            $this->smarty->assign('erreur', $erreur);
-        }
-        $this->smarty->display('mvc_client\client_form_view.tpl');
-    }
-
-    /**
      * Affiche le formulaire de modification de commande
      *
      * @param array $commande Données de la commande à modifier
