@@ -8,11 +8,12 @@ use PDOException;
 
 require_once 'config/Database.php';
 
-///////////////////////
-// EST-CE QUE JE PEUX SUPPRIMER LE MDP DANS LOADBYID ?? JE PENSE QUE OUI JE N'AFFICHE PAS LE MDP !!
-///////////////////////
-
-
+/**
+ * Modèle pour la gestion du profil vendeur
+ *
+ * Cette classe gère les opérations en base de données liées au profil
+ * du vendeur connecté (lecture, modification d'informations, changement de mot de passe).
+ */
 
 class ProfilModel {
 
@@ -25,49 +26,98 @@ class ProfilModel {
     private $Mdp_vendeur;
 
 
-    // Constructeur : initialisation du profil
-    // public function => pour que la fonction soit accessible partout
+    /**
+     * Constructeur : initialise la connexion à la base de données
+     */
     public function __construct() {
         $this->pdo = Database::getInstance()->getConnection();
     }
 
-    // Getter pour l'id
+    /**
+     * Récupère l'identifiant du vendeur
+     *
+     * @return int Identifiant du vendeur
+     */
     public function getId() {
         return $this->Id_vendeur;
     }
 
-    // Getter et setter pour le Nom_vendeur
+    /**
+     * Récupère le nom du vendeur
+     *
+     * @return string Nom du vendeur
+     */
     public function getNom_vendeur() {
         return $this->Nom_vendeur;
     }
 
+    /**
+     * Définit le nom du vendeur
+     *
+     * @param string $Nom_vendeur Nom du vendeur
+     *
+     * @return void
+     */
     public function setNom_vendeur($Nom_vendeur) {
         $this->Nom_vendeur = $Nom_vendeur;
     }
 
-    // Getter et setter pour le Prenom_vendeur
+    /**
+     * Récupère le prénom du vendeur
+     *
+     * @return string Prénom du vendeur
+     */
     public function getPrenom_vendeur() {
         return $this->Prenom_vendeur;
     }
 
+    /**
+     * Définit le prénom du vendeur
+     *
+     * @param string $Prenom_vendeur Prénom du vendeur
+     *
+     * @return void
+     */
     public function setPrenom_vendeur($Prenom_vendeur) {
         $this->Prenom_vendeur = $Prenom_vendeur;
     }
 
-    // Getter et setter pour le Mail_vendeur
+    /**
+     * Récupère l'email du vendeur
+     *
+     * @return string Email du vendeur
+     */
     public function getMail_vendeur() {
         return $this->Mail_vendeur;
     }
 
+    /**
+     * Définit l'email du vendeur
+     *
+     * @param string $Mail_vendeur Email du vendeur
+     *
+     * @return void
+     */
     public function setMail_vendeur($Mail_vendeur) {
         $this->Mail_vendeur = $Mail_vendeur;
     }
 
-    // Getter et setter pour le Mdp_vendeur
+    /**
+     * Récupère le mot de passe haché du vendeur
+     *
+     * @return string Mot de passe haché
+     */
     public function getMdp_vendeur() {
         return $this->Mdp_vendeur;
     }
 
+    /**
+     * Définit le mot de passe haché du vendeur
+     *
+     * @param string $Mdp_vendeur Mot de passe haché
+     *
+     * @return void
+     */
     public function setMdp_vendeur($Mdp_vendeur) {
         $this->Mdp_vendeur = $Mdp_vendeur;
     }
@@ -81,6 +131,13 @@ class ProfilModel {
      *********************
      ********************/
 
+    /**
+     * Charge un vendeur par son identifiant
+     *
+     * @param int $utilisateur Identifiant du vendeur
+     *
+     * @return ProfilModel|null Retourne un objet ProfilModel ou null si non trouvé
+     */
     public static function loadById($utilisateur) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -105,6 +162,16 @@ class ProfilModel {
         return null;
     }
 
+    /**
+     * Met à jour les informations personnelles d'un vendeur
+     *
+     * @param string $Nom_vendeur Nom du vendeur
+     * @param string $Prenom_vendeur Prénom du vendeur
+     * @param string $Mail_vendeur Email du vendeur
+     * @param int $Id_vendeur Identifiant du vendeur à modifier
+     *
+     * @return string|null Retourne null si succès, ou un message d'erreur en cas d'échec
+     */
     public static function modifier($Nom_vendeur, $Prenom_vendeur, $Mail_vendeur, $Id_vendeur) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -118,11 +185,29 @@ class ProfilModel {
         }
     }
 
+    /**
+     * Vérifie si un mot de passe correspond à son hash
+     *
+     * @param string $mdp Mot de passe en clair à vérifier
+     * @param string $hash Hash du mot de passe stocké en base de données
+     *
+     * @return bool Retourne true si le mot de passe correspond, false sinon
+     */
     public static function verifierMotDePasse($mdp, $hash) {
         // Vérifie si le mot de passe correspond au mdp haché en BDD
         return password_verify($mdp, $hash);
     }
 
+    /**
+     * Modifie le mot de passe d'un vendeur
+     *
+     * Le mot de passe est haché avec BCrypt avant stockage
+     *
+     * @param string $Mdp_vendeur Nouveau mot de passe en clair
+     * @param int $Id_vendeur Identifiant du vendeur
+     *
+     * @return bool Retourne true si la mise à jour a réussi, false sinon
+     */
     public static function modifierMdp($Mdp_vendeur, $Id_vendeur) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();

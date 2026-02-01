@@ -7,6 +7,15 @@ use PDOException;
 
 require_once 'config/Database.php';
 
+/**
+ * Modèle pour la gestion du panier d'achat
+ *
+ * Cette classe gère les opérations liées au panier :
+ * - Calcul des totaux (HT, TTC, TVA)
+ * - Gestion des produits et clients
+ * - Enregistrement des commandes en base de données
+ */
+
 class PanierModel {
 
     // propriétés privées (encapsulation)
@@ -16,41 +25,78 @@ class PanierModel {
     private $Prix_HT;
     private $Tva_categorie;
 
-
-    // Constructeur : initialisation du produit
-    // public function => pour que la fonction soit accessible partout
+    /**
+     * Constructeur : initialise la connexion à la base de données
+     */
     public function __construct() {
         $this->pdo = Database::getInstance()->getConnection();
     }
 
-    // Getter pour l'id
+    /**
+     * Récupère l'identifiant du produit
+     *
+     * @return int Identifiant du produit
+     */
     public function getId() {
         return $this->Id_produit;
     }
 
-    // Getter et setter pour le Prix_TTC
+    /**
+     * Récupère le prix TTC du produit
+     *
+     * @return float Prix TTC du produit
+     */
     public function getPrix_TTC() {
         return $this->Prix_TTC;
     }
 
+    /**
+     * Définit le prix TTC du produit
+     *
+     * @param float $Prix_TTC Prix TTC du produit
+     *
+     * @return void
+     */
     public function setPrix_TTC($Prix_TTC) {
         $this->Prix_TTC = $Prix_TTC;
     }
 
-    // Getter et setter pour le Prix_HT
+    /**
+     * Récupère le prix HT du produit
+     *
+     * @return float Prix HT du produit
+     */
     public function getPrix_HT() {
         return $this->Prix_HT;
     }
 
+    /**
+     * Définit le prix HT du produit
+     *
+     * @param float $Prix_HT Prix HT du produit
+     *
+     * @return float Prix HT défini
+     */
     public function setPrix_HT($Prix_HT) {
         return $this->Prix_HT = $Prix_HT;
     }
 
-    // Getter et setter pour la TVA
+    /**
+     * Récupère le taux de TVA de la catégorie
+     *
+     * @return float Taux de TVA de la catégorie
+     */
     public function getTva_categorie() {
         return $this->Tva_categorie;
     }
 
+    /**
+     * Définit le taux de TVA de la catégorie
+     *
+     * @param float $Tva_categorie Taux de TVA de la catégorie
+     *
+     * @return float Taux de TVA défini
+     */
     public function setTva_categorie($Tva_categorie) {
         return $this->Tva_categorie = $Tva_categorie;
     }
@@ -82,6 +128,13 @@ class PanierModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Calcule les totaux du panier (HT, TTC, TVA)
+     *
+     * @param array $panier Contenu du panier avec les produits et leurs quantités
+     *
+     * @return array Tableau contenant 'totalHT', 'totalTTC' et 'totalTVA'
+     */
     public static function calculTotaux($panier) {
         $totalHT = 0;
         $totalTTC = 0;
@@ -102,10 +155,22 @@ class PanierModel {
         ];
     }
 
+    /**
+     * Supprime un produit du panier en session
+     *
+     * @param int $id Identifiant du produit à supprimer
+     *
+     * @return void
+     */
     public static function delete($id) {
         unset($_SESSION['panier'][$id]);
     }
 
+    /**
+     * Liste tous les clients de la base de données
+     *
+     * @return array Liste des clients
+     */
     public static function listerClient() {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -117,6 +182,17 @@ class PanierModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Enregistre la commande et ses lignes en base de données
+     *
+     * Cette méthode :
+     * - Crée une nouvelle commande avec les montants totaux
+     * - Lie la commande au client et au vendeur
+     * - Insère toutes les lignes de commande (produits du panier)
+     * - Utilise les données de session : panier, client, montants, venderu
+     *
+     * @return string|null Retourne null si succès, ou un message d'erreur en cas d'échec
+     */
     public function addDB() {
         try {
             // On récupère PDO via la Class Database

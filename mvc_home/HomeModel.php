@@ -7,6 +7,16 @@ use PDOException;
 
 require_once 'config/Database.php';
 
+/**
+ * Modèle pour la gestion des statistiques et indicateurs de performance
+ *
+ * Cette classe gère les opérations en base de données liées aux statistiques :
+ * - Produits les plus vendus
+ * - Ventes par catégorie
+ * - Évolution des ventes par mois
+ * - Chiffre d'affaires par vendeur
+ */
+
 class HomeModel {
 
     // propriétés privées (encapsulation)
@@ -22,85 +32,178 @@ class HomeModel {
     private $Type_conditionnement;
 
 
-    // Constructeur : initialisation du produit
-    // public function => pour que la fonction soit accessible partout
+    /**
+     * Constructeur : initialise la connexion à la base de données
+     */
     public function __construct() {
         $this->pdo = Database::getInstance()->getConnection();
     }
 
-    // Getter pour l'id
+    /**
+     * Récupère l'identifiant du produit
+     *
+     * @return int Identifiant du produit
+     */
     public function getId() {
         return $this->Id_produit;
     }
 
-    // Getter et setter pour le Nom_produit
+    /**
+     * Récupère le nom du produit
+     *
+     * @return string Nom du produit
+     */
     public function getNom_produit() {
         return $this->Nom_produit;
     }
 
+    /**
+     * Définit le nom du produit
+     *
+     * @param string $Nom_produit Nom du produit
+     *
+     * @return void
+     */
     public function setNom_produit($Nom_produit) {
         $this->Nom_produit = $Nom_produit;
     }
 
-    // Getter et setter pour le Prix_TTC
+    /**
+     * Récupère le prix TTC du produit
+     *
+     * @return float Prix TTC du produit
+     */
     public function getPrix_TTC() {
         return $this->Prix_TTC;
     }
 
+    /**
+     * Définit le prix TTC du produit
+     *
+     * @param float $Prix_TTC Prix TTC du produit
+     *
+     * @return void
+     */
     public function setPrix_TTC($Prix_TTC) {
         $this->Prix_TTC = $Prix_TTC;
     }
 
-    // Getter et setter pour le Stock
+    /**
+     * Récupère la quantité en stock du produit
+     *
+     * @return int Quantité en stock
+     */
     public function getStock() {
         return $this->Stock;
     }
 
+    /**
+     * Définit la quantité en stock du produit
+     *
+     * @param int $Stock Quantité en stock
+     *
+     * @return void
+     */
     public function setStock($Stock) {
         $this->Stock = $Stock;
     }
 
-    // Getter et setter pour la Description
+    /**
+     * Récupère la description du produit
+     *
+     * @return string Description du produit
+     */
     public function getDescription() {
         return $this->Description;
     }
 
+    /**
+     * Définit la description du produit
+     *
+     * @param string $Description Description du produit
+     *
+     * @return void
+     */
     public function setDescription($Description) {
         $this->Description = $Description;
     }
 
-    // Getter et setter pour le Prix_HT
+    /**
+     * Récupère le prix HT du produit
+     *
+     * @return float Prix HT du produit
+     */
     public function getPrix_HT() {
         return $this->Prix_HT;
     }
 
+    /**
+     * Définit le prix HT du produit
+     *
+     * @param float $Prix_HT Prix HT du produit
+     *
+     * @return float Prix HT défini
+     */
     public function setPrix_HT($Prix_HT) {
         return $this->Prix_HT = $Prix_HT;
     }
 
-    // Getter et setter pour la TVA
+    /**
+     * Récupère le taux de TVA de la catégorie
+     *
+     * @return float Taux de TVA de la catégorie
+     */
     public function getTva_categorie() {
         return $this->Tva_categorie;
     }
 
+    /**
+     * Définit le taux de TVA de la catégorie
+     *
+     * @param float $Tva_categorie Taux de TVA de la catégorie
+     *
+     * @return float Taux de TVA défini
+     */
     public function setTva_categorie($Tva_categorie) {
         return $this->Tva_categorie = $Tva_categorie;
     }
 
-    // Getter et setter pour la Catégorie
+    /**
+     * Récupère le nom de la catégorie du produit
+     *
+     * @return string Nom de la catégorie
+     */
     public function getNom_categorie() {
         return $this->Nom_categorie;
     }
 
+    /**
+     * Définit le nom de la catégorie du produit
+     *
+     * @param string $Nom_categorie Nom de la catégorie
+     *
+     * @return string Nom de la catégorie défini
+     */
     public function setNom_categorie($Nom_categorie) {
         return $this->Nom_categorie = $Nom_categorie;
     }
 
-    // Getter et setter pour le Type de conditionnement
+    /**
+     * Récupère le type de conditionnement du produit
+     *
+     * @return string Type de conditionnement (ex: sachet, boîte, vrac)
+     */
     public function getType_conditionnement() {
         return $this->Type_conditionnement;
     }
 
+    /**
+     * Définit le type de conditionnement du produit
+     *
+     * @param string $Type_conditionnement Type de conditionnement
+     *
+     * @return void
+     */
     public function setType_conditionnement($Type_conditionnement) {
         return $this->Type_conditionnement = $Type_conditionnement;
     }
@@ -115,12 +218,13 @@ class HomeModel {
      ********************/
 
     /**
-     * xxxxxxxxx
-     * Liste tous les produits avec leur catégorie associée
+     * Récupère les 6 produits les plus vendus
      *
-     * @return array Liste des produits et leurs catégories
+     * Retourne les produits classés par quantité totale vendue décroissante,
+     * limités aux 6 premiers résultats
+     *
+     * @return array Liste des produits avec leur nom et quantité totale vendue
      */
-
     public static function listerProduitsVendus() {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -139,6 +243,11 @@ class HomeModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Calcule le montant total des ventes par catégorie de produits
+     *
+     * @return array Liste des catégories avec leur montant total de ventes (quantité × prix unitaire)
+     */
     public static function listerVentesParCategories() {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -156,7 +265,15 @@ class HomeModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function listerVentesParMois() {
+    /**
+     * Récupère l'évolution des ventes mensuelles
+     *
+     * Retourne le chiffre d'affaires TTC par mois au format YYYY-MM,
+     * classé chronologiquement
+     *
+     * @return array Liste des mois avec leur montant total TTC
+     */
+    public static function listerVentesParMois() {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 
@@ -172,7 +289,15 @@ class HomeModel {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    public function listerCAParVendeur() {
+    /**
+     * Calcule le chiffre d'affaires total par vendeur
+     *
+     * Retourne les vendeurs classés par CA décroissant avec leur nom, prénom
+     * et montant total TTC des commandes
+     *
+     * @return array Liste des vendeurs avec leur chiffre d'affaires total
+     */
+    public static function listerCAParVendeur() {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 

@@ -12,9 +12,10 @@ require_once 'mvc_home/HomeView.php';
  * et la vue {@see HomeView}, dans le cadre du pattern MVC.
  *
  * Elle permet de :
- * - xxx
- * - xxx
- * - xxx
+ * - afficher les produits les plus vendus
+ * - afficher les ventes par catégorie
+ * - afficher l'évolution des ventes mensuelles
+ * - afficher le chiffre d'affaires par vendeur
  */
 
 class HomeController {
@@ -30,7 +31,13 @@ class HomeController {
     }
 
     /**
-     * xxxx
+     * Affiche le tableau de bord avec l'ensemble des statistiques
+     *
+     * Récupère et affiche :
+     * - Les 6 produits les plus vendus
+     * - Les ventes par catégorie
+     * - L'évolution mensuelle du chiffre d'affaires
+     * - Le classement des vendeurs par CA
      *
      * @return void
      */

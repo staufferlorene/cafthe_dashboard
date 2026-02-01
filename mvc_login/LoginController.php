@@ -15,13 +15,12 @@ require_once 'mvc_login/LoginView.php';
  *
  */
 
-class LoginController
-{
+class LoginController {
     private $loginModel;
     private $loginView;
 
     /**
-     * Constructeur : initialise le modèle
+     * Constructeur : initialise le modèle et la vue associés à la connexion
      */
     public function __construct()
     {
@@ -29,9 +28,19 @@ class LoginController
         $this->loginView = new LoginView();
     }
 
-
-    // COMMENTER LA FONCTION
-
+    /**
+     * Gère le processus de connexion d'un vendeur
+     *
+     * Si la requête est en POST :
+     * - Valide les champs email et mot de passe
+     * - Vérifie les identifiants dans la base de données
+     * - Stock l'utilisateur en session si la connexion réussit
+     * - Redirige vers le tableau de bord ou affiche une erreur
+     * Si la requête est en GET :
+     * - Affiche le formulaire de connexion vide
+     *
+     * @return void
+     */
     public function login() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -68,6 +77,13 @@ class LoginController
         }
     }
 
+    /**
+     * Déconnecte l'utilisateur et détruit la session
+     *
+     * Détruit toutes les variables de session et redirige vers la page de connexion
+     *
+     * @return void
+     */
     public function logout() {
         // Détruit toutes les variables de session
         session_destroy();

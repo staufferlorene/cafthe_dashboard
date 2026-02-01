@@ -74,12 +74,13 @@ class ProfilController {
     }
 
     /**
-     *  Affiche le détail du vendeur connecté
+     * Affiche le détail du profil du vendeur connecté
      *
-     *  - Si le vendeur est trouvé, affiche le formulaire de détail,
-     *  - Sinon affiche une erreur "introuvable"
+     * - Si le vendeur est trouvé, affiche le formulaire de détail,
+     * - Sinon affiche une erreur "introuvable"
      *
-     * @param int $Id_vendeur Identifiant vendeur
+     * @param int $Id_vendeur Identifiant du vendeur
+     *
      * @return void
      */
     public function voirDetail($Id_vendeur) {

@@ -30,7 +30,11 @@ class CommandeController {
         $this->commandeView = new CommandeView();
     }
 
-    // Afficher les commandes
+    /**
+     * Affiche la liste de toutes les commandes
+     *
+     * @return void
+     */
     public function liste() {
         $commandes = $this->commandeModel->lister();
         $this->commandeView->afficherListe($commandes);
@@ -38,19 +42,18 @@ class CommandeController {
 
     /**
      * Modifie une commande existante
-     * *
-     * * Si la requête est en POST et valide, tente la modification :
-     * *   - redirige vers la liste si succès,
-     * *   - affiche le formulaire de modification avec erreurs si échec.
-     * * Si la requête est en GET :
-     * *  - affiche le formulaire prérempli si la commande existe,
-     * *  - sinon affiche une erreur.
- *
+     *
+     * Si la requête est en POST et valide, tente la modification :
+     *   - redirige vers la liste si succès,
+     *   - affiche le formulaire de modification avec erreurs si échec.
+     * Si la requête est en GET :
+     *  - affiche le formulaire prérempli si la commande existe,
+     *  - sinon affiche une erreur.
+     *
      * @param int $Id_commande Identifiant de la commande à modifier
      *
      * @return void
      */
-
     public function modifier($Id_commande) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés

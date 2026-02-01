@@ -12,11 +12,13 @@ require_once 'mvc_panier/PanierView.php';
  * et la vue {@see PanierView}, dans le cadre du pattern MVC.
  *
  * Elle permet de :
- * - lister les produits
- * - ajouter un produit
- * - modifier un produit
- * - supprimer un produit
- * - afficher le détail d’un produit
+ * - afficher la liste des produits avec le panier
+ * - ajouter un produit au panier
+ * - modifier la quantité d'un produit dans le panier
+ * - supprimer un produit du panier
+ * - afficher le détail du panier
+ * - sélectionner un client
+ * - valider et enregistrer la commande
  */
 
 class PanierController {
@@ -24,7 +26,7 @@ class PanierController {
     private $panierView;
 
     /**
-     * Constructeur : initialise le modèle et la vue associés aux produits
+     * Constructeur : initialise le modèle et la vue associés au panier
      */
     public function __construct() {
         $this->panierModel = new PanierModel();
@@ -32,7 +34,7 @@ class PanierController {
     }
 
     /**
-     * Affiche la liste de tous les produits
+     * Affiche la liste des produits disponibles avec le panier actuel
      *
      * @return void
      */
@@ -48,6 +50,15 @@ class PanierController {
         );
     }
 
+    /**
+     * Ajoute un produit au panier ou met à jour sa quantité
+     *
+     * Si le produit existe déjà dans le panier, incrémente sa quantité.
+     * Sinon, crée une nouvelle entrée dans le panier.
+     * Utilise $_SESSION['panier'] pour stocker les données.
+     *
+     * @return void
+     */
     public function ajoutPanier() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -81,6 +92,11 @@ class PanierController {
         }
     }
 
+    /**
+     * Affiche le détail complet du panier avec les totaux
+     *
+     * @return void
+     */
     public function voirPanier() {
         $panier = $_SESSION['panier'] ?? [];
         $totaux = $this->panierModel->calculTotaux($panier);
@@ -92,12 +108,27 @@ class PanierController {
         );
     }
 
+    /**
+     * Supprime un produit du panier à partir de son identifiant (passé en GET)
+     *
+     * Récupère l'ID via $_GET['id'] et supprime le produit du panier,
+     * puis affiche le panier actualisé
+     *
+     * @return void
+     */
     public function delete() {
         $this->panierModel->delete($_GET['id']);
         // Rappeler la fonction pour afficher le panier
         $this->voirPanier();
     }
 
+    /**
+     * Modifie la quantité d'un produit dans le panier
+     *
+     * Met à jour la quantité du produit spécifié et affiche le panier actualisé
+     *
+     * @return void
+     */
     public function modifierPanier() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -121,11 +152,26 @@ class PanierController {
         );
     }
 
+    /**
+     * Affiche la liste des clients pour sélection
+     *
+     * @return void
+     */
     public function listeChoixClient() {
         $clients = $this->panierModel->listerClient();
         $this->panierView->afficherClient($clients);
     }
 
+    /**
+     * Valide le choix du client et affiche le récapitulatif avant paiement
+     *
+     * Enregistre en session :
+     * - Les informations du client sélectionné (id, nom, prénom, adresse)
+     * - Les montants totaux (HT, TVA, TTC)
+     * Puis affiche le récapitulatif complet de la commande
+     *
+     * @return void
+     */
     public function checkPanier() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
@@ -159,6 +205,17 @@ class PanierController {
         }
     }
 
+    /**
+     * Enregistre la commande en base de données et finalise le paiement
+     *
+     * Si l'enregistrement réussit :
+     * - Vide le panier et les données de session
+     * - Affiche la page de confirmation
+     * Si l'enregistrement échoue :
+     * - Affiche un message d'erreur
+     *
+     * @return void
+     */
     public function paiementPanier() {
 
     // Tente l'ajout de la commande en DB

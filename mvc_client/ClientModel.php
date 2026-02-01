@@ -7,6 +7,14 @@ use PDOException;
 
 require_once 'config/Database.php';
 
+/**
+ * Modèle pour la gestion des clients
+ *
+ * Cette classe gère les opérations en base de données liées aux clients :
+ * - CRUD (Create, Read, Update, Delete)
+ * - Vérification des liens avec les commandes
+ */
+
 class ClientModel {
 
     // propriétés privées (encapsulation)
@@ -18,54 +26,118 @@ class ClientModel {
     private $Adresse_client;
     private $Mail_client;
 
-
-    // Constructeur : initialisation du produit
-    // public function => pour que la fonction soit accessible partout
+    /**
+     * Constructeur : initialise la connexion à la base de données
+     */
     public function __construct() {
         $this->pdo = Database::getInstance()->getConnection();
     }
 
-    // Getter pour l'id
+    /**
+     * Récupère l'identifiant du client
+     *
+     * @return int Identifiant du client
+     */
     public function getId() {
         return $this->Id_client;
     }
 
-    // Getter et setter pour le nom du client
+    /**
+     * Récupère le nom du client
+     *
+     * @return string Nom du client
+     */
     public function getNom_client() {
         return $this->Nom_client;
     }
+
+    /**
+     * Définit le nom du client
+     *
+     * @param string $Nom_client Nom du client
+     *
+     * @return void
+     */
     public function setNom_client($Nom_client) {
         $this->Nom_client = $Nom_client;
     }
 
-    // Getter et setter pour le prénom du client
+    /**
+     * Récupère le prénom du client
+     *
+     * @return string Prénom du client
+     */
     public function getPrenom_client() {
         return $this->Prenom_client;
     }
+
+    /**
+     * Définit le prénom du client
+     *
+     * @param string $Prenom_client Prénom du client
+     *
+     * @return void
+     */
     public function setPrenom_client($Prenom_client) {
         $this->Prenom_client = $Prenom_client;
     }
 
-    // Getter et setter pour le n° de téléphone du client
+    /**
+     * Récupère le numéro de téléphone du client
+     *
+     * @return string Numéro de téléphone du client
+     */
     public function getTelephone_client() {
         return $this->Telephone_client;
     }
+
+    /**
+     * Définit le numéro de téléphone du client
+     *
+     * @param string $Telephone_client Numéro de téléphone du client
+     *
+     * @return void
+     */
     public function setTelephone_client($Telephone_client) {
         $this->Telephone_client = $Telephone_client;
     }
 
-    // Getter et setter pour l'adresse du client
+    /**
+     * Récupère l'adresse postale du client
+     *
+     * @return string Adresse postale du client
+     */
     public function getAdresse_client() {
         return $this->Adresse_client;
     }
+
+    /**
+     * Définit l'adresse postale du client
+     *
+     * @param string $Adresse_client Adresse postale du client
+     *
+     * @return void
+     */
     public function setAdresse_client($Adresse_client) {
         $this->Adresse_client = $Adresse_client;
     }
 
-    // Getter et setter pour l'adresse mail du client
+    /**
+     * Récupère l'adresse email du client
+     *
+     * @return string Adresse email du client
+     */
     public function getMail_client() {
         return $this->Mail_client;
     }
+
+    /**
+     * Définit l'adresse email du client
+     *
+     * @param string $Mail_client Adresse email du client
+     *
+     * @return void
+     */
     public function setMail_client($Mail_client) {
         $this->Mail_client = $Mail_client;
     }
@@ -103,11 +175,11 @@ class ClientModel {
      * @param string $Nom_client Nom du client
      * @param string $Prenom_client Prénom du client
      * @param string $Adresse_client Adresse postale du client
-     * @param numeric $Telephone_client Numéro de téléphone du client
-     * @param string $Mail_client Adresse e-mail du client
-     * @return string|null
+     * @param string $Telephone_client Numéro de téléphone du client
+     * @param string $Mail_client Adresse email du client
+     *
+     * @return string|null Retourne null si succès, ou un message d'erreur en cas d'échec
      */
-
     public static function ajouter($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -129,12 +201,12 @@ class ClientModel {
      * @param string $Nom_client Nom du client
      * @param string $Prenom_client Prénom du client
      * @param string $Adresse_client Adresse postale du client
-     * @param numeric $Telephone_client Numéro de téléphone du client
-     * @param string $Mail_client Adresse e-mail du client
+     * @param string $Telephone_client Numéro de téléphone du client
+     * @param string $Mail_client Adresse email du client
      * @param int $Id_client Identifiant du client à modifier
-     * @return void
+     *
+     * @return string|null Retourne null si succès, ou un message d'erreur en cas d'échec
      */
-
     public static function modifier($Nom_client, $Prenom_client, $Adresse_client, $Telephone_client, $Mail_client, $Id_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
@@ -183,6 +255,7 @@ class ClientModel {
      * Charge un client par son identifiant
      *
      * @param int $Id_client Identifiant du client
+     *
      * @return ClientModel|null Retourne un objet ClientModel ou null si non trouvé
      */
 
@@ -214,10 +287,10 @@ class ClientModel {
     /**
      * Vérifie si le client a au moins une commande qui lui est rattachée
      *
-     * @param $Id_client
-     * @return bool
+     * @param int $Id_client Identifiant du client
+     *
+     * @return bool Retourne true si le client a des commandes, false sinon
      */
-
     public static function haveOrder($Id_client) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();

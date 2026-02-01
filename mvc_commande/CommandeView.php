@@ -2,9 +2,19 @@
 
 require_once 'init_smarty.php';
 
+/**
+ * Vue pour l'affichage des commandes
+ *
+ * Cette classe gère l'affichage des différentes vues liées aux commandes
+ * via le moteur de template Smarty.
+ */
+
 class CommandeView {
     private $smarty;
 
+    /**
+     * Constructeur : initialise Smarty et définit le répertoire des templates
+     */
     public function __construct() {
         global $smarty;
         $this->smarty = $smarty;
@@ -13,7 +23,10 @@ class CommandeView {
 
     /**
      * Affiche la liste des commandes
+     *
      * @param array $commandes Liste des commandes à afficher
+     *
+     * @return void
      */
     public function afficherListe($commandes) {
         $this->smarty->assign('commande', $commandes);
@@ -34,8 +47,13 @@ class CommandeView {
 
     /**
      * Affiche le formulaire de modification de commande
+     *
      * @param array $commande Données de la commande à modifier
+     * @param array $produit Liste des produits de la commande
+     * @param array $statutsCommandes Liste des statuts disponibles
      * @param string|null $erreur Message d'erreur à afficher
+     *
+     * @return void
      */
     public function afficherFormulaireModification($commande, $produit, $statutsCommandes = [], $erreur = null) {
         $this->smarty->assign('action', 'update_client');
@@ -50,8 +68,13 @@ class CommandeView {
 
     /**
      * Affiche le formulaire de modification avec les données d'une commande existante
+     *
      * @param object $commande Objet commande avec les données existantes
+     * @param array $produit Liste des produits de la commande
+     * @param array $statutsCommandes Liste des statuts disponibles
      * @param string|null $erreur Message d'erreur à afficher
+     *
+     * @return void
      */
     public function afficherFormulaireModificationAvecDonnees($commande, $produit, $statutsCommandes, $erreur = null) {
         $donneesCommande = [
@@ -72,7 +95,9 @@ class CommandeView {
     }
 
     /**
-     * Affiche une erreur de commande introuvable
+     * Affiche une erreur lorsque la commande n'est pas trouvée
+     *
+     * @return void
      */
     public function afficherErreurCommandeIntrouvable() {
         $this->smarty->assign('erreur', 'Commande introuvable.');
@@ -81,6 +106,8 @@ class CommandeView {
 
     /**
      * Redirige vers la liste des commandes
+     *
+     * @return void
      */
     public function redirigerVersListe() {
         header("Location: index.php?action=commande");
@@ -89,8 +116,12 @@ class CommandeView {
 
     /**
      * Affiche le formulaire du détail d'une commande avec ses données
+     *
      * @param object $commande Objet commande avec les données existantes
+     * @param array $produit Liste des produits de la commande
      * @param string|null $erreur Message d'erreur à afficher
+     *
+     * @return void
      */
     public function afficherFormulaireDetailAvecDonnees($commande, $produit, $erreur = null) {
         $donneesCommande = [
@@ -111,9 +142,13 @@ class CommandeView {
     }
 
     /**
-     * Affiche le formulaire de modification de commande
-     * @param array $commande Données de la commande à modifier
+     * Affiche le formulaire avec le détail de la commande
+     *
+     * @param array $commande Données de la commande
+     * @param array $produit Liste des produits de la commande
      * @param string|null $erreur Message d'erreur à afficher
+     *
+     * @return void
      */
     public function afficherFormulaireDetail($commande, $produit, $erreur = null) {
         $this->smarty->assign('action', 'detail_commande');
