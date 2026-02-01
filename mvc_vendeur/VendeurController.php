@@ -103,6 +103,9 @@ class VendeurController {
     /**
      * Supprime un vendeur à partir de son identifiant (passé en GET)
      *
+     * Récupère l'ID via $_GET['Id_vendeur'] et supprime le vendeur correspondant,
+     * puis affiche la liste actualisée.
+     *
      * @return void
      */
     public function delete() {
@@ -128,9 +131,18 @@ class VendeurController {
     public function modifier($Id_vendeur) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            if (isset($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $_POST['mdp'])) {
+            /*if (isset($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $_POST['mdp'])) {*/
+            if (
+                !empty($_POST['nom']) &&
+                !empty($_POST['prenom']) &&
+                !empty($_POST['role']) &&
+                filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)
+            ) {
+                // si mdp n'est pas vide : mdp = mdp saisi, sinon mdp = null
+                $mdp = !empty($_POST['mdp']) ? $_POST['mdp'] : null;
+
                 // Tente la modification
-                $erreur = $this->vendeurModel->modifier($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $_POST['mdp'], $Id_vendeur);
+                $erreur = $this->vendeurModel->modifier($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $mdp, $Id_vendeur);
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après modification
                     $this->vendeurView->redirigerVersListe();
@@ -152,7 +164,7 @@ class VendeurController {
             if ($vendeur) {
                 $this->vendeurView->afficherFormulaireModificationAvecDonnees($vendeur, $role);
             } else {
-                $this->vendeurView->afficherErreurClientIntrouvable();
+                $this->vendeurView->afficherErreurVendeurIntrouvable();
             }
         }
     }

@@ -84,7 +84,7 @@
 
                         <div class="form-group">
                             <label for="mdp">Mot de passe :</label>
-                            <input class="form-control" type="password" id="mdp" name="mdp" required value="{if $action == 'update_vendeur'}{$vendeur.Mdp_vendeur|escape}{/if}">
+                            <input class="form-control" type="password" id="mdp" name="mdp"  {if $action == 'add'}required{/if}>
                         </div>
 
                         <a href="index.php?action=vendeur" class="btn btn-secondary mr-2 mt-3 mb-5">Retour</a>
