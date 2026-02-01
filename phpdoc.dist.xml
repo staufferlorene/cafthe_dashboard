@@ -11,8 +11,14 @@
     <version number="1.0.0">
         <api>
             <source dsn=".">
-                <path>mvc_produit</path>
                 <path>mvc_client</path>
+                <path>mvc_commande</path>
+                <path>mvc_home</path>
+                <path>mvc_login</path>
+                <path>mvc_panier</path>
+                <path>mvc_produit</path>
+                <path>mvc_profil</path>
+                <path>mvc_vendeur</path>
             </source>
             <output>docs</output>
         </api>

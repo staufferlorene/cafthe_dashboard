@@ -4,8 +4,14 @@
     "type": "project",
     "autoload": {
         "classmap": [
+            "mvc_client/",
+            "mvc_commande/",
+            "mvc_home/",
+            "mvc_login/",
+            "mvc_panier/",
             "mvc_produit/",
-            "mvc_client/"
+            "mvc_profil/",
+            "mvc_vendeur/"
         ]
     },
     "require-dev": {
