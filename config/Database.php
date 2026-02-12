@@ -41,7 +41,7 @@ class Database
     }
 
     public function getConnection() {
-        // Retourne l'objet PDO. Pourquoi ? Pour pouvoir faire des requêtes
+        // Retourne l'objet PDO pour pouvoir faire des requêtes
         return $this->pdo;
     }
 }

@@ -11,12 +11,13 @@ require_once 'config/Database.php';
 
 class ProduitSecurityTest extends TestCase {
 
-    // fonction protégée servant à ne pas polluer ma BDD avec les tests
+    // démarre une transaction, mettant en "attente" les modifications sur la BDD, puis les tests se lancent
     protected function setUp(): void {
         $db = Database::getInstance()->getConnection();
         $db->beginTransaction();
     }
 
+    // annule toutes les modifications à la fin de CHAQUE test, la BDD reste propre
     protected function tearDown(): void {
         $db = Database::getInstance()->getConnection();
         $db->rollBack();

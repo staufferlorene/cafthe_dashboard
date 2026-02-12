@@ -11,21 +11,20 @@ require_once 'config/Database.php';
 
 class ProduitTest extends TestCase {
 
-    // fonction protégée servant à ne pas polluer ma BDD avec les tests
+    // démarre une transaction, mettant en "attente" les modifications sur la BDD, puis les tests se lancent
     protected function setUp(): void {
         $db = Database::getInstance()->getConnection();
         $db->beginTransaction();
     }
 
+    // annule toutes les modifications à la fin de CHAQUE test, la BDD reste propre
     protected function tearDown(): void {
         $db = Database::getInstance()->getConnection();
         $db->rollBack();
     }
 
-
     // Tester l'ajout de produit
-    public function testCreate()
-    {
+    public function testCreateProduct() {
 
         // créer un nouveau produit
         $product = ProduitModel::ajouter(
@@ -43,17 +42,32 @@ class ProduitTest extends TestCase {
     }
 
     // Tester si la liste des produits retourne un tableau
-    public function testReadReturnArray()
-    {
+    public function testReadProductReturnArray() {
         $product = ProduitModel::lister();
         $this->assertIsArray($product);
     }
 
     // Tester si la liste contient les champs attendus
-    public function testReadContent()
-    {
+    public function testReadProductContent() {
+
+        // créer un nouveau produit au préalable
+        ProduitModel::ajouter(
+            'ajout test',
+            'ceci est la description du produit ajouté pour test',
+            10.50,
+            10,
+            30,
+            'vrac',
+            1
+        );
+
+        // lister les produits
         $product = ProduitModel::lister();
 
+        // vérifier que le tableau n'est pas vide
+        $this->assertNotEmpty($product);
+
+        // vérifier la présence des clés spécifiées sur le 1er produit du tableau
         $this->assertArrayHasKey('Id_produit', $product[0]);
         $this->assertArrayHasKey('Nom_produit', $product[0]);
         $this->assertArrayHasKey('Description', $product[0]);
@@ -67,25 +81,34 @@ class ProduitTest extends TestCase {
     }
 
     // Tester le chargement d'un produit par son id
-    public function testReadById()
-    {
+    public function testLoadProductById() {
+
+        // créer un nouveau produit au préalable
+        ProduitModel::ajouter(
+            'ajout test',
+            'ceci est la description du produit ajouté pour test',
+            10.50,
+            10,
+            30,
+            'vrac',
+            1
+        );
+
         $product = ProduitModel::loadById(1);
         $this->assertInstanceOf(ProduitModel::class, $product);
     }
 
     // Tester chargement d'un produit inexistant (retourne null)
-    public function testReadProductNull()
-    {
+    public function testLoadProductNull() {
         $product = ProduitModel::loadById(999999999999);
         $this->assertNull($product);
     }
 
     // Tester la modification
-    public function testUpdate()
-    {
+    public function testUpdateProduct() {
 
         // créer un nouveau produit au préalable
-        $product = ProduitModel::ajouter(
+        ProduitModel::ajouter(
             'ajout test',
             'ceci est la description du produit ajouté pour test',
             10.50,
@@ -96,12 +119,8 @@ class ProduitTest extends TestCase {
         );
 
         // récupération de l'id produit généré
-        // lister les produits
-        $product = ProduitModel::lister();
-        // récupérer le dernier produit
-        $lastProduct = end($product);
-        // récupérer son id
-        $idProduct = $lastProduct['Id_produit'];
+        $db = Database::getInstance()->getConnection();
+        $idProduct = $db->lastInsertId();
 
         // modification du produit
         ProduitModel::modifier(
@@ -128,11 +147,10 @@ class ProduitTest extends TestCase {
     }
 
     // Tester la suppression d'un produit
-    public function testDelete()
-    {
+    public function testDeleteProduct() {
 
         // créer un nouveau produit au préalable
-        $product = ProduitModel::ajouter(
+        ProduitModel::ajouter(
             'ajout test',
             'ceci est la description du produit ajouté pour test',
             10.50,
@@ -143,12 +161,8 @@ class ProduitTest extends TestCase {
         );
 
         // récupération de l'id produit généré
-        // lister les produits
-        $product = ProduitModel::lister();
-        // récupérer le dernier produit
-        $lastProduct = end($product);
-        // récupérer son id
-        $idProduct = $lastProduct['Id_produit'];
+        $db = Database::getInstance()->getConnection();
+        $idProduct = $db->lastInsertId();
 
         // supprimer le produit
         $productDelete = ProduitModel::delete($idProduct);
@@ -159,11 +173,10 @@ class ProduitTest extends TestCase {
     }
 
     // Tester le retour booleen si produit est lié à une commande
-    public function testHaveOrderBoolean()
-    {
+    public function testHaveOrderProduct() {
 
         // créer un nouveau produit au préalable
-        $product = ProduitModel::ajouter(
+        ProduitModel::ajouter(
             'ajout test',
             'ceci est la description du produit ajouté pour test',
             10.50,
@@ -174,12 +187,8 @@ class ProduitTest extends TestCase {
         );
 
         // récupération de l'id produit généré
-        // lister les produits
-        $product = ProduitModel::lister();
-        // récupérer le dernier produit
-        $lastProduct = end($product);
-        // récupérer son id
-        $idProduct = $lastProduct['Id_produit'];
+        $db = Database::getInstance()->getConnection();
+        $idProduct = $db->lastInsertId();
 
         // vérifier si booleen
         $result = ProduitModel::haveOrder($idProduct);

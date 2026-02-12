@@ -42,7 +42,7 @@ class LoginModel {
      *
      * @return bool Retourne true si le mot de passe correspond, false sinon
      */
-    public function verifierMotDePasse($mdp, $hash) {
+    public static function verifierMotDePasse($mdp, $hash) {
         // Vérifie si le mot de passe correspond au mdp haché en BDD
         return password_verify($mdp, $hash);
     }
