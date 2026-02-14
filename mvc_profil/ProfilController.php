@@ -128,6 +128,7 @@ class ProfilController {
                     } else {
                         $this->profilView->afficherErreurVendeurIntrouvable();
                     }
+                    return;
                 }
 
                 // Vérifie que les nouveaux mots de passe correspondent
@@ -139,23 +140,21 @@ class ProfilController {
                     } else {
                         $this->profilView->afficherErreurVendeurIntrouvable();
                     }
+                    return;
                 }
 
-                // Récupération de l'utilisateur connecté
-                $utilisateur = $_SESSION['utilisateur'];
+                // Tente la modification
+                $erreur = $this->profilModel->modifierMdp($mdp, $new_mdp, $Id_vendeur);
 
-                // Vérifie que le mot de passe actuel est correct
-                if ($this->profilModel->verifierMotDePasse($mdp, $utilisateur['Mdp_vendeur'])) {
-
-                    // Tente la modification
-                    $success = $this->profilModel->modifierMdp($_POST['new_mdp'], $Id_vendeur);
-                    if ($success) {
-                        $this->profilView->redirigerVersProfil();
-                    }
+                if ($erreur === null) {
+                    $this->profilView->redirigerVersProfil();
                 } else {
                     $vendeur = ProfilModel::loadById($Id_vendeur);
-                    $erreur = "Le mot de passe actuel est incorrect.";
-                    $this->profilView->afficherFormulaireDetailAvecDonneesMdp($vendeur, $erreur);
+                    if ($vendeur) {
+                        $this->profilView->afficherFormulaireDetailAvecDonneesMdp($vendeur, $erreur);
+                    } else {
+                        $this->profilView->afficherErreurVendeurIntrouvable();
+                    }
                 }
             }
         } else {

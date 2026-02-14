@@ -186,37 +186,46 @@ class ProfilModel {
     }
 
     /**
-     * Vérifie si un mot de passe correspond à son hash
-     *
-     * @param string $mdp Mot de passe en clair à vérifier
-     * @param string $hash Hash du mot de passe stocké en base de données
-     *
-     * @return bool Retourne true si le mot de passe correspond, false sinon
-     */
-    public static function verifierMotDePasse($mdp, $hash) {
-        // Vérifie si le mot de passe correspond au mdp haché en BDD
-        return password_verify($mdp, $hash);
-    }
-
-    /**
      * Modifie le mot de passe d'un vendeur
      *
      * Le mot de passe est haché avec BCrypt avant stockage
      *
-     * @param string $Mdp_vendeur Nouveau mot de passe en clair
+     * @param string $ancien_mdp Ancien mot de passe (pour vérification)
+     * @param string $nouveau_mdp Nouveau mot de passe
      * @param int $Id_vendeur Identifiant du vendeur
      *
-     * @return bool Retourne true si la mise à jour a réussi, false sinon
+     * @return string|null Retourne null si succès, sinon un message d'erreur
      */
-    public static function modifierMdp($Mdp_vendeur, $Id_vendeur) {
+    public static function modifierMdp($ancien_mdp, $nouveau_mdp, $Id_vendeur) {
         // On récupère PDO via la Class Database
         $db = Database::getInstance()->getConnection();
 
-        // Hachage du mdp (bcrypt et 10 salage)
-        $hashedPassword = password_hash($Mdp_vendeur, PASSWORD_BCRYPT, ['cost' => 10]);
+        try {
+            // Récupération du mdp haché en BDD pour comparaison
+            $stmt = $db->prepare("SELECT Mdp_vendeur FROM vendeur WHERE Id_vendeur = ?");
+            $stmt->execute([$Id_vendeur]);
+            $hash_actuel = $stmt->fetchColumn();
 
-        // Màj
-        $stmt = $db->prepare("UPDATE vendeur SET Mdp_vendeur=? WHERE Id_vendeur=?");
-        return $stmt->execute([$hashedPassword, $Id_vendeur]);
+            if (!$hash_actuel) {
+                return "Vendeur introuvable.";
+            }
+
+            // Vérifier que l'ancien mdp est correct
+            if (!password_verify($ancien_mdp, $hash_actuel)) {
+                return "Le mot de passe actuel est incorrect.";
+            }
+
+            // Hachage du mdp (bcrypt et 10 salage)
+            $hashedPassword = password_hash($nouveau_mdp, PASSWORD_BCRYPT, ['cost' => 10]);
+
+            // Màj
+            $stmt = $db->prepare("UPDATE vendeur SET Mdp_vendeur = ? WHERE Id_vendeur = ?");
+            $stmt->execute([$hashedPassword, $Id_vendeur]);
+
+            return null; // Succès
+
+        } catch (PDOException $e) {
+            return $e->getMessage();
+        }
     }
 }
