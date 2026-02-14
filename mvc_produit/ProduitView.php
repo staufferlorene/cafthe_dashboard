@@ -157,18 +157,4 @@ class ProduitView {
         }
         $this->smarty->display('mvc_produit/produit_detail_view.tpl');
     }
-
-    /**
-     * Affiche les alertes de stock faible dans la barre supérieure
-     *
-     * @param array $alertesStock Liste des produits en alerte de stock
-     *
-     * @return void
-     */
-    public function afficherAlerteStockBas($alertesStock) {
-        $this->smarty->assign('alertesStock', $alertesStock);
-        $this->smarty->assign('nbAlertesStock', count($alertesStock));
-
-        $this->smarty->display('template/layout_topbar.tpl');
-    }
 }

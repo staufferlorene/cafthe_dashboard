@@ -162,16 +162,4 @@ class ProduitController {
             $this->produitView->afficherErreurProduitIntrouvable();
         }
     }
-
-    /**
-     * Charge les données pour la TopBar (alertes de stock)
-     *
-     * @return void
-     */
-    public function loadTopBarData() {
-        $alertesStock = ProduitModel::getStockAlert();
-        if ($alertesStock) {
-            $this->produitView->afficherAlerteStockBas($alertesStock);
-        }
-    }
 }

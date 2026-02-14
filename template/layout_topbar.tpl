@@ -9,6 +9,49 @@
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
 
+        <!-- Nav Item - Alerts -->
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-bell fa-fw"></i>
+                <!-- Counter - Alerts -->
+                {if $nbAlertesStock > 0}
+                    <span class="badge badge-danger badge-counter">
+                        {$nbAlertesStock}
+                    </span>
+                {/if}
+            </a>
+            <!-- Dropdown - Alerts -->
+            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                 aria-labelledby="alertsDropdown">
+                <h6 class="dropdown-header">
+                    Alerte stock bas
+                </h6>
+
+                {if $nbAlertesStock > 0}
+                    {foreach $alertesStock as $produit}
+                        <a class="dropdown-item d-flex align-items-center" href="index.php?action=detail_produit&Id_produit={$produit.Id_produit}">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="font-weight-bold">{$produit.Nom_produit|escape}</div>
+                                <span>Stock : {$produit.Stock}</span>
+                            </div>
+                        </a>
+                    {/foreach}
+                {else}
+                    <div class="dropdown-item text-gray-700">
+                        Aucune alerte de stock
+                    </div>
+                {/if}
+            </div>
+        </li>
+
+        <div class="topbar-divider d-none d-sm-block"></div>
+
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" id="userDropdown" role="button"

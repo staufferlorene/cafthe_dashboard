@@ -26,15 +26,22 @@ require_once 'mvc_login/LoginController.php';
 require_once 'mvc_profil/ProfilController.php';
 require_once 'mvc_panier/PanierController.php';
 require_once 'mvc_home/HomeController.php';
+require_once 'template/TopBarModel.php';
 
 // Vérification si l'utilisateur est connecté
 if (isset($_SESSION['utilisateur'])) {
     // Passage des infos de l'utilisateur à smarty
     $smarty->assign('utilisateur', $_SESSION['utilisateur']);
+
+    // Récupération des produits dont stock <= 5 et passage des infos du produit à smarty
+    $alertesStock = template\TopBarModel::getStockAlert();
+    $smarty->assign('alertesStock', $alertesStock);
+    $smarty->assign('nbAlertesStock', count($alertesStock));
+
     // Récupération des paramètres de l'action via l'URL, si pas d'action affichage de la page d'accueil
     $action = isset($_GET['action']) ? $_GET['action'] : 'home';
-    // Si utilisateur non connecté affichage de la page de connexion
 } else {
+    // Si utilisateur non connecté affichage de la page de connexion
     $action = 'login';
 }
 
@@ -49,7 +56,6 @@ $Id_commande = isset($_GET['Id_commande']) ? intval($_GET['Id_commande']) : 0;
 
 // Récupération de l'id du vendeur
 $Id_vendeur = isset($_GET['Id_vendeur']) ? intval($_GET['Id_vendeur']) : 0;
-
 
 switch ($action) {
 

@@ -411,18 +411,4 @@ class ProduitModel {
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    /**
-     * Récupère les produits dont le stock est inférieur ou égal à 5
-     *
-     * @return array Liste des produits en alerte de stock (nom et quantité)
-     */
-    public static function getStockAlert() {
-        // On récupère PDO via la Class Database
-        $db = Database::getInstance()->getConnection();
-
-        $stmt = $db->prepare("SELECT Nom_produit, Stock FROM produit WHERE Stock <= 5 ORDER BY Stock ASC");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
 }
