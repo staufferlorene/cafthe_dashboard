@@ -24,7 +24,7 @@ new Chart(graph, {
         plugins: {
             title: {
                 display: true,
-                text: 'Produits les plus vendus'
+                text: 'Top 6 des produits les plus vendus'
             }
         }
     },

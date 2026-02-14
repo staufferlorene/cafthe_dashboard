@@ -126,7 +126,7 @@ class VendeurTest extends TestCase {
         $this->assertEquals('Nouveauprenom', $vendeurUpdate->getPrenom_vendeur());
         $this->assertEquals('admin', $vendeurUpdate->getRole());
         $this->assertEquals('nouveau.mail@email.com', $vendeurUpdate->getMail_vendeur());
-        $this->assertEquals('Nouveaumotdepassevendeur123', $vendeurUpdate->getMdp_vendeur());
+        $this->assertTrue(password_verify('Nouveaumotdepassevendeur123', $vendeurUpdate->getMdp_vendeur()));
     }
 
     // Tester la suppression d'un vendeur

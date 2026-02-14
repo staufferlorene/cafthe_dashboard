@@ -193,7 +193,7 @@ class PanierModel {
      *
      * @return string|null Retourne null si succès, ou un message d'erreur en cas d'échec
      */
-    public function addDB() {
+    public static function addDB() {
         try {
             // On récupère PDO via la Class Database
             $db = Database::getInstance()->getConnection();

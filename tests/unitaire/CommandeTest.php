@@ -67,15 +67,15 @@ class CommandeTest extends TestCase{
     public function testUpdateCommande() {
 
         // charger la commande avant modification
-        $commandeAfter = CommandeModel::loadByIdClient(1);
+        $commandeBefore = CommandeModel::loadByIdClient(1);
 
         // sauvegarder chaque données
-        $statutSave = $commandeAfter->getStatut_commande();
-        $nomSave = $commandeAfter->getNom_client();
-        $prenomSave = $commandeAfter->getPrenom_client();
-        $adresseSave = $commandeAfter->getAdresse_livraison();
-        $dateCommandeSave = $commandeAfter->getDate_commande();
-        $montantTTCSave = $commandeAfter->getMontant_commande_TTC();
+        $statutSave = $commandeBefore->getStatut_commande();
+        $nomSave = $commandeBefore->getNom_client();
+        $prenomSave = $commandeBefore->getPrenom_client();
+        $adresseSave = $commandeBefore->getAdresse_livraison();
+        $dateCommandeSave = $commandeBefore->getDate_commande();
+        $montantTTCSave = $commandeBefore->getMontant_commande_TTC();
 
         // modification du statut de la commande
         CommandeModel::modifier(
@@ -84,15 +84,15 @@ class CommandeTest extends TestCase{
         );
 
         // recharger la commande après modification
-        $commandeBefore = CommandeModel::loadByIdClient(1);
+        $commandeAfter = CommandeModel::loadByIdClient(1);
 
         // vérifier que seul le statut a été modifié, les autres champs sont inchangés
-        $this->assertEquals('Expédiée', $commandeBefore->getStatut_commande());
+        $this->assertEquals('Expédiée', $commandeAfter->getStatut_commande());
 
-        $this->assertEquals($nomSave, $commandeBefore->getNom_client());
-        $this->assertEquals($prenomSave, $commandeBefore->getPrenom_client());
-        $this->assertEquals($adresseSave, $commandeBefore->getAdresse_livraison());
-        $this->assertEquals($dateCommandeSave, $commandeBefore->getDate_commande());
-        $this->assertEquals($montantTTCSave, $commandeBefore->getMontant_commande_TTC());
+        $this->assertEquals($nomSave, $commandeAfter->getNom_client());
+        $this->assertEquals($prenomSave, $commandeAfter->getPrenom_client());
+        $this->assertEquals($adresseSave, $commandeAfter->getAdresse_livraison());
+        $this->assertEquals($dateCommandeSave, $commandeAfter->getDate_commande());
+        $this->assertEquals($montantTTCSave, $commandeAfter->getMontant_commande_TTC());
     }
 }
