@@ -198,6 +198,10 @@ class PanierModel {
             // On récupère PDO via la Class Database
             $db = Database::getInstance()->getConnection();
 
+            if (!isset($_SESSION['clientSession']) || !isset($_SESSION['clientSession']['id'])) {
+                return "Aucun client sélectionné.";
+            }
+
             // Récupération du panier
             $totalHT = $_SESSION['montants']['totalHT'];
             $totalTVA = $_SESSION['montants']['totalTVA'];
