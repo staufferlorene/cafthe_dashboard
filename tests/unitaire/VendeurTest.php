@@ -169,8 +169,29 @@ class VendeurTest extends TestCase {
         $db = Database::getInstance()->getConnection();
         $idVendeur = $db->lastInsertId();
 
-        // vérifier si booleen
+        // vérifier si booleen et qu'il est false
         $result = VendeurModel::haveOrder($idVendeur);
         $this->assertIsBool($result);
+        $this->assertFalse($result);
+    }
+
+    // Tester le retour booleen si mail existe déjà en BDD
+    public function testMailExisting() {
+
+        // créer un nouveau vendeur au préalable
+        $mailVendeur = 'mail.vendeur@email.com';
+
+        VendeurModel::ajouter(
+            'Durand',
+            'Jeanne',
+            'vendeur',
+            $mailVendeur,
+            'Motdepassevendeur123',
+        );
+
+        // vérifier si booleen et qu'il est true
+        $result = VendeurModel::existeMail($mailVendeur);
+        $this->assertIsBool($result);
+        $this->assertTrue($result);
     }
 }

@@ -208,13 +208,11 @@ class PanierTest extends TestCase {
         // créer la commande
         $result = PanierModel::addDB();
 
-        // Déboguer
-        var_dump('Result:', $result);
-
         $this->assertNull($result, "Erreur: " . $result);
 
-        $idCommande = (int)$db->lastInsertId();
-        var_dump('ID Commande:', $idCommande);
+        $stmt = $db->prepare("SELECT Id_commande FROM commande WHERE Id_client = ? AND Id_vendeur = ? ORDER BY Id_commande DESC LIMIT 1");
+        $stmt->execute([$idClient, $idVendeur]);
+        $idCommande = (int)$stmt->fetchColumn();
 
         $this->assertGreaterThan(0, $idCommande, "Aucune commande créée");
 

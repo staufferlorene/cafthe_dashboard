@@ -3,14 +3,14 @@
 namespace securite;
 
 use Database;
-use mvc_produit\ProduitModel;
+use mvc_client\ClientModel;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once __DIR__ . '/../../mvc_produit/ProduitModel.php';
+require_once __DIR__ . '/../../mvc_client/ClientModel.php';
 require_once 'config/Database.php';
 
-class ProduitSecurityTest extends TestCase {
+class ClientSecurityTest extends TestCase {
 
     // démarre une transaction, mettant en "attente" les modifications sur la BDD, puis les tests se lancent
     protected function setUp(): void {
@@ -38,7 +38,7 @@ class ProduitSecurityTest extends TestCase {
 
     // Tester l'injection SQL : vérifier qu'une ligne maximum est ajoutée (pas d'injection)
     #[DataProvider('payloadsProvider')]
-    public function testInjectionSQLProduct(string $payload) {
+    public function testInjectionSQLClient(string $payload) {
         $db = Database::getInstance()->getConnection();
 
         // compter avant injection
@@ -50,7 +50,13 @@ class ProduitSecurityTest extends TestCase {
         ];
 
         // faire l'injection
-        ProduitModel::ajouter($payload, "ceci est la description", 10, 8, 5, "vrac", 1);
+        ClientModel::ajouter(
+            $payload,
+            'Jean',
+            '10 rue de Paris, 75000 Paris',
+            '0612345678',
+            'jean.dupont@email.com',
+        );
 
         // Vérifier qu'AUCUNE injection n'a réussi
 
@@ -64,7 +70,7 @@ class ProduitSecurityTest extends TestCase {
             }
         }
 
-        // Vérifier que le nombre de lignes dans les différentes tables n'a PAS changé (sauf pour produit ou c'est +1 si création réussi sinon +0)
+        // Vérifier que le nombre de lignes dans les différentes tables n'a PAS changé (sauf pour client ou c'est +1 si création réussi sinon +0)
         // compter les lignes APRES l'injection
         $countsAfter = [
             'vendeur' => (int)$db->query("SELECT COUNT(*) FROM vendeur")->fetchColumn(),
@@ -74,33 +80,31 @@ class ProduitSecurityTest extends TestCase {
         ];
 
         $this->assertEquals($countsBefore['vendeur'], $countsAfter['vendeur']);
-        $this->assertLessThanOrEqual($countsBefore['produit'] + 1, $countsAfter['produit']);
-        $this->assertEquals($countsBefore['client'], $countsAfter['client']);
+        $this->assertEquals($countsBefore['produit'], $countsAfter['produit']);
+        $this->assertLessThanOrEqual($countsBefore['client'] + 1, $countsAfter['client']);
         $this->assertEquals($countsBefore['commande'], $countsAfter['commande']);
     }
 
     // Tester XSS (CROSS-SITE SCRIPTING) dans les champs texte
-    public function testXSSProduct() {
+    public function testXSSClient() {
 
-        ProduitModel::ajouter(
+        ClientModel::ajouter(
             "<script>alert('XSS')</script>",
-            'ceci est la description du produit ajouté pour test',
-            10.50,
-            10,
-            30,
-            'vrac',
-            1
+            'Jean',
+            '10 rue de Paris, 75000 Paris',
+            '0612345678',
+            'jean.dupont@email.com',
         );
 
-        // récupération de l'id produit généré
+        // récupération de l'id client généré
         $db = Database::getInstance()->getConnection();
-        $idProduct = $db->lastInsertId();
+        $idClient = $db->lastInsertId();
 
-        // récupérer le produit
-        $product = ProduitModel::loadById($idProduct);
+        // récupérer le client
+        $client = ClientModel::loadById($idClient);
 
         // Le nom est stocké tel quel en BDD (pas d'échappement nécessaire ici)
-        $this->assertEquals("<script>alert('XSS')</script>", $product->getNom_produit());
+        $this->assertEquals("<script>alert('XSS')</script>", $client->getNom_client());
         // La protection XSS se fait au niveau de la vue avec Smarty {$variable|escape}
         // Le test vérifie que les données ne cassent pas la BDD
     }

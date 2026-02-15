@@ -3,14 +3,14 @@
 namespace securite;
 
 use Database;
-use mvc_produit\ProduitModel;
+use mvc_profil\ProfilModel;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once __DIR__ . '/../../mvc_produit/ProduitModel.php';
+require_once __DIR__ . '/../../mvc_profil/ProfilModel.php';
 require_once 'config/Database.php';
 
-class ProduitSecurityTest extends TestCase {
+class ProfilSecurityTest extends TestCase {
 
     // démarre une transaction, mettant en "attente" les modifications sur la BDD, puis les tests se lancent
     protected function setUp(): void {
@@ -36,9 +36,10 @@ class ProduitSecurityTest extends TestCase {
         ];
     }
 
-    // Tester l'injection SQL : vérifier qu'une ligne maximum est ajoutée (pas d'injection)
+    // Test : Tentative d'injection SQL via le nom
     #[DataProvider('payloadsProvider')]
-    public function testInjectionSQLProduct(string $payload) {
+    public function testSQLInjectionInNom(string $payload) {
+
         $db = Database::getInstance()->getConnection();
 
         // compter avant injection
@@ -49,8 +50,21 @@ class ProduitSecurityTest extends TestCase {
             'commande' => (int)$db->query("SELECT COUNT(*) FROM commande")->fetchColumn(),
         ];
 
+        // créer un vendeur au préalable
+        $stmt = $db->prepare("
+            INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
+            VALUES ('Dupont', 'Jean', 'jean@email.com', ?, 1)
+        ");
+        $stmt->execute([password_hash('mdp123', PASSWORD_BCRYPT)]);
+        $idVendeur = (int)$db->lastInsertId();
+
         // faire l'injection
-        ProduitModel::ajouter($payload, "ceci est la description", 10, 8, 5, "vrac", 1);
+        ProfilModel::modifier(
+            $payload,
+            'Jean',
+            'jean@email.com',
+            $idVendeur
+        );
 
         // Vérifier qu'AUCUNE injection n'a réussi
 
@@ -64,7 +78,7 @@ class ProduitSecurityTest extends TestCase {
             }
         }
 
-        // Vérifier que le nombre de lignes dans les différentes tables n'a PAS changé (sauf pour produit ou c'est +1 si création réussi sinon +0)
+        // Vérifier que le nombre de lignes dans les différentes tables n'a PAS changé (sauf pour vendeur ou c'est +1)
         // compter les lignes APRES l'injection
         $countsAfter = [
             'vendeur' => (int)$db->query("SELECT COUNT(*) FROM vendeur")->fetchColumn(),
@@ -73,35 +87,67 @@ class ProduitSecurityTest extends TestCase {
             'commande' => (int)$db->query("SELECT COUNT(*) FROM commande")->fetchColumn(),
         ];
 
-        $this->assertEquals($countsBefore['vendeur'], $countsAfter['vendeur']);
-        $this->assertLessThanOrEqual($countsBefore['produit'] + 1, $countsAfter['produit']);
+        $this->assertEquals($countsBefore['vendeur'] + 1, $countsAfter['vendeur']);
+        $this->assertEquals($countsBefore['produit'], $countsAfter['produit']);
         $this->assertEquals($countsBefore['client'], $countsAfter['client']);
         $this->assertEquals($countsBefore['commande'], $countsAfter['commande']);
     }
 
     // Tester XSS (CROSS-SITE SCRIPTING) dans les champs texte
-    public function testXSSProduct() {
+    public function testXSSProfil() {
 
-        ProduitModel::ajouter(
+        $db = Database::getInstance()->getConnection();
+
+        // créer un vendeur au préalable
+        $stmt = $db->prepare("
+            INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
+            VALUES ('Dupont', 'Jean', 'jean@email.com', ?, 1)
+        ");
+        $stmt->execute([password_hash('mdp', PASSWORD_BCRYPT)]);
+        $idVendeur = (int)$db->lastInsertId();
+
+        ProfilModel::modifier(
             "<script>alert('XSS')</script>",
-            'ceci est la description du produit ajouté pour test',
-            10.50,
-            10,
-            30,
-            'vrac',
-            1
+            'Jean',
+            'jean@email.com',
+            $idVendeur
         );
 
-        // récupération de l'id produit généré
-        $db = Database::getInstance()->getConnection();
-        $idProduct = $db->lastInsertId();
-
-        // récupérer le produit
-        $product = ProduitModel::loadById($idProduct);
+        // Récupérer le profil
+        $profil = ProfilModel::loadById($idVendeur);
 
         // Le nom est stocké tel quel en BDD (pas d'échappement nécessaire ici)
-        $this->assertEquals("<script>alert('XSS')</script>", $product->getNom_produit());
+        $this->assertEquals("<script>alert('XSS')</script>", $profil->getNom_vendeur());
         // La protection XSS se fait au niveau de la vue avec Smarty {$variable|escape}
         // Le test vérifie que les données ne cassent pas la BDD
+    }
+
+    // Test : L'email doit être au bon format
+    public function testEmailValidation() {
+
+        $emailsInvalides = [
+            'pas-un-email',
+            '@exemple.com',
+            'test@',
+            'test@@exemple.com',
+            'test @exemple.com',
+            ''
+        ];
+
+        foreach ($emailsInvalides as $email) {
+            $isValid = filter_var($email, FILTER_VALIDATE_EMAIL);
+            $this->assertFalse($isValid, "L'email '{$email}' devrait être invalide");
+        }
+
+        $emailsValides = [
+            'test@exemple.com',
+            'jean.dupont@exemple.fr',
+            'vendeur123@test.ch'
+        ];
+
+        foreach ($emailsValides as $email) {
+            $isValid = filter_var($email, FILTER_VALIDATE_EMAIL);
+            $this->assertNotFalse($isValid, "L'email '{$email}' devrait être valide");
+        }
     }
 }

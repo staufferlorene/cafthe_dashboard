@@ -169,8 +169,9 @@ class ClientTest extends TestCase {
         $db = Database::getInstance()->getConnection();
         $idClient = $db->lastInsertId();
 
-        // vérifier si booleen
+        // vérifier si booleen et qu'il est false
         $result = ClientModel::haveOrder($idClient);
         $this->assertIsBool($result);
+        $this->assertFalse($result);
     }
 }

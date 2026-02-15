@@ -190,8 +190,9 @@ class ProduitTest extends TestCase {
         $db = Database::getInstance()->getConnection();
         $idProduct = $db->lastInsertId();
 
-        // vérifier si booleen
+        // vérifier si booleen et qu'il est false
         $result = ProduitModel::haveOrder($idProduct);
         $this->assertIsBool($result);
+        $this->assertFalse($result);
     }
 }
