@@ -138,15 +138,8 @@ class PanierSecurityTest extends TestCase {
 
         try {
             $result = PanierModel::addDB();
-
-            // Si la méthode retourne une erreur, c'est bon
-            if ($result !== null) {
-                $this->assertTrue(true);
-            } else {
-                $this->fail("La commande ne devrait pas être créée sans client");
-            }
+            $this->assertFalse($result);
         } catch (\Exception $e) {
-            // Si exception levée, c'est bon
             $this->assertTrue(true);
         }
     }

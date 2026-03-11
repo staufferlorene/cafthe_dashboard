@@ -78,6 +78,4 @@ class VendeurSecurityTest extends TestCase {
         // La protection XSS se fait au niveau de la vue avec Smarty {$variable|escape}
         // Le test vérifie que les données ne cassent pas la BDD
     }
-
-
 }

@@ -102,10 +102,6 @@ class ProfilTest extends TestCase {
         $this->assertEquals($mdpOriginal, $mdpActuel);
     }
 
-    // ==========================================
-    // TESTS DE MODIFICATION DU MOT DE PASSE
-    // ==========================================
-
     // Test : Modifier le mot de passe avec l'ancien mot de passe correct
     public function testUpdatePasswordOK() {
 

@@ -49,8 +49,7 @@ class LoginTest extends TestCase {
     }
 
     // Tester connexion avec mot de passe incorrect
-    public function testVerifierMotDePasseIncorrect()
-    {
+    public function testVerifierMotDePasseIncorrect() {
         $hash = password_hash('monmdp123', PASSWORD_DEFAULT);
 
         $result = LoginModel::verifierMotDePasse('mauvaismdp', $hash);
