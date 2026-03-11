@@ -16,6 +16,20 @@ ini_set("display_errors", 1);
 // Démarrage de la session
 session_start();
 
+// Déconnexion après 30 minutes d'inactivité
+$timeout = 1800; // 30 minutes (1800 secondes)
+
+if (isset($_SESSION['connection']) && (time() - $_SESSION['connection']) > $timeout) {
+    // Détruit toutes les variables de session
+    session_destroy();
+
+    // Redirection vers la page de connexion
+    header("Location: index.php?action=login");
+    exit();
+}
+
+$_SESSION['connection'] = time();
+
 // Inclusion des contrôleurs
 require_once 'init_smarty.php';
 require_once 'mvc_produit/ProduitController.php';
