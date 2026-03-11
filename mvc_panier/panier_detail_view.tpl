@@ -2,10 +2,13 @@
 <html lang="fr">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- empêcher l'indexation par les moteurs de recherche -->
+    <meta name="robots" content="noindex">
+
     <link rel="icon" href="../img/icon.png" />
 
     <title>CafThé - Panier</title>
