@@ -1,6 +1,5 @@
 // Récupération des données envoyées en JSON depuis le fichier .tpl
 const dataCA = window.statsData.caParVendeur;
-console.log(dataCA)
 
 // Récupérer toutes les données du JSON en fonction de la clé donnée
 const dataLabelsCA = dataCA.map(e => `${e.Nom_vendeur} ${e.Prenom_vendeur}`);

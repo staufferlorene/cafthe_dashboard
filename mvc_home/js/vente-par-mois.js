@@ -1,6 +1,5 @@
 // Récupération des données envoyées en JSON depuis le fichier .tpl
 const dataMois = window.statsData.ventesParMois;
-console.log(dataMois)
 
 // Récupérer toutes les données du JSON en fonction de la clé donnée
 const dataLabelsMois = dataMois.map(e => e.mois);
