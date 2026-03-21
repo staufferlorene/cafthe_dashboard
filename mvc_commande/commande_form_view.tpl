@@ -78,7 +78,8 @@
                 <label for="statutCommande">Statut :</label>
                 <select class="form-control" id="statutCommande" name="statutCommande" required>
                     {foreach from=$statutsCommandes item=statut}
-                        <option value="{$statut.Statut_commande|escape}">
+                        <option value="{$statut.Statut_commande|escape}"
+                                {if $statut.Statut_commande == $commande.Statut_commande}selected{/if}>
                             {$statut.Statut_commande|escape}
                         </option>
                     {/foreach}
