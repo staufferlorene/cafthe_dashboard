@@ -48,6 +48,8 @@ class ProfilController {
                 $erreur = $this->profilModel->modifier($_POST['nom'], $_POST['prenom'], $_POST['mail'], $Id_vendeur);
                 if ($erreur === null) {
                     // Si succès : Redirection vers la liste après modification
+                    $_SESSION['utilisateur']['Prenom_vendeur'] = $_POST['prenom'];
+                    $_SESSION['utilisateur']['Nom_vendeur'] = $_POST['nom'];
                     $this->profilView->redirigerVersProfil();
                 } else {
                     // Si échec : Affiche le formulaire avec message d'erreur
