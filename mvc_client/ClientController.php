@@ -1,9 +1,6 @@
 <?php
 
-use mvc_client\ClientModel;
-
-require_once 'mvc_client/ClientModel.php';
-require_once 'mvc_client/ClientView.php';
+namespace mvc_client;
 
 /**
  * Contrôleur pour la gestion des clients

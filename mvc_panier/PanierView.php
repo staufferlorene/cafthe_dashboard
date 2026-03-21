@@ -1,6 +1,6 @@
 <?php
 
-require_once 'init_smarty.php';
+namespace mvc_panier;
 
 /**
  * Vue pour l'affichage du panier d'achat

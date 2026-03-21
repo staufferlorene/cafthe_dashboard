@@ -1,6 +1,6 @@
 <?php
 
-require_once 'init_smarty.php';
+namespace mvc_profil;
 
 /**
  * Vue pour l'affichage du profil vendeur

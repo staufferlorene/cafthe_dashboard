@@ -1,50 +1,50 @@
 Search.appendIndex(
     [
                 {
-            "fqsen": "\\ClientController",
+            "fqsen": "\\mvc_client\\ClientController",
             "name": "ClientController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020des\u0020clients",
-            "url": "classes/ClientController.html"
+            "url": "classes/mvc-client-ClientController.html"
         },                {
-            "fqsen": "\\ClientController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020aux\u0020clients",
-            "url": "classes/ClientController.html#method___construct"
+            "url": "classes/mvc-client-ClientController.html#method___construct"
         },                {
-            "fqsen": "\\ClientController\u003A\u003Aliste\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003Aliste\u0028\u0029",
             "name": "liste",
             "summary": "Affiche\u0020la\u0020liste\u0020de\u0020tous\u0020les\u0020clients",
-            "url": "classes/ClientController.html#method_liste"
+            "url": "classes/mvc-client-ClientController.html#method_liste"
         },                {
-            "fqsen": "\\ClientController\u003A\u003Aadd\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003Aadd\u0028\u0029",
             "name": "add",
             "summary": "Ajoute\u0020un\u0020nouveau\u0020client",
-            "url": "classes/ClientController.html#method_add"
+            "url": "classes/mvc-client-ClientController.html#method_add"
         },                {
-            "fqsen": "\\ClientController\u003A\u003Adelete\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
             "summary": "Supprime\u0020un\u0020client\u0020\u00E0\u0020partir\u0020de\u0020son\u0020identifiant\u0020\u0028pass\u00E9\u0020en\u0020GET\u0029",
-            "url": "classes/ClientController.html#method_delete"
+            "url": "classes/mvc-client-ClientController.html#method_delete"
         },                {
-            "fqsen": "\\ClientController\u003A\u003Amodifier\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003Amodifier\u0028\u0029",
             "name": "modifier",
             "summary": "Modifie\u0020un\u0020client\u0020existant",
-            "url": "classes/ClientController.html#method_modifier"
+            "url": "classes/mvc-client-ClientController.html#method_modifier"
         },                {
-            "fqsen": "\\ClientController\u003A\u003AvoirDetail\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003AvoirDetail\u0028\u0029",
             "name": "voirDetail",
             "summary": "Affiche\u0020le\u0020d\u00E9tail\u0020d\u2019un\u0020client\u0020existant",
-            "url": "classes/ClientController.html#method_voirDetail"
+            "url": "classes/mvc-client-ClientController.html#method_voirDetail"
         },                {
-            "fqsen": "\\ClientController\u003A\u003A\u0024clientModel",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003A\u0024clientModel",
             "name": "clientModel",
             "summary": "",
-            "url": "classes/ClientController.html#property_clientModel"
+            "url": "classes/mvc-client-ClientController.html#property_clientModel"
         },                {
-            "fqsen": "\\ClientController\u003A\u003A\u0024clientView",
+            "fqsen": "\\mvc_client\\ClientController\u003A\u003A\u0024clientView",
             "name": "clientView",
             "summary": "",
-            "url": "classes/ClientController.html#property_clientView"
+            "url": "classes/mvc-client-ClientController.html#property_clientView"
         },                {
             "fqsen": "\\mvc_client\\ClientModel",
             "name": "ClientModel",
@@ -176,95 +176,95 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/mvc-client-ClientModel.html#property_Mail_client"
         },                {
-            "fqsen": "\\ClientView",
+            "fqsen": "\\mvc_client\\ClientView",
             "name": "ClientView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020des\u0020clients",
-            "url": "classes/ClientView.html"
+            "url": "classes/mvc-client-ClientView.html"
         },                {
-            "fqsen": "\\ClientView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/ClientView.html#method___construct"
+            "url": "classes/mvc-client-ClientView.html#method___construct"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AafficherListe\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AafficherListe\u0028\u0029",
             "name": "afficherListe",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020clients",
-            "url": "classes/ClientView.html#method_afficherListe"
+            "url": "classes/mvc-client-ClientView.html#method_afficherListe"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AafficherFormulaireAjout\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AafficherFormulaireAjout\u0028\u0029",
             "name": "afficherFormulaireAjout",
             "summary": "Affiche\u0020le\u0020formulaire\u0020d\u0027ajout\u0020de\u0020client",
-            "url": "classes/ClientView.html#method_afficherFormulaireAjout"
+            "url": "classes/mvc-client-ClientView.html#method_afficherFormulaireAjout"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AafficherFormulaireModification\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AafficherFormulaireModification\u0028\u0029",
             "name": "afficherFormulaireModification",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020de\u0020client",
-            "url": "classes/ClientView.html#method_afficherFormulaireModification"
+            "url": "classes/mvc-client-ClientView.html#method_afficherFormulaireModification"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireModificationAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020avec\u0020les\u0020donn\u00E9es\u0020d\u0027un\u0020client\u0020existant",
-            "url": "classes/ClientView.html#method_afficherFormulaireModificationAvecDonnees"
+            "url": "classes/mvc-client-ClientView.html#method_afficherFormulaireModificationAvecDonnees"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AafficherErreurClientIntrouvable\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AafficherErreurClientIntrouvable\u0028\u0029",
             "name": "afficherErreurClientIntrouvable",
             "summary": "Affiche\u0020une\u0020erreur\u0020lorsque\u0020le\u0020client\u0020n\u0027est\u0020pas\u0020trouv\u00E9",
-            "url": "classes/ClientView.html#method_afficherErreurClientIntrouvable"
+            "url": "classes/mvc-client-ClientView.html#method_afficherErreurClientIntrouvable"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AredirigerVersListe\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AredirigerVersListe\u0028\u0029",
             "name": "redirigerVersListe",
             "summary": "Redirige\u0020vers\u0020la\u0020liste\u0020des\u0020clients",
-            "url": "classes/ClientView.html#method_redirigerVersListe"
+            "url": "classes/mvc-client-ClientView.html#method_redirigerVersListe"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireDetailAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020du\u0020d\u00E9tail\u0020d\u0027un\u0020client\u0020avec\u0020ses\u0020donn\u00E9es",
-            "url": "classes/ClientView.html#method_afficherFormulaireDetailAvecDonnees"
+            "url": "classes/mvc-client-ClientView.html#method_afficherFormulaireDetailAvecDonnees"
         },                {
-            "fqsen": "\\ClientView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
             "name": "afficherFormulaireDetail",
             "summary": "Affiche\u0020le\u0020formulaire\u0020avec\u0020le\u0020d\u00E9tail\u0020du\u0020client",
-            "url": "classes/ClientView.html#method_afficherFormulaireDetail"
+            "url": "classes/mvc-client-ClientView.html#method_afficherFormulaireDetail"
         },                {
-            "fqsen": "\\ClientView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_client\\ClientView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/ClientView.html#property_smarty"
+            "url": "classes/mvc-client-ClientView.html#property_smarty"
         },                {
-            "fqsen": "\\CommandeController",
+            "fqsen": "\\mvc_commande\\CommandeController",
             "name": "CommandeController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020des\u0020commandes",
-            "url": "classes/CommandeController.html"
+            "url": "classes/mvc-commande-CommandeController.html"
         },                {
-            "fqsen": "\\CommandeController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020aux\u0020commandes",
-            "url": "classes/CommandeController.html#method___construct"
+            "url": "classes/mvc-commande-CommandeController.html#method___construct"
         },                {
-            "fqsen": "\\CommandeController\u003A\u003Aliste\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeController\u003A\u003Aliste\u0028\u0029",
             "name": "liste",
             "summary": "Affiche\u0020la\u0020liste\u0020de\u0020toutes\u0020les\u0020commandes",
-            "url": "classes/CommandeController.html#method_liste"
+            "url": "classes/mvc-commande-CommandeController.html#method_liste"
         },                {
-            "fqsen": "\\CommandeController\u003A\u003Amodifier\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeController\u003A\u003Amodifier\u0028\u0029",
             "name": "modifier",
             "summary": "Modifie\u0020une\u0020commande\u0020existante",
-            "url": "classes/CommandeController.html#method_modifier"
+            "url": "classes/mvc-commande-CommandeController.html#method_modifier"
         },                {
-            "fqsen": "\\CommandeController\u003A\u003AvoirDetail\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeController\u003A\u003AvoirDetail\u0028\u0029",
             "name": "voirDetail",
             "summary": "Affiche\u0020le\u0020d\u00E9tail\u0020d\u2019une\u0020commande\u0020existante",
-            "url": "classes/CommandeController.html#method_voirDetail"
+            "url": "classes/mvc-commande-CommandeController.html#method_voirDetail"
         },                {
-            "fqsen": "\\CommandeController\u003A\u003A\u0024commandeModel",
+            "fqsen": "\\mvc_commande\\CommandeController\u003A\u003A\u0024commandeModel",
             "name": "commandeModel",
             "summary": "",
-            "url": "classes/CommandeController.html#property_commandeModel"
+            "url": "classes/mvc-commande-CommandeController.html#property_commandeModel"
         },                {
-            "fqsen": "\\CommandeController\u003A\u003A\u0024commandeView",
+            "fqsen": "\\mvc_commande\\CommandeController\u003A\u003A\u0024commandeView",
             "name": "commandeView",
             "summary": "",
-            "url": "classes/CommandeController.html#property_commandeView"
+            "url": "classes/mvc-commande-CommandeController.html#property_commandeView"
         },                {
             "fqsen": "\\mvc_commande\\CommandeModel",
             "name": "CommandeModel",
@@ -466,80 +466,80 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/mvc-commande-CommandeModel.html#property_Montant_TVA"
         },                {
-            "fqsen": "\\CommandeView",
+            "fqsen": "\\mvc_commande\\CommandeView",
             "name": "CommandeView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020des\u0020commandes",
-            "url": "classes/CommandeView.html"
+            "url": "classes/mvc-commande-CommandeView.html"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/CommandeView.html#method___construct"
+            "url": "classes/mvc-commande-CommandeView.html#method___construct"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003AafficherListe\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003AafficherListe\u0028\u0029",
             "name": "afficherListe",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020commandes",
-            "url": "classes/CommandeView.html#method_afficherListe"
+            "url": "classes/mvc-commande-CommandeView.html#method_afficherListe"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003AafficherFormulaireModification\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003AafficherFormulaireModification\u0028\u0029",
             "name": "afficherFormulaireModification",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020de\u0020commande",
-            "url": "classes/CommandeView.html#method_afficherFormulaireModification"
+            "url": "classes/mvc-commande-CommandeView.html#method_afficherFormulaireModification"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireModificationAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020avec\u0020les\u0020donn\u00E9es\u0020d\u0027une\u0020commande\u0020existante",
-            "url": "classes/CommandeView.html#method_afficherFormulaireModificationAvecDonnees"
+            "url": "classes/mvc-commande-CommandeView.html#method_afficherFormulaireModificationAvecDonnees"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003AafficherErreurCommandeIntrouvable\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003AafficherErreurCommandeIntrouvable\u0028\u0029",
             "name": "afficherErreurCommandeIntrouvable",
             "summary": "Affiche\u0020une\u0020erreur\u0020lorsque\u0020la\u0020commande\u0020n\u0027est\u0020pas\u0020trouv\u00E9e",
-            "url": "classes/CommandeView.html#method_afficherErreurCommandeIntrouvable"
+            "url": "classes/mvc-commande-CommandeView.html#method_afficherErreurCommandeIntrouvable"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003AredirigerVersListe\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003AredirigerVersListe\u0028\u0029",
             "name": "redirigerVersListe",
             "summary": "Redirige\u0020vers\u0020la\u0020liste\u0020des\u0020commandes",
-            "url": "classes/CommandeView.html#method_redirigerVersListe"
+            "url": "classes/mvc-commande-CommandeView.html#method_redirigerVersListe"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireDetailAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020du\u0020d\u00E9tail\u0020d\u0027une\u0020commande\u0020avec\u0020ses\u0020donn\u00E9es",
-            "url": "classes/CommandeView.html#method_afficherFormulaireDetailAvecDonnees"
+            "url": "classes/mvc-commande-CommandeView.html#method_afficherFormulaireDetailAvecDonnees"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
             "name": "afficherFormulaireDetail",
             "summary": "Affiche\u0020le\u0020formulaire\u0020avec\u0020le\u0020d\u00E9tail\u0020de\u0020la\u0020commande",
-            "url": "classes/CommandeView.html#method_afficherFormulaireDetail"
+            "url": "classes/mvc-commande-CommandeView.html#method_afficherFormulaireDetail"
         },                {
-            "fqsen": "\\CommandeView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_commande\\CommandeView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/CommandeView.html#property_smarty"
+            "url": "classes/mvc-commande-CommandeView.html#property_smarty"
         },                {
-            "fqsen": "\\HomeController",
+            "fqsen": "\\mvc_home\\HomeController",
             "name": "HomeController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020des\u0020statistiques",
-            "url": "classes/HomeController.html"
+            "url": "classes/mvc-home-HomeController.html"
         },                {
-            "fqsen": "\\HomeController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_home\\HomeController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020aux\u0020statistiques",
-            "url": "classes/HomeController.html#method___construct"
+            "url": "classes/mvc-home-HomeController.html#method___construct"
         },                {
-            "fqsen": "\\HomeController\u003A\u003AafficherStat\u0028\u0029",
+            "fqsen": "\\mvc_home\\HomeController\u003A\u003AafficherStat\u0028\u0029",
             "name": "afficherStat",
             "summary": "Affiche\u0020le\u0020tableau\u0020de\u0020bord\u0020avec\u0020l\u0027ensemble\u0020des\u0020statistiques",
-            "url": "classes/HomeController.html#method_afficherStat"
+            "url": "classes/mvc-home-HomeController.html#method_afficherStat"
         },                {
-            "fqsen": "\\HomeController\u003A\u003A\u0024homeModel",
+            "fqsen": "\\mvc_home\\HomeController\u003A\u003A\u0024homeModel",
             "name": "homeModel",
             "summary": "",
-            "url": "classes/HomeController.html#property_homeModel"
+            "url": "classes/mvc-home-HomeController.html#property_homeModel"
         },                {
-            "fqsen": "\\HomeController\u003A\u003A\u0024homeView",
+            "fqsen": "\\mvc_home\\HomeController\u003A\u003A\u0024homeView",
             "name": "homeView",
             "summary": "",
-            "url": "classes/HomeController.html#property_homeView"
+            "url": "classes/mvc-home-HomeController.html#property_homeView"
         },                {
             "fqsen": "\\mvc_home\\HomeModel",
             "name": "HomeModel",
@@ -576,55 +576,55 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/mvc-home-HomeModel.html#property_pdo"
         },                {
-            "fqsen": "\\HomeView",
+            "fqsen": "\\mvc_home\\HomeView",
             "name": "HomeView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020des\u0020statistiques\u0020du\u0020tableau\u0020de\u0020bord",
-            "url": "classes/HomeView.html"
+            "url": "classes/mvc-home-HomeView.html"
         },                {
-            "fqsen": "\\HomeView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_home\\HomeView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/HomeView.html#method___construct"
+            "url": "classes/mvc-home-HomeView.html#method___construct"
         },                {
-            "fqsen": "\\HomeView\u003A\u003AafficherListe\u0028\u0029",
+            "fqsen": "\\mvc_home\\HomeView\u003A\u003AafficherListe\u0028\u0029",
             "name": "afficherListe",
             "summary": "Affiche\u0020le\u0020tableau\u0020de\u0020bord\u0020avec\u0020toutes\u0020les\u0020statistiques",
-            "url": "classes/HomeView.html#method_afficherListe"
+            "url": "classes/mvc-home-HomeView.html#method_afficherListe"
         },                {
-            "fqsen": "\\HomeView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_home\\HomeView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/HomeView.html#property_smarty"
+            "url": "classes/mvc-home-HomeView.html#property_smarty"
         },                {
-            "fqsen": "\\LoginController",
+            "fqsen": "\\mvc_login\\LoginController",
             "name": "LoginController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020de\u0020la\u0020connexion",
-            "url": "classes/LoginController.html"
+            "url": "classes/mvc-login-LoginController.html"
         },                {
-            "fqsen": "\\LoginController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_login\\LoginController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020\u00E0\u0020la\u0020connexion",
-            "url": "classes/LoginController.html#method___construct"
+            "url": "classes/mvc-login-LoginController.html#method___construct"
         },                {
-            "fqsen": "\\LoginController\u003A\u003Alogin\u0028\u0029",
+            "fqsen": "\\mvc_login\\LoginController\u003A\u003Alogin\u0028\u0029",
             "name": "login",
             "summary": "G\u00E8re\u0020le\u0020processus\u0020de\u0020connexion\u0020d\u0027un\u0020vendeur",
-            "url": "classes/LoginController.html#method_login"
+            "url": "classes/mvc-login-LoginController.html#method_login"
         },                {
-            "fqsen": "\\LoginController\u003A\u003Alogout\u0028\u0029",
+            "fqsen": "\\mvc_login\\LoginController\u003A\u003Alogout\u0028\u0029",
             "name": "logout",
             "summary": "D\u00E9connecte\u0020l\u0027utilisateur\u0020et\u0020d\u00E9truit\u0020la\u0020session",
-            "url": "classes/LoginController.html#method_logout"
+            "url": "classes/mvc-login-LoginController.html#method_logout"
         },                {
-            "fqsen": "\\LoginController\u003A\u003A\u0024loginModel",
+            "fqsen": "\\mvc_login\\LoginController\u003A\u003A\u0024loginModel",
             "name": "loginModel",
             "summary": "",
-            "url": "classes/LoginController.html#property_loginModel"
+            "url": "classes/mvc-login-LoginController.html#property_loginModel"
         },                {
-            "fqsen": "\\LoginController\u003A\u003A\u0024loginView",
+            "fqsen": "\\mvc_login\\LoginController\u003A\u003A\u0024loginView",
             "name": "loginView",
             "summary": "",
-            "url": "classes/LoginController.html#property_loginView"
+            "url": "classes/mvc-login-LoginController.html#property_loginView"
         },                {
             "fqsen": "\\mvc_login\\LoginModel",
             "name": "LoginModel",
@@ -641,85 +641,85 @@ Search.appendIndex(
             "summary": "V\u00E9rifie\u0020si\u0020un\u0020mot\u0020de\u0020passe\u0020correspond\u0020\u00E0\u0020son\u0020hash",
             "url": "classes/mvc-login-LoginModel.html#method_verifierMotDePasse"
         },                {
-            "fqsen": "\\LoginView",
+            "fqsen": "\\mvc_login\\LoginView",
             "name": "LoginView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020du\u0020formulaire\u0020de\u0020connexion",
-            "url": "classes/LoginView.html"
+            "url": "classes/mvc-login-LoginView.html"
         },                {
-            "fqsen": "\\LoginView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_login\\LoginView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/LoginView.html#method___construct"
+            "url": "classes/mvc-login-LoginView.html#method___construct"
         },                {
-            "fqsen": "\\LoginView\u003A\u003AafficherFormulaireConnexion\u0028\u0029",
+            "fqsen": "\\mvc_login\\LoginView\u003A\u003AafficherFormulaireConnexion\u0028\u0029",
             "name": "afficherFormulaireConnexion",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020connexion",
-            "url": "classes/LoginView.html#method_afficherFormulaireConnexion"
+            "url": "classes/mvc-login-LoginView.html#method_afficherFormulaireConnexion"
         },                {
-            "fqsen": "\\LoginView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_login\\LoginView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/LoginView.html#property_smarty"
+            "url": "classes/mvc-login-LoginView.html#property_smarty"
         },                {
-            "fqsen": "\\PanierController",
+            "fqsen": "\\mvc_panier\\PanierController",
             "name": "PanierController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020du\u0020panier",
-            "url": "classes/PanierController.html"
+            "url": "classes/mvc-panier-PanierController.html"
         },                {
-            "fqsen": "\\PanierController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020au\u0020panier",
-            "url": "classes/PanierController.html#method___construct"
+            "url": "classes/mvc-panier-PanierController.html#method___construct"
         },                {
-            "fqsen": "\\PanierController\u003A\u003Aliste\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003Aliste\u0028\u0029",
             "name": "liste",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020produits\u0020disponibles\u0020avec\u0020le\u0020panier\u0020actuel",
-            "url": "classes/PanierController.html#method_liste"
+            "url": "classes/mvc-panier-PanierController.html#method_liste"
         },                {
-            "fqsen": "\\PanierController\u003A\u003AajoutPanier\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003AajoutPanier\u0028\u0029",
             "name": "ajoutPanier",
             "summary": "Ajoute\u0020un\u0020produit\u0020au\u0020panier\u0020ou\u0020met\u0020\u00E0\u0020jour\u0020sa\u0020quantit\u00E9",
-            "url": "classes/PanierController.html#method_ajoutPanier"
+            "url": "classes/mvc-panier-PanierController.html#method_ajoutPanier"
         },                {
-            "fqsen": "\\PanierController\u003A\u003AvoirPanier\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003AvoirPanier\u0028\u0029",
             "name": "voirPanier",
             "summary": "Affiche\u0020le\u0020d\u00E9tail\u0020complet\u0020du\u0020panier\u0020avec\u0020les\u0020totaux",
-            "url": "classes/PanierController.html#method_voirPanier"
+            "url": "classes/mvc-panier-PanierController.html#method_voirPanier"
         },                {
-            "fqsen": "\\PanierController\u003A\u003Adelete\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
             "summary": "Supprime\u0020un\u0020produit\u0020du\u0020panier\u0020\u00E0\u0020partir\u0020de\u0020son\u0020identifiant\u0020\u0028pass\u00E9\u0020en\u0020GET\u0029",
-            "url": "classes/PanierController.html#method_delete"
+            "url": "classes/mvc-panier-PanierController.html#method_delete"
         },                {
-            "fqsen": "\\PanierController\u003A\u003AmodifierPanier\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003AmodifierPanier\u0028\u0029",
             "name": "modifierPanier",
             "summary": "Modifie\u0020la\u0020quantit\u00E9\u0020d\u0027un\u0020produit\u0020dans\u0020le\u0020panier",
-            "url": "classes/PanierController.html#method_modifierPanier"
+            "url": "classes/mvc-panier-PanierController.html#method_modifierPanier"
         },                {
-            "fqsen": "\\PanierController\u003A\u003AlisteChoixClient\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003AlisteChoixClient\u0028\u0029",
             "name": "listeChoixClient",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020clients\u0020pour\u0020s\u00E9lection",
-            "url": "classes/PanierController.html#method_listeChoixClient"
+            "url": "classes/mvc-panier-PanierController.html#method_listeChoixClient"
         },                {
-            "fqsen": "\\PanierController\u003A\u003AcheckPanier\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003AcheckPanier\u0028\u0029",
             "name": "checkPanier",
             "summary": "Valide\u0020le\u0020choix\u0020du\u0020client\u0020et\u0020affiche\u0020le\u0020r\u00E9capitulatif\u0020avant\u0020paiement",
-            "url": "classes/PanierController.html#method_checkPanier"
+            "url": "classes/mvc-panier-PanierController.html#method_checkPanier"
         },                {
-            "fqsen": "\\PanierController\u003A\u003ApaiementPanier\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003ApaiementPanier\u0028\u0029",
             "name": "paiementPanier",
             "summary": "Enregistre\u0020la\u0020commande\u0020en\u0020base\u0020de\u0020donn\u00E9es\u0020et\u0020finalise\u0020le\u0020paiement",
-            "url": "classes/PanierController.html#method_paiementPanier"
+            "url": "classes/mvc-panier-PanierController.html#method_paiementPanier"
         },                {
-            "fqsen": "\\PanierController\u003A\u003A\u0024panierModel",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003A\u0024panierModel",
             "name": "panierModel",
             "summary": "",
-            "url": "classes/PanierController.html#property_panierModel"
+            "url": "classes/mvc-panier-PanierController.html#property_panierModel"
         },                {
-            "fqsen": "\\PanierController\u003A\u003A\u0024panierView",
+            "fqsen": "\\mvc_panier\\PanierController\u003A\u003A\u0024panierView",
             "name": "panierView",
             "summary": "",
-            "url": "classes/PanierController.html#property_panierView"
+            "url": "classes/mvc-panier-PanierController.html#property_panierView"
         },                {
             "fqsen": "\\mvc_panier\\PanierModel",
             "name": "PanierModel",
@@ -816,95 +816,90 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/mvc-panier-PanierModel.html#property_Tva_categorie"
         },                {
-            "fqsen": "\\PanierView",
+            "fqsen": "\\mvc_panier\\PanierView",
             "name": "PanierView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020du\u0020panier\u0020d\u0027achat",
-            "url": "classes/PanierView.html"
+            "url": "classes/mvc-panier-PanierView.html"
         },                {
-            "fqsen": "\\PanierView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/PanierView.html#method___construct"
+            "url": "classes/mvc-panier-PanierView.html#method___construct"
         },                {
-            "fqsen": "\\PanierView\u003A\u003AafficherListe\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierView\u003A\u003AafficherListe\u0028\u0029",
             "name": "afficherListe",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020produits\u0020disponibles\u0020avec\u0020le\u0020panier\u0020et\u0020son\u0020total",
-            "url": "classes/PanierView.html#method_afficherListe"
+            "url": "classes/mvc-panier-PanierView.html#method_afficherListe"
         },                {
-            "fqsen": "\\PanierView\u003A\u003AafficherDetailPanier\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierView\u003A\u003AafficherDetailPanier\u0028\u0029",
             "name": "afficherDetailPanier",
             "summary": "Affiche\u0020le\u0020d\u00E9tail\u0020du\u0020panier\u0020avec\u0020les\u0020totaux",
-            "url": "classes/PanierView.html#method_afficherDetailPanier"
+            "url": "classes/mvc-panier-PanierView.html#method_afficherDetailPanier"
         },                {
-            "fqsen": "\\PanierView\u003A\u003AafficherClient\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierView\u003A\u003AafficherClient\u0028\u0029",
             "name": "afficherClient",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020clients\u0020pour\u0020s\u00E9lection\u0020lors\u0020de\u0020la\u0020validation\u0020du\u0020panier",
-            "url": "classes/PanierView.html#method_afficherClient"
+            "url": "classes/mvc-panier-PanierView.html#method_afficherClient"
         },                {
-            "fqsen": "\\PanierView\u003A\u003AafficherRecapitulatifPanier\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierView\u003A\u003AafficherRecapitulatifPanier\u0028\u0029",
             "name": "afficherRecapitulatifPanier",
             "summary": "Affiche\u0020le\u0020r\u00E9capitulatif\u0020complet\u0020du\u0020panier\u0020avant\u0020paiement",
-            "url": "classes/PanierView.html#method_afficherRecapitulatifPanier"
+            "url": "classes/mvc-panier-PanierView.html#method_afficherRecapitulatifPanier"
         },                {
-            "fqsen": "\\PanierView\u003A\u003ApanierPaye\u0028\u0029",
+            "fqsen": "\\mvc_panier\\PanierView\u003A\u003ApanierPaye\u0028\u0029",
             "name": "panierPaye",
             "summary": "Affiche\u0020la\u0020page\u0020de\u0020confirmation\u0020apr\u00E8s\u0020paiement",
-            "url": "classes/PanierView.html#method_panierPaye"
+            "url": "classes/mvc-panier-PanierView.html#method_panierPaye"
         },                {
-            "fqsen": "\\PanierView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_panier\\PanierView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/PanierView.html#property_smarty"
+            "url": "classes/mvc-panier-PanierView.html#property_smarty"
         },                {
-            "fqsen": "\\ProduitController",
+            "fqsen": "\\mvc_produit\\ProduitController",
             "name": "ProduitController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020des\u0020produits",
-            "url": "classes/ProduitController.html"
+            "url": "classes/mvc-produit-ProduitController.html"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020aux\u0020produits",
-            "url": "classes/ProduitController.html#method___construct"
+            "url": "classes/mvc-produit-ProduitController.html#method___construct"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003Aliste\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003Aliste\u0028\u0029",
             "name": "liste",
             "summary": "Affiche\u0020la\u0020liste\u0020de\u0020tous\u0020les\u0020produits",
-            "url": "classes/ProduitController.html#method_liste"
+            "url": "classes/mvc-produit-ProduitController.html#method_liste"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003Aadd\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003Aadd\u0028\u0029",
             "name": "add",
             "summary": "Ajoute\u0020un\u0020nouveau\u0020produit",
-            "url": "classes/ProduitController.html#method_add"
+            "url": "classes/mvc-produit-ProduitController.html#method_add"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003Adelete\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
             "summary": "Supprime\u0020un\u0020produit\u0020\u00E0\u0020partir\u0020de\u0020son\u0020identifiant\u0020\u0028pass\u00E9\u0020en\u0020GET\u0029",
-            "url": "classes/ProduitController.html#method_delete"
+            "url": "classes/mvc-produit-ProduitController.html#method_delete"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003Amodifier\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003Amodifier\u0028\u0029",
             "name": "modifier",
             "summary": "Modifie\u0020un\u0020produit\u0020existant",
-            "url": "classes/ProduitController.html#method_modifier"
+            "url": "classes/mvc-produit-ProduitController.html#method_modifier"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003AvoirDetail\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003AvoirDetail\u0028\u0029",
             "name": "voirDetail",
             "summary": "Affiche\u0020le\u0020d\u00E9tail\u0020d\u2019un\u0020produit\u0020existant",
-            "url": "classes/ProduitController.html#method_voirDetail"
+            "url": "classes/mvc-produit-ProduitController.html#method_voirDetail"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003AloadTopBarData\u0028\u0029",
-            "name": "loadTopBarData",
-            "summary": "Charge\u0020les\u0020donn\u00E9es\u0020pour\u0020la\u0020TopBar\u0020\u0028alertes\u0020de\u0020stock\u0029",
-            "url": "classes/ProduitController.html#method_loadTopBarData"
-        },                {
-            "fqsen": "\\ProduitController\u003A\u003A\u0024produitModel",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003A\u0024produitModel",
             "name": "produitModel",
             "summary": "",
-            "url": "classes/ProduitController.html#property_produitModel"
+            "url": "classes/mvc-produit-ProduitController.html#property_produitModel"
         },                {
-            "fqsen": "\\ProduitController\u003A\u003A\u0024produitView",
+            "fqsen": "\\mvc_produit\\ProduitController\u003A\u003A\u0024produitView",
             "name": "produitView",
             "summary": "",
-            "url": "classes/ProduitController.html#property_produitView"
+            "url": "classes/mvc-produit-ProduitController.html#property_produitView"
         },                {
             "fqsen": "\\mvc_produit\\ProduitModel",
             "name": "ProduitModel",
@@ -1051,11 +1046,6 @@ Search.appendIndex(
             "summary": "R\u00E9cup\u00E8re\u0020tous\u0020les\u0020types\u0020de\u0020conditionnement\u0020distincts",
             "url": "classes/mvc-produit-ProduitModel.html#method_conditionnements"
         },                {
-            "fqsen": "\\mvc_produit\\ProduitModel\u003A\u003AgetStockAlert\u0028\u0029",
-            "name": "getStockAlert",
-            "summary": "R\u00E9cup\u00E8re\u0020les\u0020produits\u0020dont\u0020le\u0020stock\u0020est\u0020inf\u00E9rieur\u0020ou\u0020\u00E9gal\u0020\u00E0\u00205",
-            "url": "classes/mvc-produit-ProduitModel.html#method_getStockAlert"
-        },                {
             "fqsen": "\\mvc_produit\\ProduitModel\u003A\u003A\u0024pdo",
             "name": "pdo",
             "summary": "",
@@ -1111,100 +1101,95 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/mvc-produit-ProduitModel.html#property_Id_categorie"
         },                {
-            "fqsen": "\\ProduitView",
+            "fqsen": "\\mvc_produit\\ProduitView",
             "name": "ProduitView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020des\u0020produits",
-            "url": "classes/ProduitView.html"
+            "url": "classes/mvc-produit-ProduitView.html"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/ProduitView.html#method___construct"
+            "url": "classes/mvc-produit-ProduitView.html#method___construct"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherListe\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AafficherListe\u0028\u0029",
             "name": "afficherListe",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020produits",
-            "url": "classes/ProduitView.html#method_afficherListe"
+            "url": "classes/mvc-produit-ProduitView.html#method_afficherListe"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherFormulaireAjout\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AafficherFormulaireAjout\u0028\u0029",
             "name": "afficherFormulaireAjout",
             "summary": "Affiche\u0020le\u0020formulaire\u0020d\u0027ajout\u0020de\u0020produit",
-            "url": "classes/ProduitView.html#method_afficherFormulaireAjout"
+            "url": "classes/mvc-produit-ProduitView.html#method_afficherFormulaireAjout"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherFormulaireModification\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AafficherFormulaireModification\u0028\u0029",
             "name": "afficherFormulaireModification",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020de\u0020produit",
-            "url": "classes/ProduitView.html#method_afficherFormulaireModification"
+            "url": "classes/mvc-produit-ProduitView.html#method_afficherFormulaireModification"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireModificationAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020avec\u0020les\u0020donn\u00E9es\u0020d\u0027un\u0020produit\u0020existant",
-            "url": "classes/ProduitView.html#method_afficherFormulaireModificationAvecDonnees"
+            "url": "classes/mvc-produit-ProduitView.html#method_afficherFormulaireModificationAvecDonnees"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherErreurProduitIntrouvable\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AafficherErreurProduitIntrouvable\u0028\u0029",
             "name": "afficherErreurProduitIntrouvable",
             "summary": "Affiche\u0020une\u0020erreur\u0020lorsque\u0020le\u0020produit\u0020n\u0027est\u0020pas\u0020trouv\u00E9",
-            "url": "classes/ProduitView.html#method_afficherErreurProduitIntrouvable"
+            "url": "classes/mvc-produit-ProduitView.html#method_afficherErreurProduitIntrouvable"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AredirigerVersListe\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AredirigerVersListe\u0028\u0029",
             "name": "redirigerVersListe",
             "summary": "Redirige\u0020l\u0027utilisateur\u0020vers\u0020la\u0020liste\u0020des\u0020produits",
-            "url": "classes/ProduitView.html#method_redirigerVersListe"
+            "url": "classes/mvc-produit-ProduitView.html#method_redirigerVersListe"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireDetailAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020du\u0020d\u00E9tail\u0020d\u0027un\u0020produit\u0020avec\u0020ses\u0020donn\u00E9es",
-            "url": "classes/ProduitView.html#method_afficherFormulaireDetailAvecDonnees"
+            "url": "classes/mvc-produit-ProduitView.html#method_afficherFormulaireDetailAvecDonnees"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
             "name": "afficherFormulaireDetail",
             "summary": "Affiche\u0020le\u0020formulaire\u0020avec\u0020le\u0020d\u00E9tail\u0020du\u0020produit",
-            "url": "classes/ProduitView.html#method_afficherFormulaireDetail"
+            "url": "classes/mvc-produit-ProduitView.html#method_afficherFormulaireDetail"
         },                {
-            "fqsen": "\\ProduitView\u003A\u003AafficherAlerteStockBas\u0028\u0029",
-            "name": "afficherAlerteStockBas",
-            "summary": "Affiche\u0020les\u0020alertes\u0020de\u0020stock\u0020faible\u0020dans\u0020la\u0020barre\u0020sup\u00E9rieure",
-            "url": "classes/ProduitView.html#method_afficherAlerteStockBas"
-        },                {
-            "fqsen": "\\ProduitView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_produit\\ProduitView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/ProduitView.html#property_smarty"
+            "url": "classes/mvc-produit-ProduitView.html#property_smarty"
         },                {
-            "fqsen": "\\ProfilController",
+            "fqsen": "\\mvc_profil\\ProfilController",
             "name": "ProfilController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020du\u0020profil",
-            "url": "classes/ProfilController.html"
+            "url": "classes/mvc-profil-ProfilController.html"
         },                {
-            "fqsen": "\\ProfilController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020au\u0020profil",
-            "url": "classes/ProfilController.html#method___construct"
+            "url": "classes/mvc-profil-ProfilController.html#method___construct"
         },                {
-            "fqsen": "\\ProfilController\u003A\u003AmodifierInfo\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilController\u003A\u003AmodifierInfo\u0028\u0029",
             "name": "modifierInfo",
             "summary": "Modifie\u0020un\u0020vendeur\u0020existant",
-            "url": "classes/ProfilController.html#method_modifierInfo"
+            "url": "classes/mvc-profil-ProfilController.html#method_modifierInfo"
         },                {
-            "fqsen": "\\ProfilController\u003A\u003AvoirDetail\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilController\u003A\u003AvoirDetail\u0028\u0029",
             "name": "voirDetail",
             "summary": "Affiche\u0020le\u0020d\u00E9tail\u0020du\u0020profil\u0020du\u0020vendeur\u0020connect\u00E9",
-            "url": "classes/ProfilController.html#method_voirDetail"
+            "url": "classes/mvc-profil-ProfilController.html#method_voirDetail"
         },                {
-            "fqsen": "\\ProfilController\u003A\u003AmodifierMdp\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilController\u003A\u003AmodifierMdp\u0028\u0029",
             "name": "modifierMdp",
             "summary": "Modifie\u0020le\u0020mot\u0020de\u0020passe\u0020du\u0020vendeur\u0020connect\u00E9.",
-            "url": "classes/ProfilController.html#method_modifierMdp"
+            "url": "classes/mvc-profil-ProfilController.html#method_modifierMdp"
         },                {
-            "fqsen": "\\ProfilController\u003A\u003A\u0024profilModel",
+            "fqsen": "\\mvc_profil\\ProfilController\u003A\u003A\u0024profilModel",
             "name": "profilModel",
             "summary": "",
-            "url": "classes/ProfilController.html#property_profilModel"
+            "url": "classes/mvc-profil-ProfilController.html#property_profilModel"
         },                {
-            "fqsen": "\\ProfilController\u003A\u003A\u0024profilView",
+            "fqsen": "\\mvc_profil\\ProfilController\u003A\u003A\u0024profilView",
             "name": "profilView",
             "summary": "",
-            "url": "classes/ProfilController.html#property_profilView"
+            "url": "classes/mvc-profil-ProfilController.html#property_profilView"
         },                {
             "fqsen": "\\mvc_profil\\ProfilModel",
             "name": "ProfilModel",
@@ -1271,11 +1256,6 @@ Search.appendIndex(
             "summary": "Met\u0020\u00E0\u0020jour\u0020les\u0020informations\u0020personnelles\u0020d\u0027un\u0020vendeur",
             "url": "classes/mvc-profil-ProfilModel.html#method_modifier"
         },                {
-            "fqsen": "\\mvc_profil\\ProfilModel\u003A\u003AverifierMotDePasse\u0028\u0029",
-            "name": "verifierMotDePasse",
-            "summary": "V\u00E9rifie\u0020si\u0020un\u0020mot\u0020de\u0020passe\u0020correspond\u0020\u00E0\u0020son\u0020hash",
-            "url": "classes/mvc-profil-ProfilModel.html#method_verifierMotDePasse"
-        },                {
             "fqsen": "\\mvc_profil\\ProfilModel\u003A\u003AmodifierMdp\u0028\u0029",
             "name": "modifierMdp",
             "summary": "Modifie\u0020le\u0020mot\u0020de\u0020passe\u0020d\u0027un\u0020vendeur",
@@ -1311,105 +1291,105 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/mvc-profil-ProfilModel.html#property_Mdp_vendeur"
         },                {
-            "fqsen": "\\ProfilView",
+            "fqsen": "\\mvc_profil\\ProfilView",
             "name": "ProfilView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020du\u0020profil\u0020vendeur",
-            "url": "classes/ProfilView.html"
+            "url": "classes/mvc-profil-ProfilView.html"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/ProfilView.html#method___construct"
+            "url": "classes/mvc-profil-ProfilView.html#method___construct"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireDetailAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020du\u0020d\u00E9tail\u0020d\u0027un\u0020vendeur\u0020avec\u0020ses\u0020donn\u00E9es",
-            "url": "classes/ProfilView.html#method_afficherFormulaireDetailAvecDonnees"
+            "url": "classes/mvc-profil-ProfilView.html#method_afficherFormulaireDetailAvecDonnees"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
             "name": "afficherFormulaireDetail",
             "summary": "Affiche\u0020le\u0020formulaire\u0020avec\u0020le\u0020d\u00E9tail\u0020du\u0020vendeur",
-            "url": "classes/ProfilView.html#method_afficherFormulaireDetail"
+            "url": "classes/mvc-profil-ProfilView.html#method_afficherFormulaireDetail"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AredirigerVersProfil\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AredirigerVersProfil\u0028\u0029",
             "name": "redirigerVersProfil",
             "summary": "Redirige\u0020vers\u0020le\u0020profil\u0020vendeur",
-            "url": "classes/ProfilView.html#method_redirigerVersProfil"
+            "url": "classes/mvc-profil-ProfilView.html#method_redirigerVersProfil"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireModificationAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020avec\u0020les\u0020donn\u00E9es\u0020d\u0027un\u0020vendeur\u0020existant",
-            "url": "classes/ProfilView.html#method_afficherFormulaireModificationAvecDonnees"
+            "url": "classes/mvc-profil-ProfilView.html#method_afficherFormulaireModificationAvecDonnees"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AafficherFormulaireModification\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AafficherFormulaireModification\u0028\u0029",
             "name": "afficherFormulaireModification",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020de\u0020vendeur",
-            "url": "classes/ProfilView.html#method_afficherFormulaireModification"
+            "url": "classes/mvc-profil-ProfilView.html#method_afficherFormulaireModification"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AafficherErreurVendeurIntrouvable\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AafficherErreurVendeurIntrouvable\u0028\u0029",
             "name": "afficherErreurVendeurIntrouvable",
             "summary": "Affiche\u0020une\u0020erreur\u0020de\u0020vendeur\u0020introuvable",
-            "url": "classes/ProfilView.html#method_afficherErreurVendeurIntrouvable"
+            "url": "classes/mvc-profil-ProfilView.html#method_afficherErreurVendeurIntrouvable"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AafficherFormulaireDetailAvecDonneesMdp\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AafficherFormulaireDetailAvecDonneesMdp\u0028\u0029",
             "name": "afficherFormulaireDetailAvecDonneesMdp",
             "summary": "Affiche\u0020le\u0020formulaire\u0020du\u0020profil\u0020avec\u0020un\u0020message\u0020d\u0027erreur\u0020li\u00E9\u0020au\u0020mot\u0020de\u0020passe",
-            "url": "classes/ProfilView.html#method_afficherFormulaireDetailAvecDonneesMdp"
+            "url": "classes/mvc-profil-ProfilView.html#method_afficherFormulaireDetailAvecDonneesMdp"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003AafficherProfilMdp\u0028\u0029",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003AafficherProfilMdp\u0028\u0029",
             "name": "afficherProfilMdp",
             "summary": "Affiche\u0020le\u0020profil\u0020du\u0020vendeur\u0020avec\u0020un\u0020message\u0020d\u0027erreur",
-            "url": "classes/ProfilView.html#method_afficherProfilMdp"
+            "url": "classes/mvc-profil-ProfilView.html#method_afficherProfilMdp"
         },                {
-            "fqsen": "\\ProfilView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_profil\\ProfilView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/ProfilView.html#property_smarty"
+            "url": "classes/mvc-profil-ProfilView.html#property_smarty"
         },                {
-            "fqsen": "\\VendeurController",
+            "fqsen": "\\mvc_vendeur\\VendeurController",
             "name": "VendeurController",
             "summary": "Contr\u00F4leur\u0020pour\u0020la\u0020gestion\u0020des\u0020vendeurs",
-            "url": "classes/VendeurController.html"
+            "url": "classes/mvc-vendeur-VendeurController.html"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020le\u0020mod\u00E8le\u0020et\u0020la\u0020vue\u0020associ\u00E9s\u0020aux\u0020vendeurs",
-            "url": "classes/VendeurController.html#method___construct"
+            "url": "classes/mvc-vendeur-VendeurController.html#method___construct"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003Aliste\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003Aliste\u0028\u0029",
             "name": "liste",
             "summary": "Affiche\u0020la\u0020liste\u0020de\u0020tous\u0020les\u0020vendeurs",
-            "url": "classes/VendeurController.html#method_liste"
+            "url": "classes/mvc-vendeur-VendeurController.html#method_liste"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003Aadd\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003Aadd\u0028\u0029",
             "name": "add",
             "summary": "Ajoute\u0020un\u0020nouveau\u0020vendeur",
-            "url": "classes/VendeurController.html#method_add"
+            "url": "classes/mvc-vendeur-VendeurController.html#method_add"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003Adelete\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003Adelete\u0028\u0029",
             "name": "delete",
             "summary": "Supprime\u0020un\u0020vendeur\u0020\u00E0\u0020partir\u0020de\u0020son\u0020identifiant\u0020\u0028pass\u00E9\u0020en\u0020GET\u0029",
-            "url": "classes/VendeurController.html#method_delete"
+            "url": "classes/mvc-vendeur-VendeurController.html#method_delete"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003Amodifier\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003Amodifier\u0028\u0029",
             "name": "modifier",
             "summary": "Modifie\u0020un\u0020vendeur\u0020existant",
-            "url": "classes/VendeurController.html#method_modifier"
+            "url": "classes/mvc-vendeur-VendeurController.html#method_modifier"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003AvoirDetail\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003AvoirDetail\u0028\u0029",
             "name": "voirDetail",
             "summary": "Affiche\u0020le\u0020d\u00E9tail\u0020d\u2019un\u0020vendeur\u0020existant",
-            "url": "classes/VendeurController.html#method_voirDetail"
+            "url": "classes/mvc-vendeur-VendeurController.html#method_voirDetail"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003A\u0024vendeurModel",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003A\u0024vendeurModel",
             "name": "vendeurModel",
             "summary": "",
-            "url": "classes/VendeurController.html#property_vendeurModel"
+            "url": "classes/mvc-vendeur-VendeurController.html#property_vendeurModel"
         },                {
-            "fqsen": "\\VendeurController\u003A\u003A\u0024vendeurView",
+            "fqsen": "\\mvc_vendeur\\VendeurController\u003A\u003A\u0024vendeurView",
             "name": "vendeurView",
             "summary": "",
-            "url": "classes/VendeurController.html#property_vendeurView"
+            "url": "classes/mvc-vendeur-VendeurController.html#property_vendeurView"
         },                {
             "fqsen": "\\mvc_vendeur\\VendeurModel",
             "name": "VendeurModel",
@@ -1551,60 +1531,60 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/mvc-vendeur-VendeurModel.html#property_Mdp_vendeur"
         },                {
-            "fqsen": "\\VendeurView",
+            "fqsen": "\\mvc_vendeur\\VendeurView",
             "name": "VendeurView",
             "summary": "Vue\u0020pour\u0020l\u0027affichage\u0020des\u0020vendeurs",
-            "url": "classes/VendeurView.html"
+            "url": "classes/mvc-vendeur-VendeurView.html"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003A__construct\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Constructeur\u0020\u003A\u0020initialise\u0020Smarty\u0020et\u0020d\u00E9finit\u0020le\u0020r\u00E9pertoire\u0020des\u0020templates",
-            "url": "classes/VendeurView.html#method___construct"
+            "url": "classes/mvc-vendeur-VendeurView.html#method___construct"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AafficherListe\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AafficherListe\u0028\u0029",
             "name": "afficherListe",
             "summary": "Affiche\u0020la\u0020liste\u0020des\u0020vendeurs",
-            "url": "classes/VendeurView.html#method_afficherListe"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_afficherListe"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AafficherFormulaireAjout\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AafficherFormulaireAjout\u0028\u0029",
             "name": "afficherFormulaireAjout",
             "summary": "Affiche\u0020le\u0020formulaire\u0020d\u0027ajout\u0020de\u0020vendeur",
-            "url": "classes/VendeurView.html#method_afficherFormulaireAjout"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_afficherFormulaireAjout"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AafficherFormulaireModification\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AafficherFormulaireModification\u0028\u0029",
             "name": "afficherFormulaireModification",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020de\u0020vendeur",
-            "url": "classes/VendeurView.html#method_afficherFormulaireModification"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_afficherFormulaireModification"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AafficherFormulaireModificationAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireModificationAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020de\u0020modification\u0020avec\u0020les\u0020donn\u00E9es\u0020d\u0027un\u0020vendeur\u0020existant",
-            "url": "classes/VendeurView.html#method_afficherFormulaireModificationAvecDonnees"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_afficherFormulaireModificationAvecDonnees"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AafficherErreurVendeurIntrouvable\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AafficherErreurVendeurIntrouvable\u0028\u0029",
             "name": "afficherErreurVendeurIntrouvable",
             "summary": "Affiche\u0020une\u0020erreur\u0020lorsque\u0020le\u0020vendeur\u0020n\u0027est\u0020pas\u0020trouv\u00E9",
-            "url": "classes/VendeurView.html#method_afficherErreurVendeurIntrouvable"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_afficherErreurVendeurIntrouvable"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AredirigerVersListe\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AredirigerVersListe\u0028\u0029",
             "name": "redirigerVersListe",
             "summary": "Redirige\u0020vers\u0020la\u0020liste\u0020des\u0020vendeurs",
-            "url": "classes/VendeurView.html#method_redirigerVersListe"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_redirigerVersListe"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AafficherFormulaireDetailAvecDonnees\u0028\u0029",
             "name": "afficherFormulaireDetailAvecDonnees",
             "summary": "Affiche\u0020le\u0020formulaire\u0020du\u0020d\u00E9tail\u0020d\u0027un\u0020vendeur\u0020avec\u0020ses\u0020donn\u00E9es",
-            "url": "classes/VendeurView.html#method_afficherFormulaireDetailAvecDonnees"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_afficherFormulaireDetailAvecDonnees"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003AafficherFormulaireDetail\u0028\u0029",
             "name": "afficherFormulaireDetail",
             "summary": "Affiche\u0020le\u0020formulaire\u0020avec\u0020le\u0020d\u00E9tail\u0020du\u0020vendeur",
-            "url": "classes/VendeurView.html#method_afficherFormulaireDetail"
+            "url": "classes/mvc-vendeur-VendeurView.html#method_afficherFormulaireDetail"
         },                {
-            "fqsen": "\\VendeurView\u003A\u003A\u0024smarty",
+            "fqsen": "\\mvc_vendeur\\VendeurView\u003A\u003A\u0024smarty",
             "name": "smarty",
             "summary": "",
-            "url": "classes/VendeurView.html#property_smarty"
+            "url": "classes/mvc-vendeur-VendeurView.html#property_smarty"
         },                {
             "fqsen": "\\",
             "name": "\\",

@@ -1,11 +1,8 @@
 <?php
 
 namespace mvc_home;
-use Database;
+use Config\Database;
 use PDO;
-use PDOException;
-
-require_once 'config/Database.php';
 
 /**
  * Modèle pour la gestion des statistiques et indicateurs de performance

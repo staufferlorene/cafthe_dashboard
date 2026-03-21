@@ -1,11 +1,9 @@
 <?php
 
 namespace mvc_commande;
-use Database;
+use Config\Database;
 use PDO;
 use PDOException;
-
-require_once 'config/Database.php';
 
 /**
  * Modèle pour la gestion des commandes

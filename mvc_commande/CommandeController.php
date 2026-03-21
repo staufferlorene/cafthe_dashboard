@@ -1,9 +1,6 @@
 <?php
 
-use mvc_commande\CommandeModel;
-
-require_once 'mvc_commande/CommandeModel.php';
-require_once 'mvc_commande/CommandeView.php';
+namespace mvc_commande;
 
 /**
  * Contrôleur pour la gestion des commandes

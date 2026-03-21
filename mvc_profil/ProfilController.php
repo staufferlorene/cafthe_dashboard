@@ -1,9 +1,6 @@
 <?php
 
-use mvc_profil\ProfilModel;
-
-require_once 'mvc_profil/ProfilModel.php';
-require_once 'mvc_profil/ProfilView.php';
+namespace mvc_profil;
 
 /**
  * Contrôleur pour la gestion du profil

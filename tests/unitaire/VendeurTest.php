@@ -2,12 +2,11 @@
 
 namespace unitaire;
 
-use Database;
+use Config\Database;
 use mvc_vendeur\VendeurModel;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../../mvc_vendeur/VendeurModel.php';
-require_once 'config/Database.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class VendeurTest extends TestCase {
 

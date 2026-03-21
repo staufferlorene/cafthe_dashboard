@@ -1,10 +1,5 @@
 <?php
 
-// 2 lignes ci-dessous permettent d'afficher les erreurs PHP
-global $smarty;
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 /**
  * Front controller
  *
@@ -12,6 +7,20 @@ ini_set("display_errors", 1);
  * Il lit les paramètres passés dans l'URL
  * Selon ces paramètres, il instancie le contrôleur qui convient
  */
+
+use mvc_login\LoginController;
+use mvc_produit\ProduitController;
+use mvc_client\ClientController;
+use mvc_commande\CommandeController;
+use mvc_vendeur\VendeurController;
+use mvc_profil\ProfilController;
+use mvc_panier\PanierController;
+use mvc_home\HomeController;
+use template\TopBarModel;
+
+// Inclusion des contrôleurs
+require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/init_smarty.php';
 
 // Démarrage de la session
 session_start();
@@ -30,17 +39,8 @@ if (isset($_SESSION['connection']) && (time() - $_SESSION['connection']) > $time
 
 $_SESSION['connection'] = time();
 
-// Inclusion des contrôleurs
+// Création de la variable globale $smarty
 require_once 'init_smarty.php';
-require_once 'mvc_produit/ProduitController.php';
-require_once 'mvc_client/ClientController.php';
-require_once 'mvc_commande/CommandeController.php';
-require_once 'mvc_vendeur/VendeurController.php';
-require_once 'mvc_login/LoginController.php';
-require_once 'mvc_profil/ProfilController.php';
-require_once 'mvc_panier/PanierController.php';
-require_once 'mvc_home/HomeController.php';
-require_once 'template/TopBarModel.php';
 
 // Vérification si l'utilisateur est connecté
 if (isset($_SESSION['utilisateur'])) {

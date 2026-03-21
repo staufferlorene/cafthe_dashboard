@@ -1,9 +1,6 @@
 <?php
 
-use mvc_panier\PanierModel;
-
-require_once 'mvc_panier/PanierModel.php';
-require_once 'mvc_panier/PanierView.php';
+namespace mvc_panier;
 
 /**
  * Contrôleur pour la gestion du panier

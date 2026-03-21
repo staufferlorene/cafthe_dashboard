@@ -1,6 +1,6 @@
 <?php
 
-require_once 'init_smarty.php';
+namespace mvc_produit;
 
 /**
  * Vue pour l'affichage des produits

@@ -1,11 +1,8 @@
 <?php
 
 namespace template;
-use Database;
+use Config\Database;
 use PDO;
-use PDOException;
-
-require_once 'config/Database.php';
 
 class TopBarModel {
 

@@ -1,9 +1,6 @@
 <?php
 
-use mvc_produit\ProduitModel;
-
-require_once 'mvc_produit/ProduitModel.php';
-require_once 'mvc_produit/ProduitView.php';
+namespace mvc_produit;
 
 /**
  * Contrôleur pour la gestion des produits

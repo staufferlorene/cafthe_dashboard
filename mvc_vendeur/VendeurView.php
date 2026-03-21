@@ -1,6 +1,6 @@
 <?php
 
-require_once 'init_smarty.php';
+namespace mvc_vendeur;
 
 /**
  * Vue pour l'affichage des vendeurs

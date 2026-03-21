@@ -1,9 +1,6 @@
 <?php
 
-use mvc_vendeur\VendeurModel;
-
-require_once 'mvc_vendeur/VendeurModel.php';
-require_once 'mvc_vendeur/VendeurView.php';
+namespace mvc_vendeur;
 
 /**
  * Contrôleur pour la gestion des vendeurs

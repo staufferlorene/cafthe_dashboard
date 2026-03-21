@@ -1,9 +1,6 @@
 <?php
 
-use mvc_login\LoginModel;
-
-require_once 'mvc_login/LoginModel.php';
-require_once 'mvc_login/LoginView.php';
+namespace mvc_login;
 
 /**
  * Contrôleur pour la gestion de la connexion

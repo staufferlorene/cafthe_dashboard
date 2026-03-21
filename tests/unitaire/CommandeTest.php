@@ -2,12 +2,11 @@
 
 namespace unitaire;
 
-use Database;
+use Config\Database;
 use mvc_commande\CommandeModel;
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../../mvc_commande/CommandeModel.php';
-require_once 'config/Database.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class CommandeTest extends TestCase{
 

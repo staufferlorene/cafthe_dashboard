@@ -2,10 +2,8 @@
 
 
 namespace mvc_login;
-use Database;
+use Config\Database;
 use PDO;
-
-require_once 'config/Database.php';
 
 /**
  * Modèle pour la gestion de l'authentification

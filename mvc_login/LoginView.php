@@ -1,6 +1,6 @@
 <?php
 
-require_once 'init_smarty.php';
+namespace mvc_login;
 
 /**
  * Vue pour l'affichage du formulaire de connexion

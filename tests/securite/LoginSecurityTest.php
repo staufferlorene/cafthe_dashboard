@@ -6,8 +6,7 @@ use mvc_login\LoginModel;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once __DIR__ . '/../../mvc_login/LoginModel.php';
-require_once 'config/Database.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class LoginSecurityTest extends TestCase {
 

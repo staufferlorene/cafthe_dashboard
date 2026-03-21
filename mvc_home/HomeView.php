@@ -1,6 +1,6 @@
 <?php
 
-require_once 'init_smarty.php';
+namespace mvc_home;
 
 /**
  * Vue pour l'affichage des statistiques du tableau de bord

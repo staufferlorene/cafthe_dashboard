@@ -5,8 +5,10 @@
  * Bien gérer les ressources (pattern Singleton) (pattern = chose qui se répète)
  * simplifier l'utilisation de PDO
  */
-class Database
-{
+
+namespace Config;
+
+class Database {
 
     // propriété privée - instance unique de la connexion
     // (static = instance existe même si l'objet n'a pas été crée : but limiter qu'il y ait plusieurs instances en même temps)
@@ -25,9 +27,9 @@ class Database
         $pass = "";
 
         try {
-            $this->pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (PDOException $e){
+            $this->pdo = new \PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+            $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\PDOException $e){
             die("Erreur de connexion : " . $e->getMessage());
         }
     }

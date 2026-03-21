@@ -3,16 +3,18 @@
     "description": "CafThé Dashboard Application",
     "type": "project",
     "autoload": {
-        "classmap": [
-            "mvc_client/",
-            "mvc_commande/",
-            "mvc_home/",
-            "mvc_login/",
-            "mvc_panier/",
-            "mvc_produit/",
-            "mvc_profil/",
-            "mvc_vendeur/"
-        ]
+        "psr-4": {
+            "mvc_client\\": "mvc_client/",
+            "mvc_commande\\": "mvc_commande/",
+            "mvc_home\\": "mvc_home/",
+            "mvc_login\\": "mvc_login/",
+            "mvc_panier\\": "mvc_panier/",
+            "mvc_produit\\": "mvc_produit/",
+            "mvc_profil\\": "mvc_profil/",
+            "mvc_vendeur\\": "mvc_vendeur/",
+            "template\\": "template/",
+            "Config\\": "config/"
+        }
     },
     "require-dev": {
         "phpunit/phpunit": "^12.5",

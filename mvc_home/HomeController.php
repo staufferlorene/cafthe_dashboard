@@ -1,9 +1,6 @@
 <?php
 
-use mvc_home\HomeModel;
-
-require_once 'mvc_home/HomeModel.php';
-require_once 'mvc_home/HomeView.php';
+namespace mvc_home;
 
 /**
  * Contrôleur pour la gestion des statistiques

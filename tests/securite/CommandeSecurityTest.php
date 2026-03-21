@@ -2,13 +2,12 @@
 
 namespace securite;
 
-use Database;
+use Config\Database;
 use mvc_commande\CommandeModel;
 use PHPUnit\Framework\TestCase;
 use PHPUnit\Framework\Attributes\DataProvider;
 
-require_once __DIR__ . '/../../mvc_commande/CommandeModel.php';
-require_once 'config/Database.php';
+require_once __DIR__ . '/../../vendor/autoload.php';
 
 class CommandeSecurityTest extends TestCase {
 

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'init_smarty.php';
+namespace mvc_commande;
 
 /**
  * Vue pour l'affichage des commandes
