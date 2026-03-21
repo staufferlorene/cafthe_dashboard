@@ -72,7 +72,7 @@
                                 {if $action == 'add'}<option value="" selected disabled>-- Choisissez un rôle --</option>{/if}
                                 {foreach from=$role item=r}
                                     <option value="{$r.Role|escape}"
-                                        {if $action == 'update_vendeur' && $vendeur.Role == $role.Role}selected{/if}
+                                        {if $action == 'update_vendeur' && $vendeur.Role == $r.Role}selected{/if}
                                     >
                                         {$r.Role|escape}
                                     </option>

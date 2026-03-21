@@ -76,7 +76,8 @@ class VendeurController {
                     // Vérifie si le mail existe déjà en BDD et si oui le code arrête de s'éxécuter
                     if ($this->vendeurModel->existeMail($mail)) {
                         $erreur = "Cette adresse email est déjà utilisée.";
-                        $this->vendeurView->afficherFormulaireAjout($erreur);
+                        $role = VendeurModel::getAllRole();
+                        $this->vendeurView->afficherFormulaireAjout($erreur, $role);
                         return;
                     }
 
@@ -131,7 +132,6 @@ class VendeurController {
     public function modifier($Id_vendeur) {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
-            /*if (isset($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $_POST['mdp'])) {*/
             if (
                 !empty($_POST['nom']) &&
                 !empty($_POST['prenom']) &&
