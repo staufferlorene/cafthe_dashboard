@@ -2,6 +2,8 @@
 
 namespace mvc_profil;
 
+use mvc_vendeur\VendeurModel;
+
 /**
  * Contrôleur pour la gestion du profil
  *
@@ -44,6 +46,19 @@ class ProfilController {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Vérifie que les champs sont bien envoyés
             if (isset($_POST['nom'], $_POST['prenom'], $_POST['mail'])) {
+
+                $mail = $_POST['mail'];
+                $vendeur = VendeurModel::loadById($Id_vendeur);
+
+                // Si modification mail
+                if ($mail != $vendeur->getMail_vendeur()) {
+                    // Vérifie si le mail existe déjà en BDD et si oui le code arrête de s'éxécuter
+                    if (VendeurModel::existeMail($mail)) {
+                        $erreur = "Cette adresse email est déjà utilisée.";
+                        $this->profilView->afficherFormulaireModificationAvecDonnees($vendeur, $erreur);
+                        return;
+                    }
+                }
                 // Tente la modification
                 $erreur = $this->profilModel->modifier($_POST['nom'], $_POST['prenom'], $_POST['mail'], $Id_vendeur);
                 if ($erreur === null) {

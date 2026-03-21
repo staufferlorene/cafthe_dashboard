@@ -135,8 +135,21 @@ class VendeurController {
                 !empty($_POST['role']) &&
                 filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)
             ) {
-                // si mdp n'est pas vide : mdp = mdp saisi, sinon mdp = null
+                // Si mdp n'est pas vide : mdp = mdp saisi, sinon mdp = null
                 $mdp = !empty($_POST['mdp']) ? $_POST['mdp'] : null;
+                $mail = $_POST['mail'];
+                $vendeur = VendeurModel::loadById($Id_vendeur);
+
+                // Si modification mail
+                if ($mail != $vendeur->getMail_vendeur()) {
+                    // Vérifie si le mail existe déjà en BDD et si oui le code arrête de s'éxécuter
+                    if ($this->vendeurModel->existeMail($mail)) {
+                        $erreur = "Cette adresse email est déjà utilisée.";
+                        $role = VendeurModel::getAllRole();
+                        $this->vendeurView->afficherFormulaireModificationAvecDonnees($vendeur, $role, $erreur);
+                        return;
+                    }
+                }
 
                 // Tente la modification
                 $erreur = $this->vendeurModel->modifier($_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['mail'], $mdp, $Id_vendeur);
