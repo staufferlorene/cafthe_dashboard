@@ -115,6 +115,7 @@ class ProfilController {
      *  - Contrôle la présence et la validité des champs envoyés.
      *  - Vérifie que le mot de passe actuel saisi correspond à celui du vendeur connecté.
      *  - Vérifie que le nouveau mot de passe et sa confirmation sont identiques.
+     *  - Vérifie que le nouveau mot de passe respecte l'expression régulière définie.
      *  - Hache le nouveau mot de passe et met à jour la base de données.
      *  - Redirige vers la page de profil en cas de succès.
      *  - Affiche le formulaire avec un message d’erreur en cas d’échec.
@@ -133,6 +134,10 @@ class ProfilController {
                 $new_mdp = trim($_POST['new_mdp']);
                 $confirm_mdp = trim($_POST['confirm_mdp']);
 
+                // Définition regex pour le mot de passe. Vérifie s'il contient au moins 12 caractères, une majuscule,
+                // une minuscule, un chiffre et un caractère spécial
+                $regexMdp = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{12,}$/';
+
                 // Vérifie que les champs sont non vides
                 if (empty($mdp) || empty($new_mdp) || empty($confirm_mdp)) {
                     $vendeur = ProfilModel::loadById($Id_vendeur);
@@ -150,6 +155,18 @@ class ProfilController {
                     $vendeur = ProfilModel::loadById($Id_vendeur);
                     if ($vendeur) {
                         $erreur = "Le nouveau mot de passe et sa confirmation sont différents.";
+                        $this->profilView->afficherFormulaireDetailAvecDonneesMdp($vendeur, $erreur);
+                    } else {
+                        $this->profilView->afficherErreurVendeurIntrouvable();
+                    }
+                    return;
+                }
+
+                // Vérification de la regex, si le nouveau mot de passe ne respecte pas la regex le code arrête de s'éxécuter
+                if (!preg_match($regexMdp, $new_mdp)) {
+                    $vendeur = ProfilModel::loadById($Id_vendeur);
+                    if ($vendeur) {
+                        $erreur = "Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";
                         $this->profilView->afficherFormulaireDetailAvecDonneesMdp($vendeur, $erreur);
                     } else {
                         $this->profilView->afficherErreurVendeurIntrouvable();

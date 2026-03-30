@@ -67,8 +67,20 @@ class VendeurController {
                 $mail   = trim($_POST['mail']);
                 $mdp    = trim($_POST['mdp']);
 
+                // Définition regex pour le mot de passe. Vérifie s'il contient au moins 12 caractères, une majuscule,
+                // une minuscule, un chiffre et un caractère spécial
+                $regexMdp = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^a-zA-Z0-9]).{12,}$/';
+
                 // Vérifie que tous les champs sont non vides et que l'adresse mail est valide
                 if (!empty($nom) && !empty($prenom) && !empty($role) && !empty($mdp) && filter_var($mail, FILTER_VALIDATE_EMAIL)) {
+
+                    // Vérification de la regex, si le mot de passe ne respecte pas la regex le code arrête de s'éxécuter
+                    if (!preg_match($regexMdp, $mdp)) {
+                        $erreur = "Le mot de passe doit contenir au moins 12 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.";
+                        $role = VendeurModel::getAllRole();
+                        $this->vendeurView->afficherFormulaireAjout($erreur, $role);
+                        return;
+                    }
 
                     // Vérifie si le mail existe déjà en BDD et si oui le code arrête de s'éxécuter
                     if ($this->vendeurModel->existeMail($mail)) {
