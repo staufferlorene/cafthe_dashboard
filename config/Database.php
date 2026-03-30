@@ -20,11 +20,13 @@ class Database {
     // Constructeur privé (il ne peut être appelé qu'une fois)
     private function __construct() {
 
-        // Configuration de la base de données
-        $host = "localhost";
-        $dbname = "cafthe_backup";
-        $user = "root";
-        $pass = "";
+        // Récupération de la configuration de la base de données
+        $config = require __DIR__ . '/config.php';
+
+        $host = $config['host'];
+        $dbname = $config['dbname'];
+        $user = $config['user'];
+        $pass = $config['pass'];
 
         try {
             $this->pdo = new \PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
