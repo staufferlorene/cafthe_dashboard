@@ -62,7 +62,7 @@ class VendeurTest extends TestCase {
         // vérifier que le tableau n'est pas vide
         $this->assertNotEmpty($vendeur);
 
-        // vérifier la présence des clés spécifiées sur le 1er produit du tableau
+        // vérifier la présence des clés spécifiées sur le 1er vendeur du tableau
         $this->assertArrayHasKey('Id_vendeur', $vendeur[0]);
         $this->assertArrayHasKey('Nom_vendeur', $vendeur[0]);
         $this->assertArrayHasKey('Prenom_vendeur', $vendeur[0]);
