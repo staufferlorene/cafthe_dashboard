@@ -95,7 +95,7 @@ class PanierController {
      * @return void
      */
     public function voirPanier() {
-        $panier = $_SESSION['panier'] ?? [];
+        $panier = $_SESSION['panier'];
         $totaux = $this->panierModel->calculTotaux($panier);
         $this->panierView->afficherDetailPanier(
             $panier,

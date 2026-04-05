@@ -8,6 +8,7 @@
  * Selon ces paramètres, il instancie le contrôleur qui convient
  */
 
+// Inclusion des contrôleurs
 use mvc_login\LoginController;
 use mvc_produit\ProduitController;
 use mvc_client\ClientController;
@@ -16,10 +17,10 @@ use mvc_vendeur\VendeurController;
 use mvc_profil\ProfilController;
 use mvc_panier\PanierController;
 use mvc_home\HomeController;
-use template\TopBarModel;
 
-// Inclusion des contrôleurs
+// Autoloader
 require_once __DIR__ . '/vendor/autoload.php';
+// Création de la variable globale $smarty
 require_once __DIR__ . '/init_smarty.php';
 
 // Démarrage de la session
@@ -38,9 +39,6 @@ if (isset($_SESSION['connection']) && (time() - $_SESSION['connection']) > $time
 }
 
 $_SESSION['connection'] = time();
-
-// Création de la variable globale $smarty
-require_once 'init_smarty.php';
 
 // Vérification si l'utilisateur est connecté
 if (isset($_SESSION['utilisateur'])) {

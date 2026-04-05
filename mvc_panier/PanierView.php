@@ -50,8 +50,6 @@ class PanierView {
      * @return void
      */
     public function afficherDetailPanier($panier, $totalHT, $totalTVA, $totalTTC) {
-        // On récupère les données depuis la session
-        $panier = $_SESSION['panier'];
         $this->smarty->assign('panier', $panier);
         $this->smarty->assign('totalHT', $totalHT);
         $this->smarty->assign('totalTVA', $totalTVA);
