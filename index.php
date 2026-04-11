@@ -29,7 +29,7 @@ session_start();
 // Déconnexion après 30 minutes d'inactivité
 $timeout = 1800; // 30 minutes (1800 secondes)
 
-if (isset($_SESSION['connection']) && (time() - $_SESSION['connection']) > $timeout) {
+if (isset($_SESSION['timestamp']) && (time() - $_SESSION['timestamp']) > $timeout) {
     // Détruit toutes les variables de session
     session_destroy();
 
@@ -38,7 +38,7 @@ if (isset($_SESSION['connection']) && (time() - $_SESSION['connection']) > $time
     exit();
 }
 
-$_SESSION['connection'] = time();
+$_SESSION['timestamp'] = time();
 
 // Vérification si l'utilisateur est connecté
 if (isset($_SESSION['utilisateur'])) {
