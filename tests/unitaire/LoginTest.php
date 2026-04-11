@@ -4,6 +4,7 @@ namespace unitaire;
 
 use Config\Database;
 use mvc_login\LoginModel;
+use mvc_vendeur\VendeurModel;
 use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../../vendor/autoload.php';
@@ -24,6 +25,16 @@ class LoginTest extends TestCase {
 
     // Tester qu'un mail existant retourne un vendeur
     public function testGetVendeurParMailExiste() {
+
+        // Créer un vendeur au préalable
+        VendeurModel::ajouter(
+            'Doe',
+            'John',
+            'admin',
+            'test@email.com',
+            'Motdepassevendeur123',
+        );
+
         $vendeur = LoginModel::getVendeurParMail('test@email.com');
 
         $this->assertIsArray($vendeur);
