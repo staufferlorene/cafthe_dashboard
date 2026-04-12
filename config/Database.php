@@ -29,9 +29,12 @@ class Database {
         $pass = $config['pass'];
 
         try {
+            // Etablir la connexion à la BDD
             $this->pdo = new \PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+            // Configurer la gestion des erreurs
             $this->pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (\PDOException $e){
+            // Arrêter le script et retourner le message d'erreur
             die("Erreur de connexion : " . $e->getMessage());
         }
     }
