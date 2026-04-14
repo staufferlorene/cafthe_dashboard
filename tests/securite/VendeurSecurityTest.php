@@ -45,7 +45,7 @@ class VendeurSecurityTest extends TestCase {
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123'
+            'Motdepassevendeur123.'
         );
 
         $countAfter = count(VendeurModel::lister());
@@ -55,14 +55,14 @@ class VendeurSecurityTest extends TestCase {
     }
 
     // Tester XSS (CROSS-SITE SCRIPTING) dans les champs texte
-    public function testXSSProduct() {
+    public function testXSSVendeur() {
 
         VendeurModel::ajouter(
             "<script>alert('XSS')</script>",
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123'
+            'Motdepassevendeur123.'
         );
 
         // récupération de l'id vendeur généré

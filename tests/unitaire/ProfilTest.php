@@ -43,7 +43,7 @@ class ProfilTest extends TestCase {
             INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
             VALUES ('Dodoe', 'Jean', 'jean.dodoe@email.com', ?, 'vendeur')
         ");
-        $stmt->execute([password_hash('mdp123', PASSWORD_BCRYPT)]);
+        $stmt->execute([password_hash('Motdepassevendeur123.', PASSWORD_BCRYPT)]);
         $idVendeur = (int)$db->lastInsertId();
 
         // charger le profil et vérifier les informations
@@ -71,7 +71,7 @@ class ProfilTest extends TestCase {
             INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
             VALUES ('Dodoe', 'Jean', 'jean.dodoe@email.com', ?, 'vendeur')
         ");
-        $mdpOriginal = password_hash('mdp123', PASSWORD_BCRYPT);
+        $mdpOriginal = password_hash('Motdepassevendeur123.', PASSWORD_BCRYPT);
         $stmt->execute([$mdpOriginal]);
         $idVendeur = (int)$db->lastInsertId();
 
@@ -107,7 +107,7 @@ class ProfilTest extends TestCase {
         // Créer un vendeur au préalable
         $db = Database::getInstance()->getConnection();
 
-        $ancienMdp = 'AncienMotDePasse123';
+        $ancienMdp = 'AncienMotDePasse123.';
         $stmt = $db->prepare("
             INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
             VALUES ('Dupont', 'Jean', 'jean.dupont@email.com', ?, 'vendeur')
@@ -116,7 +116,7 @@ class ProfilTest extends TestCase {
         $idVendeur = (int)$db->lastInsertId();
 
         // Modifier le mot de passe
-        $nouveauMdp = 'NouveauMotDePasse456';
+        $nouveauMdp = 'NouveauMotDePasse456.';
         $result = ProfilModel::modifierMdp(
             $ancienMdp,
             $nouveauMdp,
@@ -144,7 +144,7 @@ class ProfilTest extends TestCase {
         // Créer un vendeur au préalable
         $db = Database::getInstance()->getConnection();
         
-        $oldPassword = 'MotDePasse123';
+        $oldPassword = 'MotDePasse123.';
         $stmt = $db->prepare("
             INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
             VALUES ('Dupont', 'Jean', 'jean.dupont@email.com', ?, 'vendeur')
@@ -155,8 +155,8 @@ class ProfilTest extends TestCase {
 
         // Tenter de modifier avec un MAUVAIS ancien mot de passe
         $result = ProfilModel::modifierMdp(
-            'MauvaisMotDePasse',
-            'NouveauMotDePasse456',
+            'MauvaisMotDePasse.',
+            'NouveauMotDePasse456.',
             $idVendeur
         );
 

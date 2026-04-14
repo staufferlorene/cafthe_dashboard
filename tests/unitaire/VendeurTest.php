@@ -31,7 +31,7 @@ class VendeurTest extends TestCase {
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         // vérification si null est retourné, si oui insertion en BDD est OK
@@ -53,7 +53,7 @@ class VendeurTest extends TestCase {
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         // lister les vendeurs
@@ -79,7 +79,7 @@ class VendeurTest extends TestCase {
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         $vendeur = VendeurModel::loadById(1);
@@ -101,7 +101,7 @@ class VendeurTest extends TestCase {
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         // récupération de l'id vendeur généré
@@ -114,7 +114,7 @@ class VendeurTest extends TestCase {
             'Nouveauprenom',
             'admin',
             'nouveau.mail@email.com',
-            'Nouveaumotdepassevendeur123',
+            'Nouveaumotdepassevendeur123.',
             $idVendeur
         );
 
@@ -125,7 +125,7 @@ class VendeurTest extends TestCase {
         $this->assertEquals('Nouveauprenom', $vendeurUpdate->getPrenom_vendeur());
         $this->assertEquals('admin', $vendeurUpdate->getRole());
         $this->assertEquals('nouveau.mail@email.com', $vendeurUpdate->getMail_vendeur());
-        $this->assertTrue(password_verify('Nouveaumotdepassevendeur123', $vendeurUpdate->getMdp_vendeur()));
+        $this->assertTrue(password_verify('Nouveaumotdepassevendeur123.', $vendeurUpdate->getMdp_vendeur()));
     }
 
     // Tester la suppression d'un vendeur
@@ -137,7 +137,7 @@ class VendeurTest extends TestCase {
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         // récupération de l'id vendeur généré
@@ -161,7 +161,7 @@ class VendeurTest extends TestCase {
             'Jeanne',
             'vendeur',
             'mail.vendeur@email.com',
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         // récupération de l'id vendeur généré
@@ -185,7 +185,7 @@ class VendeurTest extends TestCase {
             'Jeanne',
             'vendeur',
             $mailVendeur,
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         // vérifier si booleen et qu'il est true

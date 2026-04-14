@@ -32,12 +32,12 @@ class LoginSecurityTest extends TestCase {
     // Tester que le mdp soit bien haché
     public function testPasswordIsHash() {
         // hachage du mdp
-        $hash = password_hash('test123', PASSWORD_DEFAULT);
+        $hash = password_hash('Motdepassevendeur123.', PASSWORD_BCRYPT);
 
         // compare que mdp en clair = mdp haché
-        $this->assertTrue(password_verify('test123', $hash));
+        $this->assertTrue(password_verify('Motdepassevendeur123.', $hash));
 
         // vérifie que les valeurs et les types sont différents
-        $this->assertNotSame('test123', $hash);
+        $this->assertNotSame('Motdepassevendeur123.', $hash);
     }
 }

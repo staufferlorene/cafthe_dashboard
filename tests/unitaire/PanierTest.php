@@ -171,7 +171,7 @@ class PanierTest extends TestCase {
         INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
         VALUES ('Vendeur', 'Test', 'vendeur@test.com', ?, 'vendeur')
     ");
-        $stmt->execute([password_hash('test', PASSWORD_BCRYPT)]);
+        $stmt->execute([password_hash('Motdepassevendeur123.', PASSWORD_BCRYPT)]);
         $idVendeur = $db->lastInsertId();
 
         // créer 3 produits

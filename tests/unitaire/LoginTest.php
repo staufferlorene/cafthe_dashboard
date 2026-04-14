@@ -32,7 +32,7 @@ class LoginTest extends TestCase {
             'John',
             'admin',
             'test@email.com',
-            'Motdepassevendeur123',
+            'Motdepassevendeur123.',
         );
 
         $vendeur = LoginModel::getVendeurParMail('test@email.com');
@@ -51,18 +51,18 @@ class LoginTest extends TestCase {
 
     // Tester connexion avec mot de passe correct
     public function testVerifierMotDePasseCorrect() {
-        $hash = password_hash('testdumdp123', PASSWORD_DEFAULT);
+        $hash = password_hash('Testdumdp123.', PASSWORD_BCRYPT);
 
-        $result = LoginModel::verifierMotDePasse('testdumdp123', $hash);
+        $result = LoginModel::verifierMotDePasse('Testdumdp123.', $hash);
 
         $this->assertTrue($result);
     }
 
     // Tester connexion avec mot de passe incorrect
     public function testVerifierMotDePasseIncorrect() {
-        $hash = password_hash('monmdp123', PASSWORD_DEFAULT);
+        $hash = password_hash('Cestmonmdp123.', PASSWORD_BCRYPT);
 
-        $result = LoginModel::verifierMotDePasse('mauvaismdp', $hash);
+        $result = LoginModel::verifierMotDePasse('Mauvaismdp123.', $hash);
 
         $this->assertFalse($result);
     }

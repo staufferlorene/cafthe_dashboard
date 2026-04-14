@@ -54,7 +54,7 @@ class ProfilSecurityTest extends TestCase {
             INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
             VALUES ('Dupont', 'Jean', 'jean@email.com', ?, 1)
         ");
-        $stmt->execute([password_hash('mdp123', PASSWORD_BCRYPT)]);
+        $stmt->execute([password_hash('Motdepassevendeur123.', PASSWORD_BCRYPT)]);
         $idVendeur = (int)$db->lastInsertId();
 
         // faire l'injection
@@ -102,7 +102,7 @@ class ProfilSecurityTest extends TestCase {
             INSERT INTO vendeur (Nom_vendeur, Prenom_vendeur, Mail_vendeur, Mdp_vendeur, Role) 
             VALUES ('Dupont', 'Jean', 'jean@email.com', ?, 1)
         ");
-        $stmt->execute([password_hash('mdp', PASSWORD_BCRYPT)]);
+        $stmt->execute([password_hash('Motdepassevendeur123.', PASSWORD_BCRYPT)]);
         $idVendeur = (int)$db->lastInsertId();
 
         ProfilModel::modifier(
