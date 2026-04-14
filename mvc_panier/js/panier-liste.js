@@ -83,12 +83,14 @@ ajoutPanier.forEach(bouton => {
                 if (!response.ok) throw new Error('Erreur');
                 return response.text();
             })
+            .then(() => {
+                // si confirmation du serveur est ok
+                // rafraîchis la page pour mettre à jour le montant TTC avec le montant calculé côté back
+                location.reload();
+            })
             .catch(error => {
                 console.error('Erreur lors de l\'ajout :', error);
             })
-
-        // rafraîchis la page pour mettre à jour le montant TTC avec le montant calculé côté back
-        location.reload();
 
         //    ///////////////////
         // REMISE A ZERO CHAMPS QUANTITE ET PRIX TTC :

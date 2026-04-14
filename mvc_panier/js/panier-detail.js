@@ -53,12 +53,14 @@ saisie.forEach(e => {
                 if (!response.ok) throw new Error('Erreur');
                 return response.text();
             })
+            .then(() => {
+                // si confirmation du serveur est ok
+                // rafraîchis la page pour mettre à jour le montant TTC avec le montant calculé côté back
+                location.reload();
+            })
             .catch(error => {
                 console.error('Erreur lors de la modification :', error);
             })
-
-        // rafraîchis la page pour mettre à jour le montant TTC avec le montant calculé côté back
-        location.reload();
     });
 });
 
