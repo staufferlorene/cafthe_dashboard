@@ -39,6 +39,9 @@
             <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
             <input type="submit" value="Se connecter">
         </form>
+        <div class="mdpOublie">
+            <a href="">Mot de passe oublié</a>
+        </div>
     </div>
 </div>
 

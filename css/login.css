@@ -1,6 +1,3 @@
-
-/* BASIC */
-
 html {
     background-color: #56baed;
 }
@@ -10,8 +7,6 @@ body {
     height: 100vh;
     background-color: #BDB193;
 }
-
-/* STRUCTURE */
 
 .wrapper {
     display: flex;
@@ -37,8 +32,6 @@ body {
     text-align: center;
 }
 
-/* FORM TYPOGRAPHY*/
-
 input[type=button], input[type=submit], input[type=reset]  {
     background-color: #044119;
     border: none;
@@ -53,7 +46,7 @@ input[type=button], input[type=submit], input[type=reset]  {
     box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
     -webkit-border-radius: 5px 5px 5px 5px;
     border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
+    margin: 5px 20px 20px 20px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     -ms-transition: all 0.3s ease-in-out;
@@ -112,7 +105,15 @@ input[type="email"]:-webkit-autofill {
     box-shadow: 0 0 0px 1000px #f6f6f6 inset !important;
 }
 
-/* OTHERS */
+.mdpOublie {
+    margin-bottom: 15px;
+}
+
+.mdpOublie a,
+.mdpOublie a:hover {
+    color: black;
+    text-decoration: none;
+}
 
 *:focus {
     outline: none;
