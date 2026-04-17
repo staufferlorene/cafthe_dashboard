@@ -20,10 +20,6 @@
 </head>
 <body>
 
-{if isset($erreur)}
-    <div class="mb-4" style="color:red;">Erreur : {$erreur}</div>
-{/if}
-
 <div class="wrapper fadeInDown">
     <div id="formContent">
 
@@ -37,6 +33,11 @@
         <form method="post" action="index.php">
             <input type="email" id="mail" name="mail" placeholder="Identifiant" required>
             <input type="password" id="mdp" name="mdp" placeholder="Mot de passe" required>
+
+            {if isset($erreur)}
+                <div class="mb-1" style="color:red;">Erreur : {$erreur}</div>
+            {/if}
+
             <input type="submit" value="Se connecter">
         </form>
         <div class="mdpOublie">
